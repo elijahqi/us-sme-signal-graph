@@ -2,6 +2,8 @@
 
 Contributions are welcome when they improve reproducibility, data quality, or external validation.
 
+Use the structured GitHub issue templates for independent reproductions, data corrections, and scoped pilot interest. See [docs/external_validation.md](docs/external_validation.md). Submitting an issue does not by itself constitute adoption.
+
 ## Requirements
 
 - Do not submit confidential, employer-owned, personal, or access-controlled data.

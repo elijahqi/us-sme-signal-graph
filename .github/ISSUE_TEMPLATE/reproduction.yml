@@ -1,0 +1,40 @@
+name: Independent reproduction
+description: Report a clean-environment reproduction of a tagged release or commit.
+title: "[Reproduction] "
+labels: ["reproduction"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Release or commit
+      placeholder: v0.2.0-rc1 or full commit SHA
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python version, and relevant tool versions.
+    validations:
+      required: true
+  - type: textarea
+    id: commands
+    attributes:
+      label: Commands run
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Observed outcome
+      description: Include counts and hashes, but do not paste credentials or restricted data.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Data boundary
+      options:
+        - label: I have not included credentials, personal data, confidential employer information, or search-provider payloads.
+          required: true

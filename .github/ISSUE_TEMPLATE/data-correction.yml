@@ -1,0 +1,38 @@
+name: Data correction
+description: Propose a provenance-backed correction or removal.
+title: "[Data correction] "
+labels: ["data-correction"]
+body:
+  - type: input
+    id: candidate
+    attributes:
+      label: Candidate ID
+      placeholder: review-...
+    validations:
+      required: true
+  - type: input
+    id: evidence
+    attributes:
+      label: Public evidence URL
+    validations:
+      required: true
+  - type: dropdown
+    id: action
+    attributes:
+      label: Requested action
+      options: [Correct a field, Remove a candidate, Add a limitation, Other]
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Evidence-backed rationale
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Data boundary
+      options:
+        - label: The report uses public evidence and contains no personal or confidential data.
+          required: true

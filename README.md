@@ -47,6 +47,8 @@ The strict precision estimate is 45.3% (Wilson 95% CI 34.6%–56.6%). The prereg
 
 Public release artifacts are under [release/public/v0.2.0-rc1](release/public/v0.2.0-rc1). They contain provider-neutral facts, URLs, and page hashes—not provider payloads, snippets, ranks, or fetched page text.
 
+Independent researchers and institutions can use the structured reproduction, correction, and pilot-interest templates described in [docs/external_validation.md](docs/external_validation.md). An issue or introductory conversation is not counted as adoption.
+
 ## Guardrails
 
 - No ByteDance internal data, code, customers, or confidential records.
