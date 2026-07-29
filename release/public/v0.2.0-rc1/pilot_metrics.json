@@ -1,0 +1,219 @@
+{
+  "pilot": {
+    "annotation_agreement": null,
+    "baseline_supplier_denominator": 50,
+    "confirmed_sme_strict_suppliers": 0,
+    "interpretation": "The discovery arm clears the count gate but not the precision or independent-review gates. The 30-company strict set is a verified candidate release, not a completed full-run dataset.",
+    "metric_scope": "75 provider-blind direct-company rows with semiconductor and manufacturing signals",
+    "net_new_strict_suppliers": 30,
+    "pilot_gate": {
+      "double_review_agreement_at_least_0_70": false,
+      "entity_resolution_precision_at_least_0_95": null,
+      "full_run_authorized_by_evidence": false,
+      "net_new_strict_at_least_25": true,
+      "precision_lower_bound_at_least_0_55": false
+    },
+    "probable_sme_strict_suppliers": 11,
+    "reviewed_rows": 75,
+    "strict_company_lift": 0.6,
+    "strict_precision": 0.4533333333333333,
+    "strict_precision_wilson_95": [
+      0.3456979638413221,
+      0.5655162614570731
+    ],
+    "strict_supplier_rows": 34,
+    "unreviewed_domain_rows": 111
+  },
+  "provider_attribution": {
+    "formal_run": {
+      "query_count": 24,
+      "top_k": 10
+    },
+    "per_query_url_counts": [
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q001",
+        "url_intersection": 8,
+        "url_union": 12,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q002",
+        "url_intersection": 8,
+        "url_union": 12,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q003",
+        "url_intersection": 10,
+        "url_union": 10,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q004",
+        "url_intersection": 7,
+        "url_union": 13,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q005",
+        "url_intersection": 8,
+        "url_union": 12,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q006",
+        "url_intersection": 7,
+        "url_union": 13,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q007",
+        "url_intersection": 8,
+        "url_union": 12,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q008",
+        "url_intersection": 8,
+        "url_union": 12,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q009",
+        "url_intersection": 7,
+        "url_union": 13,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q010",
+        "url_intersection": 5,
+        "url_union": 15,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q011",
+        "url_intersection": 7,
+        "url_union": 13,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q012",
+        "url_intersection": 8,
+        "url_union": 12,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q013",
+        "url_intersection": 8,
+        "url_union": 12,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q014",
+        "url_intersection": 10,
+        "url_union": 10,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q015",
+        "url_intersection": 9,
+        "url_union": 11,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q016",
+        "url_intersection": 5,
+        "url_union": 15,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q017",
+        "url_intersection": 8,
+        "url_union": 12,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q018",
+        "url_intersection": 8,
+        "url_union": 12,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q019",
+        "url_intersection": 8,
+        "url_union": 12,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q020",
+        "url_intersection": 8,
+        "url_union": 12,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q021",
+        "url_intersection": 8,
+        "url_union": 12,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q022",
+        "url_intersection": 4,
+        "url_union": 16,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q023",
+        "url_intersection": 9,
+        "url_union": 11,
+        "you_unique_urls": 10
+      },
+      {
+        "brave_unique_urls": 10,
+        "query_id": "Q024",
+        "url_intersection": 9,
+        "url_union": 11,
+        "you_unique_urls": 10
+      }
+    ],
+    "provider_arms_net_new_strict": {
+      "brave": 27,
+      "brave_marginal": 8,
+      "intersection": 19,
+      "union": 30,
+      "you": 22,
+      "you_marginal": 3
+    },
+    "provider_payloads_in_output": false,
+    "url_retrieval": {
+      "brave_unique": 219,
+      "intersection": 174,
+      "jaccard": 0.6566037735849056,
+      "union": 265,
+      "you_unique": 220
+    }
+  }
+}

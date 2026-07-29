@@ -1,0 +1,14 @@
+column,type,required,description
+review_id,string,true,Stable provider-blind review identifier
+canonical_company_name,string,true,Reviewer-normalized company name
+supplier_valid_lenient,boolean,true,First-party evidence supports supplier validity without independent confirmation
+us_presence_first_party,string,true,true false or unknown based only on provider-blind first-party evidence
+direct_manufacturer_first_party,string,true,true false or unknown based only on provider-blind first-party evidence
+baseline_disposition,string,true,novel_candidate baseline_duplicate out_of_scope or not_a_company
+matched_baseline_entity_id,string,false,Stable baseline entity ID for a confirmed duplicate
+sme_status_reviewer1,string,true,probable_sme unknown or not_sme
+second_source_selected,boolean,true,Whether candidate enters independent verification
+verification_role,string,false,priority_sme_candidate scope_boundary_check or non_sme_control
+reviewer1_confidence,string,true,high medium or low
+reason_codes,string,true,Pipe-separated controlled reason codes
+reviewer1_notes,string,true,Concise provider-blind rationale
