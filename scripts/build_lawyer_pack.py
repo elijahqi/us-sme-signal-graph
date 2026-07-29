@@ -10,8 +10,10 @@ import hashlib
 import html
 import json
 from pathlib import Path
+import re
 import shutil
 import subprocess
+from zipfile import ZIP_DEFLATED, ZipFile
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,6 +35,198 @@ def write(path: Path, text: str) -> None:
 
 def table(rows: list[tuple[str, str]]) -> str:
     return "\n".join(f"| {left} | {right} |" for left, right in rows)
+
+
+def inline_markup(value: str) -> str:
+    value = html.escape(value.strip())
+    value = __import__("re").sub(r"`([^`]+)`", r"<code>\1</code>", value)
+    value = __import__("re").sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", value)
+    return value
+
+
+def markdown_to_html(value: str) -> str:
+    """Render the controlled memo subset into Word-friendly HTML."""
+    lines = value.splitlines()
+    out: list[str] = []
+    paragraph: list[str] = []
+    list_kind = ""
+    index = 0
+
+    def flush_paragraph() -> None:
+        if paragraph:
+            out.append(f"<p>{inline_markup(' '.join(paragraph))}</p>")
+            paragraph.clear()
+
+    def close_list() -> None:
+        nonlocal list_kind
+        if list_kind:
+            out.append(f"</{list_kind}>")
+            list_kind = ""
+
+    while index < len(lines):
+        line = lines[index].rstrip()
+        stripped = line.strip()
+        if stripped.startswith("|") and stripped.endswith("|") and index + 1 < len(lines):
+            separator = lines[index + 1].strip()
+            if separator.startswith("|") and set(separator.replace("|", "").replace("-", "").replace(":", "").replace(" ", "")) == set():
+                flush_paragraph(); close_list()
+                headers = [inline_markup(cell) for cell in stripped.strip("|").split("|")]
+                index += 2
+                body = []
+                while index < len(lines) and lines[index].strip().startswith("|"):
+                    body.append([inline_markup(cell) for cell in lines[index].strip().strip("|").split("|")])
+                    index += 1
+                out.append("<table><thead><tr>" + "".join(f"<th>{cell}</th>" for cell in headers) + "</tr></thead><tbody>")
+                for row in body:
+                    out.append("<tr>" + "".join(f"<td>{cell}</td>" for cell in row) + "</tr>")
+                out.append("</tbody></table>")
+                continue
+        if not stripped:
+            flush_paragraph(); close_list(); index += 1; continue
+        if stripped == "---" or stripped == "<hr>":
+            flush_paragraph(); close_list(); out.append("<hr>"); index += 1; continue
+        if stripped.startswith("#"):
+            flush_paragraph(); close_list()
+            level = min(3, len(stripped) - len(stripped.lstrip("#")))
+            out.append(f"<h{level}>{inline_markup(stripped[level:])}</h{level}>")
+            index += 1; continue
+        if stripped.startswith("- "):
+            flush_paragraph()
+            if list_kind != "ul": close_list(); out.append("<ul>"); list_kind = "ul"
+            out.append(f"<li>{inline_markup(stripped[2:])}</li>")
+            index += 1; continue
+        numbered = __import__("re").match(r"^\d+\.\s+(.+)$", stripped)
+        if numbered:
+            flush_paragraph()
+            if list_kind != "ol": close_list(); out.append("<ol>"); list_kind = "ol"
+            out.append(f"<li>{inline_markup(numbered.group(1))}</li>")
+            index += 1; continue
+        close_list(); paragraph.append(stripped); index += 1
+    flush_paragraph(); close_list()
+    return "\n".join(out)
+
+
+def plain_markup(value: str) -> str:
+    value = re.sub(r"`([^`]+)`", r"\1", value.strip())
+    return re.sub(r"\*\*([^*]+)\*\*", r"\1", value)
+
+
+def word_paragraph(text: str = "", style: str = "", page_break_before: bool = False) -> str:
+    properties = []
+    if style:
+        properties.append(f'<w:pStyle w:val="{style}"/>')
+    if page_break_before:
+        properties.append("<w:pageBreakBefore/>")
+    ppr = f"<w:pPr>{''.join(properties)}</w:pPr>" if properties else ""
+    value = html.escape(plain_markup(text))
+    return f'<w:p>{ppr}<w:r><w:t xml:space="preserve">{value}</w:t></w:r></w:p>'
+
+
+def word_table(headers: list[str], body: list[list[str]]) -> str:
+    rows = [headers, *body]
+    xml = [
+        "<w:tbl><w:tblPr><w:tblStyle w:val=\"EvidenceTable\"/>"
+        "<w:tblW w:w=\"0\" w:type=\"auto\"/>"
+        "<w:tblBorders><w:top w:val=\"single\" w:sz=\"4\" w:color=\"9CAEBE\"/>"
+        "<w:left w:val=\"single\" w:sz=\"4\" w:color=\"9CAEBE\"/>"
+        "<w:bottom w:val=\"single\" w:sz=\"4\" w:color=\"9CAEBE\"/>"
+        "<w:right w:val=\"single\" w:sz=\"4\" w:color=\"9CAEBE\"/>"
+        "<w:insideH w:val=\"single\" w:sz=\"4\" w:color=\"9CAEBE\"/>"
+        "<w:insideV w:val=\"single\" w:sz=\"4\" w:color=\"9CAEBE\"/></w:tblBorders></w:tblPr>"
+    ]
+    for row_index, row in enumerate(rows):
+        xml.append("<w:tr>")
+        for cell in row:
+            shading = '<w:shd w:fill="DCE9F4"/>' if row_index == 0 else ""
+            run_properties = "<w:rPr><w:b/></w:rPr>" if row_index == 0 else ""
+            xml.append(
+                f'<w:tc><w:tcPr><w:tcW w:w="0" w:type="auto"/>{shading}</w:tcPr>'
+                f'<w:p><w:r>{run_properties}<w:t>{html.escape(plain_markup(cell))}</w:t></w:r></w:p></w:tc>'
+            )
+        xml.append("</w:tr>")
+    xml.append("</w:tbl>")
+    return "".join(xml)
+
+
+def markdown_to_word_xml(value: str) -> str:
+    lines = value.splitlines()
+    body: list[str] = []
+    paragraph: list[str] = []
+    title_seen = False
+    index = 0
+
+    def flush() -> None:
+        if paragraph:
+            body.append(word_paragraph(" ".join(paragraph)))
+            paragraph.clear()
+
+    while index < len(lines):
+        stripped = lines[index].strip()
+        if stripped.startswith("|") and stripped.endswith("|") and index + 1 < len(lines):
+            separator = lines[index + 1].strip()
+            if separator.startswith("|") and set(separator.replace("|", "").replace("-", "").replace(":", "").replace(" ", "")) == set():
+                flush()
+                headers = [cell.strip() for cell in stripped.strip("|").split("|")]
+                index += 2
+                rows = []
+                while index < len(lines) and lines[index].strip().startswith("|"):
+                    rows.append([cell.strip() for cell in lines[index].strip().strip("|").split("|")])
+                    index += 1
+                body.append(word_table(headers, rows))
+                continue
+        if not stripped:
+            flush(); index += 1; continue
+        if stripped == "---" or stripped == "<hr>":
+            flush(); body.append(word_paragraph("")); index += 1; continue
+        if stripped.startswith("#"):
+            flush()
+            level = min(3, len(stripped) - len(stripped.lstrip("#")))
+            body.append(word_paragraph(stripped[level:].strip(), f"Heading{level}", level == 1 and title_seen))
+            title_seen = title_seen or level == 1
+            index += 1; continue
+        if stripped.startswith("- "):
+            flush(); body.append(word_paragraph("• " + stripped[2:], "ListBullet")); index += 1; continue
+        numbered = re.match(r"^(\d+)\.\s+(.+)$", stripped)
+        if numbered:
+            flush(); body.append(word_paragraph(f"{numbered.group(1)}. {numbered.group(2)}", "ListNumber")); index += 1; continue
+        paragraph.append(stripped); index += 1
+    flush()
+    section = (
+        '<w:sectPr><w:pgSz w:w="12240" w:h="15840"/>'
+        '<w:pgMar w:top="1008" w:right="1008" w:bottom="1008" w:left="1008"/>'
+        '</w:sectPr>'
+    )
+    return "".join(body) + section
+
+
+def write_native_docx(markdown: str, path: Path) -> None:
+    document = (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">'
+        f'<w:body>{markdown_to_word_xml(markdown)}</w:body></w:document>'
+    )
+    styles = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+<w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:rPr><w:rFonts w:ascii="Arial" w:hAnsi="Arial"/><w:sz w:val="21"/></w:rPr></w:style>
+<w:style w:type="paragraph" w:styleId="Heading1"><w:name w:val="heading 1"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:pPr><w:keepNext/><w:spacing w:before="240" w:after="140"/><w:outlineLvl w:val="0"/></w:pPr><w:rPr><w:b/><w:color w:val="173A5E"/><w:sz w:val="40"/></w:rPr></w:style>
+<w:style w:type="paragraph" w:styleId="Heading2"><w:name w:val="heading 2"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:pPr><w:keepNext/><w:spacing w:before="180" w:after="80"/><w:outlineLvl w:val="1"/></w:pPr><w:rPr><w:b/><w:color w:val="285F8F"/><w:sz w:val="28"/></w:rPr></w:style>
+<w:style w:type="paragraph" w:styleId="Heading3"><w:name w:val="heading 3"/><w:basedOn w:val="Normal"/><w:next w:val="Normal"/><w:pPr><w:keepNext/><w:spacing w:before="120" w:after="60"/><w:outlineLvl w:val="2"/></w:pPr><w:rPr><w:b/><w:color w:val="285F8F"/><w:sz w:val="23"/></w:rPr></w:style>
+<w:style w:type="paragraph" w:styleId="ListBullet"><w:name w:val="List Bullet"/><w:basedOn w:val="Normal"/><w:pPr><w:ind w:left="360" w:hanging="180"/></w:pPr></w:style>
+<w:style w:type="paragraph" w:styleId="ListNumber"><w:name w:val="List Number"/><w:basedOn w:val="Normal"/><w:pPr><w:ind w:left="360" w:hanging="180"/></w:pPr></w:style>
+<w:style w:type="table" w:styleId="EvidenceTable"><w:name w:val="Evidence Table"/><w:tblPr><w:tblCellMar><w:top w:w="80" w:type="dxa"/><w:left w:w="80" w:type="dxa"/><w:bottom w:w="80" w:type="dxa"/><w:right w:w="80" w:type="dxa"/></w:tblCellMar></w:tblPr></w:style>
+</w:styles>"""
+    content_types = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>"""
+    root_rels = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>"""
+    document_rels = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>"""
+    with ZipFile(path, "w", ZIP_DEFLATED) as archive:
+        archive.writestr("[Content_Types].xml", content_types)
+        archive.writestr("_rels/.rels", root_rels)
+        archive.writestr("word/document.xml", document)
+        archive.writestr("word/styles.xml", styles)
+        archive.writestr("word/_rels/document.xml.rels", document_rels)
 
 
 def build(args: argparse.Namespace) -> dict:
@@ -252,7 +446,7 @@ Counsel should add filing and receipt dates only after checking the official rec
         writer = csv.writer(handle); writer.writerow(["exhibit", "artifact", "sha256_or_commit", "purpose"]); writer.writerows(exhibits)
 
     shutil.copytree(args.public_release, out / "public_release_v0.2.0-rc1")
-    full_memo = "\n<hr>\n".join(
+    full_memo = "\n\n---\n\n".join(
         (out / name).read_text() for name in (
             "00_COUNSEL_EXECUTIVE_MEMO.md", "01_FILING_DATE_CONTINUITY_CROSSWALK.md",
             "02_AAO_EVIDENCE_DESIGN.md", "03_TECHNICAL_EVIDENCE_MEMO.md",
@@ -260,11 +454,9 @@ Counsel should add filing and receipt dates only after checking the official rec
         )
     )
     html_text = """<!doctype html><html><head><meta charset="utf-8"><style>
-body{font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;max-width:900px;margin:40px auto;line-height:1.45;color:#18212b}h1{color:#173a5e;border-bottom:2px solid #173a5e;padding-bottom:8px}h2{color:#285f8f}table{border-collapse:collapse;width:100%;font-size:12px}th,td{border:1px solid #aab7c4;padding:6px;vertical-align:top}th{background:#eaf1f7}code{background:#eef2f5;padding:1px 3px}li{margin:4px 0}</style></head><body>""" + "<pre style='white-space:pre-wrap;font-family:inherit'>" + html.escape(full_memo) + "</pre></body></html>"
+@page{margin:0.7in}body{font-family:Arial,sans-serif;font-size:10.5pt;line-height:1.42;color:#18212b}h1{font-size:20pt;color:#173a5e;border-bottom:2px solid #173a5e;padding-bottom:7px;page-break-before:always}h1:first-child{page-break-before:auto}h2{font-size:14pt;color:#285f8f;margin-top:18px}h3{font-size:11.5pt;color:#285f8f}p{margin:7px 0}table{border-collapse:collapse;width:100%;font-size:8.5pt;margin:10px 0 15px}th,td{border:1px solid #9caebe;padding:5px;vertical-align:top}th{background:#dce9f4;color:#173a5e}code{background:#eef2f5;padding:1px 3px;font-family:Menlo,monospace;font-size:8.5pt}li{margin:3px 0}hr{border:0;border-top:1px solid #9caebe;margin:24px 0}</style></head><body>""" + markdown_to_html(full_memo) + "</body></html>"
     write(out / "COUNSEL_MEMO_SOURCE.html", html_text)
-    textutil = shutil.which("textutil")
-    if textutil:
-        subprocess.run([textutil, "-convert", "docx", "-output", str(out / "COUNSEL_MEMO.docx"), str(out / "COUNSEL_MEMO_SOURCE.html")], check=True)
+    write_native_docx(full_memo, out / "COUNSEL_MEMO.docx")
 
     files = sorted(path for path in out.rglob("*") if path.is_file() and path.name != "SHA256SUMS")
     write(out / "SHA256SUMS", "\n".join(f"{sha256(path)}  {path.relative_to(out)}" for path in files))

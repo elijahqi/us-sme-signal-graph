@@ -1,0 +1,39 @@
+name: Pilot interest
+description: Propose a real, scoped external evaluation of a tagged release.
+title: "[Pilot interest] "
+labels: ["pilot-interest"]
+body:
+  - type: input
+    id: organization
+    attributes:
+      label: Organization or research group
+    validations:
+      required: true
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Concrete use case
+      description: What decision or research question would the release support?
+    validations:
+      required: true
+  - type: textarea
+    id: measures
+    attributes:
+      label: Proposed success and failure measures
+      description: Examples include verified candidates, false positives, missed suppliers, analyst time, and decision changes.
+    validations:
+      required: true
+  - type: dropdown
+    id: attribution
+    attributes:
+      label: Public attribution preference
+      options: [May be public after written approval, Keep organization private initially, Discuss separately]
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgement
+    attributes:
+      label: Acknowledgements
+      options:
+        - label: Submitting this form expresses interest only and is not counted as an active pilot or adoption.
+          required: true
