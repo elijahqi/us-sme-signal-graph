@@ -4,7 +4,9 @@ __pycache__/
 .venv/
 data/raw/
 data/processed/
+!data/README.md
 experiments/search_uplift/provider_payloads/
+experiments/search_uplift/private/
 release/private/
 release/*.tar.gz
 release/*.zip

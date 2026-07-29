@@ -34,6 +34,8 @@ def main() -> None:
         raise SystemExit("Restricted paths are tracked:\n" + "\n".join(blocked_paths))
     blocked_content = []
     for relative in tracked:
+        if relative == "scripts/release_preflight.py":
+            continue
         path = ROOT / relative
         if not path.is_file() or path.stat().st_size > 2_000_000:
             continue

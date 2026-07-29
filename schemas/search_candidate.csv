@@ -1,0 +1,20 @@
+column,type,required,description
+candidate_id,string,true,Stable hash of canonical source URL
+canonical_url,string,true,Independently fetched original URL
+registrable_domain,string,true,Approximate registrable domain for deduplication
+http_status,integer,true,Fetch status
+robots_status,string,true,robots_allowed robots_disallowed or unavailable policy
+retrieved_at,string,true,UTC fetch time
+page_sha256,string,false,SHA-256 of fetched source bytes
+page_title,string,false,HTML title
+site_name,string,false,OpenGraph site name if present
+meta_description,string,false,Source meta description
+candidate_company_name,string,false,Deterministic first-pass name requiring review
+semiconductor_signal,boolean,true,Source text contains semiconductor evidence
+manufacturing_signal,boolean,true,Source text contains manufacturing evidence
+us_presence_signal,boolean,true,Source text contains U.S. location evidence
+capability_groups,json_array,true,Keyword-derived capability groups
+matched_baseline_company_id,string,false,Exact or conservative normalized-name baseline match
+baseline_match_method,string,false,Match method
+review_status,string,true,Always needs_review before human adjudication
+fetch_error,string,false,Error details without credentials

@@ -14,3 +14,9 @@ Workflow:
 
 See docs/search_uplift_pilot.md and experiments/search_uplift/query_set.csv.
 
+## v0.2.0-rc1 status
+
+The first pilot completed retrieval, provider-blind Reviewer-1 adjudication of the 75 direct-company/high-signal rows, and independent-source verification of every first-party lenient positive. It generated 30 net-new strict supplier candidates.
+
+The public release remains an RC because 111 lower-signal domain rows have not received the same adjudication, a second independent annotator has not completed the preregistered sample, agreement is not available, and the Wilson precision lower bound is below the 0.55 gate.
+

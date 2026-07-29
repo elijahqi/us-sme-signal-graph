@@ -1,0 +1,13 @@
+column,type,required,description
+candidate_id,string,true,Stable provider-neutral candidate ID
+canonical_company_name,string,true,Reviewed company name
+registrable_domain,string,true,Company website domain
+capability_groups,json_array,true,Conservative capability buckets from first-party source
+sme_evidence_status,string,true,probable_sme unknown or not_sme; never inferred from obscurity
+size_evidence,string,true,Non-authoritative size evidence or none
+primary_evidence_url,string,true,First-party capability source
+primary_page_sha256,string,true,SHA-256 of fetched first-party page
+independent_confirmation_url,string,true,Provider-neutral identity and U.S.-location source
+independent_source_sha256,string,true,SHA-256 of fetched independent page
+verification_confidence,string,true,high medium or low
+verified_at,string,true,UTC date of candidate release

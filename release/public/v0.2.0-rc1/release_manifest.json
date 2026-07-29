@@ -1,0 +1,12 @@
+{
+  "candidate_rows": 30,
+  "confirmed_sme_rows": 0,
+  "files": {
+    "pilot_metrics.json": "24f7921942fb35a731ddab596c89370dd5bb83171eb7685523e75ae2c8240d39",
+    "verified_supplier_candidates.csv": "c250166d1438653cf2c9c8e644c10d807a1cfb241adee16907b1c2ab2d12a349"
+  },
+  "provider_payloads_in_release": false,
+  "release_version": "v0.2.0-rc1",
+  "sia_row_level_data_in_release": false,
+  "third_party_page_text_in_release": false
+}

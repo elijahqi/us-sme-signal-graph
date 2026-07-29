@@ -1,0 +1,13 @@
+column,type,required,description
+review_id,string,true,Stable candidate review identifier
+strict_supplier_valid,boolean,true,Independent source confirms company identity and U.S. presence in addition to first-party capability evidence
+independent_confirmation_url,string,false,Provider-neutral original source URL
+independent_source_sha256,string,false,SHA-256 of independently fetched bytes
+independent_http_status,integer,true,HTTP status at verification time
+independent_robots_status,string,true,Robots policy decision at verification time
+identity_confirmed,boolean,true,Independent source matches the reviewed company identity
+us_presence_confirmed,boolean,true,Independent source establishes a U.S. company location
+size_evidence,string,true,Employee or revenue evidence or none
+sme_status_verified,string,true,probable_sme unknown or not_sme; confirmed_sme is reserved for authoritative status evidence
+verification_confidence,string,true,high medium or low
+verification_notes,string,true,Concise basis and limitations

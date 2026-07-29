@@ -31,3 +31,7 @@ The API documentation describes search and content access but this project has n
 
 Each source website remains subject to its own terms, robots policy, copyright, privacy, and database rights. Provenance is not a substitute for permission.
 
+## Public v0.2 candidate table
+
+The public candidate table contains reviewed factual fields, source URLs, retrieval hashes, and project-authored classifications. It excludes fetched HTML, evidence windows, provider snippets, search rank, and provider origin. Apache-2.0 covers project code and documentation. The project-authored selection and arrangement of the public factual table is offered under CC BY 4.0; third-party page content and trademarks remain with their owners.
+
