@@ -1,0 +1,26 @@
+query_id,capability_group,template_type,query,status
+Q001,lithography,direct,US semiconductor lithography equipment manufacturer supplier,freeze_v1
+Q002,lithography,long_tail,domestic US sub-tier lithography components contract manufacturer wafer fab equipment,freeze_v1
+Q003,etch,direct,US semiconductor plasma etch equipment manufacturer supplier,freeze_v1
+Q004,etch,long_tail,domestic US sub-tier etch chamber precision components contract manufacturer,freeze_v1
+Q005,deposition,direct,US semiconductor CVD PVD ALD deposition equipment manufacturer supplier,freeze_v1
+Q006,deposition,long_tail,domestic US sub-tier deposition system components contract manufacturer semiconductor,freeze_v1
+Q007,cmp,direct,US semiconductor CMP equipment slurry delivery manufacturer supplier,freeze_v1
+Q008,cmp,long_tail,domestic US sub-tier CMP components polishing equipment contract manufacturer,freeze_v1
+Q009,metrology,direct,US semiconductor metrology inspection equipment manufacturer supplier,freeze_v1
+Q010,metrology,long_tail,domestic US sub-tier metrology tool precision components contract manufacturer,freeze_v1
+Q011,wafer_handling,direct,US wafer handling semiconductor automation equipment manufacturer supplier,freeze_v1
+Q012,wafer_handling,long_tail,domestic US sub-tier wafer handling robotics components contract manufacturer,freeze_v1
+Q013,vacuum,direct,US semiconductor vacuum equipment pump chamber manufacturer supplier,freeze_v1
+Q014,vacuum,long_tail,domestic US sub-tier vacuum chamber precision components contract manufacturer semiconductor,freeze_v1
+Q015,gas_delivery,direct,US semiconductor ultra high purity gas delivery equipment manufacturer supplier,freeze_v1
+Q016,gas_delivery,long_tail,domestic US sub-tier gas delivery components welding contract manufacturer semiconductor,freeze_v1
+Q017,wet_processing,direct,US semiconductor wet processing cleaning equipment manufacturer supplier,freeze_v1
+Q018,wet_processing,long_tail,domestic US sub-tier wet bench cleaning system components contract manufacturer,freeze_v1
+Q019,thermal_processing,direct,US semiconductor furnace rapid thermal processing equipment manufacturer supplier,freeze_v1
+Q020,thermal_processing,long_tail,domestic US sub-tier thermal processing components contract manufacturer semiconductor,freeze_v1
+Q021,packaging,direct,US semiconductor packaging assembly equipment manufacturer supplier,freeze_v1
+Q022,packaging,long_tail,domestic US sub-tier semiconductor packaging tooling components contract manufacturer,freeze_v1
+Q023,test,direct,US semiconductor test equipment probe handler manufacturer supplier,freeze_v1
+Q024,test,long_tail,domestic US sub-tier semiconductor test socket probe components contract manufacturer,freeze_v1
+

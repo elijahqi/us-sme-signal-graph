@@ -1,0 +1,13 @@
+{
+  "sources": [
+    {
+      "source_id": "sia_us_semiconductor_ecosystem",
+      "publisher": "Semiconductor Industry Association",
+      "url": "https://www.semiconductors.org/ecosystem/",
+      "parser": "sia_ecosystem_v1",
+      "enabled": true,
+      "scope_note": "Not exhaustive; largely represents SIA member company locations."
+    }
+  ]
+}
+

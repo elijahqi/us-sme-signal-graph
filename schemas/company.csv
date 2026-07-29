@@ -1,0 +1,12 @@
+column,type,required,description
+company_id,string,true,Stable ID derived from normalized company name
+canonical_name,string,true,HTML-decoded source company name
+normalized_name,string,true,Unicode-normalized comparison key
+company_types,json_array,false,Distinct SIA company type values
+source_record_count,integer,true,Facility/source records attributed to company
+source_record_ids,string,true,Pipe-separated stable source record IDs
+source_url,string,true,SIA ecosystem page
+publisher,string,true,Source publisher
+retrieved_at,string,true,UTC retrieval timestamp
+page_sha256,string,true,SHA-256 of raw page
+

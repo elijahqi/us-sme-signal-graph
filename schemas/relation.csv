@@ -1,0 +1,12 @@
+column,type,required,description
+relation_id,string,true,Stable relation ID
+source_id,string,true,Source node ID
+source_type,string,true,Source node type
+relation_type,string,true,HAS_FACILITY LOCATED_IN HAS_ACTIVITY or HAS_COMPANY_TYPE
+target_id,string,true,Target node ID
+target_type,string,true,Target node type
+evidence_source_record_id,string,true,Source record IDs supporting relation
+source_url,string,true,SIA ecosystem page
+publisher,string,true,Source publisher
+retrieved_at,string,true,UTC retrieval timestamp
+page_sha256,string,true,SHA-256 of frozen raw page

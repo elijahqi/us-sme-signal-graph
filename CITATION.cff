@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software or methodology, please cite it using this metadata."
+title: "US-SME Signal Graph"
+type: software
+authors:
+  - family-names: Qi
+    given-names: Yijiashun
+    orcid: "https://orcid.org/0009-0009-2129-6932"
+repository-code: "https://github.com/elijahqi/us-sme-signal-graph"
+license: Apache-2.0
+version: 0.1.0
+date-released: 2026-07-29
+keywords:
+  - small and medium enterprises
+  - supplier discovery
+  - knowledge graph
+  - provenance
+  - web search evaluation
+  - semiconductor supply chain
+

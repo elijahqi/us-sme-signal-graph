@@ -1,0 +1,14 @@
+column,type,required,description
+company_id,string,true,Foreign key to company table
+canonical_name,string,true,Canonical source company name
+normalized_name,string,true,Comparison key
+company_types,json_array,true,Equipment and or Materials plus any other SIA type
+facility_count,integer,true,All U.S. facility records in SIA map
+manufacturing_facility_count,integer,true,Facility records marked Manufacturing
+baseline_supplier_scope,string,true,Reason included in supplier denominator
+sme_status,string,true,Always unknown until separately verified
+source_record_ids,string,true,Supporting SIA source record IDs
+source_url,string,true,SIA ecosystem page
+publisher,string,true,Source publisher
+retrieved_at,string,true,UTC retrieval timestamp
+page_sha256,string,true,SHA-256 of frozen raw page
