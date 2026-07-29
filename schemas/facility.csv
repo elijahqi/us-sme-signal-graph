@@ -1,0 +1,22 @@
+column,type,required,description
+facility_id,string,true,Stable facility ID
+company_id,string,true,Foreign key to company
+city,string,false,Source city
+state,string,false,Two-letter U.S. state when present
+raw_state,string,false,Original source state value
+state_quality_flag,string,true,as_provided_code normalized_full_name missing or unrecognized
+latitude,number,false,Source latitude
+longitude,number,false,Source longitude
+company_types,json_array,false,SIA company type values
+activities,json_array,false,SIA facility activity values
+announcement_types,json_array,false,Existing/new/expansion source labels
+fab_open_date,string,false,Source field
+investment,string,false,Source field
+jobs_expected,string,false,Source field
+supporting_source_url,string,false,Optional source cited by SIA record
+source_record_id,string,true,Stable hash of raw normalized record
+source_url,string,true,SIA ecosystem page
+publisher,string,true,Source publisher
+retrieved_at,string,true,UTC retrieval timestamp
+page_sha256,string,true,SHA-256 of raw page
+

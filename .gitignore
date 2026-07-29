@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+data/raw/
+data/processed/
+experiments/search_uplift/provider_payloads/
+release/private/
+release/*.tar.gz
+release/*.zip
+*.log
+
