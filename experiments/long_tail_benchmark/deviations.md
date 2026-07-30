@@ -22,3 +22,13 @@
 - Corrective action: pass the rights-safe NDJSON batch to a noninteractive processor through an encoded argument, with explicit size and decode validation
 - Rerun rule: rerun the same frozen queries under the same parameters; do not alter query strings or replace results
 
+## DEV-003: orchestration runtime lacked TextEncoder
+
+- Run: `formal_v0_3`
+- Affected attempted queries: `LTQ0001` through `LTQ0010` second rerun
+- Stage: after search calls, before rights-safe batch transmission
+- Symptom: the orchestration isolate raised `ReferenceError: TextEncoder is not defined` while preparing the noninteractive batch
+- Evidence impact: no aggregate or source-page result entered the formal corpus
+- Corrective action: use a dependency-free UTF-8-to-base64 encoder supported by the orchestration isolate
+- Rerun rule: rerun the same frozen queries under the same parameters; do not alter query strings or replace results
+
