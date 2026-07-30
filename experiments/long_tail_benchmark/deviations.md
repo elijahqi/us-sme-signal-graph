@@ -42,3 +42,13 @@
 - Corrective action: read only the current ten-query slice from the frozen CSV for each checkpoint, keeping tool output below truncation limits
 - Continuation rule: continue at `LTQ0011`; do not rerun or overwrite the completed first checkpoint
 
+## DEV-005: curl child exceeded its requested max-time
+
+- Run: `formal_v0_3`
+- Affected incomplete batch: `LTQ0161` through `LTQ0170`
+- Stage: independent original-page fetch after valid paired searches
+- Symptom: a curl child fetching `ascendelements.com` remained alive for more than six minutes despite `--max-time 30`, preventing the batch manifest from being written
+- Evidence impact: the completed checkpoint remains `LTQ0001` through `LTQ0160`; the incomplete batch did not update the manifest or aggregate table
+- Corrective action: add a Python subprocess hard timeout around both robots and page-fetch curl commands, terminate the incomplete processor and its exact child PID, and rerun the unchanged ten queries
+- Continuation rule: resume at `LTQ0161`; retain timeout failures as source-quality outcomes rather than dropping their URLs
+
