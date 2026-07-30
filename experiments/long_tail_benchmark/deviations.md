@@ -32,3 +32,13 @@
 - Corrective action: use a dependency-free UTF-8-to-base64 encoder supported by the orchestration isolate
 - Rerun rule: rerun the same frozen queries under the same parameters; do not alter query strings or replace results
 
+## DEV-004: full remaining query list was truncated by tool output limit
+
+- Run: `formal_v0_3`
+- Affected attempted batch: first attempt to continue after `LTQ0010`
+- Stage: query-list transfer before local persistence
+- Symptom: a tool truncation warning entered the in-memory list as a candidate query ID; the local processor rejected it because it was not in the frozen lattice
+- Evidence impact: the processor failed before writing any source or aggregate row; the valid `LTQ0001`–`LTQ0010` checkpoint remained unchanged
+- Corrective action: read only the current ten-query slice from the frozen CSV for each checkpoint, keeping tool output below truncation limits
+- Continuation rule: continue at `LTQ0011`; do not rerun or overwrite the completed first checkpoint
+
