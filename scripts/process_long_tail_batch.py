@@ -4,10 +4,12 @@
 from __future__ import annotations
 
 import argparse
+import base64
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import csv
 from datetime import datetime, timezone
 import hashlib
+import io
 import json
 from pathlib import Path
 import sys
@@ -195,16 +197,26 @@ def process(records: list[dict], output: Path, run_id: str, timeout: int, worker
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", type=Path, help="NDJSON batch; default stdin")
+    parser.add_argument("--input-base64", help="Base64-encoded rights-safe NDJSON batch")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--run-id", default="formal_v0_3")
     parser.add_argument("--timeout", type=int, default=30)
     parser.add_argument("--workers", type=int, default=8)
     args = parser.parse_args()
-    stream = args.input.open(encoding="utf-8") if args.input else sys.stdin
+    if args.input and args.input_base64:
+        raise SystemExit("Use only one of --input or --input-base64")
+    if args.input_base64:
+        try:
+            decoded = base64.b64decode(args.input_base64, validate=True).decode("utf-8")
+        except Exception as exc:
+            raise SystemExit(f"Invalid --input-base64: {exc}") from exc
+        stream = io.StringIO(decoded)
+    else:
+        stream = args.input.open(encoding="utf-8") if args.input else sys.stdin
     try:
         records = parse_input(stream)
     finally:
-        if args.input:
+        if args.input or args.input_base64:
             stream.close()
     if not records:
         raise SystemExit("No query aggregate records provided")

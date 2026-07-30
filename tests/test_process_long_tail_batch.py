@@ -1,4 +1,5 @@
 import importlib.util
+import base64
 import io
 import unittest
 from pathlib import Path
@@ -34,6 +35,12 @@ class LongTailBatchTest(unittest.TestCase):
         ))
         with self.assertRaisesRegex(ValueError, "frozen lattice"):
             MODULE.validate_records(records)
+
+    def test_base64_transport_round_trip(self):
+        payload = b'{"query_id":"LTQ0001","union_urls":[]}\n'
+        decoded = base64.b64decode(base64.b64encode(payload), validate=True).decode("utf-8")
+        records = MODULE.parse_input(io.StringIO(decoded))
+        MODULE.validate_records(records)
 
 
 if __name__ == "__main__":
