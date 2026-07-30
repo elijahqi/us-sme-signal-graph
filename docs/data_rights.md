@@ -16,7 +16,7 @@ The SIA map is publicly accessible, but its Terms of Use page does not provide a
 
 ## Brave Search API
 
-Ordinary Brave Search API terms restrict storing, creating a database from, deriving from, or redistributing Search Results. Unless a plan explicitly grants storage rights:
+Brave's Search API Terms of Use, updated February 11, 2026, expressly prohibit storing, caching, or creating a database of Search Results except for transient operational storage. They also prohibit derivative works and redistribution unless an applicable Order Form grants different rights. The restriction is based on use, not a minimum number of result rows. Unless a plan explicitly grants storage rights:
 
 - use results transiently to discover source URLs;
 - do not commit result titles, snippets, ranks, payloads, or caches;
@@ -25,7 +25,13 @@ Ordinary Brave Search API terms restrict storing, creating a database from, deri
 
 ## You APIs
 
-The API documentation describes search and content access but this project has not established broad redistribution rights for search responses. Apply the same conservative boundary as Brave until the applicable contract is reviewed.
+You.com's public general Terms do not contain Brave's express prohibition on storing a database of Search Results. They assign You.com's rights, if any, in Outputs to the user but exclude Third Party Output, and permit service-specific supplemental terms. Search titles, snippets, and linked-page content may contain third-party material. The applicable API account terms, Order Form, MSA, and supplemental terms have not yet been shown to grant research-database or redistribution rights. Apply a conservative no-raw-payload release boundary until those terms or written provider confirmation are reviewed, without representing that You publicly imposes the same express storage prohibition as Brave.
+
+## Paper-first closed research corpus
+
+The v0.3 long-tail study does not require a public row-level company dataset. Public artifacts are limited by default to the frozen query lattice, code, schemas, aggregate statistics, methods, and integrity manifests. A closed local corpus may retain independently fetched original-source provenance, derived business facts, entity-resolution decisions, and annotations only where the original publisher's terms, privacy rules, and applicable law permit. Nonpublication does not override provider API storage terms: ordinary Brave raw Search Results remain transient unless an Order Form grants storage rights.
+
+For Brave ordinary access, “transient” means batch-local processing: raw responses are placed in an operating-system temporary directory, reduced to validated aggregate counts, used to initiate independent original-page fetches, and deleted immediately after that batch succeeds. They are not retained through manuscript drafting.
 
 ## Original websites
 

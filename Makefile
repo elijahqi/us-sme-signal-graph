@@ -1,4 +1,4 @@
-.PHONY: baseline validate test adjudicate verify metrics public-release preflight
+.PHONY: baseline validate test adjudicate verify metrics public-release preflight query-lattice check-query-lattice
 
 baseline:
 	python3 scripts/build_baseline.py
@@ -11,6 +11,12 @@ validate:
 
 test:
 	python3 -m unittest discover -s tests -v
+
+query-lattice:
+	python3 scripts/build_query_lattice.py
+
+check-query-lattice:
+	python3 scripts/build_query_lattice.py --check
 
 adjudicate:
 	python3 scripts/apply_reviewer1_adjudication.py

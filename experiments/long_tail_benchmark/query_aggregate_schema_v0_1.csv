@@ -1,0 +1,18 @@
+column,type,required,description
+run_id,string,true,Versioned formal-run ID
+query_id,string,true,Frozen query ID
+executed_at,date,true,UTC execution date rounded to day for public output
+brave_call_status,string,true,Success failure or partial aggregate status
+you_call_status,string,true,Success failure or partial aggregate status
+brave_returned_count,integer,true,Number of web results returned
+you_returned_count,integer,true,Number of web results returned
+canonical_url_intersection_count,integer,true,Transiently computed exact canonical URL overlap
+canonical_url_union_count,integer,true,Transiently computed exact canonical URL union
+brave_unique_domain_count,integer,true,Transiently computed unique registrable domains
+you_unique_domain_count,integer,true,Transiently computed unique registrable domains
+domain_intersection_count,integer,true,Transiently computed domain overlap
+original_pages_fetched_count,integer,true,Independently fetched original URLs across providers
+fetch_success_count,integer,true,Allowed successful original-page fetches
+brave_raw_disposition,string,true,Must record destroyed transient lifecycle unless storage rights exist
+you_raw_disposition,string,true,Retention status under applicable You terms
+notes,string,true,Errors deviations and limitations without provider snippets

@@ -1,0 +1,4 @@
+intent_id,query_template,purpose,status
+direct,"{state_name} manufacturer {search_phrase}",ordinary capability-specific producer search,freeze_v1
+small_batch,"{state_name} custom short run job shop contract manufacturer {search_phrase}",surface small-batch and contract producers,freeze_v1
+micro_local,"{state_name} small business family owned owner operated local workshop {search_phrase}",surface micro local and owner-operated producers,freeze_v1

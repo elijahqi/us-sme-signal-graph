@@ -1,0 +1,961 @@
+query_id,capability_id,industry_family,capability_label,state_id,state_name,census_region,intent_id,query,status
+LTQ0001,SEM01,semiconductor,precision vacuum chambers,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0002,SEM01,semiconductor,precision vacuum chambers,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0003,SEM01,semiconductor,precision vacuum chambers,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0004,SEM01,semiconductor,precision vacuum chambers,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0005,SEM01,semiconductor,precision vacuum chambers,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0006,SEM01,semiconductor,precision vacuum chambers,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0007,SEM01,semiconductor,precision vacuum chambers,MI,Michigan,Midwest,direct,Michigan manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0008,SEM01,semiconductor,precision vacuum chambers,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0009,SEM01,semiconductor,precision vacuum chambers,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0010,SEM01,semiconductor,precision vacuum chambers,OH,Ohio,Midwest,direct,Ohio manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0011,SEM01,semiconductor,precision vacuum chambers,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0012,SEM01,semiconductor,precision vacuum chambers,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0013,SEM01,semiconductor,precision vacuum chambers,NC,North Carolina,South,direct,North Carolina manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0014,SEM01,semiconductor,precision vacuum chambers,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0015,SEM01,semiconductor,precision vacuum chambers,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0016,SEM01,semiconductor,precision vacuum chambers,TX,Texas,South,direct,Texas manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0017,SEM01,semiconductor,precision vacuum chambers,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0018,SEM01,semiconductor,precision vacuum chambers,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0019,SEM01,semiconductor,precision vacuum chambers,AZ,Arizona,West,direct,Arizona manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0020,SEM01,semiconductor,precision vacuum chambers,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0021,SEM01,semiconductor,precision vacuum chambers,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0022,SEM01,semiconductor,precision vacuum chambers,CA,California,West,direct,California manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0023,SEM01,semiconductor,precision vacuum chambers,CA,California,West,small_batch,California custom short run job shop contract manufacturer precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0024,SEM01,semiconductor,precision vacuum chambers,CA,California,West,micro_local,California small business family owned owner operated local workshop precision high vacuum chamber fabrication semiconductor equipment,freeze_v2
+LTQ0025,SEM02,semiconductor,UHP gas delivery,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0026,SEM02,semiconductor,UHP gas delivery,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0027,SEM02,semiconductor,UHP gas delivery,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0028,SEM02,semiconductor,UHP gas delivery,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0029,SEM02,semiconductor,UHP gas delivery,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0030,SEM02,semiconductor,UHP gas delivery,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0031,SEM02,semiconductor,UHP gas delivery,MI,Michigan,Midwest,direct,Michigan manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0032,SEM02,semiconductor,UHP gas delivery,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0033,SEM02,semiconductor,UHP gas delivery,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0034,SEM02,semiconductor,UHP gas delivery,OH,Ohio,Midwest,direct,Ohio manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0035,SEM02,semiconductor,UHP gas delivery,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0036,SEM02,semiconductor,UHP gas delivery,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0037,SEM02,semiconductor,UHP gas delivery,NC,North Carolina,South,direct,North Carolina manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0038,SEM02,semiconductor,UHP gas delivery,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0039,SEM02,semiconductor,UHP gas delivery,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0040,SEM02,semiconductor,UHP gas delivery,TX,Texas,South,direct,Texas manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0041,SEM02,semiconductor,UHP gas delivery,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0042,SEM02,semiconductor,UHP gas delivery,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0043,SEM02,semiconductor,UHP gas delivery,AZ,Arizona,West,direct,Arizona manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0044,SEM02,semiconductor,UHP gas delivery,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0045,SEM02,semiconductor,UHP gas delivery,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0046,SEM02,semiconductor,UHP gas delivery,CA,California,West,direct,California manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0047,SEM02,semiconductor,UHP gas delivery,CA,California,West,small_batch,California custom short run job shop contract manufacturer ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0048,SEM02,semiconductor,UHP gas delivery,CA,California,West,micro_local,California small business family owned owner operated local workshop ultra high purity gas delivery assemblies semiconductor,freeze_v2
+LTQ0049,SEM03,semiconductor,wafer handling,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0050,SEM03,semiconductor,wafer handling,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0051,SEM03,semiconductor,wafer handling,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop wafer handling robot end effector semiconductor,freeze_v2
+LTQ0052,SEM03,semiconductor,wafer handling,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0053,SEM03,semiconductor,wafer handling,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0054,SEM03,semiconductor,wafer handling,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop wafer handling robot end effector semiconductor,freeze_v2
+LTQ0055,SEM03,semiconductor,wafer handling,MI,Michigan,Midwest,direct,Michigan manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0056,SEM03,semiconductor,wafer handling,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0057,SEM03,semiconductor,wafer handling,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop wafer handling robot end effector semiconductor,freeze_v2
+LTQ0058,SEM03,semiconductor,wafer handling,OH,Ohio,Midwest,direct,Ohio manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0059,SEM03,semiconductor,wafer handling,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0060,SEM03,semiconductor,wafer handling,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop wafer handling robot end effector semiconductor,freeze_v2
+LTQ0061,SEM03,semiconductor,wafer handling,NC,North Carolina,South,direct,North Carolina manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0062,SEM03,semiconductor,wafer handling,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0063,SEM03,semiconductor,wafer handling,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop wafer handling robot end effector semiconductor,freeze_v2
+LTQ0064,SEM03,semiconductor,wafer handling,TX,Texas,South,direct,Texas manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0065,SEM03,semiconductor,wafer handling,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0066,SEM03,semiconductor,wafer handling,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop wafer handling robot end effector semiconductor,freeze_v2
+LTQ0067,SEM03,semiconductor,wafer handling,AZ,Arizona,West,direct,Arizona manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0068,SEM03,semiconductor,wafer handling,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0069,SEM03,semiconductor,wafer handling,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop wafer handling robot end effector semiconductor,freeze_v2
+LTQ0070,SEM03,semiconductor,wafer handling,CA,California,West,direct,California manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0071,SEM03,semiconductor,wafer handling,CA,California,West,small_batch,California custom short run job shop contract manufacturer wafer handling robot end effector semiconductor,freeze_v2
+LTQ0072,SEM03,semiconductor,wafer handling,CA,California,West,micro_local,California small business family owned owner operated local workshop wafer handling robot end effector semiconductor,freeze_v2
+LTQ0073,SEM04,semiconductor,chamber parts services,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0074,SEM04,semiconductor,chamber parts services,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0075,SEM04,semiconductor,chamber parts services,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0076,SEM04,semiconductor,chamber parts services,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0077,SEM04,semiconductor,chamber parts services,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0078,SEM04,semiconductor,chamber parts services,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0079,SEM04,semiconductor,chamber parts services,MI,Michigan,Midwest,direct,Michigan manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0080,SEM04,semiconductor,chamber parts services,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0081,SEM04,semiconductor,chamber parts services,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0082,SEM04,semiconductor,chamber parts services,OH,Ohio,Midwest,direct,Ohio manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0083,SEM04,semiconductor,chamber parts services,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0084,SEM04,semiconductor,chamber parts services,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0085,SEM04,semiconductor,chamber parts services,NC,North Carolina,South,direct,North Carolina manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0086,SEM04,semiconductor,chamber parts services,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0087,SEM04,semiconductor,chamber parts services,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0088,SEM04,semiconductor,chamber parts services,TX,Texas,South,direct,Texas manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0089,SEM04,semiconductor,chamber parts services,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0090,SEM04,semiconductor,chamber parts services,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0091,SEM04,semiconductor,chamber parts services,AZ,Arizona,West,direct,Arizona manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0092,SEM04,semiconductor,chamber parts services,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0093,SEM04,semiconductor,chamber parts services,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0094,SEM04,semiconductor,chamber parts services,CA,California,West,direct,California manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0095,SEM04,semiconductor,chamber parts services,CA,California,West,small_batch,California custom short run job shop contract manufacturer semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0096,SEM04,semiconductor,chamber parts services,CA,California,West,micro_local,California small business family owned owner operated local workshop semiconductor process chamber parts precision cleaning coating refurbishment,freeze_v2
+LTQ0097,BAT01,battery,electrode coating,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0098,BAT01,battery,electrode coating,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0099,BAT01,battery,electrode coating,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0100,BAT01,battery,electrode coating,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0101,BAT01,battery,electrode coating,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0102,BAT01,battery,electrode coating,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0103,BAT01,battery,electrode coating,MI,Michigan,Midwest,direct,Michigan manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0104,BAT01,battery,electrode coating,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0105,BAT01,battery,electrode coating,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0106,BAT01,battery,electrode coating,OH,Ohio,Midwest,direct,Ohio manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0107,BAT01,battery,electrode coating,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0108,BAT01,battery,electrode coating,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0109,BAT01,battery,electrode coating,NC,North Carolina,South,direct,North Carolina manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0110,BAT01,battery,electrode coating,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0111,BAT01,battery,electrode coating,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0112,BAT01,battery,electrode coating,TX,Texas,South,direct,Texas manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0113,BAT01,battery,electrode coating,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0114,BAT01,battery,electrode coating,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0115,BAT01,battery,electrode coating,AZ,Arizona,West,direct,Arizona manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0116,BAT01,battery,electrode coating,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0117,BAT01,battery,electrode coating,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0118,BAT01,battery,electrode coating,CA,California,West,direct,California manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0119,BAT01,battery,electrode coating,CA,California,West,small_batch,California custom short run job shop contract manufacturer battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0120,BAT01,battery,electrode coating,CA,California,West,micro_local,California small business family owned owner operated local workshop battery electrode coating drying equipment or contract coating,freeze_v2
+LTQ0121,BAT02,battery,cell assembly,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0122,BAT02,battery,cell assembly,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0123,BAT02,battery,cell assembly,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0124,BAT02,battery,cell assembly,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0125,BAT02,battery,cell assembly,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0126,BAT02,battery,cell assembly,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0127,BAT02,battery,cell assembly,MI,Michigan,Midwest,direct,Michigan manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0128,BAT02,battery,cell assembly,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0129,BAT02,battery,cell assembly,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0130,BAT02,battery,cell assembly,OH,Ohio,Midwest,direct,Ohio manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0131,BAT02,battery,cell assembly,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0132,BAT02,battery,cell assembly,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0133,BAT02,battery,cell assembly,NC,North Carolina,South,direct,North Carolina manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0134,BAT02,battery,cell assembly,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0135,BAT02,battery,cell assembly,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0136,BAT02,battery,cell assembly,TX,Texas,South,direct,Texas manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0137,BAT02,battery,cell assembly,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0138,BAT02,battery,cell assembly,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0139,BAT02,battery,cell assembly,AZ,Arizona,West,direct,Arizona manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0140,BAT02,battery,cell assembly,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0141,BAT02,battery,cell assembly,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0142,BAT02,battery,cell assembly,CA,California,West,direct,California manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0143,BAT02,battery,cell assembly,CA,California,West,small_batch,California custom short run job shop contract manufacturer battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0144,BAT02,battery,cell assembly,CA,California,West,micro_local,California small business family owned owner operated local workshop battery cell stacking winding tab welding equipment or contract assembly,freeze_v2
+LTQ0145,BAT03,battery,module pack assembly,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0146,BAT03,battery,module pack assembly,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0147,BAT03,battery,module pack assembly,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop battery module pack contract manufacturing integration,freeze_v2
+LTQ0148,BAT03,battery,module pack assembly,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0149,BAT03,battery,module pack assembly,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0150,BAT03,battery,module pack assembly,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop battery module pack contract manufacturing integration,freeze_v2
+LTQ0151,BAT03,battery,module pack assembly,MI,Michigan,Midwest,direct,Michigan manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0152,BAT03,battery,module pack assembly,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0153,BAT03,battery,module pack assembly,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop battery module pack contract manufacturing integration,freeze_v2
+LTQ0154,BAT03,battery,module pack assembly,OH,Ohio,Midwest,direct,Ohio manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0155,BAT03,battery,module pack assembly,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0156,BAT03,battery,module pack assembly,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop battery module pack contract manufacturing integration,freeze_v2
+LTQ0157,BAT03,battery,module pack assembly,NC,North Carolina,South,direct,North Carolina manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0158,BAT03,battery,module pack assembly,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0159,BAT03,battery,module pack assembly,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop battery module pack contract manufacturing integration,freeze_v2
+LTQ0160,BAT03,battery,module pack assembly,TX,Texas,South,direct,Texas manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0161,BAT03,battery,module pack assembly,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0162,BAT03,battery,module pack assembly,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop battery module pack contract manufacturing integration,freeze_v2
+LTQ0163,BAT03,battery,module pack assembly,AZ,Arizona,West,direct,Arizona manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0164,BAT03,battery,module pack assembly,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0165,BAT03,battery,module pack assembly,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop battery module pack contract manufacturing integration,freeze_v2
+LTQ0166,BAT03,battery,module pack assembly,CA,California,West,direct,California manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0167,BAT03,battery,module pack assembly,CA,California,West,small_batch,California custom short run job shop contract manufacturer battery module pack contract manufacturing integration,freeze_v2
+LTQ0168,BAT03,battery,module pack assembly,CA,California,West,micro_local,California small business family owned owner operated local workshop battery module pack contract manufacturing integration,freeze_v2
+LTQ0169,BAT04,battery,recycling recovery,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0170,BAT04,battery,recycling recovery,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0171,BAT04,battery,recycling recovery,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0172,BAT04,battery,recycling recovery,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0173,BAT04,battery,recycling recovery,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0174,BAT04,battery,recycling recovery,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0175,BAT04,battery,recycling recovery,MI,Michigan,Midwest,direct,Michigan manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0176,BAT04,battery,recycling recovery,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0177,BAT04,battery,recycling recovery,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0178,BAT04,battery,recycling recovery,OH,Ohio,Midwest,direct,Ohio manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0179,BAT04,battery,recycling recovery,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0180,BAT04,battery,recycling recovery,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0181,BAT04,battery,recycling recovery,NC,North Carolina,South,direct,North Carolina manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0182,BAT04,battery,recycling recovery,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0183,BAT04,battery,recycling recovery,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0184,BAT04,battery,recycling recovery,TX,Texas,South,direct,Texas manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0185,BAT04,battery,recycling recovery,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0186,BAT04,battery,recycling recovery,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0187,BAT04,battery,recycling recovery,AZ,Arizona,West,direct,Arizona manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0188,BAT04,battery,recycling recovery,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0189,BAT04,battery,recycling recovery,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0190,BAT04,battery,recycling recovery,CA,California,West,direct,California manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0191,BAT04,battery,recycling recovery,CA,California,West,small_batch,California custom short run job shop contract manufacturer lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0192,BAT04,battery,recycling recovery,CA,California,West,micro_local,California small business family owned owner operated local workshop lithium ion battery recycling black mass material recovery,freeze_v2
+LTQ0193,MET01,precision_metal,CNC machining,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0194,MET01,precision_metal,CNC machining,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0195,MET01,precision_metal,CNC machining,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop precision CNC machining custom metal parts,freeze_v2
+LTQ0196,MET01,precision_metal,CNC machining,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0197,MET01,precision_metal,CNC machining,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0198,MET01,precision_metal,CNC machining,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop precision CNC machining custom metal parts,freeze_v2
+LTQ0199,MET01,precision_metal,CNC machining,MI,Michigan,Midwest,direct,Michigan manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0200,MET01,precision_metal,CNC machining,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0201,MET01,precision_metal,CNC machining,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop precision CNC machining custom metal parts,freeze_v2
+LTQ0202,MET01,precision_metal,CNC machining,OH,Ohio,Midwest,direct,Ohio manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0203,MET01,precision_metal,CNC machining,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0204,MET01,precision_metal,CNC machining,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop precision CNC machining custom metal parts,freeze_v2
+LTQ0205,MET01,precision_metal,CNC machining,NC,North Carolina,South,direct,North Carolina manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0206,MET01,precision_metal,CNC machining,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0207,MET01,precision_metal,CNC machining,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop precision CNC machining custom metal parts,freeze_v2
+LTQ0208,MET01,precision_metal,CNC machining,TX,Texas,South,direct,Texas manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0209,MET01,precision_metal,CNC machining,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0210,MET01,precision_metal,CNC machining,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop precision CNC machining custom metal parts,freeze_v2
+LTQ0211,MET01,precision_metal,CNC machining,AZ,Arizona,West,direct,Arizona manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0212,MET01,precision_metal,CNC machining,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0213,MET01,precision_metal,CNC machining,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop precision CNC machining custom metal parts,freeze_v2
+LTQ0214,MET01,precision_metal,CNC machining,CA,California,West,direct,California manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0215,MET01,precision_metal,CNC machining,CA,California,West,small_batch,California custom short run job shop contract manufacturer precision CNC machining custom metal parts,freeze_v2
+LTQ0216,MET01,precision_metal,CNC machining,CA,California,West,micro_local,California small business family owned owner operated local workshop precision CNC machining custom metal parts,freeze_v2
+LTQ0217,MET02,precision_metal,sheet metal fabrication,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0218,MET02,precision_metal,sheet metal fabrication,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0219,MET02,precision_metal,sheet metal fabrication,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0220,MET02,precision_metal,sheet metal fabrication,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0221,MET02,precision_metal,sheet metal fabrication,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0222,MET02,precision_metal,sheet metal fabrication,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0223,MET02,precision_metal,sheet metal fabrication,MI,Michigan,Midwest,direct,Michigan manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0224,MET02,precision_metal,sheet metal fabrication,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0225,MET02,precision_metal,sheet metal fabrication,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0226,MET02,precision_metal,sheet metal fabrication,OH,Ohio,Midwest,direct,Ohio manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0227,MET02,precision_metal,sheet metal fabrication,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0228,MET02,precision_metal,sheet metal fabrication,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0229,MET02,precision_metal,sheet metal fabrication,NC,North Carolina,South,direct,North Carolina manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0230,MET02,precision_metal,sheet metal fabrication,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0231,MET02,precision_metal,sheet metal fabrication,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0232,MET02,precision_metal,sheet metal fabrication,TX,Texas,South,direct,Texas manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0233,MET02,precision_metal,sheet metal fabrication,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0234,MET02,precision_metal,sheet metal fabrication,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0235,MET02,precision_metal,sheet metal fabrication,AZ,Arizona,West,direct,Arizona manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0236,MET02,precision_metal,sheet metal fabrication,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0237,MET02,precision_metal,sheet metal fabrication,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0238,MET02,precision_metal,sheet metal fabrication,CA,California,West,direct,California manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0239,MET02,precision_metal,sheet metal fabrication,CA,California,West,small_batch,California custom short run job shop contract manufacturer custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0240,MET02,precision_metal,sheet metal fabrication,CA,California,West,micro_local,California small business family owned owner operated local workshop custom sheet metal fabrication short run enclosures,freeze_v2
+LTQ0241,MET03,precision_metal,welding fabrication,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0242,MET03,precision_metal,welding fabrication,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0243,MET03,precision_metal,welding fabrication,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0244,MET03,precision_metal,welding fabrication,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0245,MET03,precision_metal,welding fabrication,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0246,MET03,precision_metal,welding fabrication,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0247,MET03,precision_metal,welding fabrication,MI,Michigan,Midwest,direct,Michigan manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0248,MET03,precision_metal,welding fabrication,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0249,MET03,precision_metal,welding fabrication,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0250,MET03,precision_metal,welding fabrication,OH,Ohio,Midwest,direct,Ohio manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0251,MET03,precision_metal,welding fabrication,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0252,MET03,precision_metal,welding fabrication,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0253,MET03,precision_metal,welding fabrication,NC,North Carolina,South,direct,North Carolina manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0254,MET03,precision_metal,welding fabrication,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0255,MET03,precision_metal,welding fabrication,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0256,MET03,precision_metal,welding fabrication,TX,Texas,South,direct,Texas manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0257,MET03,precision_metal,welding fabrication,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0258,MET03,precision_metal,welding fabrication,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0259,MET03,precision_metal,welding fabrication,AZ,Arizona,West,direct,Arizona manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0260,MET03,precision_metal,welding fabrication,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0261,MET03,precision_metal,welding fabrication,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0262,MET03,precision_metal,welding fabrication,CA,California,West,direct,California manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0263,MET03,precision_metal,welding fabrication,CA,California,West,small_batch,California custom short run job shop contract manufacturer custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0264,MET03,precision_metal,welding fabrication,CA,California,West,micro_local,California small business family owned owner operated local workshop custom TIG MIG welding fabricated metal assemblies,freeze_v2
+LTQ0265,MET04,precision_metal,casting and foundry,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0266,MET04,precision_metal,casting and foundry,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0267,MET04,precision_metal,casting and foundry,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0268,MET04,precision_metal,casting and foundry,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0269,MET04,precision_metal,casting and foundry,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0270,MET04,precision_metal,casting and foundry,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0271,MET04,precision_metal,casting and foundry,MI,Michigan,Midwest,direct,Michigan manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0272,MET04,precision_metal,casting and foundry,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0273,MET04,precision_metal,casting and foundry,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0274,MET04,precision_metal,casting and foundry,OH,Ohio,Midwest,direct,Ohio manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0275,MET04,precision_metal,casting and foundry,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0276,MET04,precision_metal,casting and foundry,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0277,MET04,precision_metal,casting and foundry,NC,North Carolina,South,direct,North Carolina manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0278,MET04,precision_metal,casting and foundry,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0279,MET04,precision_metal,casting and foundry,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0280,MET04,precision_metal,casting and foundry,TX,Texas,South,direct,Texas manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0281,MET04,precision_metal,casting and foundry,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0282,MET04,precision_metal,casting and foundry,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0283,MET04,precision_metal,casting and foundry,AZ,Arizona,West,direct,Arizona manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0284,MET04,precision_metal,casting and foundry,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0285,MET04,precision_metal,casting and foundry,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0286,MET04,precision_metal,casting and foundry,CA,California,West,direct,California manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0287,MET04,precision_metal,casting and foundry,CA,California,West,small_batch,California custom short run job shop contract manufacturer small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0288,MET04,precision_metal,casting and foundry,CA,California,West,micro_local,California small business family owned owner operated local workshop small batch aluminum bronze iron castings foundry,freeze_v2
+LTQ0289,ELE01,electronics,PCB assembly,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0290,ELE01,electronics,PCB assembly,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0291,ELE01,electronics,PCB assembly,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop small batch printed circuit board PCB assembly,freeze_v2
+LTQ0292,ELE01,electronics,PCB assembly,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0293,ELE01,electronics,PCB assembly,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0294,ELE01,electronics,PCB assembly,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop small batch printed circuit board PCB assembly,freeze_v2
+LTQ0295,ELE01,electronics,PCB assembly,MI,Michigan,Midwest,direct,Michigan manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0296,ELE01,electronics,PCB assembly,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0297,ELE01,electronics,PCB assembly,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop small batch printed circuit board PCB assembly,freeze_v2
+LTQ0298,ELE01,electronics,PCB assembly,OH,Ohio,Midwest,direct,Ohio manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0299,ELE01,electronics,PCB assembly,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0300,ELE01,electronics,PCB assembly,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop small batch printed circuit board PCB assembly,freeze_v2
+LTQ0301,ELE01,electronics,PCB assembly,NC,North Carolina,South,direct,North Carolina manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0302,ELE01,electronics,PCB assembly,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0303,ELE01,electronics,PCB assembly,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop small batch printed circuit board PCB assembly,freeze_v2
+LTQ0304,ELE01,electronics,PCB assembly,TX,Texas,South,direct,Texas manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0305,ELE01,electronics,PCB assembly,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0306,ELE01,electronics,PCB assembly,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop small batch printed circuit board PCB assembly,freeze_v2
+LTQ0307,ELE01,electronics,PCB assembly,AZ,Arizona,West,direct,Arizona manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0308,ELE01,electronics,PCB assembly,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0309,ELE01,electronics,PCB assembly,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop small batch printed circuit board PCB assembly,freeze_v2
+LTQ0310,ELE01,electronics,PCB assembly,CA,California,West,direct,California manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0311,ELE01,electronics,PCB assembly,CA,California,West,small_batch,California custom short run job shop contract manufacturer small batch printed circuit board PCB assembly,freeze_v2
+LTQ0312,ELE01,electronics,PCB assembly,CA,California,West,micro_local,California small business family owned owner operated local workshop small batch printed circuit board PCB assembly,freeze_v2
+LTQ0313,ELE02,electronics,cable harness,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0314,ELE02,electronics,cable harness,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0315,ELE02,electronics,cable harness,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0316,ELE02,electronics,cable harness,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0317,ELE02,electronics,cable harness,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0318,ELE02,electronics,cable harness,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0319,ELE02,electronics,cable harness,MI,Michigan,Midwest,direct,Michigan manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0320,ELE02,electronics,cable harness,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0321,ELE02,electronics,cable harness,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0322,ELE02,electronics,cable harness,OH,Ohio,Midwest,direct,Ohio manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0323,ELE02,electronics,cable harness,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0324,ELE02,electronics,cable harness,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0325,ELE02,electronics,cable harness,NC,North Carolina,South,direct,North Carolina manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0326,ELE02,electronics,cable harness,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0327,ELE02,electronics,cable harness,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0328,ELE02,electronics,cable harness,TX,Texas,South,direct,Texas manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0329,ELE02,electronics,cable harness,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0330,ELE02,electronics,cable harness,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0331,ELE02,electronics,cable harness,AZ,Arizona,West,direct,Arizona manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0332,ELE02,electronics,cable harness,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0333,ELE02,electronics,cable harness,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0334,ELE02,electronics,cable harness,CA,California,West,direct,California manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0335,ELE02,electronics,cable harness,CA,California,West,small_batch,California custom short run job shop contract manufacturer custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0336,ELE02,electronics,cable harness,CA,California,West,micro_local,California small business family owned owner operated local workshop custom wire cable harness manufacturing small batch,freeze_v2
+LTQ0337,ELE03,electronics,box build,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0338,ELE03,electronics,box build,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0339,ELE03,electronics,box build,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop low volume electronics box build contract manufacturing,freeze_v2
+LTQ0340,ELE03,electronics,box build,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0341,ELE03,electronics,box build,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0342,ELE03,electronics,box build,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop low volume electronics box build contract manufacturing,freeze_v2
+LTQ0343,ELE03,electronics,box build,MI,Michigan,Midwest,direct,Michigan manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0344,ELE03,electronics,box build,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0345,ELE03,electronics,box build,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop low volume electronics box build contract manufacturing,freeze_v2
+LTQ0346,ELE03,electronics,box build,OH,Ohio,Midwest,direct,Ohio manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0347,ELE03,electronics,box build,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0348,ELE03,electronics,box build,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop low volume electronics box build contract manufacturing,freeze_v2
+LTQ0349,ELE03,electronics,box build,NC,North Carolina,South,direct,North Carolina manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0350,ELE03,electronics,box build,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0351,ELE03,electronics,box build,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop low volume electronics box build contract manufacturing,freeze_v2
+LTQ0352,ELE03,electronics,box build,TX,Texas,South,direct,Texas manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0353,ELE03,electronics,box build,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0354,ELE03,electronics,box build,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop low volume electronics box build contract manufacturing,freeze_v2
+LTQ0355,ELE03,electronics,box build,AZ,Arizona,West,direct,Arizona manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0356,ELE03,electronics,box build,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0357,ELE03,electronics,box build,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop low volume electronics box build contract manufacturing,freeze_v2
+LTQ0358,ELE03,electronics,box build,CA,California,West,direct,California manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0359,ELE03,electronics,box build,CA,California,West,small_batch,California custom short run job shop contract manufacturer low volume electronics box build contract manufacturing,freeze_v2
+LTQ0360,ELE03,electronics,box build,CA,California,West,micro_local,California small business family owned owner operated local workshop low volume electronics box build contract manufacturing,freeze_v2
+LTQ0361,ELE04,electronics,PCB fabrication,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0362,ELE04,electronics,PCB fabrication,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0363,ELE04,electronics,PCB fabrication,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0364,ELE04,electronics,PCB fabrication,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0365,ELE04,electronics,PCB fabrication,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0366,ELE04,electronics,PCB fabrication,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0367,ELE04,electronics,PCB fabrication,MI,Michigan,Midwest,direct,Michigan manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0368,ELE04,electronics,PCB fabrication,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0369,ELE04,electronics,PCB fabrication,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0370,ELE04,electronics,PCB fabrication,OH,Ohio,Midwest,direct,Ohio manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0371,ELE04,electronics,PCB fabrication,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0372,ELE04,electronics,PCB fabrication,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0373,ELE04,electronics,PCB fabrication,NC,North Carolina,South,direct,North Carolina manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0374,ELE04,electronics,PCB fabrication,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0375,ELE04,electronics,PCB fabrication,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0376,ELE04,electronics,PCB fabrication,TX,Texas,South,direct,Texas manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0377,ELE04,electronics,PCB fabrication,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0378,ELE04,electronics,PCB fabrication,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0379,ELE04,electronics,PCB fabrication,AZ,Arizona,West,direct,Arizona manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0380,ELE04,electronics,PCB fabrication,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0381,ELE04,electronics,PCB fabrication,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0382,ELE04,electronics,PCB fabrication,CA,California,West,direct,California manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0383,ELE04,electronics,PCB fabrication,CA,California,West,small_batch,California custom short run job shop contract manufacturer prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0384,ELE04,electronics,PCB fabrication,CA,California,West,micro_local,California small business family owned owner operated local workshop prototype printed circuit board fabrication quick turn,freeze_v2
+LTQ0385,POL01,polymers_composites,injection molding,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0386,POL01,polymers_composites,injection molding,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0387,POL01,polymers_composites,injection molding,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop custom low volume plastic injection molding,freeze_v2
+LTQ0388,POL01,polymers_composites,injection molding,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0389,POL01,polymers_composites,injection molding,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0390,POL01,polymers_composites,injection molding,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop custom low volume plastic injection molding,freeze_v2
+LTQ0391,POL01,polymers_composites,injection molding,MI,Michigan,Midwest,direct,Michigan manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0392,POL01,polymers_composites,injection molding,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0393,POL01,polymers_composites,injection molding,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop custom low volume plastic injection molding,freeze_v2
+LTQ0394,POL01,polymers_composites,injection molding,OH,Ohio,Midwest,direct,Ohio manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0395,POL01,polymers_composites,injection molding,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0396,POL01,polymers_composites,injection molding,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop custom low volume plastic injection molding,freeze_v2
+LTQ0397,POL01,polymers_composites,injection molding,NC,North Carolina,South,direct,North Carolina manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0398,POL01,polymers_composites,injection molding,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0399,POL01,polymers_composites,injection molding,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop custom low volume plastic injection molding,freeze_v2
+LTQ0400,POL01,polymers_composites,injection molding,TX,Texas,South,direct,Texas manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0401,POL01,polymers_composites,injection molding,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0402,POL01,polymers_composites,injection molding,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop custom low volume plastic injection molding,freeze_v2
+LTQ0403,POL01,polymers_composites,injection molding,AZ,Arizona,West,direct,Arizona manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0404,POL01,polymers_composites,injection molding,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0405,POL01,polymers_composites,injection molding,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop custom low volume plastic injection molding,freeze_v2
+LTQ0406,POL01,polymers_composites,injection molding,CA,California,West,direct,California manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0407,POL01,polymers_composites,injection molding,CA,California,West,small_batch,California custom short run job shop contract manufacturer custom low volume plastic injection molding,freeze_v2
+LTQ0408,POL01,polymers_composites,injection molding,CA,California,West,micro_local,California small business family owned owner operated local workshop custom low volume plastic injection molding,freeze_v2
+LTQ0409,POL02,polymers_composites,rubber molding,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0410,POL02,polymers_composites,rubber molding,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0411,POL02,polymers_composites,rubber molding,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0412,POL02,polymers_composites,rubber molding,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0413,POL02,polymers_composites,rubber molding,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0414,POL02,polymers_composites,rubber molding,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0415,POL02,polymers_composites,rubber molding,MI,Michigan,Midwest,direct,Michigan manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0416,POL02,polymers_composites,rubber molding,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0417,POL02,polymers_composites,rubber molding,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0418,POL02,polymers_composites,rubber molding,OH,Ohio,Midwest,direct,Ohio manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0419,POL02,polymers_composites,rubber molding,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0420,POL02,polymers_composites,rubber molding,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0421,POL02,polymers_composites,rubber molding,NC,North Carolina,South,direct,North Carolina manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0422,POL02,polymers_composites,rubber molding,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0423,POL02,polymers_composites,rubber molding,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0424,POL02,polymers_composites,rubber molding,TX,Texas,South,direct,Texas manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0425,POL02,polymers_composites,rubber molding,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0426,POL02,polymers_composites,rubber molding,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0427,POL02,polymers_composites,rubber molding,AZ,Arizona,West,direct,Arizona manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0428,POL02,polymers_composites,rubber molding,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0429,POL02,polymers_composites,rubber molding,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0430,POL02,polymers_composites,rubber molding,CA,California,West,direct,California manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0431,POL02,polymers_composites,rubber molding,CA,California,West,small_batch,California custom short run job shop contract manufacturer custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0432,POL02,polymers_composites,rubber molding,CA,California,West,micro_local,California small business family owned owner operated local workshop custom rubber molding seals gaskets small batch,freeze_v2
+LTQ0433,POL03,polymers_composites,urethane silicone casting,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0434,POL03,polymers_composites,urethane silicone casting,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0435,POL03,polymers_composites,urethane silicone casting,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop urethane casting silicone mold short run production,freeze_v2
+LTQ0436,POL03,polymers_composites,urethane silicone casting,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0437,POL03,polymers_composites,urethane silicone casting,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0438,POL03,polymers_composites,urethane silicone casting,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop urethane casting silicone mold short run production,freeze_v2
+LTQ0439,POL03,polymers_composites,urethane silicone casting,MI,Michigan,Midwest,direct,Michigan manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0440,POL03,polymers_composites,urethane silicone casting,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0441,POL03,polymers_composites,urethane silicone casting,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop urethane casting silicone mold short run production,freeze_v2
+LTQ0442,POL03,polymers_composites,urethane silicone casting,OH,Ohio,Midwest,direct,Ohio manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0443,POL03,polymers_composites,urethane silicone casting,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0444,POL03,polymers_composites,urethane silicone casting,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop urethane casting silicone mold short run production,freeze_v2
+LTQ0445,POL03,polymers_composites,urethane silicone casting,NC,North Carolina,South,direct,North Carolina manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0446,POL03,polymers_composites,urethane silicone casting,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0447,POL03,polymers_composites,urethane silicone casting,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop urethane casting silicone mold short run production,freeze_v2
+LTQ0448,POL03,polymers_composites,urethane silicone casting,TX,Texas,South,direct,Texas manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0449,POL03,polymers_composites,urethane silicone casting,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0450,POL03,polymers_composites,urethane silicone casting,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop urethane casting silicone mold short run production,freeze_v2
+LTQ0451,POL03,polymers_composites,urethane silicone casting,AZ,Arizona,West,direct,Arizona manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0452,POL03,polymers_composites,urethane silicone casting,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0453,POL03,polymers_composites,urethane silicone casting,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop urethane casting silicone mold short run production,freeze_v2
+LTQ0454,POL03,polymers_composites,urethane silicone casting,CA,California,West,direct,California manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0455,POL03,polymers_composites,urethane silicone casting,CA,California,West,small_batch,California custom short run job shop contract manufacturer urethane casting silicone mold short run production,freeze_v2
+LTQ0456,POL03,polymers_composites,urethane silicone casting,CA,California,West,micro_local,California small business family owned owner operated local workshop urethane casting silicone mold short run production,freeze_v2
+LTQ0457,POL04,polymers_composites,composite fabrication,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0458,POL04,polymers_composites,composite fabrication,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0459,POL04,polymers_composites,composite fabrication,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0460,POL04,polymers_composites,composite fabrication,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0461,POL04,polymers_composites,composite fabrication,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0462,POL04,polymers_composites,composite fabrication,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0463,POL04,polymers_composites,composite fabrication,MI,Michigan,Midwest,direct,Michigan manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0464,POL04,polymers_composites,composite fabrication,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0465,POL04,polymers_composites,composite fabrication,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0466,POL04,polymers_composites,composite fabrication,OH,Ohio,Midwest,direct,Ohio manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0467,POL04,polymers_composites,composite fabrication,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0468,POL04,polymers_composites,composite fabrication,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0469,POL04,polymers_composites,composite fabrication,NC,North Carolina,South,direct,North Carolina manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0470,POL04,polymers_composites,composite fabrication,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0471,POL04,polymers_composites,composite fabrication,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0472,POL04,polymers_composites,composite fabrication,TX,Texas,South,direct,Texas manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0473,POL04,polymers_composites,composite fabrication,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0474,POL04,polymers_composites,composite fabrication,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0475,POL04,polymers_composites,composite fabrication,AZ,Arizona,West,direct,Arizona manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0476,POL04,polymers_composites,composite fabrication,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0477,POL04,polymers_composites,composite fabrication,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0478,POL04,polymers_composites,composite fabrication,CA,California,West,direct,California manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0479,POL04,polymers_composites,composite fabrication,CA,California,West,small_batch,California custom short run job shop contract manufacturer custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0480,POL04,polymers_composites,composite fabrication,CA,California,West,micro_local,California small business family owned owner operated local workshop custom carbon fiber fiberglass composite fabrication,freeze_v2
+LTQ0481,ADD01,additive_tooling,metal additive,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0482,ADD01,additive_tooling,metal additive,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0483,ADD01,additive_tooling,metal additive,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop metal 3D printing additive manufacturing service,freeze_v2
+LTQ0484,ADD01,additive_tooling,metal additive,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0485,ADD01,additive_tooling,metal additive,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0486,ADD01,additive_tooling,metal additive,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop metal 3D printing additive manufacturing service,freeze_v2
+LTQ0487,ADD01,additive_tooling,metal additive,MI,Michigan,Midwest,direct,Michigan manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0488,ADD01,additive_tooling,metal additive,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0489,ADD01,additive_tooling,metal additive,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop metal 3D printing additive manufacturing service,freeze_v2
+LTQ0490,ADD01,additive_tooling,metal additive,OH,Ohio,Midwest,direct,Ohio manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0491,ADD01,additive_tooling,metal additive,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0492,ADD01,additive_tooling,metal additive,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop metal 3D printing additive manufacturing service,freeze_v2
+LTQ0493,ADD01,additive_tooling,metal additive,NC,North Carolina,South,direct,North Carolina manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0494,ADD01,additive_tooling,metal additive,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0495,ADD01,additive_tooling,metal additive,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop metal 3D printing additive manufacturing service,freeze_v2
+LTQ0496,ADD01,additive_tooling,metal additive,TX,Texas,South,direct,Texas manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0497,ADD01,additive_tooling,metal additive,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0498,ADD01,additive_tooling,metal additive,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop metal 3D printing additive manufacturing service,freeze_v2
+LTQ0499,ADD01,additive_tooling,metal additive,AZ,Arizona,West,direct,Arizona manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0500,ADD01,additive_tooling,metal additive,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0501,ADD01,additive_tooling,metal additive,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop metal 3D printing additive manufacturing service,freeze_v2
+LTQ0502,ADD01,additive_tooling,metal additive,CA,California,West,direct,California manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0503,ADD01,additive_tooling,metal additive,CA,California,West,small_batch,California custom short run job shop contract manufacturer metal 3D printing additive manufacturing service,freeze_v2
+LTQ0504,ADD01,additive_tooling,metal additive,CA,California,West,micro_local,California small business family owned owner operated local workshop metal 3D printing additive manufacturing service,freeze_v2
+LTQ0505,ADD02,additive_tooling,polymer additive,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0506,ADD02,additive_tooling,polymer additive,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0507,ADD02,additive_tooling,polymer additive,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop small batch polymer 3D printing production service,freeze_v2
+LTQ0508,ADD02,additive_tooling,polymer additive,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0509,ADD02,additive_tooling,polymer additive,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0510,ADD02,additive_tooling,polymer additive,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop small batch polymer 3D printing production service,freeze_v2
+LTQ0511,ADD02,additive_tooling,polymer additive,MI,Michigan,Midwest,direct,Michigan manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0512,ADD02,additive_tooling,polymer additive,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0513,ADD02,additive_tooling,polymer additive,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop small batch polymer 3D printing production service,freeze_v2
+LTQ0514,ADD02,additive_tooling,polymer additive,OH,Ohio,Midwest,direct,Ohio manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0515,ADD02,additive_tooling,polymer additive,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0516,ADD02,additive_tooling,polymer additive,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop small batch polymer 3D printing production service,freeze_v2
+LTQ0517,ADD02,additive_tooling,polymer additive,NC,North Carolina,South,direct,North Carolina manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0518,ADD02,additive_tooling,polymer additive,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0519,ADD02,additive_tooling,polymer additive,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop small batch polymer 3D printing production service,freeze_v2
+LTQ0520,ADD02,additive_tooling,polymer additive,TX,Texas,South,direct,Texas manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0521,ADD02,additive_tooling,polymer additive,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0522,ADD02,additive_tooling,polymer additive,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop small batch polymer 3D printing production service,freeze_v2
+LTQ0523,ADD02,additive_tooling,polymer additive,AZ,Arizona,West,direct,Arizona manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0524,ADD02,additive_tooling,polymer additive,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0525,ADD02,additive_tooling,polymer additive,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop small batch polymer 3D printing production service,freeze_v2
+LTQ0526,ADD02,additive_tooling,polymer additive,CA,California,West,direct,California manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0527,ADD02,additive_tooling,polymer additive,CA,California,West,small_batch,California custom short run job shop contract manufacturer small batch polymer 3D printing production service,freeze_v2
+LTQ0528,ADD02,additive_tooling,polymer additive,CA,California,West,micro_local,California small business family owned owner operated local workshop small batch polymer 3D printing production service,freeze_v2
+LTQ0529,ADD03,additive_tooling,rapid tooling,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0530,ADD03,additive_tooling,rapid tooling,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0531,ADD03,additive_tooling,rapid tooling,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0532,ADD03,additive_tooling,rapid tooling,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0533,ADD03,additive_tooling,rapid tooling,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0534,ADD03,additive_tooling,rapid tooling,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0535,ADD03,additive_tooling,rapid tooling,MI,Michigan,Midwest,direct,Michigan manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0536,ADD03,additive_tooling,rapid tooling,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0537,ADD03,additive_tooling,rapid tooling,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0538,ADD03,additive_tooling,rapid tooling,OH,Ohio,Midwest,direct,Ohio manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0539,ADD03,additive_tooling,rapid tooling,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0540,ADD03,additive_tooling,rapid tooling,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0541,ADD03,additive_tooling,rapid tooling,NC,North Carolina,South,direct,North Carolina manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0542,ADD03,additive_tooling,rapid tooling,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0543,ADD03,additive_tooling,rapid tooling,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0544,ADD03,additive_tooling,rapid tooling,TX,Texas,South,direct,Texas manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0545,ADD03,additive_tooling,rapid tooling,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0546,ADD03,additive_tooling,rapid tooling,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0547,ADD03,additive_tooling,rapid tooling,AZ,Arizona,West,direct,Arizona manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0548,ADD03,additive_tooling,rapid tooling,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0549,ADD03,additive_tooling,rapid tooling,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0550,ADD03,additive_tooling,rapid tooling,CA,California,West,direct,California manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0551,ADD03,additive_tooling,rapid tooling,CA,California,West,small_batch,California custom short run job shop contract manufacturer rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0552,ADD03,additive_tooling,rapid tooling,CA,California,West,micro_local,California small business family owned owner operated local workshop rapid tooling prototype molds inserts manufacturing,freeze_v2
+LTQ0553,ADD04,additive_tooling,patterns models,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0554,ADD04,additive_tooling,patterns models,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0555,ADD04,additive_tooling,patterns models,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0556,ADD04,additive_tooling,patterns models,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0557,ADD04,additive_tooling,patterns models,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0558,ADD04,additive_tooling,patterns models,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0559,ADD04,additive_tooling,patterns models,MI,Michigan,Midwest,direct,Michigan manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0560,ADD04,additive_tooling,patterns models,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0561,ADD04,additive_tooling,patterns models,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0562,ADD04,additive_tooling,patterns models,OH,Ohio,Midwest,direct,Ohio manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0563,ADD04,additive_tooling,patterns models,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0564,ADD04,additive_tooling,patterns models,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0565,ADD04,additive_tooling,patterns models,NC,North Carolina,South,direct,North Carolina manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0566,ADD04,additive_tooling,patterns models,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0567,ADD04,additive_tooling,patterns models,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0568,ADD04,additive_tooling,patterns models,TX,Texas,South,direct,Texas manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0569,ADD04,additive_tooling,patterns models,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0570,ADD04,additive_tooling,patterns models,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0571,ADD04,additive_tooling,patterns models,AZ,Arizona,West,direct,Arizona manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0572,ADD04,additive_tooling,patterns models,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0573,ADD04,additive_tooling,patterns models,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0574,ADD04,additive_tooling,patterns models,CA,California,West,direct,California manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0575,ADD04,additive_tooling,patterns models,CA,California,West,small_batch,California custom short run job shop contract manufacturer industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0576,ADD04,additive_tooling,patterns models,CA,California,West,micro_local,California small business family owned owner operated local workshop industrial foundry patterns tooling models fabrication,freeze_v2
+LTQ0577,TEX01,industrial_textiles,cut and sew,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0578,TEX01,industrial_textiles,cut and sew,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0579,TEX01,industrial_textiles,cut and sew,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop small batch cut and sew contract manufacturing,freeze_v2
+LTQ0580,TEX01,industrial_textiles,cut and sew,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0581,TEX01,industrial_textiles,cut and sew,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0582,TEX01,industrial_textiles,cut and sew,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop small batch cut and sew contract manufacturing,freeze_v2
+LTQ0583,TEX01,industrial_textiles,cut and sew,MI,Michigan,Midwest,direct,Michigan manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0584,TEX01,industrial_textiles,cut and sew,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0585,TEX01,industrial_textiles,cut and sew,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop small batch cut and sew contract manufacturing,freeze_v2
+LTQ0586,TEX01,industrial_textiles,cut and sew,OH,Ohio,Midwest,direct,Ohio manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0587,TEX01,industrial_textiles,cut and sew,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0588,TEX01,industrial_textiles,cut and sew,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop small batch cut and sew contract manufacturing,freeze_v2
+LTQ0589,TEX01,industrial_textiles,cut and sew,NC,North Carolina,South,direct,North Carolina manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0590,TEX01,industrial_textiles,cut and sew,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0591,TEX01,industrial_textiles,cut and sew,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop small batch cut and sew contract manufacturing,freeze_v2
+LTQ0592,TEX01,industrial_textiles,cut and sew,TX,Texas,South,direct,Texas manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0593,TEX01,industrial_textiles,cut and sew,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0594,TEX01,industrial_textiles,cut and sew,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop small batch cut and sew contract manufacturing,freeze_v2
+LTQ0595,TEX01,industrial_textiles,cut and sew,AZ,Arizona,West,direct,Arizona manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0596,TEX01,industrial_textiles,cut and sew,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0597,TEX01,industrial_textiles,cut and sew,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop small batch cut and sew contract manufacturing,freeze_v2
+LTQ0598,TEX01,industrial_textiles,cut and sew,CA,California,West,direct,California manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0599,TEX01,industrial_textiles,cut and sew,CA,California,West,small_batch,California custom short run job shop contract manufacturer small batch cut and sew contract manufacturing,freeze_v2
+LTQ0600,TEX01,industrial_textiles,cut and sew,CA,California,West,micro_local,California small business family owned owner operated local workshop small batch cut and sew contract manufacturing,freeze_v2
+LTQ0601,TEX02,industrial_textiles,webbing straps,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0602,TEX02,industrial_textiles,webbing straps,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0603,TEX02,industrial_textiles,webbing straps,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0604,TEX02,industrial_textiles,webbing straps,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0605,TEX02,industrial_textiles,webbing straps,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0606,TEX02,industrial_textiles,webbing straps,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0607,TEX02,industrial_textiles,webbing straps,MI,Michigan,Midwest,direct,Michigan manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0608,TEX02,industrial_textiles,webbing straps,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0609,TEX02,industrial_textiles,webbing straps,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0610,TEX02,industrial_textiles,webbing straps,OH,Ohio,Midwest,direct,Ohio manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0611,TEX02,industrial_textiles,webbing straps,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0612,TEX02,industrial_textiles,webbing straps,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0613,TEX02,industrial_textiles,webbing straps,NC,North Carolina,South,direct,North Carolina manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0614,TEX02,industrial_textiles,webbing straps,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0615,TEX02,industrial_textiles,webbing straps,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0616,TEX02,industrial_textiles,webbing straps,TX,Texas,South,direct,Texas manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0617,TEX02,industrial_textiles,webbing straps,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0618,TEX02,industrial_textiles,webbing straps,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0619,TEX02,industrial_textiles,webbing straps,AZ,Arizona,West,direct,Arizona manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0620,TEX02,industrial_textiles,webbing straps,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0621,TEX02,industrial_textiles,webbing straps,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0622,TEX02,industrial_textiles,webbing straps,CA,California,West,direct,California manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0623,TEX02,industrial_textiles,webbing straps,CA,California,West,small_batch,California custom short run job shop contract manufacturer custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0624,TEX02,industrial_textiles,webbing straps,CA,California,West,micro_local,California small business family owned owner operated local workshop custom industrial webbing straps sewn assemblies,freeze_v2
+LTQ0625,TEX03,industrial_textiles,protective covers,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0626,TEX03,industrial_textiles,protective covers,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0627,TEX03,industrial_textiles,protective covers,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0628,TEX03,industrial_textiles,protective covers,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0629,TEX03,industrial_textiles,protective covers,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0630,TEX03,industrial_textiles,protective covers,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0631,TEX03,industrial_textiles,protective covers,MI,Michigan,Midwest,direct,Michigan manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0632,TEX03,industrial_textiles,protective covers,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0633,TEX03,industrial_textiles,protective covers,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0634,TEX03,industrial_textiles,protective covers,OH,Ohio,Midwest,direct,Ohio manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0635,TEX03,industrial_textiles,protective covers,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0636,TEX03,industrial_textiles,protective covers,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0637,TEX03,industrial_textiles,protective covers,NC,North Carolina,South,direct,North Carolina manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0638,TEX03,industrial_textiles,protective covers,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0639,TEX03,industrial_textiles,protective covers,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0640,TEX03,industrial_textiles,protective covers,TX,Texas,South,direct,Texas manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0641,TEX03,industrial_textiles,protective covers,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0642,TEX03,industrial_textiles,protective covers,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0643,TEX03,industrial_textiles,protective covers,AZ,Arizona,West,direct,Arizona manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0644,TEX03,industrial_textiles,protective covers,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0645,TEX03,industrial_textiles,protective covers,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0646,TEX03,industrial_textiles,protective covers,CA,California,West,direct,California manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0647,TEX03,industrial_textiles,protective covers,CA,California,West,small_batch,California custom short run job shop contract manufacturer custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0648,TEX03,industrial_textiles,protective covers,CA,California,West,micro_local,California small business family owned owner operated local workshop custom industrial equipment covers textile fabrication,freeze_v2
+LTQ0649,TEX04,industrial_textiles,technical textiles,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0650,TEX04,industrial_textiles,technical textiles,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0651,TEX04,industrial_textiles,technical textiles,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0652,TEX04,industrial_textiles,technical textiles,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0653,TEX04,industrial_textiles,technical textiles,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0654,TEX04,industrial_textiles,technical textiles,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0655,TEX04,industrial_textiles,technical textiles,MI,Michigan,Midwest,direct,Michigan manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0656,TEX04,industrial_textiles,technical textiles,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0657,TEX04,industrial_textiles,technical textiles,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0658,TEX04,industrial_textiles,technical textiles,OH,Ohio,Midwest,direct,Ohio manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0659,TEX04,industrial_textiles,technical textiles,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0660,TEX04,industrial_textiles,technical textiles,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0661,TEX04,industrial_textiles,technical textiles,NC,North Carolina,South,direct,North Carolina manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0662,TEX04,industrial_textiles,technical textiles,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0663,TEX04,industrial_textiles,technical textiles,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0664,TEX04,industrial_textiles,technical textiles,TX,Texas,South,direct,Texas manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0665,TEX04,industrial_textiles,technical textiles,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0666,TEX04,industrial_textiles,technical textiles,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0667,TEX04,industrial_textiles,technical textiles,AZ,Arizona,West,direct,Arizona manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0668,TEX04,industrial_textiles,technical textiles,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0669,TEX04,industrial_textiles,technical textiles,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0670,TEX04,industrial_textiles,technical textiles,CA,California,West,direct,California manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0671,TEX04,industrial_textiles,technical textiles,CA,California,West,small_batch,California custom short run job shop contract manufacturer technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0672,TEX04,industrial_textiles,technical textiles,CA,California,West,micro_local,California small business family owned owner operated local workshop technical textile converting cutting laminating fabrication,freeze_v2
+LTQ0673,WPK01,wood_packaging,custom crates,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0674,WPK01,wood_packaging,custom crates,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0675,WPK01,wood_packaging,custom crates,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop custom wooden shipping crates export packaging,freeze_v2
+LTQ0676,WPK01,wood_packaging,custom crates,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0677,WPK01,wood_packaging,custom crates,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0678,WPK01,wood_packaging,custom crates,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop custom wooden shipping crates export packaging,freeze_v2
+LTQ0679,WPK01,wood_packaging,custom crates,MI,Michigan,Midwest,direct,Michigan manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0680,WPK01,wood_packaging,custom crates,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0681,WPK01,wood_packaging,custom crates,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop custom wooden shipping crates export packaging,freeze_v2
+LTQ0682,WPK01,wood_packaging,custom crates,OH,Ohio,Midwest,direct,Ohio manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0683,WPK01,wood_packaging,custom crates,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0684,WPK01,wood_packaging,custom crates,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop custom wooden shipping crates export packaging,freeze_v2
+LTQ0685,WPK01,wood_packaging,custom crates,NC,North Carolina,South,direct,North Carolina manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0686,WPK01,wood_packaging,custom crates,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0687,WPK01,wood_packaging,custom crates,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop custom wooden shipping crates export packaging,freeze_v2
+LTQ0688,WPK01,wood_packaging,custom crates,TX,Texas,South,direct,Texas manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0689,WPK01,wood_packaging,custom crates,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0690,WPK01,wood_packaging,custom crates,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop custom wooden shipping crates export packaging,freeze_v2
+LTQ0691,WPK01,wood_packaging,custom crates,AZ,Arizona,West,direct,Arizona manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0692,WPK01,wood_packaging,custom crates,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0693,WPK01,wood_packaging,custom crates,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop custom wooden shipping crates export packaging,freeze_v2
+LTQ0694,WPK01,wood_packaging,custom crates,CA,California,West,direct,California manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0695,WPK01,wood_packaging,custom crates,CA,California,West,small_batch,California custom short run job shop contract manufacturer custom wooden shipping crates export packaging,freeze_v2
+LTQ0696,WPK01,wood_packaging,custom crates,CA,California,West,micro_local,California small business family owned owner operated local workshop custom wooden shipping crates export packaging,freeze_v2
+LTQ0697,WPK02,wood_packaging,pallets,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0698,WPK02,wood_packaging,pallets,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0699,WPK02,wood_packaging,pallets,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0700,WPK02,wood_packaging,pallets,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0701,WPK02,wood_packaging,pallets,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0702,WPK02,wood_packaging,pallets,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0703,WPK02,wood_packaging,pallets,MI,Michigan,Midwest,direct,Michigan manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0704,WPK02,wood_packaging,pallets,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0705,WPK02,wood_packaging,pallets,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0706,WPK02,wood_packaging,pallets,OH,Ohio,Midwest,direct,Ohio manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0707,WPK02,wood_packaging,pallets,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0708,WPK02,wood_packaging,pallets,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0709,WPK02,wood_packaging,pallets,NC,North Carolina,South,direct,North Carolina manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0710,WPK02,wood_packaging,pallets,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0711,WPK02,wood_packaging,pallets,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0712,WPK02,wood_packaging,pallets,TX,Texas,South,direct,Texas manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0713,WPK02,wood_packaging,pallets,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0714,WPK02,wood_packaging,pallets,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0715,WPK02,wood_packaging,pallets,AZ,Arizona,West,direct,Arizona manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0716,WPK02,wood_packaging,pallets,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0717,WPK02,wood_packaging,pallets,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0718,WPK02,wood_packaging,pallets,CA,California,West,direct,California manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0719,WPK02,wood_packaging,pallets,CA,California,West,small_batch,California custom short run job shop contract manufacturer custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0720,WPK02,wood_packaging,pallets,CA,California,West,micro_local,California small business family owned owner operated local workshop custom wood pallets skids small batch manufacturing,freeze_v2
+LTQ0721,WPK03,wood_packaging,corrugated packaging,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0722,WPK03,wood_packaging,corrugated packaging,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0723,WPK03,wood_packaging,corrugated packaging,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop short run custom corrugated boxes packaging,freeze_v2
+LTQ0724,WPK03,wood_packaging,corrugated packaging,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0725,WPK03,wood_packaging,corrugated packaging,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0726,WPK03,wood_packaging,corrugated packaging,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop short run custom corrugated boxes packaging,freeze_v2
+LTQ0727,WPK03,wood_packaging,corrugated packaging,MI,Michigan,Midwest,direct,Michigan manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0728,WPK03,wood_packaging,corrugated packaging,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0729,WPK03,wood_packaging,corrugated packaging,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop short run custom corrugated boxes packaging,freeze_v2
+LTQ0730,WPK03,wood_packaging,corrugated packaging,OH,Ohio,Midwest,direct,Ohio manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0731,WPK03,wood_packaging,corrugated packaging,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0732,WPK03,wood_packaging,corrugated packaging,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop short run custom corrugated boxes packaging,freeze_v2
+LTQ0733,WPK03,wood_packaging,corrugated packaging,NC,North Carolina,South,direct,North Carolina manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0734,WPK03,wood_packaging,corrugated packaging,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0735,WPK03,wood_packaging,corrugated packaging,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop short run custom corrugated boxes packaging,freeze_v2
+LTQ0736,WPK03,wood_packaging,corrugated packaging,TX,Texas,South,direct,Texas manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0737,WPK03,wood_packaging,corrugated packaging,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0738,WPK03,wood_packaging,corrugated packaging,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop short run custom corrugated boxes packaging,freeze_v2
+LTQ0739,WPK03,wood_packaging,corrugated packaging,AZ,Arizona,West,direct,Arizona manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0740,WPK03,wood_packaging,corrugated packaging,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0741,WPK03,wood_packaging,corrugated packaging,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop short run custom corrugated boxes packaging,freeze_v2
+LTQ0742,WPK03,wood_packaging,corrugated packaging,CA,California,West,direct,California manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0743,WPK03,wood_packaging,corrugated packaging,CA,California,West,small_batch,California custom short run job shop contract manufacturer short run custom corrugated boxes packaging,freeze_v2
+LTQ0744,WPK03,wood_packaging,corrugated packaging,CA,California,West,micro_local,California small business family owned owner operated local workshop short run custom corrugated boxes packaging,freeze_v2
+LTQ0745,WPK04,wood_packaging,foam packaging,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0746,WPK04,wood_packaging,foam packaging,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0747,WPK04,wood_packaging,foam packaging,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0748,WPK04,wood_packaging,foam packaging,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0749,WPK04,wood_packaging,foam packaging,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0750,WPK04,wood_packaging,foam packaging,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0751,WPK04,wood_packaging,foam packaging,MI,Michigan,Midwest,direct,Michigan manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0752,WPK04,wood_packaging,foam packaging,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0753,WPK04,wood_packaging,foam packaging,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0754,WPK04,wood_packaging,foam packaging,OH,Ohio,Midwest,direct,Ohio manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0755,WPK04,wood_packaging,foam packaging,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0756,WPK04,wood_packaging,foam packaging,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0757,WPK04,wood_packaging,foam packaging,NC,North Carolina,South,direct,North Carolina manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0758,WPK04,wood_packaging,foam packaging,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0759,WPK04,wood_packaging,foam packaging,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0760,WPK04,wood_packaging,foam packaging,TX,Texas,South,direct,Texas manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0761,WPK04,wood_packaging,foam packaging,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0762,WPK04,wood_packaging,foam packaging,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0763,WPK04,wood_packaging,foam packaging,AZ,Arizona,West,direct,Arizona manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0764,WPK04,wood_packaging,foam packaging,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0765,WPK04,wood_packaging,foam packaging,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0766,WPK04,wood_packaging,foam packaging,CA,California,West,direct,California manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0767,WPK04,wood_packaging,foam packaging,CA,California,West,small_batch,California custom short run job shop contract manufacturer custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0768,WPK04,wood_packaging,foam packaging,CA,California,West,micro_local,California small business family owned owner operated local workshop custom protective foam inserts packaging fabrication,freeze_v2
+LTQ0769,CPG01,contract_consumer,food co-packing,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0770,CPG01,contract_consumer,food co-packing,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0771,CPG01,contract_consumer,food co-packing,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop small batch food co packing contract manufacturing,freeze_v2
+LTQ0772,CPG01,contract_consumer,food co-packing,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0773,CPG01,contract_consumer,food co-packing,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0774,CPG01,contract_consumer,food co-packing,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop small batch food co packing contract manufacturing,freeze_v2
+LTQ0775,CPG01,contract_consumer,food co-packing,MI,Michigan,Midwest,direct,Michigan manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0776,CPG01,contract_consumer,food co-packing,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0777,CPG01,contract_consumer,food co-packing,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop small batch food co packing contract manufacturing,freeze_v2
+LTQ0778,CPG01,contract_consumer,food co-packing,OH,Ohio,Midwest,direct,Ohio manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0779,CPG01,contract_consumer,food co-packing,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0780,CPG01,contract_consumer,food co-packing,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop small batch food co packing contract manufacturing,freeze_v2
+LTQ0781,CPG01,contract_consumer,food co-packing,NC,North Carolina,South,direct,North Carolina manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0782,CPG01,contract_consumer,food co-packing,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0783,CPG01,contract_consumer,food co-packing,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop small batch food co packing contract manufacturing,freeze_v2
+LTQ0784,CPG01,contract_consumer,food co-packing,TX,Texas,South,direct,Texas manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0785,CPG01,contract_consumer,food co-packing,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0786,CPG01,contract_consumer,food co-packing,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop small batch food co packing contract manufacturing,freeze_v2
+LTQ0787,CPG01,contract_consumer,food co-packing,AZ,Arizona,West,direct,Arizona manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0788,CPG01,contract_consumer,food co-packing,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0789,CPG01,contract_consumer,food co-packing,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop small batch food co packing contract manufacturing,freeze_v2
+LTQ0790,CPG01,contract_consumer,food co-packing,CA,California,West,direct,California manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0791,CPG01,contract_consumer,food co-packing,CA,California,West,small_batch,California custom short run job shop contract manufacturer small batch food co packing contract manufacturing,freeze_v2
+LTQ0792,CPG01,contract_consumer,food co-packing,CA,California,West,micro_local,California small business family owned owner operated local workshop small batch food co packing contract manufacturing,freeze_v2
+LTQ0793,CPG02,contract_consumer,beverage co-packing,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0794,CPG02,contract_consumer,beverage co-packing,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0795,CPG02,contract_consumer,beverage co-packing,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop small batch beverage bottling canning co packer,freeze_v2
+LTQ0796,CPG02,contract_consumer,beverage co-packing,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0797,CPG02,contract_consumer,beverage co-packing,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0798,CPG02,contract_consumer,beverage co-packing,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop small batch beverage bottling canning co packer,freeze_v2
+LTQ0799,CPG02,contract_consumer,beverage co-packing,MI,Michigan,Midwest,direct,Michigan manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0800,CPG02,contract_consumer,beverage co-packing,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0801,CPG02,contract_consumer,beverage co-packing,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop small batch beverage bottling canning co packer,freeze_v2
+LTQ0802,CPG02,contract_consumer,beverage co-packing,OH,Ohio,Midwest,direct,Ohio manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0803,CPG02,contract_consumer,beverage co-packing,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0804,CPG02,contract_consumer,beverage co-packing,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop small batch beverage bottling canning co packer,freeze_v2
+LTQ0805,CPG02,contract_consumer,beverage co-packing,NC,North Carolina,South,direct,North Carolina manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0806,CPG02,contract_consumer,beverage co-packing,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0807,CPG02,contract_consumer,beverage co-packing,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop small batch beverage bottling canning co packer,freeze_v2
+LTQ0808,CPG02,contract_consumer,beverage co-packing,TX,Texas,South,direct,Texas manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0809,CPG02,contract_consumer,beverage co-packing,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0810,CPG02,contract_consumer,beverage co-packing,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop small batch beverage bottling canning co packer,freeze_v2
+LTQ0811,CPG02,contract_consumer,beverage co-packing,AZ,Arizona,West,direct,Arizona manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0812,CPG02,contract_consumer,beverage co-packing,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0813,CPG02,contract_consumer,beverage co-packing,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop small batch beverage bottling canning co packer,freeze_v2
+LTQ0814,CPG02,contract_consumer,beverage co-packing,CA,California,West,direct,California manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0815,CPG02,contract_consumer,beverage co-packing,CA,California,West,small_batch,California custom short run job shop contract manufacturer small batch beverage bottling canning co packer,freeze_v2
+LTQ0816,CPG02,contract_consumer,beverage co-packing,CA,California,West,micro_local,California small business family owned owner operated local workshop small batch beverage bottling canning co packer,freeze_v2
+LTQ0817,CPG03,contract_consumer,cosmetics filling,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0818,CPG03,contract_consumer,cosmetics filling,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0819,CPG03,contract_consumer,cosmetics filling,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0820,CPG03,contract_consumer,cosmetics filling,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0821,CPG03,contract_consumer,cosmetics filling,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0822,CPG03,contract_consumer,cosmetics filling,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0823,CPG03,contract_consumer,cosmetics filling,MI,Michigan,Midwest,direct,Michigan manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0824,CPG03,contract_consumer,cosmetics filling,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0825,CPG03,contract_consumer,cosmetics filling,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0826,CPG03,contract_consumer,cosmetics filling,OH,Ohio,Midwest,direct,Ohio manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0827,CPG03,contract_consumer,cosmetics filling,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0828,CPG03,contract_consumer,cosmetics filling,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0829,CPG03,contract_consumer,cosmetics filling,NC,North Carolina,South,direct,North Carolina manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0830,CPG03,contract_consumer,cosmetics filling,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0831,CPG03,contract_consumer,cosmetics filling,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0832,CPG03,contract_consumer,cosmetics filling,TX,Texas,South,direct,Texas manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0833,CPG03,contract_consumer,cosmetics filling,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0834,CPG03,contract_consumer,cosmetics filling,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0835,CPG03,contract_consumer,cosmetics filling,AZ,Arizona,West,direct,Arizona manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0836,CPG03,contract_consumer,cosmetics filling,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0837,CPG03,contract_consumer,cosmetics filling,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0838,CPG03,contract_consumer,cosmetics filling,CA,California,West,direct,California manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0839,CPG03,contract_consumer,cosmetics filling,CA,California,West,small_batch,California custom short run job shop contract manufacturer small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0840,CPG03,contract_consumer,cosmetics filling,CA,California,West,micro_local,California small business family owned owner operated local workshop small batch cosmetics skin care contract manufacturing filling,freeze_v2
+LTQ0841,CPG04,contract_consumer,nutraceutical production,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0842,CPG04,contract_consumer,nutraceutical production,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0843,CPG04,contract_consumer,nutraceutical production,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0844,CPG04,contract_consumer,nutraceutical production,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0845,CPG04,contract_consumer,nutraceutical production,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0846,CPG04,contract_consumer,nutraceutical production,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0847,CPG04,contract_consumer,nutraceutical production,MI,Michigan,Midwest,direct,Michigan manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0848,CPG04,contract_consumer,nutraceutical production,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0849,CPG04,contract_consumer,nutraceutical production,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0850,CPG04,contract_consumer,nutraceutical production,OH,Ohio,Midwest,direct,Ohio manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0851,CPG04,contract_consumer,nutraceutical production,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0852,CPG04,contract_consumer,nutraceutical production,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0853,CPG04,contract_consumer,nutraceutical production,NC,North Carolina,South,direct,North Carolina manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0854,CPG04,contract_consumer,nutraceutical production,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0855,CPG04,contract_consumer,nutraceutical production,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0856,CPG04,contract_consumer,nutraceutical production,TX,Texas,South,direct,Texas manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0857,CPG04,contract_consumer,nutraceutical production,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0858,CPG04,contract_consumer,nutraceutical production,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0859,CPG04,contract_consumer,nutraceutical production,AZ,Arizona,West,direct,Arizona manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0860,CPG04,contract_consumer,nutraceutical production,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0861,CPG04,contract_consumer,nutraceutical production,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0862,CPG04,contract_consumer,nutraceutical production,CA,California,West,direct,California manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0863,CPG04,contract_consumer,nutraceutical production,CA,California,West,small_batch,California custom short run job shop contract manufacturer small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0864,CPG04,contract_consumer,nutraceutical production,CA,California,West,micro_local,California small business family owned owner operated local workshop small batch supplement capsule tablet contract manufacturing,freeze_v2
+LTQ0865,REM01,remanufacturing,motor rewind,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0866,REM01,remanufacturing,motor rewind,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0867,REM01,remanufacturing,motor rewind,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0868,REM01,remanufacturing,motor rewind,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0869,REM01,remanufacturing,motor rewind,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0870,REM01,remanufacturing,motor rewind,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0871,REM01,remanufacturing,motor rewind,MI,Michigan,Midwest,direct,Michigan manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0872,REM01,remanufacturing,motor rewind,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0873,REM01,remanufacturing,motor rewind,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0874,REM01,remanufacturing,motor rewind,OH,Ohio,Midwest,direct,Ohio manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0875,REM01,remanufacturing,motor rewind,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0876,REM01,remanufacturing,motor rewind,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0877,REM01,remanufacturing,motor rewind,NC,North Carolina,South,direct,North Carolina manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0878,REM01,remanufacturing,motor rewind,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0879,REM01,remanufacturing,motor rewind,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0880,REM01,remanufacturing,motor rewind,TX,Texas,South,direct,Texas manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0881,REM01,remanufacturing,motor rewind,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0882,REM01,remanufacturing,motor rewind,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0883,REM01,remanufacturing,motor rewind,AZ,Arizona,West,direct,Arizona manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0884,REM01,remanufacturing,motor rewind,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0885,REM01,remanufacturing,motor rewind,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0886,REM01,remanufacturing,motor rewind,CA,California,West,direct,California manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0887,REM01,remanufacturing,motor rewind,CA,California,West,small_batch,California custom short run job shop contract manufacturer industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0888,REM01,remanufacturing,motor rewind,CA,California,West,micro_local,California small business family owned owner operated local workshop industrial electric motor rewinding rebuilding service,freeze_v2
+LTQ0889,REM02,remanufacturing,hydraulic rebuild,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0890,REM02,remanufacturing,hydraulic rebuild,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0891,REM02,remanufacturing,hydraulic rebuild,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0892,REM02,remanufacturing,hydraulic rebuild,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0893,REM02,remanufacturing,hydraulic rebuild,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0894,REM02,remanufacturing,hydraulic rebuild,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0895,REM02,remanufacturing,hydraulic rebuild,MI,Michigan,Midwest,direct,Michigan manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0896,REM02,remanufacturing,hydraulic rebuild,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0897,REM02,remanufacturing,hydraulic rebuild,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0898,REM02,remanufacturing,hydraulic rebuild,OH,Ohio,Midwest,direct,Ohio manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0899,REM02,remanufacturing,hydraulic rebuild,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0900,REM02,remanufacturing,hydraulic rebuild,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0901,REM02,remanufacturing,hydraulic rebuild,NC,North Carolina,South,direct,North Carolina manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0902,REM02,remanufacturing,hydraulic rebuild,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0903,REM02,remanufacturing,hydraulic rebuild,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0904,REM02,remanufacturing,hydraulic rebuild,TX,Texas,South,direct,Texas manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0905,REM02,remanufacturing,hydraulic rebuild,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0906,REM02,remanufacturing,hydraulic rebuild,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0907,REM02,remanufacturing,hydraulic rebuild,AZ,Arizona,West,direct,Arizona manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0908,REM02,remanufacturing,hydraulic rebuild,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0909,REM02,remanufacturing,hydraulic rebuild,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0910,REM02,remanufacturing,hydraulic rebuild,CA,California,West,direct,California manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0911,REM02,remanufacturing,hydraulic rebuild,CA,California,West,small_batch,California custom short run job shop contract manufacturer hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0912,REM02,remanufacturing,hydraulic rebuild,CA,California,West,micro_local,California small business family owned owner operated local workshop hydraulic cylinder pump rebuild remanufacturing service,freeze_v2
+LTQ0913,REM03,remanufacturing,industrial electronics repair,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0914,REM03,remanufacturing,industrial electronics repair,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0915,REM03,remanufacturing,industrial electronics repair,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0916,REM03,remanufacturing,industrial electronics repair,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0917,REM03,remanufacturing,industrial electronics repair,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0918,REM03,remanufacturing,industrial electronics repair,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0919,REM03,remanufacturing,industrial electronics repair,MI,Michigan,Midwest,direct,Michigan manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0920,REM03,remanufacturing,industrial electronics repair,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0921,REM03,remanufacturing,industrial electronics repair,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0922,REM03,remanufacturing,industrial electronics repair,OH,Ohio,Midwest,direct,Ohio manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0923,REM03,remanufacturing,industrial electronics repair,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0924,REM03,remanufacturing,industrial electronics repair,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0925,REM03,remanufacturing,industrial electronics repair,NC,North Carolina,South,direct,North Carolina manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0926,REM03,remanufacturing,industrial electronics repair,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0927,REM03,remanufacturing,industrial electronics repair,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0928,REM03,remanufacturing,industrial electronics repair,TX,Texas,South,direct,Texas manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0929,REM03,remanufacturing,industrial electronics repair,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0930,REM03,remanufacturing,industrial electronics repair,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0931,REM03,remanufacturing,industrial electronics repair,AZ,Arizona,West,direct,Arizona manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0932,REM03,remanufacturing,industrial electronics repair,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0933,REM03,remanufacturing,industrial electronics repair,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0934,REM03,remanufacturing,industrial electronics repair,CA,California,West,direct,California manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0935,REM03,remanufacturing,industrial electronics repair,CA,California,West,small_batch,California custom short run job shop contract manufacturer industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0936,REM03,remanufacturing,industrial electronics repair,CA,California,West,micro_local,California small business family owned owner operated local workshop industrial circuit board electronics repair remanufacturing,freeze_v2
+LTQ0937,REM04,remanufacturing,machine tool rebuild,MA,Massachusetts,Northeast,direct,Massachusetts manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0938,REM04,remanufacturing,machine tool rebuild,MA,Massachusetts,Northeast,small_batch,Massachusetts custom short run job shop contract manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0939,REM04,remanufacturing,machine tool rebuild,MA,Massachusetts,Northeast,micro_local,Massachusetts small business family owned owner operated local workshop industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0940,REM04,remanufacturing,machine tool rebuild,PA,Pennsylvania,Northeast,direct,Pennsylvania manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0941,REM04,remanufacturing,machine tool rebuild,PA,Pennsylvania,Northeast,small_batch,Pennsylvania custom short run job shop contract manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0942,REM04,remanufacturing,machine tool rebuild,PA,Pennsylvania,Northeast,micro_local,Pennsylvania small business family owned owner operated local workshop industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0943,REM04,remanufacturing,machine tool rebuild,MI,Michigan,Midwest,direct,Michigan manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0944,REM04,remanufacturing,machine tool rebuild,MI,Michigan,Midwest,small_batch,Michigan custom short run job shop contract manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0945,REM04,remanufacturing,machine tool rebuild,MI,Michigan,Midwest,micro_local,Michigan small business family owned owner operated local workshop industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0946,REM04,remanufacturing,machine tool rebuild,OH,Ohio,Midwest,direct,Ohio manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0947,REM04,remanufacturing,machine tool rebuild,OH,Ohio,Midwest,small_batch,Ohio custom short run job shop contract manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0948,REM04,remanufacturing,machine tool rebuild,OH,Ohio,Midwest,micro_local,Ohio small business family owned owner operated local workshop industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0949,REM04,remanufacturing,machine tool rebuild,NC,North Carolina,South,direct,North Carolina manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0950,REM04,remanufacturing,machine tool rebuild,NC,North Carolina,South,small_batch,North Carolina custom short run job shop contract manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0951,REM04,remanufacturing,machine tool rebuild,NC,North Carolina,South,micro_local,North Carolina small business family owned owner operated local workshop industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0952,REM04,remanufacturing,machine tool rebuild,TX,Texas,South,direct,Texas manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0953,REM04,remanufacturing,machine tool rebuild,TX,Texas,South,small_batch,Texas custom short run job shop contract manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0954,REM04,remanufacturing,machine tool rebuild,TX,Texas,South,micro_local,Texas small business family owned owner operated local workshop industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0955,REM04,remanufacturing,machine tool rebuild,AZ,Arizona,West,direct,Arizona manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0956,REM04,remanufacturing,machine tool rebuild,AZ,Arizona,West,small_batch,Arizona custom short run job shop contract manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0957,REM04,remanufacturing,machine tool rebuild,AZ,Arizona,West,micro_local,Arizona small business family owned owner operated local workshop industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0958,REM04,remanufacturing,machine tool rebuild,CA,California,West,direct,California manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0959,REM04,remanufacturing,machine tool rebuild,CA,California,West,small_batch,California custom short run job shop contract manufacturer industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
+LTQ0960,REM04,remanufacturing,machine tool rebuild,CA,California,West,micro_local,California small business family owned owner operated local workshop industrial machine tool rebuilding retrofitting remanufacturing,freeze_v2
