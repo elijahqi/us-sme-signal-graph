@@ -1,6 +1,8 @@
 import importlib.util
 from pathlib import Path
 import unittest
+from unittest.mock import patch
+import subprocess
 
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "ingest_source_urls.py"
@@ -27,6 +29,35 @@ class IngestSourceUrlsTest(unittest.TestCase):
 
     def test_non_success_status_must_not_be_treated_as_evidence(self):
         self.assertFalse(200 <= 404 < 400)
+
+    def test_robots_subprocess_timeout_fails_open_with_explicit_status(self):
+        MODULE.ROBOTS_CACHE.clear()
+        with patch.object(
+            MODULE.subprocess,
+            "run",
+            side_effect=subprocess.TimeoutExpired(cmd=["curl"], timeout=20),
+        ):
+            allowed, status = MODULE.robots_allowed("https://timeout.example/page", 30)
+        self.assertTrue(allowed)
+        self.assertEqual("robots_hard_timeout_allow", status)
+
+    def test_page_subprocess_timeout_is_bounded_and_recorded(self):
+        with (
+            patch.object(MODULE, "robots_allowed", return_value=(True, "robots_allowed")),
+            patch.object(
+                MODULE.subprocess,
+                "run",
+                side_effect=subprocess.TimeoutExpired(cmd=["curl"], timeout=40),
+            ),
+            patch.object(MODULE.time, "sleep"),
+        ):
+            status, body, error, robots_status = MODULE.fetch_url(
+                "https://timeout.example/page", 30
+            )
+        self.assertEqual(0, status)
+        self.assertEqual(b"", body)
+        self.assertEqual("subprocess_hard_timeout_after_40s", error)
+        self.assertEqual("robots_allowed", robots_status)
 
 
 if __name__ == "__main__":

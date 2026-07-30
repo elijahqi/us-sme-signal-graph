@@ -150,11 +150,18 @@ def robots_allowed(url: str, timeout: int) -> tuple[bool, str]:
         if origin in ROBOTS_CACHE:
             return ROBOTS_CACHE[origin]
     robots_url = f"{origin}/robots.txt"
-    result = subprocess.run(
-        ["curl", "-LsS", "--max-time", str(min(timeout, 15)), "-A", "US-SME-Signal-Graph/0.1 public-research", robots_url],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-    )
+    try:
+        result = subprocess.run(
+            ["curl", "-LsS", "--max-time", str(min(timeout, 15)), "-A", "US-SME-Signal-Graph/0.1 public-research", robots_url],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            timeout=min(timeout, 15) + 5,
+        )
+    except subprocess.TimeoutExpired:
+        decision = (True, "robots_hard_timeout_allow")
+        with ROBOTS_LOCK:
+            ROBOTS_CACHE[origin] = decision
+        return decision
     if result.returncode:
         decision = (True, "robots_unavailable_allow")
     else:
@@ -176,15 +183,23 @@ def fetch_url(url: str, timeout: int) -> tuple[int, bytes, str, str]:
         return 0, b"", "robots_disallowed", robots_status
     last = (0, b"", "")
     for attempt in range(2):
-        result = subprocess.run(
-            [
-                "curl", "-LsS", "--retry", "1", "--retry-delay", "1", "--max-time", str(timeout),
-                "-A", "Mozilla/5.0 (compatible; US-SME-Signal-Graph/0.1; public research)",
-                "-H", "Accept: text/html,application/xhtml+xml", "-w", "\n__HTTP_STATUS__:%{http_code}", url,
-            ],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-        )
+        try:
+            result = subprocess.run(
+                [
+                    "curl", "-LsS", "--retry", "1", "--retry-delay", "1", "--max-time", str(timeout),
+                    "-A", "Mozilla/5.0 (compatible; US-SME-Signal-Graph/0.1; public research)",
+                    "-H", "Accept: text/html,application/xhtml+xml", "-w", "\n__HTTP_STATUS__:%{http_code}", url,
+                ],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                timeout=timeout + 10,
+            )
+        except subprocess.TimeoutExpired:
+            last = (0, b"", f"subprocess_hard_timeout_after_{timeout + 10}s")
+            if attempt == 0:
+                time.sleep(1)
+                continue
+            break
         payload = result.stdout
         marker = b"\n__HTTP_STATUS__:"
         if marker not in payload:
