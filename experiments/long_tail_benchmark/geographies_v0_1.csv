@@ -1,0 +1,9 @@
+state_id,state_name,state_abbr,census_region,selection_note,status
+MA,Massachusetts,MA,Northeast,advanced and small manufacturing ecosystem,freeze_v1
+PA,Pennsylvania,PA,Northeast,legacy and diversified manufacturing,freeze_v1
+MI,Michigan,MI,Midwest,automotive and supplier job shops,freeze_v1
+OH,Ohio,OH,Midwest,diversified industrial production,freeze_v1
+NC,North Carolina,NC,South,textiles food life science and advanced manufacturing,freeze_v1
+TX,Texas,TX,South,electronics energy food and diversified manufacturing,freeze_v1
+AZ,Arizona,AZ,West,semiconductor aerospace and small industrial suppliers,freeze_v1
+CA,California,CA,West,advanced manufacturing plus micro-producer ecosystem,freeze_v1

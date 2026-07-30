@@ -1,0 +1,38 @@
+column,type,allowed_values,required,description
+candidate_id,string,,true,Stable provider-blind candidate ID
+query_id,string,,true,Frozen query ID
+capability_id,string,,true,Frozen capability ID
+state_id,string,,true,Queried state
+reviewer_id,string,,true,Pseudonymous reviewer ID
+review_minutes,number,,true,Active review minutes
+canonical_business_name,string,,true,Reviewed operating business name
+legal_or_parent_name,string,,false,Legal parent subsidiary or former-name context
+registrable_domain,string,,false,Dedicated business domain when present
+identity_status,enum,yes|no|unclear,true,Specific operating commercial business resolved
+direct_producer_status,enum,yes|no|unclear,true,Direct production processing rebuilding or contract role
+capability_match,enum,yes|partial|no|unclear,true,Match to frozen capability
+capability_evidence_url,string,,false,Original capability source
+capability_evidence_span,string,,false,Shortest complete supporting quotation
+production_presence,enum,industrial_facility_confirmed|job_shop_or_workshop_confirmed|owner_or_home_production_confirmed|us_made_claim_site_unresolved|office_warehouse_or_lab_only|foreign_only|unknown,true,Production presence in queried state
+production_city,string,,false,Non-sensitive city
+production_state,string,,false,State
+production_evidence_url,string,,false,Original production-location source
+production_evidence_span,string,,false,Shortest complete location quotation
+commercial_offering,enum,yes|no|unclear,true,Whether product or manufacturing service is externally offered
+source_current_status,enum,current|historical|inactive|unclear,true,Current-activity evidence status
+eqdp,enum,yes|no|unclear,true,Final evidence-qualified domestic producer decision
+primary_exclusion_reason,enum,not_operating_business|identity_conflict|duplicate_entity|distributor_reseller_or_broker|nonmanufacturing_service|hobby_or_noncommercial|capability_mismatch|generic_sector_claim_only|wrong_state|office_warehouse_or_lab_only|foreign_production_only|historical_or_inactive|insufficient_evidence|source_unavailable|none,true,Primary nonpositive reason
+scale_band,enum,owner_only_or_nonemployer_supported|micro_employer_1_9_supported|small_employer_10_99_supported|mid_employer_100_499_supported|large_500_plus_supported|unknown,true,Research scale band not legal SBA status
+scale_evidence_url,string,,false,Scale evidence source
+legal_form,enum,sole_proprietor|single_member_llc|other_llc|partnership|corporation|other|unknown,true,Supported legal form
+web_visibility,enum,dedicated_business_domain|marketplace_or_social_only|directory_or_registry_only|mixed|unknown,true,Observed visibility tier
+candidate_naics_2022,string,,false,Activity-specific six-digit NAICS
+sba_threshold,string,,false,Current threshold from 13 CFR 121.201
+sba_threshold_retrieved_at,date,,false,Threshold snapshot date
+sam_uei_or_sba_id,string,,false,Stable government entity identifier when found
+affiliate_status,enum,resolved_none|resolved_included|unresolved|not_checked,true,Affiliate review state
+sba_small_evidence_status,enum,sba_self_certified_small|size_consistent_unverified|not_small|unknown,true,Separate size-evidence status
+supplemental_evidence_urls,json_array,,false,Additional original sources requested
+confidence,enum,high|medium|low,true,Decision confidence
+conflict_disclosed,boolean,true|false,true,Reviewer conflict flag
+notes,string,,true,Rationale limitations and unresolved facts
