@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["results"],
+  "properties": {
+    "results": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "review_id", "candidate_business_name", "identity_status",
+          "direct_producer_status", "capability_match", "production_presence",
+          "commercial_offering", "eqdp", "primary_exclusion_reason",
+          "scale_band", "legal_form", "web_visibility", "production_city",
+          "production_state", "confidence", "evidence_quote", "rationale"
+        ],
+        "properties": {
+          "review_id": {"type": "string"},
+          "candidate_business_name": {"type": "string"},
+          "identity_status": {"enum": ["yes", "no", "unclear"]},
+          "direct_producer_status": {"enum": ["yes", "no", "unclear"]},
+          "capability_match": {"enum": ["yes", "partial", "no", "unclear"]},
+          "production_presence": {
+            "enum": [
+              "industrial_facility_confirmed", "job_shop_or_workshop_confirmed",
+              "owner_or_home_production_confirmed", "us_made_claim_site_unresolved",
+              "office_warehouse_or_lab_only", "foreign_only", "unknown"
+            ]
+          },
+          "commercial_offering": {"enum": ["yes", "no", "unclear"]},
+          "eqdp": {"enum": ["yes", "no", "unclear"]},
+          "primary_exclusion_reason": {
+            "enum": [
+              "not_operating_business", "identity_conflict", "duplicate_entity",
+              "distributor_reseller_or_broker", "nonmanufacturing_service",
+              "hobby_or_noncommercial", "capability_mismatch",
+              "generic_sector_claim_only", "wrong_state",
+              "office_warehouse_or_lab_only", "foreign_production_only",
+              "historical_or_inactive", "insufficient_evidence",
+              "source_unavailable", "none"
+            ]
+          },
+          "scale_band": {
+            "enum": [
+              "owner_only_or_nonemployer_supported", "micro_employer_1_9_supported",
+              "small_employer_10_99_supported", "mid_employer_100_499_supported",
+              "large_500_plus_supported", "unknown"
+            ]
+          },
+          "legal_form": {
+            "enum": [
+              "sole_proprietor", "single_member_llc", "other_llc",
+              "partnership", "corporation", "other", "unknown"
+            ]
+          },
+          "web_visibility": {
+            "enum": [
+              "dedicated_business_domain", "marketplace_or_social_only",
+              "directory_or_registry_only", "mixed", "unknown"
+            ]
+          },
+          "production_city": {"type": "string"},
+          "production_state": {"type": "string"},
+          "confidence": {"enum": ["high", "medium", "low"]},
+          "evidence_quote": {"type": "string", "maxLength": 600},
+          "rationale": {"type": "string", "maxLength": 1000}
+        }
+      }
+    }
+  }
+}
