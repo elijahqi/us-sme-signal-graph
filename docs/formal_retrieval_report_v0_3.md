@@ -22,7 +22,10 @@ Across the 960 paired queries:
 |---|---:|
 | Query-level URL intersection, summed | 7,475 |
 | Query-level URL union, summed | 11,715 |
-| Query-level URL Jaccard | 63.81% |
+| Pooled query-URL Jaccard, Σ intersection / Σ union | 63.81% |
+| Macro mean of 960 per-query URL Jaccards | 65.55% |
+| Sensitivity: pooled Jaccard over 959 dual-success queries | 63.86% |
+| Sensitivity: macro mean over 959 dual-success queries | 65.62% |
 | Cross-query unique canonical source URLs | 4,638 |
 | Query-to-source links | 11,715 |
 
@@ -30,11 +33,11 @@ The 4,638 URLs are source pages, not unique companies. A page may be a directory
 
 ### Overlap by query intent
 
-| Intent | Queries | Brave rows | You rows | URL intersection | URL union | Jaccard |
+| Intent | Queries | Brave rows | You rows | URL intersection | URL union | Pooled Jaccard | Macro mean per-query Jaccard |
 |---|---:|---:|---:|---:|---:|---:|
-| Direct | 320 | 3,190 | 3,200 | 2,537 | 3,853 | 65.84% |
-| Micro/local | 320 | 3,200 | 3,200 | 2,492 | 3,908 | 63.77% |
-| Small-batch/job-shop | 320 | 3,200 | 3,200 | 2,446 | 3,954 | 61.86% |
+| Direct | 320 | 3,190 | 3,200 | 2,537 | 3,853 | 65.84% | 67.37% |
+| Micro/local | 320 | 3,200 | 3,200 | 2,492 | 3,908 | 63.77% | 65.75% |
+| Small-batch/job-shop | 320 | 3,200 | 3,200 | 2,446 | 3,954 | 61.86% | 63.54% |
 
 Lower overlap for small-batch and micro/local queries is consistent with greater provider complementarity in long-tail retrieval. It does not yet establish higher qualified-producer yield.
 

@@ -1,6 +1,6 @@
 # Study protocol v0.3: mapping the search-visible U.S. manufacturing long tail
 
-**Status:** preregistered design draft; no formal v0.3 retrieval results have been collected.  
+**Status:** frozen pre-retrieval protocol and original human-validation plan. The 960-query retrieval was executed as specified, but the downstream human double-annotation, reviewer-time, and 200-pair entity-resolution precision gates in Sections 7–9 were not executed. The later full-corpus GPT-5.6-Sol review is an exploratory AI-only amendment documented in `docs/full_census_protocol_v0_4.md`; it must not be represented as satisfying this protocol's human-validation gates.
 **Frozen design inputs:** `experiments/long_tail_benchmark/`  
 **Annotation instructions:** `docs/external_annotator_guide_v0_3.md`
 

@@ -1,0 +1,18 @@
+{
+  "external_entity_resolution_precision_audit": false,
+  "files": {
+    "README.md": "3c390fed17852a3a3889d6481a146931ef5d29e2d827e388d71fea7e80c67f1b",
+    "calibration_aggregate.json": "da09974bc4a94f28d9114c36633f3caabc9f098278e87171a80df8507470e3f3",
+    "constructed_corpus_aggregate.json": "cc1899505c064b10c642a99217871646468bbb9a9d8920af5c22709e22dc53b6",
+    "entity_size_aggregate.json": "625414cac701b7ff96d276bc9d203f19b8a1d2718b44cc66df6dfa0769a5aecb",
+    "pair_size_aggregate.json": "5ab1586274352b4134d81c1a080b0768652708c03655fcf15d9f41456ad6cfea",
+    "provisional_entity_aggregate.json": "bc58ecffda3d745468a2082b587c719e9a35e4258d7d60e576693b339d0d08d9",
+    "retrieval_aggregate.json": "f182db6d8ad732593d1838338267cb9794ea83b98428410a413afc48738341b5"
+  },
+  "human_expert_validation": false,
+  "provider_payloads": false,
+  "release_version": "long-tail-evidence-audit-v0.1-exploratory",
+  "row_level_company_data": false,
+  "third_party_page_text": false,
+  "validated_benchmark": false
+}

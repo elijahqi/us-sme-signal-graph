@@ -4,7 +4,15 @@ Reproducible reconstruction and search-uplift evaluation for a provenance-aware 
 
 ## Current milestone
 
-**v0.2.0-rc1** adds a preregistered Brave × You search-uplift pilot to the frozen **Baseline v0.1-SIA**. The release is a verified candidate set, not a claim of complete U.S. supplier coverage or a completed SME dataset.
+The repository now includes a **pre-human-validation, cross-industry evidence audit** over 960 frozen queries and all 6,164 constructed source–capability–state pairs. It is explicitly exploratory: repeated GPT-5.6-Sol passes produced model-applied page-support labels, not human ground truth. Literal-quote re-audit left 1,148 provisional positive pairs, which cluster into 790 provisional operating-entity clusters. A narrow destination-page size screen places only 14 clusters wholly within one descriptive employee band; external SBA-small verification was not performed.
+
+Start with [the manuscript draft](paper/search_visible_manufacturing_evidence_audit_v0_1.md), [corrected aggregate results](docs/full_census_results_v0_1.md), [model-review deviations](docs/model_review_deviations_v0_1.md), and [claim audit](docs/claim_evidence_review_v0_1.md). A row-free aggregate package is staged under `release/public/long-tail-evidence-audit-v0.1-exploratory`. It contains no company rows, provider payloads, fetched page text, URLs, quotes, or model rationales.
+
+The manuscript is not publication-ready until its human double-annotation and entity-resolution precision gates are completed.
+
+## Earlier semiconductor milestone
+
+**v0.2.0-rc1** added a preregistered Brave × You search-uplift pilot to the frozen **Baseline v0.1-SIA**. The release is a verified candidate set, not a claim of complete U.S. supplier coverage or a completed SME dataset.
 
 This is not the lost original paper snapshot. The paper reported 664 mixed-type entities and 542 relations from 48 seeds, but did not release the underlying entity/relation files. Baseline v0.1-SIA is a clean reconstruction starting point whose scope and limitations are explicit.
 

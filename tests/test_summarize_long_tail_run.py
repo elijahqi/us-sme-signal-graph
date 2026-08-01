@@ -19,6 +19,15 @@ class LongTailSummaryTest(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertEqual(64, len(first))
 
+    def test_summary_distinguishes_pooled_and_macro_jaccard(self):
+        summary = MODULE.summarize()
+        self.assertIn("pooled_query_url_jaccard", summary)
+        self.assertIn("macro_mean_query_url_jaccard", summary)
+        self.assertNotEqual(
+            summary["pooled_query_url_jaccard"],
+            summary["macro_mean_query_url_jaccard"],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

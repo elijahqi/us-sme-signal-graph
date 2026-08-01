@@ -11,7 +11,12 @@ import math
 from pathlib import Path
 import random
 import re
+import sys
 import unicodedata
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+from positive_quote_reaudit_utils import final_decisions as load_quote_reaudit, FINAL_FIELDS as QUOTE_FINAL_FIELDS
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -80,6 +85,15 @@ def normalize_quote(value: str) -> str:
     return re.sub(r"\s+", " ", value).casefold().strip()
 
 
+def fieldwise_adjudication(left: dict, right: dict, adjudicator: dict) -> tuple[dict, list[str]]:
+    """Lock A/B-agreed key fields and use C only for disputed key fields."""
+    disputed = [field for field in KEY_FIELDS if left[field] != right[field]]
+    decision = dict(adjudicator if disputed else left)
+    for field in KEY_FIELDS:
+        decision[field] = left[field] if left[field] == right[field] else adjudicator[field]
+    return decision, disputed
+
+
 def analyze() -> tuple[list[dict], dict]:
     sample = {row["review_id"]: row for row in read_csv(BASE / "review_sample_v0_1.csv")}
     states = {row["state_id"]: row for row in read_csv(ROOT / "experiments" / "long_tail_benchmark" / "geographies_v0_1.csv")}
@@ -97,15 +111,37 @@ def analyze() -> tuple[list[dict], dict]:
         raise ValueError(f"C coverage mismatch: expected {len(disagreements)}, got {len(c)}")
 
     final_rows = []
+    quote_reaudit = load_quote_reaudit(BASE / "ai_census_v0_4" / "positive_quote_reaudit_v0_1")
     for review_id in sorted(sample):
-        decision = c[review_id] if review_id in disagreements else a[review_id]
+        decision, disputed = fieldwise_adjudication(
+            a[review_id], b[review_id], c.get(review_id, a[review_id])
+        )
+        if decision["eqdp"] == "yes" and not (
+            decision["identity_status"] == "yes"
+            and decision["direct_producer_status"] == "yes"
+            and decision["capability_match"] == "yes"
+            and decision["production_presence"] in {
+                "industrial_facility_confirmed", "job_shop_or_workshop_confirmed",
+                "owner_or_home_production_confirmed",
+            }
+            and decision["commercial_offering"] == "yes"
+            and decision["primary_exclusion_reason"] == "none"
+        ):
+            raise ValueError(f"fieldwise adjudication produced inconsistent positive: {review_id}")
         row = {**sample[review_id], **{field: decision[field] for field in FINAL_FIELDS}}
-        row["final_source"] = "C_adjudication" if review_id in disagreements else "AB_agreement"
+        row["final_source"] = "fieldwise_C_adjudication" if disputed else "AB_agreement"
+        row["adjudicated_fields"] = "|".join(disputed)
         row["a_eqdp"] = a[review_id]["eqdp"]
         row["b_eqdp"] = b[review_id]["eqdp"]
         quote = normalize_quote(row["evidence_quote"])
         excerpt = normalize_quote(evidence[review_id]["evidence_excerpt"])
         row["quote_audit_pass"] = str(bool(quote) and quote in excerpt).lower()
+        if review_id in quote_reaudit:
+            corrected=quote_reaudit[review_id]
+            for field in QUOTE_FINAL_FIELDS:row[field]=corrected[field]
+            row["final_source"] = "literal_quote_reaudit"
+            row["adjudicated_fields"] = corrected["adjudicated_fields"]
+            quote=normalize_quote(row["evidence_quote"]);row["quote_audit_pass"]=str(bool(quote) and quote in excerpt).lower()
         final_rows.append(row)
 
     field_agreement = {}
@@ -148,12 +184,19 @@ def analyze() -> tuple[list[dict], dict]:
     b_batches, b_retries = count_manifest_retries(AI / "reviewer_b_manifest_001_120.json")
     c_batches, c_retries = count_manifest_retries(AI / "adjudication" / "reviewer_c_manifest.json")
     summary = {
+        "label_unit_warning": (
+            "The legacy eqdp field is a model-applied five-component page-support label, "
+            "not factual verification, procurement qualification, or legal status. "
+            "Production-presence enum names ending in _confirmed mean page-supported "
+            "under the model protocol."
+        ),
         "method": {
             "model": "GPT-5.6-Sol",
             "reviewer_a_rows": 1200,
             "reviewer_b_rows": 1200,
             "key_field_disagreements_adjudicated": len(disagreements),
-            "same_model_independent_passes": True,
+            "separate_same_model_passes": True,
+            "independent_models": False,
             "human_expert_validation": False,
             "a_batches": a_batches, "a_retry_batches": a_retries,
             "b_batches": b_batches, "b_retry_batches": b_retries,

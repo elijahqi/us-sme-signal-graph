@@ -1,0 +1,289 @@
+{
+  "brave_failed_queries": 1,
+  "brave_raw_lifecycle": "transient_process_memory_only",
+  "brave_returned_rows": 9590,
+  "dimensions": {
+    "industry_family": {
+      "additive_tooling": {
+        "brave_rows": 960,
+        "domain_intersection": 604,
+        "macro_mean_query_url_jaccard": 0.5746284965034968,
+        "pooled_url_jaccard": 0.5584415584415584,
+        "queries": 96,
+        "query_jaccard_sum": 55.164335664335695,
+        "url_intersection": 688,
+        "url_union": 1232,
+        "you_rows": 960
+      },
+      "battery": {
+        "brave_rows": 960,
+        "domain_intersection": 615,
+        "macro_mean_query_url_jaccard": 0.5889032842157848,
+        "pooled_url_jaccard": 0.5724815724815725,
+        "queries": 96,
+        "query_jaccard_sum": 56.53471528471534,
+        "url_intersection": 699,
+        "url_union": 1221,
+        "you_rows": 960
+      },
+      "contract_consumer": {
+        "brave_rows": 950,
+        "domain_intersection": 730,
+        "macro_mean_query_url_jaccard": 0.7026966089466088,
+        "pooled_url_jaccard": 0.6902654867256637,
+        "queries": 96,
+        "query_jaccard_sum": 67.45887445887445,
+        "url_intersection": 780,
+        "url_union": 1130,
+        "you_rows": 960
+      },
+      "electronics": {
+        "brave_rows": 960,
+        "domain_intersection": 624,
+        "macro_mean_query_url_jaccard": 0.6429046341730167,
+        "pooled_url_jaccard": 0.6257408975444538,
+        "queries": 96,
+        "query_jaccard_sum": 61.7188448806096,
+        "url_intersection": 739,
+        "url_union": 1181,
+        "you_rows": 960
+      },
+      "industrial_textiles": {
+        "brave_rows": 960,
+        "domain_intersection": 595,
+        "macro_mean_query_url_jaccard": 0.6321681790431792,
+        "pooled_url_jaccard": 0.6148023549201009,
+        "queries": 96,
+        "query_jaccard_sum": 60.68814518814521,
+        "url_intersection": 731,
+        "url_union": 1189,
+        "you_rows": 960
+      },
+      "polymers_composites": {
+        "brave_rows": 960,
+        "domain_intersection": 672,
+        "macro_mean_query_url_jaccard": 0.6569539529098353,
+        "pooled_url_jaccard": 0.6424294268605646,
+        "queries": 96,
+        "query_jaccard_sum": 63.06757947934418,
+        "url_intersection": 751,
+        "url_union": 1169,
+        "you_rows": 960
+      },
+      "precision_metal": {
+        "brave_rows": 960,
+        "domain_intersection": 685,
+        "macro_mean_query_url_jaccard": 0.6544731310356317,
+        "pooled_url_jaccard": 0.6354344122657581,
+        "queries": 96,
+        "query_jaccard_sum": 62.829420579420635,
+        "url_intersection": 746,
+        "url_union": 1174,
+        "you_rows": 960
+      },
+      "remanufacturing": {
+        "brave_rows": 960,
+        "domain_intersection": 632,
+        "macro_mean_query_url_jaccard": 0.7006552475302475,
+        "pooled_url_jaccard": 0.6856892010535558,
+        "queries": 96,
+        "query_jaccard_sum": 67.26290376290376,
+        "url_intersection": 781,
+        "url_union": 1139,
+        "you_rows": 960
+      },
+      "semiconductor": {
+        "brave_rows": 960,
+        "domain_intersection": 676,
+        "macro_mean_query_url_jaccard": 0.7139006826506828,
+        "pooled_url_jaccard": 0.6976127320954907,
+        "queries": 96,
+        "query_jaccard_sum": 68.53446553446555,
+        "url_intersection": 789,
+        "url_union": 1131,
+        "you_rows": 960
+      },
+      "wood_packaging": {
+        "brave_rows": 960,
+        "domain_intersection": 629,
+        "macro_mean_query_url_jaccard": 0.687909312909313,
+        "pooled_url_jaccard": 0.6710182767624021,
+        "queries": 96,
+        "query_jaccard_sum": 66.03929403929405,
+        "url_intersection": 771,
+        "url_union": 1149,
+        "you_rows": 960
+      }
+    },
+    "intent_id": {
+      "direct": {
+        "brave_rows": 3190,
+        "domain_intersection": 2210,
+        "macro_mean_query_url_jaccard": 0.6737273143523125,
+        "pooled_url_jaccard": 0.6584479626265248,
+        "queries": 320,
+        "query_jaccard_sum": 215.59274059274,
+        "url_intersection": 2537,
+        "url_union": 3853,
+        "you_rows": 3200
+      },
+      "micro_local": {
+        "brave_rows": 3200,
+        "domain_intersection": 2166,
+        "macro_mean_query_url_jaccard": 0.6574731946974577,
+        "pooled_url_jaccard": 0.6376663254861822,
+        "queries": 320,
+        "query_jaccard_sum": 210.39142230318646,
+        "url_intersection": 2492,
+        "url_union": 3908,
+        "you_rows": 3200
+      },
+      "small_batch": {
+        "brave_rows": 3200,
+        "domain_intersection": 2086,
+        "macro_mean_query_url_jaccard": 0.6353575499255631,
+        "pooled_url_jaccard": 0.6186140617096612,
+        "queries": 320,
+        "query_jaccard_sum": 203.31441597618021,
+        "url_intersection": 2446,
+        "url_union": 3954,
+        "you_rows": 3200
+      }
+    },
+    "state_id": {
+      "AZ": {
+        "brave_rows": 1200,
+        "domain_intersection": 808,
+        "macro_mean_query_url_jaccard": 0.6878323065823069,
+        "pooled_url_jaccard": 0.6689847009735744,
+        "queries": 120,
+        "query_jaccard_sum": 82.53987678987683,
+        "url_intersection": 962,
+        "url_union": 1438,
+        "you_rows": 1200
+      },
+      "CA": {
+        "brave_rows": 1200,
+        "domain_intersection": 815,
+        "macro_mean_query_url_jaccard": 0.6661421911421918,
+        "pooled_url_jaccard": 0.6506189821182944,
+        "queries": 120,
+        "query_jaccard_sum": 79.937062937063,
+        "url_intersection": 946,
+        "url_union": 1454,
+        "you_rows": 1200
+      },
+      "MA": {
+        "brave_rows": 1200,
+        "domain_intersection": 819,
+        "macro_mean_query_url_jaccard": 0.6479227471874534,
+        "pooled_url_jaccard": 0.6282225237449118,
+        "queries": 120,
+        "query_jaccard_sum": 77.75072966249441,
+        "url_intersection": 926,
+        "url_union": 1474,
+        "you_rows": 1200
+      },
+      "MI": {
+        "brave_rows": 1200,
+        "domain_intersection": 806,
+        "macro_mean_query_url_jaccard": 0.6536893661893657,
+        "pooled_url_jaccard": 0.639344262295082,
+        "queries": 120,
+        "query_jaccard_sum": 78.44272394272389,
+        "url_intersection": 936,
+        "url_union": 1464,
+        "you_rows": 1200
+      },
+      "NC": {
+        "brave_rows": 1200,
+        "domain_intersection": 761,
+        "macro_mean_query_url_jaccard": 0.649986124986125,
+        "pooled_url_jaccard": 0.6304347826086957,
+        "queries": 120,
+        "query_jaccard_sum": 77.998334998335,
+        "url_intersection": 928,
+        "url_union": 1472,
+        "you_rows": 1200
+      },
+      "OH": {
+        "brave_rows": 1190,
+        "domain_intersection": 832,
+        "macro_mean_query_url_jaccard": 0.6370483682983682,
+        "pooled_url_jaccard": 0.6203389830508474,
+        "queries": 120,
+        "query_jaccard_sum": 76.44580419580419,
+        "url_intersection": 915,
+        "url_union": 1475,
+        "you_rows": 1200
+      },
+      "PA": {
+        "brave_rows": 1200,
+        "domain_intersection": 810,
+        "macro_mean_query_url_jaccard": 0.639415445665446,
+        "pooled_url_jaccard": 0.6227180527383367,
+        "queries": 120,
+        "query_jaccard_sum": 76.72985347985352,
+        "url_intersection": 921,
+        "url_union": 1479,
+        "you_rows": 1200
+      },
+      "TX": {
+        "brave_rows": 1200,
+        "domain_intersection": 811,
+        "macro_mean_query_url_jaccard": 0.66211827388298,
+        "pooled_url_jaccard": 0.6449623029472241,
+        "queries": 120,
+        "query_jaccard_sum": 79.4541928659576,
+        "url_intersection": 941,
+        "url_union": 1459,
+        "you_rows": 1200
+      }
+    }
+  },
+  "frozen_commit": "9fb6d4280ec42aa858f8219c4f4dc310a880f41a",
+  "frozen_input_sha256": {
+    "capability_set_v0_2.csv": "1c7111a5144abb3770ce4c478b7bf7a2a9d00e9d8c8eb3a1444b2bb455ef8cbf",
+    "geographies_v0_1.csv": "e6fce1ad00d3338bd3c3f7982cce46c25f7aea88bfdfe19d1eae8a8442712019",
+    "intent_templates_v0_1.csv": "2b3f06364033fa395aa4ed0c94fea105241c6df40d4c1077df8b17cd47f8b00d",
+    "query_lattice_v0_2.csv": "a86388e3c33b6b84c39306fffaaa9e2463c943b8783ed0be9e29be93830f0d3a"
+  },
+  "macro_mean_query_url_jaccard": 0.6555193529917794,
+  "pooled_query_url_jaccard": 0.6380708493384549,
+  "private_artifact_sha256": {
+    "query_aggregates.csv": "44941daa1e4b634a2d11b6d4e70ee71194d248773efe389aabb11e5bc2696cde",
+    "query_source_links.csv": "9d32f91cc53cd05b4d612e2210af65dc585f02a41ee6b1faaa146d215337835d",
+    "source_candidates.csv": "872e8168319a7c3dd5c77d4d6025a761e3d2896cce1a50cedcba9bdef30f52cc"
+  },
+  "provider_payloads_stored": false,
+  "query_count": 960,
+  "query_level_url_intersection_sum": 7475,
+  "query_level_url_union_sum": 11715,
+  "query_source_links": 11715,
+  "robots_status_counts": {
+    "robots_allowed": 4469,
+    "robots_disallowed": 129,
+    "robots_unavailable_allow": 40
+  },
+  "run_id": "formal_v0_3",
+  "source_fetch_2xx": 3383,
+  "source_hard_timeouts": 9,
+  "source_http_status_counts": {
+    "0": 164,
+    "200": 3190,
+    "202": 193,
+    "307": 5,
+    "400": 1,
+    "403": 1018,
+    "404": 57,
+    "406": 1,
+    "429": 3,
+    "500": 3,
+    "504": 1,
+    "522": 1,
+    "526": 1
+  },
+  "unique_original_source_urls": 4638,
+  "you_failed_queries": 0,
+  "you_returned_rows": 9600
+}

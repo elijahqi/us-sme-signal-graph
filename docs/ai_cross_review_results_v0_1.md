@@ -1,17 +1,19 @@
-# AI cross-review results v0.1
+# AI cross-review calibration results v0.2
+
+**Supersession note:** fieldwise adjudication and mandatory literal-quote re-audit supersede the initial whole-record merge reported in v0.1. The corrected 1,200-row calibration numbers below are current. These are same-model exploratory labels, not human validation.
 
 ## Bottom line
 
-The complete 1,200-record probability sample has been reviewed in two independent, provider-blind GPT-5.6-Sol passes and every key-field disagreement has received a third adjudication pass. The final result contains **220 evidence-qualified domestic producer (EQDP) company-capability-state pairs**, 639 negative pairs, and 341 unresolved pairs. The sampling-weighted EQDP rate is **18.35%** with a stratified bootstrap 95% interval of **16.33%–20.35%**.
+The complete 1,200-record probability sample has been reviewed in two provider-blind GPT-5.6-Sol passes; A/B-agreed key fields are locked and disputed fields receive a third same-model pass. Literal-quote re-audit downgraded six provisional positives. The corrected result contains **214 provisional EQDP page-support pairs**, 677 no pairs, and 309 unclear pairs. The sampling-weighted positive-label rate is **17.84%** with a stratified bootstrap 95% interval of **15.84%–19.86%**.
 
-This is evidence that the cross-industry search process surfaced a meaningful number of source pages that support a specific manufacturing capability and production presence in the queried state. It is not evidence of 220 distinct companies, 220 SMEs, procurement qualification, available production capacity, or national supplier coverage.
+This is a model-applied estimate within the sample of constructed pairs. It is not evidence of 214 distinct companies, SMEs, procurement qualification, available production capacity, national supplier coverage, or factual verification of page claims.
 
 ## Review design
 
 - Probability sample: 1,200 company-capability-state pairs from 6,164 eligible pairs.
 - Reviewer A: GPT-5.6-Sol, conservative evidence-first prompt, 1,200 rows.
 - Reviewer B: GPT-5.6-Sol, independently shuffled batches and adversarial-falsification prompt, 1,200 rows.
-- Adjudication: all 631 rows with any disagreement across ten key fields received Reviewer C re-evaluation from the same frozen evidence.
+- Adjudication: all 631 rows with any disagreement across ten key fields received Reviewer C re-evaluation from the same frozen evidence; only A/B-disputed fields use C in the corrected merge.
 - Search provider and rank were absent from all review inputs.
 - Browsing and tools were disabled; reviewers could use only frozen original-page excerpts.
 - The model, evidence generation, prompts, schema, and batch size were frozen before the full run.
@@ -47,42 +49,34 @@ Queried-state production presence was the main substantive source of disagreemen
 
 | Final label | Sample count | Share of sample |
 |---|---:|---:|
-| Yes | 220 | 18.33% |
-| No | 639 | 53.25% |
-| Unclear | 341 | 28.42% |
+| Yes | 214 | 17.83% |
+| No | 677 | 56.42% |
+| Unclear | 309 | 25.75% |
 
-The weighted yes rate is 18.35%. Positive rows represent 217 unique source pages and 200 unique registrable domains. Repeated domains can legitimately represent different capability-state pairs.
+The weighted yes rate is 17.84%. Positive rows represent 211 unique destination pages and 194 unique registrable domains. Repeated domains can legitimately represent different capability-state pairs.
 
 ### Positive production presence
 
 | Production evidence class | Positive pairs |
 |---|---:|
-| Industrial facility confirmed | 145 |
-| Job shop or workshop confirmed | 73 |
+| Industrial facility confirmed | 141 |
+| Job shop or workshop confirmed | 71 |
 | Owner/home production confirmed | 2 |
 
-All 220 positive rows passed a deterministic state check: the adjudicated production state matched the queried state.
+All 214 positive rows passed an internal state-field check: the model-produced production state matched the queried state. This is not external factual verification.
 
-### What the evidence says about microbusinesses
+### Superseded general-review scale fields
 
-| Supported scale band | Positive pairs |
-|---|---:|
-| Owner-only/nonemployer | 0 |
-| Micro employer, 1–9 | 1 |
-| Small employer, 10–99 | 4 |
-| 100+ supported | 0 |
-| Unknown | 215 |
-
-The search process surfaced small-looking and owner-operated businesses, but public web evidence almost never proved employee count or formal nonemployer status. Therefore the present study supports **producer discovery**, not a claim that it discovered a known number of SMEs or sole proprietors. This missing-size-evidence problem is itself a central finding and motivates linkage to authoritative registries or direct business confirmation.
+The general-review scale fields are not used as firm-size results. The corrected destination-page-only size pipeline and entity-level currentness/scope review are reported in `docs/full_census_results_v0_1.md`.
 
 ### Positive legal form
 
 | Legal form | Positive pairs |
 |---|---:|
-| Corporation | 65 |
+| Corporation | 63 |
 | LLC | 16 |
 | Other supported | 4 |
-| Unknown | 135 |
+| Unknown | 131 |
 | Sole proprietor explicitly supported | 0 |
 
 Absence of an explicit sole-proprietor label must not be interpreted as proof that none of the producers are sole proprietors. It means the frozen pages did not establish that legal form.
@@ -92,17 +86,17 @@ Absence of an explicit sole-proprietor label must not be interpreted as proof th
 | Industry family | Sample rows | Final yes | Weighted yes rate |
 |---|---:|---:|---:|
 | Precision metal | 125 | 57 | 45.61% |
-| Wood and industrial packaging | 117 | 34 | 29.03% |
-| Electronics | 108 | 26 | 24.09% |
-| Remanufacturing | 103 | 22 | 21.34% |
+| Wood and industrial packaging | 117 | 33 | 28.18% |
+| Electronics | 108 | 25 | 23.16% |
+| Remanufacturing | 103 | 20 | 19.40% |
 | Polymers and composites | 122 | 25 | 20.50% |
-| Additive manufacturing/tooling | 139 | 28 | 20.16% |
-| Industrial textiles | 117 | 12 | 10.23% |
+| Additive manufacturing/tooling | 139 | 27 | 19.44% |
+| Industrial textiles | 117 | 11 | 9.40% |
 | Contract consumer products | 113 | 11 | 9.72% |
 | Battery | 141 | 3 | 2.13% |
 | Semiconductor | 115 | 2 | 1.74% |
 
-The low semiconductor and battery rates do not prove those sectors lack domestic suppliers. They show that this broad web-search and evidence protocol rarely established a capability-specific producer **and production presence in the queried state** for those advanced-sector tasks. Precision metal and local production services were far easier to verify from public pages.
+These sample-weighted fractions differ across selected tasks but are not estimates of national industry effects or factual producer prevalence.
 
 ## Query-intent association
 
@@ -110,11 +104,11 @@ The sampling design assigns a candidate to the micro/local stratum if it was fou
 
 | Sampling stratum | Sample rows | Yes | Weighted yes rate |
 |---|---:|---:|---:|
-| Direct only | 275 | 44 | 15.96% |
-| Micro/local observed | 586 | 132 | 22.55% |
-| Small-batch observed without micro/local | 339 | 44 | 13.03% |
+| Direct only | 275 | 43 | 15.60% |
+| Mixed ownership/locality observed | 586 | 128 | 21.84% |
+| Small-batch observed without mixed ownership/locality | 339 | 43 | 12.68% |
 
-Micro/local-observed candidates had the highest evidence-qualified rate. A future controlled experiment is needed before claiming that micro/local wording causes the improvement.
+Mixed ownership/locality-observed pairs had the highest descriptive weighted positive-label rate. A future controlled experiment is needed before making any causal wording claim.
 
 ## Why candidates failed
 
@@ -122,9 +116,9 @@ The leading final exclusion reasons were:
 
 | Exclusion reason | Non-positive pairs |
 |---|---:|
-| Insufficient evidence | 351 |
-| Wrong state / no queried-state production proof | 218 |
-| Capability mismatch | 109 |
+| Insufficient evidence | 355 |
+| Wrong state / no queried-state production proof | 219 |
+| Capability mismatch | 110 |
 | Source unavailable | 75 |
 | Distributor/reseller/broker | 67 |
 | Nonmanufacturing service | 62 |
@@ -132,34 +126,33 @@ The leading final exclusion reasons were:
 | Generic sector claim only | 29 |
 | Other reasons | 36 |
 
-The dominant problem was not merely irrelevant search results. It was the inability to prove all required elements—especially state-level production—from public evidence.
+The largest model-assigned categories were insufficient excerpt evidence and missing queried-state production support.
 
 ## Citation and evidence QA
 
-- 220/220 positive rows had an adjudicated production state matching the queried state.
-- 203/220 positive evidence quotes could be traced as normalized exact substrings of the frozen evidence excerpt.
-- 17/220 quotes contained model compression, concatenation, or light paraphrase and are marked `quote_audit_pass=false`. They must not be used as verbatim quotations in a paper or exhibit without returning to the frozen page.
+- 214/214 positive rows had a model-produced production state matching the queried state.
+- 214/214 positive evidence quotes passed the normalized literal-substring audit after re-audit.
+- These checks establish internal and string consistency, not factual truth or human validity.
 - The row-level corpus, model outputs, and source pages remain private. Public artifacts may include methods, schemas, aggregate tables, hashes, and approved illustrative cases only.
 
 ## What can and cannot be claimed
 
-### Supported by this first version
+### Supported by the corrected exploratory version
 
-- A 960-query, cross-industry Brave/You search process produced 4,638 unique source URLs.
-- A provider-blind, weighted 1,200-record sample yielded an estimated 18.35% evidence-qualified domestic producer rate.
-- Public evidence quality varies sharply by industry; local production services are easier to verify than advanced-sector capability-and-location pairs.
-- Micro/local-observed candidates were more likely to pass than the other descriptive strata, but the design is not causal.
-- Public pages are inadequate for reliable named-business micro/nonemployer classification in most cases.
+- A 960-query Brave/You process produced 4,638 unique destination URLs, of which 3,383 returned HTTP 2xx.
+- In the provider-blind 1,200-pair sample, the model-applied weighted positive-label rate was 17.84% (95% bootstrap 15.84%–19.86%).
+- The result is corpus-conditional and exploratory; selected task fractions and query-intent associations are descriptive only.
+- Firm-size claims must use the separately regenerated destination-page-only entity-size screen.
 
 ### Not supported yet
 
 - The number or share of all U.S. suppliers discovered.
-- That 220 unique companies were found; the unit is a company-capability-state pair.
+- That 214 unique companies were found; the unit is a source–capability–state pair with at most one model-assigned focal business.
 - That most positives are SMEs, microbusinesses, sole proprietors, procurement-ready, available, or interested.
 - That Brave or You has higher qualified-supplier precision; provider incidence was not retained through human review under the ordinary Brave terms.
 - Human expert validation, user adoption, economic impact, or improved procurement outcomes.
 
 ## Required next validation
 
-The strongest next step is not another search expansion. It is a domain-expert audit of a stratified subset containing positives, negatives, and unclear cases, followed by authoritative size/affiliate verification and a small real-user supplier-scouting pilot. Until that occurs, this document is an **AI cross-review result**, not external validation.
+The strongest next step is not another search expansion. It is a domain-expert audit of a stratified subset containing positives, negatives, and unclear cases, followed by the preregistered entity-resolution precision audit, authoritative size/affiliate verification, and a small real-user producer-scouting pilot. Until that occurs, this document is an **exploratory same-model calibration result**, not a validated benchmark or external validation.
 

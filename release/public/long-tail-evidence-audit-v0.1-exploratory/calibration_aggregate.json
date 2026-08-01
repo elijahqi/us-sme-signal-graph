@@ -1,0 +1,404 @@
+{
+  "ab_field_agreement": {
+    "capability_match": {
+      "agree": 1116,
+      "cohen_kappa": 0.8624258901372466,
+      "raw_agreement": 0.93
+    },
+    "commercial_offering": {
+      "agree": 1119,
+      "cohen_kappa": 0.7925098621855627,
+      "raw_agreement": 0.9325
+    },
+    "direct_producer_status": {
+      "agree": 1135,
+      "cohen_kappa": 0.8777804937668051,
+      "raw_agreement": 0.9458333333333333
+    },
+    "eqdp": {
+      "agree": 967,
+      "cohen_kappa": 0.6376036737344318,
+      "raw_agreement": 0.8058333333333333
+    },
+    "identity_status": {
+      "agree": 1141,
+      "cohen_kappa": 0.7592942016421029,
+      "raw_agreement": 0.9508333333333333
+    },
+    "legal_form": {
+      "agree": 1165,
+      "cohen_kappa": 0.9381845691022928,
+      "raw_agreement": 0.9708333333333333
+    },
+    "primary_exclusion_reason": {
+      "agree": 994,
+      "cohen_kappa": 0.7937402846417447,
+      "raw_agreement": 0.8283333333333334
+    },
+    "production_presence": {
+      "agree": 971,
+      "cohen_kappa": 0.7277930434679246,
+      "raw_agreement": 0.8091666666666667
+    },
+    "scale_band": {
+      "agree": 1188,
+      "cohen_kappa": 0.746657283603097,
+      "raw_agreement": 0.99
+    },
+    "web_visibility": {
+      "agree": 1112,
+      "cohen_kappa": 0.7129436325678495,
+      "raw_agreement": 0.9266666666666666
+    }
+  },
+  "all_exclusion_reasons": {
+    "capability_mismatch": 110,
+    "distributor_reseller_or_broker": 67,
+    "foreign_production_only": 33,
+    "generic_sector_claim_only": 29,
+    "historical_or_inactive": 3,
+    "identity_conflict": 5,
+    "insufficient_evidence": 355,
+    "nonmanufacturing_service": 62,
+    "not_operating_business": 15,
+    "office_warehouse_or_lab_only": 13,
+    "source_unavailable": 75,
+    "wrong_state": 219
+  },
+  "dimensions": {
+    "industry_family": {
+      "additive_tooling": {
+        "no": 81,
+        "sample_rows": 139,
+        "unclear": 31,
+        "weighted_yes_rate": 0.19440398929577246,
+        "yes": 27
+      },
+      "battery": {
+        "no": 107,
+        "sample_rows": 141,
+        "unclear": 31,
+        "weighted_yes_rate": 0.021256471525293613,
+        "yes": 3
+      },
+      "contract_consumer": {
+        "no": 70,
+        "sample_rows": 113,
+        "unclear": 32,
+        "weighted_yes_rate": 0.09719098419475053,
+        "yes": 11
+      },
+      "electronics": {
+        "no": 55,
+        "sample_rows": 108,
+        "unclear": 28,
+        "weighted_yes_rate": 0.23159984600992942,
+        "yes": 25
+      },
+      "industrial_textiles": {
+        "no": 79,
+        "sample_rows": 117,
+        "unclear": 27,
+        "weighted_yes_rate": 0.09370615243341088,
+        "yes": 11
+      },
+      "polymers_composites": {
+        "no": 59,
+        "sample_rows": 122,
+        "unclear": 38,
+        "weighted_yes_rate": 0.20498732789991755,
+        "yes": 25
+      },
+      "precision_metal": {
+        "no": 44,
+        "sample_rows": 125,
+        "unclear": 24,
+        "weighted_yes_rate": 0.4560813863139608,
+        "yes": 57
+      },
+      "remanufacturing": {
+        "no": 53,
+        "sample_rows": 103,
+        "unclear": 30,
+        "weighted_yes_rate": 0.19400543171647835,
+        "yes": 20
+      },
+      "semiconductor": {
+        "no": 77,
+        "sample_rows": 115,
+        "unclear": 36,
+        "weighted_yes_rate": 0.017388575015735735,
+        "yes": 2
+      },
+      "wood_packaging": {
+        "no": 52,
+        "sample_rows": 117,
+        "unclear": 32,
+        "weighted_yes_rate": 0.28180044752986344,
+        "yes": 33
+      }
+    },
+    "sampling_stratum": {
+      "additive_tooling|direct": {
+        "no": 16,
+        "sample_rows": 31,
+        "unclear": 9,
+        "weighted_yes_rate": 0.19354838709677422,
+        "yes": 6
+      },
+      "additive_tooling|micro_local": {
+        "no": 29,
+        "sample_rows": 61,
+        "unclear": 18,
+        "weighted_yes_rate": 0.22950819672131148,
+        "yes": 14
+      },
+      "additive_tooling|small_batch": {
+        "no": 36,
+        "sample_rows": 47,
+        "unclear": 4,
+        "weighted_yes_rate": 0.14893617021276598,
+        "yes": 7
+      },
+      "battery|direct": {
+        "no": 33,
+        "sample_rows": 43,
+        "unclear": 10,
+        "weighted_yes_rate": 0.0,
+        "yes": 0
+      },
+      "battery|micro_local": {
+        "no": 44,
+        "sample_rows": 62,
+        "unclear": 16,
+        "weighted_yes_rate": 0.03225806451612903,
+        "yes": 2
+      },
+      "battery|small_batch": {
+        "no": 30,
+        "sample_rows": 36,
+        "unclear": 5,
+        "weighted_yes_rate": 0.02777777777777778,
+        "yes": 1
+      },
+      "contract_consumer|direct": {
+        "no": 11,
+        "sample_rows": 19,
+        "unclear": 7,
+        "weighted_yes_rate": 0.052631578947368425,
+        "yes": 1
+      },
+      "contract_consumer|micro_local": {
+        "no": 40,
+        "sample_rows": 62,
+        "unclear": 14,
+        "weighted_yes_rate": 0.12903225806451613,
+        "yes": 8
+      },
+      "contract_consumer|small_batch": {
+        "no": 19,
+        "sample_rows": 32,
+        "unclear": 11,
+        "weighted_yes_rate": 0.0625,
+        "yes": 2
+      },
+      "electronics|direct": {
+        "no": 12,
+        "sample_rows": 22,
+        "unclear": 3,
+        "weighted_yes_rate": 0.3181818181818182,
+        "yes": 7
+      },
+      "electronics|micro_local": {
+        "no": 21,
+        "sample_rows": 50,
+        "unclear": 15,
+        "weighted_yes_rate": 0.27999999999999997,
+        "yes": 14
+      },
+      "electronics|small_batch": {
+        "no": 22,
+        "sample_rows": 36,
+        "unclear": 10,
+        "weighted_yes_rate": 0.11111111111111112,
+        "yes": 4
+      },
+      "industrial_textiles|direct": {
+        "no": 16,
+        "sample_rows": 27,
+        "unclear": 10,
+        "weighted_yes_rate": 0.037037037037037035,
+        "yes": 1
+      },
+      "industrial_textiles|micro_local": {
+        "no": 30,
+        "sample_rows": 50,
+        "unclear": 12,
+        "weighted_yes_rate": 0.15999999999999998,
+        "yes": 8
+      },
+      "industrial_textiles|small_batch": {
+        "no": 33,
+        "sample_rows": 40,
+        "unclear": 5,
+        "weighted_yes_rate": 0.049999999999999996,
+        "yes": 2
+      },
+      "polymers_composites|direct": {
+        "no": 15,
+        "sample_rows": 27,
+        "unclear": 5,
+        "weighted_yes_rate": 0.25925925925925924,
+        "yes": 7
+      },
+      "polymers_composites|micro_local": {
+        "no": 27,
+        "sample_rows": 62,
+        "unclear": 20,
+        "weighted_yes_rate": 0.24193548387096772,
+        "yes": 15
+      },
+      "polymers_composites|small_batch": {
+        "no": 17,
+        "sample_rows": 33,
+        "unclear": 13,
+        "weighted_yes_rate": 0.09090909090909091,
+        "yes": 3
+      },
+      "precision_metal|direct": {
+        "no": 10,
+        "sample_rows": 26,
+        "unclear": 4,
+        "weighted_yes_rate": 0.46153846153846156,
+        "yes": 12
+      },
+      "precision_metal|micro_local": {
+        "no": 24,
+        "sample_rows": 66,
+        "unclear": 13,
+        "weighted_yes_rate": 0.4393939393939394,
+        "yes": 29
+      },
+      "precision_metal|small_batch": {
+        "no": 10,
+        "sample_rows": 33,
+        "unclear": 7,
+        "weighted_yes_rate": 0.4848484848484848,
+        "yes": 16
+      },
+      "remanufacturing|direct": {
+        "no": 7,
+        "sample_rows": 22,
+        "unclear": 10,
+        "weighted_yes_rate": 0.22727272727272727,
+        "yes": 5
+      },
+      "remanufacturing|micro_local": {
+        "no": 26,
+        "sample_rows": 55,
+        "unclear": 18,
+        "weighted_yes_rate": 0.19999999999999998,
+        "yes": 11
+      },
+      "remanufacturing|small_batch": {
+        "no": 20,
+        "sample_rows": 26,
+        "unclear": 2,
+        "weighted_yes_rate": 0.15384615384615385,
+        "yes": 4
+      },
+      "semiconductor|direct": {
+        "no": 13,
+        "sample_rows": 34,
+        "unclear": 21,
+        "weighted_yes_rate": 0.0,
+        "yes": 0
+      },
+      "semiconductor|micro_local": {
+        "no": 40,
+        "sample_rows": 54,
+        "unclear": 12,
+        "weighted_yes_rate": 0.03703703703703704,
+        "yes": 2
+      },
+      "semiconductor|small_batch": {
+        "no": 24,
+        "sample_rows": 27,
+        "unclear": 3,
+        "weighted_yes_rate": 0.0,
+        "yes": 0
+      },
+      "wood_packaging|direct": {
+        "no": 13,
+        "sample_rows": 24,
+        "unclear": 7,
+        "weighted_yes_rate": 0.16666666666666666,
+        "yes": 4
+      },
+      "wood_packaging|micro_local": {
+        "no": 22,
+        "sample_rows": 64,
+        "unclear": 18,
+        "weighted_yes_rate": 0.375,
+        "yes": 24
+      },
+      "wood_packaging|small_batch": {
+        "no": 17,
+        "sample_rows": 29,
+        "unclear": 7,
+        "weighted_yes_rate": 0.17241379310344826,
+        "yes": 5
+      }
+    }
+  },
+  "eqdp": {
+    "positive_production_state_mismatches": 0,
+    "positive_quote_audit_fail": 0,
+    "positive_quote_audit_pass": 214,
+    "unique_positive_domains": 194,
+    "unique_positive_source_pages": 211,
+    "unweighted_counts": {
+      "no": 677,
+      "unclear": 309,
+      "yes": 214
+    },
+    "weighted_yes_rate": 0.1784349833672154,
+    "weighted_yes_rate_bootstrap_95": [
+      0.15842313493336677,
+      0.19860011164783523
+    ]
+  },
+  "final_table_sha256": "87051835c4a381e4b10c9fe3c531b54d1ad331a78ba5a172b8da87a99305c73a",
+  "label_unit_warning": "The legacy eqdp field is a model-applied five-component page-support label, not factual verification, procurement qualification, or legal status. Production-presence enum names ending in _confirmed mean page-supported under the model protocol.",
+  "method": {
+    "a_batches": 120,
+    "a_retry_batches": 2,
+    "b_batches": 120,
+    "b_retry_batches": 3,
+    "c_batches": 64,
+    "c_retry_batches": 2,
+    "human_expert_validation": false,
+    "independent_models": false,
+    "key_field_disagreements_adjudicated": 631,
+    "model": "GPT-5.6-Sol",
+    "reviewer_a_rows": 1200,
+    "reviewer_b_rows": 1200,
+    "separate_same_model_passes": true
+  },
+  "positive_legal_form": {
+    "corporation": 63,
+    "other": 4,
+    "other_llc": 16,
+    "unknown": 131
+  },
+  "positive_production_presence": {
+    "industrial_facility_confirmed": 141,
+    "job_shop_or_workshop_confirmed": 71,
+    "owner_or_home_production_confirmed": 2
+  },
+  "positive_scale_band": {
+    "micro_employer_1_9_supported": 1,
+    "small_employer_10_99_supported": 4,
+    "unknown": 209
+  }
+}

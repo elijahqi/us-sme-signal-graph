@@ -1,0 +1,92 @@
+{
+  "ab_agreement": {
+    "currentness": {
+      "agree": 27,
+      "kappa": 0.8925925925925925,
+      "raw": 0.9310344827586207
+    },
+    "descriptive_scale_band": {
+      "agree": 26,
+      "kappa": 0.8592233009708738,
+      "raw": 0.896551724137931
+    },
+    "employee_evidence_status": {
+      "agree": 26,
+      "kappa": 0.867175572519084,
+      "raw": 0.896551724137931
+    },
+    "employee_lower": {
+      "agree": 28,
+      "kappa": 0.9637046307884857,
+      "raw": 0.9655172413793104
+    },
+    "employee_upper": {
+      "agree": 28,
+      "kappa": 0.953968253968254,
+      "raw": 0.9655172413793104
+    },
+    "evidence_scope": {
+      "agree": 27,
+      "kappa": 0.6419753086419753,
+      "raw": 0.9310344827586207
+    },
+    "federal_small_business_representation": {
+      "agree": 29,
+      "kappa": 1.0,
+      "raw": 1.0
+    },
+    "owner_only_supported": {
+      "agree": 29,
+      "kappa": 1.0,
+      "raw": 1.0
+    }
+  },
+  "ab_semantic_disagreements": 5,
+  "automatic_no_size_signal_entities": 761,
+  "candidate_entities_reviewed": 29,
+  "currentness": {
+    "current_explicit": 10,
+    "historical": 4,
+    "not_applicable": 763,
+    "undated_present_tense": 13
+  },
+  "descriptive_scale_band": {
+    "bounded_but_crosses_bands": 9,
+    "large_500_plus_supported": 2,
+    "mid_100_499_supported": 2,
+    "small_10_99_supported": 10,
+    "unknown": 767
+  },
+  "employee_evidence_status": {
+    "approximate": 2,
+    "exact": 7,
+    "historical_only": 4,
+    "lower_bound": 11,
+    "none": 763,
+    "range": 3
+  },
+  "entities_wholly_within_one_descriptive_employee_band": 14,
+  "entities_with_current_owner_only_support": 0,
+  "entities_with_named_or_explicit_federal_small_business_page_representation": 3,
+  "entities_with_nonhistorical_numerical_employee_evidence": 23,
+  "evidence_scope": {
+    "multi_state_partial_entity": 1,
+    "not_applicable": 763,
+    "operating_entity": 26
+  },
+  "external_sba_small_verification_performed": false,
+  "externally_verified_sba_small_entities": null,
+  "federal_small_business_representation": {
+    "explicit_sam_or_sba_page_claim": 2,
+    "generic_or_ambiguous_claim": 5,
+    "named_federal_program_page_claim": 1,
+    "none": 782
+  },
+  "final_table_sha256": "aae83ef9e5d7ceb60c15e761a56962faaa752ea4f57d82b54bf078386704cf11",
+  "interpretation_warning": "Descriptive employee bands and page-reported federal representations are not SBA size determinations. Activity-specific NAICS, affiliates, current authoritative registration, and applicable SBA thresholds were not fully verified. External SBA verification was not performed; null is not zero.",
+  "positive_operating_entities": 790,
+  "quote_audit_eligible_entities": 29,
+  "quote_audit_fail": 0,
+  "quote_audit_not_applicable": 761,
+  "quote_audit_pass": 29
+}

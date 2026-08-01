@@ -69,6 +69,9 @@ def summarize(private: Path = PRIVATE) -> dict:
             counter["url_intersection"] += int(row["canonical_url_intersection_count"])
             counter["url_union"] += int(row["canonical_url_union_count"])
             counter["domain_intersection"] += int(row["domain_intersection_count"])
+            union = int(row["canonical_url_union_count"])
+            if union:
+                counter["query_jaccard_sum"] += int(row["canonical_url_intersection_count"]) / union
 
     statuses = Counter(row["http_status"] or "0" for row in sources)
     robots = Counter(row["robots_status"] for row in sources)
@@ -76,6 +79,10 @@ def summarize(private: Path = PRIVATE) -> dict:
     you_rows = sum(int(row["you_returned_count"]) for row in aggregates)
     url_intersection = sum(int(row["canonical_url_intersection_count"]) for row in aggregates)
     url_union = sum(int(row["canonical_url_union_count"]) for row in aggregates)
+    per_query_jaccard = [
+        int(row["canonical_url_intersection_count"]) / int(row["canonical_url_union_count"])
+        for row in aggregates if int(row["canonical_url_union_count"])
+    ]
     summary = {
         "run_id": "formal_v0_3",
         "frozen_commit": "9fb6d4280ec42aa858f8219c4f4dc310a880f41a",
@@ -86,7 +93,8 @@ def summarize(private: Path = PRIVATE) -> dict:
         "you_failed_queries": sum(row["you_call_status"] != "success" for row in aggregates),
         "query_level_url_intersection_sum": url_intersection,
         "query_level_url_union_sum": url_union,
-        "query_level_url_jaccard": url_intersection / url_union if url_union else None,
+        "pooled_query_url_jaccard": url_intersection / url_union if url_union else None,
+        "macro_mean_query_url_jaccard": (sum(per_query_jaccard) / len(per_query_jaccard)) if per_query_jaccard else None,
         "unique_original_source_urls": len(sources),
         "query_source_links": len(links),
         "source_fetch_2xx": sum(200 <= int(row["http_status"] or 0) < 300 for row in sources),
@@ -96,7 +104,14 @@ def summarize(private: Path = PRIVATE) -> dict:
         "provider_payloads_stored": False,
         "brave_raw_lifecycle": "transient_process_memory_only",
         "dimensions": {
-            dimension: {key: dict(value) for key, value in sorted(groups.items())}
+            dimension: {
+                key: {
+                    **dict(value),
+                    "pooled_url_jaccard": value["url_intersection"] / value["url_union"] if value["url_union"] else None,
+                    "macro_mean_query_url_jaccard": value["query_jaccard_sum"] / value["queries"] if value["queries"] else None,
+                }
+                for key, value in sorted(groups.items())
+            }
             for dimension, groups in dimensions.items()
         },
         "private_artifact_sha256": {

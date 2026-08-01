@@ -1,0 +1,22 @@
+{
+  "auto_exact_cross_domain_edges": 15,
+  "external_entity_resolution_precision_audit_completed": false,
+  "operating_entities_sha256": "353f48166f561b9d4dd8d80f72ad040b20205e25c3786a9a464cdb81bf5d09db",
+  "pair_mapping_sha256": "93e202f3c6f91140c400150e2464e1035b92a67a3931167d5a579f3a6ad3951c",
+  "point_estimate_policy": "do not merge unresolved pairs",
+  "positive_pairs": 1148,
+  "pre_cross_domain_corporate_units": 802,
+  "pre_cross_domain_operating_units": 806,
+  "provisional_corporate_group_clusters": 785,
+  "provisional_operating_entity_clusters": 790,
+  "reviewed_domain_clusters": 796,
+  "unresolved_cross_domain_pairs": 0,
+  "unresolved_pair_sensitivity_corporate_clusters": [
+    785,
+    785
+  ],
+  "unresolved_pair_sensitivity_operating_clusters": [
+    790,
+    790
+  ]
+}
