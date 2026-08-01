@@ -34,3 +34,10 @@ This log separates the executed exploratory AI review from the original human-va
 
 - Initial full-corpus result retained 71 positive rows whose evidence quotes were compressed, concatenated, or paraphrased rather than normalized literal substrings.
 - Corrective analysis: blind A/B re-audit over the same frozen evidence excerpts with a mandatory contiguous literal quote for any positive; semantic disagreements received fieldwise C. Thirty-one rows were downgraded to unclear, leaving 1,148 provisional positive pair labels with 1,148 literal-quote passes. Entity and size analyses were regenerated from that table.
+
+## MRD-007 — Probability-sample design and bootstrap implementation differ from protocol wording
+
+- Protocol v0.3 said the 1,200-row probability sample would balance industry, intent, state, provider incidence, and rank band, and that confidence intervals would use stratified bootstrap resampling of query units.
+- Executed sampler: proportional allocation across 30 industry-family × primary-intent strata, deterministic row selection within strata, and inverse-inclusion weights. State, provider incidence, and rank band were not sampling strata.
+- Executed interval: 10,000 pair-row resamples within the implemented sampling strata, not query-unit resamples.
+- Consequence: the weighted 17.84% positive-label estimate and 15.84%–19.86% bootstrap interval are retained only as exploratory diagnostics. The interval is not called protocol-conformant or confirmatory. Exact full-corpus model-label counts supersede sample inference for description of the 6,164 constructed pairs.

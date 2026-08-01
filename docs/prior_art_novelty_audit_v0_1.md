@@ -12,7 +12,7 @@ Supplier discovery, manufacturing knowledge graphs, capability inference, SME di
 
 The defensible contribution is a **corpus-conditional evidence audit**: a frozen cross-industry and cross-state query lattice, paired general-web retrieval, direct destination-page fetching, model review of 6,164 pipeline-constructed source–capability–state pairs, explicit decomposition of producer/capability/location/commercial/size evidence, provisional entity clustering, and measurement of how often frozen excerpts support each required element. It does not yet constitute a validated benchmark and does not claim national supplier coverage or a new supplier-search function.
 
-The reviewed manufacturing sources did not report the same corpus-conditional evidence decomposition. We make no exact-combination or first-of-kind claim; adjacent literatures on information-retrieval pooling, LLM-as-judge validation, web-corpus construction, and entity-resolution benchmarks require targeted review before submission.
+The reviewed manufacturing sources did not report the same corpus-conditional evidence decomposition. We make no exact-combination or first-of-kind claim. An initial adjacent-method review now anchors incomplete IR judgments, LLM-as-judge bias and human comparison, web-corpus documentation, and entity-resolution benchmarking. It is not a systematic review, and venue-oriented literature review remains required before submission.
 
 ## Search and verification method
 
@@ -37,6 +37,13 @@ Legend: **Yes** means explicitly demonstrated in the reviewed source; **Partial*
 | Thomasnet Smart Search | Supplier search by products, services, capabilities, certifications and location; sorting by company size/revenue/year; company-type and other filters | Official commercial platform and supplier profiles | No public paired general-web benchmark located | Partial through profile/search fields | Company size can be sorted, but public help does not establish the provenance/error rate required here | Proprietary platform process | Capability/location/size search functions already exist commercially. Novelty cannot be a feature checklist. |
 | Qi et al. (2026), W→K→W v4 | Iterative KG-guided crawling and coverage estimation in semiconductor equipment | 144 crawled pages; 115 unique company names; 19 true positives against a curated 195-company reference; one NAICS sector | No cross-industry paired-search benchmark | No strict EQDP decomposition; relation precision used model annotation | No independent firm-size audit | Limited name normalization and proof-of-concept evaluation | The present benchmark is an evaluation foundation and extension, not evidence that W→K→W feedback already generalizes. |
 | Present study | Model-applied page-support and evidence-availability decomposition in a frozen query-output corpus | 960 queries, 19,190 returned rows, 4,638 destination URLs, 6,164 constructed pairs, 1,148 provisional positive pair labels, and 790 provisional operating-entity clusters | Paired top-10 overlap audit | **Model-applied, not human validated** | Original-page-only screen, separate from producer label | Full constructed-pair review; entity precision gate still unmet | Contribution is the empirical separation of units and failure modes, not a validated benchmark, new search feature, or exhaustive directory. |
+
+## Adjacent-method anchors added to the manuscript
+
+- Buckley and Voorhees (2004) show that incomplete relevance judgments require explicit evaluation treatment. The present corpus evaluates the finite constructed pairs and does not treat unobserved or unfetched pages as irrelevant ground truth.
+- Dodge et al. (2021) demonstrate that web-corpus collection and filtering decisions require documentation. The present artifacts expose the query lattice, fetch accounting, unit definitions, deviations, and rights boundary, while acknowledging that the closed row-level corpus limits independent audit.
+- Zheng et al. (2023) document LLM-judge biases and compare judges with human preferences. The present A/B/C passes are therefore reported as same-model stability only, with a mandatory future human-validation gate.
+- Berry et al. (2018) motivate entity-resolution benchmarks that measure solution quality at an appropriate unit. The present operating-entity and corporate-group cluster counts remain provisional until the presampled precision audit is executed.
 
 ## Claim boundary
 
@@ -72,6 +79,10 @@ Legend: **Yes** means explicitly demonstrated in the reviewed source; **Partial*
 8. NIST MEP. “Supplier Scouting.” <https://www.nist.gov/mep/supply-chain/supplier-scouting>.
 9. Thomas. “How to use Smart Search.” <https://help.thomasnet.com/search-for-suppliers>.
 10. Qi, Y., Qi, Y., & Wagh, T. (2026). “Coverage-Aware Web Crawling for Domain-Specific Supplier Discovery via a Web–Knowledge–Web Pipeline.” <https://doi.org/10.1145/3813822.3814125>.
+11. Buckley, C., & Voorhees, E. M. (2004). “Retrieval Evaluation with Incomplete Information.” *Proceedings of SIGIR '04*, 25–32. <https://doi.org/10.1145/1008992.1009000>.
+12. Dodge, J., Sap, M., Marasović, A., Agnew, W., Ilharco, G., Groeneveld, D., Mitchell, M., & Gardner, M. (2021). “Documenting Large Webtext Corpora: A Case Study on the Colossal Clean Crawled Corpus.” *Proceedings of EMNLP*, 1286–1305. <https://aclanthology.org/2021.emnlp-main.98/>.
+13. Zheng, L., et al. (2023). “Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena.” *Advances in Neural Information Processing Systems*, 36, 46595–46623. <https://papers.nips.cc/paper_files/paper/2023/hash/91f18a1287b398d378ef22505bf41832-Abstract-Datasets_and_Benchmarks.html>.
+14. Berry, J. W., Phillips, C. A., Kincher-Winoto, K., Getoor, L., & Augustine, E. (2018). “Entity Resolution at Large Scale: Benchmarking and Algorithmics.” Sandia National Laboratories, SAND-2018-14090. <https://doi.org/10.2172/1493841>.
 
 ## Residual novelty risks
 
@@ -79,4 +90,5 @@ Legend: **Yes** means explicitly demonstrated in the reviewed source; **Partial*
 - Search indexing is imperfect; differently worded work may not have appeared in either provider.
 - The study uses repeated passes of one model before external expert validation.
 - The closed row-level corpus limits independent record-by-record reproduction.
-- The combined design can be novel while individual components are not; the manuscript must attribute each component's prior art separately.
+- The initial adjacent-method anchors are not a systematic review; differently worded or venue-specific work may still change the framing.
+- The combined design can differ empirically while individual components are established; the manuscript must attribute each component's prior art separately.

@@ -4,7 +4,7 @@
 
 ## Abstract
 
-General web search can return pages about manufacturers, but a returned page is not yet a supplier, a production site, or a small business. We present an exploratory, model-applied evidence audit across selected U.S. manufacturing queries. A frozen lattice combines 40 manufacturing capabilities, eight states, and three query intents, yielding 960 provider-matched queries submitted to Brave and You Search. The providers returned 19,190 ranked rows. Transient processing produced 11,715 query-to-URL union links and 4,638 unique destination URLs; no provider payload was retained. Of those URLs, 3,383 returned HTTP 2xx. The construction pipeline crossed each such URL with capability and queried state inherited from retrieving queries, producing 6,164 source–capability–state pairs; the model assigned at most one focal business name per pair. Two GPT-5.6-Sol passes evaluated each pair against operating-business identity, direct production, capability match, production presence in the queried state, and current commercial offering. A third same-model pass was used fieldwise only where A and B disagreed. A mandatory literal-quote re-audit reduced the provisional positive labels to 1,148 (18.62%); all retained positives had a normalized literal quote in the frozen excerpt. The other labels were 3,799 no (61.63%) and 1,217 unclear (19.74%). Positive pairs resolved to 790 provisional operating-entity clusters and 785 provisional corporate-group clusters; these are not externally validated entity counts. A narrow destination-page size screen found nonhistorical numerical employee evidence for 23 clusters (2.91%); 14 (1.77%) fit wholly within one descriptive employee band, and none received an externally verified SBA-small determination. The organizing observation is that retrieval output, model-applied page support, provisional entity clustering, and firm-size/SBA-status evidence are different measurement layers. Human validation and the preregistered entity-resolution precision audit remain outstanding.
+General web search can return pages about manufacturers, but a returned page is not yet a supplier, a production site, or a small business. We present an exploratory, model-applied evidence audit across selected U.S. manufacturing queries. A frozen lattice combines 40 manufacturing capabilities, eight states, and three query intents, yielding 960 provider-matched queries submitted to Brave and You Search. The providers returned 19,190 ranked rows. Transient processing produced 11,715 query-to-URL union links and 4,638 unique destination URLs; no provider payload was retained. Of those URLs, 3,383 returned HTTP 2xx. The construction pipeline crossed each such URL with capability and queried state inherited from retrieving queries, producing 6,164 source–capability–state pairs; the model assigned at most one focal business name per pair. Two GPT-5.6-Sol passes evaluated each pair against operating-business identity, direct production, capability match, production presence in the queried state, and current commercial offering. A third same-model pass was used fieldwise only where A and B disagreed. A mandatory literal-quote re-audit reduced the provisional positive labels to 1,148 (18.62%); all retained positives had a normalized literal quote in the frozen excerpt. The other labels were 3,799 no (61.63%) and 1,217 unclear (19.74%). Positive pairs resolved to 790 provisional operating-entity clusters and 785 provisional corporate-group clusters; these are not externally validated entity counts. A narrow destination-page size screen found nonhistorical numerical employee evidence for 23 clusters (2.91%); 14 (1.77%) fit wholly within one descriptive employee band. External SBA-small verification was not performed. The organizing observation is that retrieval output, model-applied page support, provisional entity clustering, and firm-size/SBA-status evidence are different measurement layers. Human validation and the preregistered entity-resolution precision audit remain outstanding.
 
 ## 1. Introduction
 
@@ -42,7 +42,13 @@ Yagci et al. compared top-10 results from four search engines for 3,537 queries,
 
 NIST MEP's Supplier Scouting service identifies U.S. manufacturers with requested production and technical capabilities through a national network [8]. Thomasnet supports search and filtering by capability, location, certifications, company type, and company size [9]. These systems show both the national demand and existing operational solutions. Our evidence audit is complementary: it measures what the same-model protocol labels as supported within frozen destination-page excerpts and makes failure modes explicit.
 
-### 2.3 Relationship to the W→K→W pipeline
+### 2.3 Evaluation, web-corpus, and entity-resolution context
+
+Information-retrieval research has long treated incomplete relevance judgments as a measurement problem rather than assuming that unjudged documents are irrelevant [12]. The present corpus is not a pooled relevance collection: it evaluates the finite pairs constructed from two top-10 outputs and cannot estimate relevance outside that construction. Work on documenting C4 likewise shows how collection and filtering choices shape web corpora [13]. Our unit dictionary, fetch accounting, deviation log, and rights boundary expose those choices, although the closed row-level corpus limits independent audit.
+
+LLM-as-judge research documents position, verbosity, self-enhancement, and reasoning biases and validates judges against human preferences rather than treating repeat-model agreement as ground truth [14]. This motivates our same-model wording and outstanding human-validation gate. Entity-resolution benchmarking also requires solution-quality measurement at an appropriate unit [15]; accordingly, provisional cluster counts are withheld from factual entity claims until the presampled precision audit is completed.
+
+### 2.4 Relationship to the W→K→W pipeline
 
 Qi et al. introduced an iterative Web–Knowledge–Web pipeline in which a knowledge graph guides subsequent crawling [10]. Its proof-of-concept comparison used unequal page counts and an approximate 195-company name reference; it did not establish SME status, buyer–supplier relationships, or in-state production. The present audit neither validates nor directly benchmarks that pipeline. A future comparison would need aligned candidate generation, equal budgets, sealed evaluation labels, and independent human validation.
 
@@ -84,7 +90,7 @@ Eligible production presence includes an industrial facility, a job shop/worksho
 
 ### 3.5 Blinded model review and adjudication
 
-The frozen 1,200-pair probability sample was evaluated first as an AI calibration. Those calibration decisions were retained under the calibration procedure. Protocol v0.4, committed after retrieval and calibration, prospectively governed the remaining 4,964-pair extension using the same substantive criteria. Reviewer A and Reviewer B were separate GPT-5.6-Sol passes using different stance/order prompts. Provider, rank, and prior decisions were absent. Browsing and tools were disabled. All 2,661 extension rows with a disagreement in any key field received a third same-model pass. In the corrected fieldwise merge, A/B-agreed key fields were locked and C was used only for A/B-disputed key fields. Execution failures were retried or requeued and were never converted to `unclear`.
+The frozen 1,200-pair probability sample was evaluated first as an AI calibration. The implemented sampler proportionally allocated rows across 30 industry-family × primary-intent strata, selected rows deterministically within strata, and recorded inverse inclusion probabilities. This was narrower than protocol v0.3's stated balancing dimensions. The reported bootstrap resampled pairs within implemented sampling strata rather than query units; its interval is therefore an exploratory implementation diagnostic, not the protocol-conformant confirmatory interval. Those calibration decisions were retained. Protocol v0.4, committed after retrieval and calibration, prospectively governed the remaining 4,964-pair extension using the same substantive criteria. Reviewer A and Reviewer B were separate GPT-5.6-Sol passes using different stance/order prompts. Provider, rank, and prior decisions were absent. Browsing and tools were disabled. All 2,661 extension rows with a disagreement in any key field received a third same-model pass. In the corrected fieldwise merge, A/B-agreed key fields were locked and C was used only for A/B-disputed key fields. Execution failures were retried or requeued and were never converted to `unclear`.
 
 These are separate passes of the same model, not independent models or human annotators. Agreement therefore measures repeat-evaluation stability under prompt/order variation. On the 4,964-pair extension, A/B agreement on the legacy `eqdp` field was 0.8159 and nominal Cohen's κ was 0.6092. The original v0.3 human double-annotation, κ≥0.70 release gate, reviewer-time measurement, and presampled 200-pair entity-resolution precision audit were not executed. The current results are exploratory and model-applied.
 
@@ -121,9 +127,11 @@ Of 6,164 constructed pairs, 1,148 received the provisional five-component page-s
 | Unclear | 1,217 | 19.74% |
 | Total | 6,164 | 100% |
 
+In the earlier 1,200-pair probability sample, the corrected labels were 214 yes, 677 no, and 309 unclear. Inverse-inclusion weighting over the implemented strata yielded a 17.84% positive-label estimate. A 10,000-replicate pair-within-stratum bootstrap yielded 15.84%–19.86%. The full-corpus fraction, 18.62%, falls inside that diagnostic interval, but the interval is not presented as protocol-conformant because the frozen protocol specified query-unit resampling and broader balancing dimensions. Once all 6,164 model labels existed, exact constructed-corpus counts superseded sampling inference for this exploratory audit.
+
 The leading model-assigned exclusion reasons among 5,016 nonpositive pairs were insufficient evidence (1,712; 34.13%), wrong state or missing queried-state production proof (1,102; 21.97%), capability mismatch (568; 11.32%), distributor/reseller/broker (463; 9.23%), nonmanufacturing service (324; 6.46%), source unavailable within the frozen excerpt (290; 5.78%), foreign-only production (203; 4.05%), and generic sector claims (133; 2.65%). Insufficient evidence and state-production categories together accounted for 56.10% of nonpositive model labels.
 
-### 4.3 Industry and intent incidence
+### 4.3 Industry, state, and intent incidence
 
 Observed positive-label fractions differed by more than an order of magnitude across the selected capability-query families:
 
@@ -141,6 +149,21 @@ Observed positive-label fractions differed by more than an order of magnitude ac
 | Battery | 17 | 720 | 2.36% |
 
 These descriptive fractions are not exchangeable industry effects. The selected capabilities, wording, page ecology, repeated entities, and fit to top-10 general search differ across families; the table does not estimate national industry coverage or causal discoverability.
+
+State-conditioned constructed-corpus fractions ranged from 11.46% in Massachusetts to 24.68% in Texas:
+
+| Queried state | Page-support yes | Candidate pairs | Positive rate |
+|---|---:|---:|---:|
+| Arizona | 127 | 709 | 17.91% |
+| California | 184 | 769 | 23.93% |
+| Massachusetts | 87 | 759 | 11.46% |
+| Michigan | 147 | 767 | 19.17% |
+| North Carolina | 118 | 765 | 15.42% |
+| Ohio | 157 | 829 | 18.94% |
+| Pennsylvania | 134 | 780 | 17.18% |
+| Texas | 194 | 786 | 24.68% |
+
+These are properties of selected state-query outputs and their page ecologies, not estimates of manufacturing prevalence or search quality by state.
 
 Intent is multi-valued: one pair can be found through more than one query intent. The incidence counts therefore are descriptive and not causal arms. Direct-observed pairs were positive in 674 of 3,164 incidences (21.30%), mixed ownership/locality-observed pairs in 695 of 3,009 (23.10%), and small-batch-observed pairs in 491 of 2,745 (17.89%). A controlled experiment is required to estimate the causal effect of wording.
 
@@ -191,9 +214,9 @@ This audit does not supply an immediately reusable W→K→W test set because an
 
 First, this is a pipeline-constructed corpus under 960 frozen queries, not a census of U.S. manufacturers or search-visible firms. There is no exhaustive national entity ground truth, so national recall and completeness are unknown. Second, candidate retrieval used two general-web channels and top-10 outputs; other engines, directories, query formulations, dates, and provider failures could yield different populations. Third, only HTTP-2xx destination pages entered pair construction, and source-access outcomes may differ through other lawful channels.
 
-Fourth, the full review uses repeated passes of one LLM. Blinding, varied prompts, structured validation, fieldwise adjudication, and quote audits reduce some failure modes, but they do not replace domain-expert or human validation. The original v0.3 human and entity-precision release gates remain unmet. Fifth, the initial whole-record C merge distorted no/unclear labels, and the initial quote audit left 71 paraphrased positive quotes; both were corrected and logged before the current aggregates. Sixth, the 790 entity clusters remain provisional because model resolution has not been tested on the preregistered 200-pair external precision audit.
+Fourth, the full review uses repeated passes of one LLM. Blinding, varied prompts, structured validation, fieldwise adjudication, and quote audits reduce some failure modes, but they do not replace domain-expert or human validation. The original v0.3 human and entity-precision release gates remain unmet. Fifth, the calibration sampler and bootstrap implemented fewer balancing dimensions and a different resampling unit than protocol v0.3. Its interval is exploratory and is not used for a confirmatory claim. Sixth, the initial whole-record C merge distorted no/unclear labels, and the initial quote audit left 71 paraphrased positive quotes; both were corrected and logged before the current aggregates. Seventh, the 790 entity clusters remain provisional because model resolution has not been tested on the preregistered 200-pair external precision audit.
 
-Seventh, the corrected size audit is keyword-window based. A page may contain size evidence expressed outside the term lexicon or on a linked page not present in the frozen corpus. Eighth, public page claims can be stale; only an external authoritative check can establish current legal status. Finally, the row-level corpus is not publicly released because it contains fetched third-party page content and provider-related rights constraints. Aggregate hashes show integrity of unavailable artifacts, not factual correctness, and the release does not permit record-level independent auditing.
+Eighth, the corrected size audit is keyword-window based. A page may contain size evidence expressed outside the term lexicon or on a linked page not present in the frozen corpus. Ninth, public page claims can be stale; only an external authoritative check can establish current legal status. Finally, the row-level corpus is not publicly released because it contains fetched third-party page content and provider-related rights constraints. Aggregate hashes show integrity of unavailable artifacts, not factual correctness, and the release does not permit record-level independent auditing.
 
 ## 7. Conclusion
 
@@ -228,3 +251,11 @@ The working tree contains the frozen query lattice, capability/state/intent defi
 [10] Y. Qi, Y. Qi, and T. Wagh, “Coverage-Aware Web Crawling for Domain-Specific Supplier Discovery via a Web–Knowledge–Web Pipeline,” CIBDA 2026. <https://doi.org/10.1145/3813822.3814125>.
 
 [11] “Prior-art and novelty audit v0.1,” project artifact, 2026.
+
+[12] C. Buckley and E. M. Voorhees, “Retrieval Evaluation with Incomplete Information,” *Proceedings of SIGIR '04*, pp. 25–32, 2004. <https://doi.org/10.1145/1008992.1009000>.
+
+[13] J. Dodge, M. Sap, A. Marasović, W. Agnew, G. Ilharco, D. Groeneveld, M. Mitchell, and M. Gardner, “Documenting Large Webtext Corpora: A Case Study on the Colossal Clean Crawled Corpus,” *Proceedings of EMNLP*, pp. 1286–1305, 2021. <https://aclanthology.org/2021.emnlp-main.98/>.
+
+[14] L. Zheng et al., “Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena,” *Advances in Neural Information Processing Systems*, vol. 36, pp. 46595–46623, 2023. <https://papers.nips.cc/paper_files/paper/2023/hash/91f18a1287b398d378ef22505bf41832-Abstract-Datasets_and_Benchmarks.html>.
+
+[15] J. W. Berry, C. A. Phillips, K. Kincher-Winoto, L. Getoor, and E. Augustine, “Entity Resolution at Large Scale: Benchmarking and Algorithmics,” Sandia National Laboratories, Technical Report SAND-2018-14090, 2018. <https://doi.org/10.2172/1493841>.
