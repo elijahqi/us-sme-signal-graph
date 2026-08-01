@@ -10,6 +10,7 @@ This table audits the manuscript's material claims against frozen artifacts. “
 | The run produced 4,638 unique destination URLs. | Retrieval aggregate | Calling URLs suppliers/companies or implying first-party provenance | Use “destination URLs”; 3,383 returned 2xx. | Approved |
 | The pipeline constructed 6,164 source–capability–state pairs from 2xx pages. | `full_census_final_v0_1.csv`; construction script | Calling pairs pages, firms, suppliers, or a census | Define the inherited query fields and one-focal-business model output. | Approved |
 | There were 1,148 provisional EQDP page-support positives. | Corrected full-corpus summary and hash | Label can be mistaken for factual verification or procurement qualification | Say model-applied page-support label; all 1,148 passed literal quote audit. | Approved with qualification |
+| The probability sample estimated a 17.84% positive-label rate with a 15.84%–19.86% bootstrap interval. | `calibration_aggregate.json`; sample and analysis scripts | Sampler and resampling unit differ from protocol v0.3 wording | Report only as an exploratory implementation diagnostic; do not call it a protocol-conformant confirmatory interval. | Approved only with deviation |
 | Positive pairs cluster into 790 operating-entity and 785 corporate-group clusters. | Corrected entity summary and mapping hashes | No external entity-resolution precision audit; counts sound legally verified | Use “provisional clusters”; do not report an uncertainty interval. | Approved with qualification |
 | Precision metal and wood packaging had the highest pair-level positive rates. | Full-census industry table | Readers may infer national industry supply coverage | Say “within the frozen candidate corpus.” | Approved with scope |
 | Micro/local wording improves discovery. | Multi-valued intent incidence | Not randomized; candidates can appear under multiple intents | Use descriptive incidence only; no causal “improves.” | Rejected as causal |
@@ -30,7 +31,8 @@ The draft must not be submitted as publication-ready until:
 1. at least 300 provider-blind cases receive independent human double annotation, EQDP/component agreement is reported, and the preregistered κ≥0.70 gate is evaluated;
 2. the preregistered 200-pair entity-resolution precision audit is executed and the ≥0.95 gate is evaluated;
 3. the regenerated 29-cluster entity-size tables and hashes remain synchronized with the final manuscript;
-4. adjacent IR pooling, LLM-as-judge, web-corpus, and entity-resolution benchmark literature is reviewed;
+4. the initial adjacent IR pooling, LLM-as-judge, web-corpus, and entity-resolution benchmark sources added to the draft receive final venue-oriented review and bibliography verification;
 5. bibliographic metadata and the Kumar paper's source/validation description receive a final manual check;
-6. the staged row-free aggregate package is included in a published repository version and its SHA256SUMS is verified after publication; and
-7. the venue's policy on AI-assisted analysis and writing is checked and followed.
+6. if the probability-sample interval is retained for a confirmatory claim, sampling and resampling are reconciled with the frozen protocol and recomputed at the declared unit;
+7. the staged row-free aggregate package is included in a published repository version and its SHA256SUMS is verified after publication; and
+8. the venue's policy on AI-assisted analysis and writing is checked and followed.

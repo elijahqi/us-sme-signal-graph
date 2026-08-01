@@ -1,4 +1,4 @@
-.PHONY: baseline validate test adjudicate verify metrics public-release preflight query-lattice check-query-lattice
+.PHONY: baseline validate test adjudicate verify metrics public-release preflight query-lattice check-query-lattice manuscript-pdf
 
 baseline:
 	python3 scripts/build_baseline.py
@@ -37,4 +37,7 @@ public-release: adjudicate verify metrics
 
 preflight:
 	python3 scripts/release_preflight.py
+
+manuscript-pdf:
+	bash scripts/build_manuscript_pdf.sh
 

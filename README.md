@@ -6,7 +6,9 @@ Reproducible reconstruction and search-uplift evaluation for a provenance-aware 
 
 The repository now includes a **pre-human-validation, cross-industry evidence audit** over 960 frozen queries and all 6,164 constructed source–capability–state pairs. It is explicitly exploratory: repeated GPT-5.6-Sol passes produced model-applied page-support labels, not human ground truth. Literal-quote re-audit left 1,148 provisional positive pairs, which cluster into 790 provisional operating-entity clusters. A narrow destination-page size screen places only 14 clusters wholly within one descriptive employee band; external SBA-small verification was not performed.
 
-Start with [the manuscript draft](paper/search_visible_manufacturing_evidence_audit_v0_1.md), [corrected aggregate results](docs/full_census_results_v0_1.md), [model-review deviations](docs/model_review_deviations_v0_1.md), and [claim audit](docs/claim_evidence_review_v0_1.md). A row-free aggregate package is staged under `release/public/long-tail-evidence-audit-v0.1-exploratory`. It contains no company rows, provider payloads, fetched page text, URLs, quotes, or model rationales.
+Start with the [manuscript PDF](paper/search_visible_manufacturing_evidence_audit_v0_1.pdf), [editable manuscript source](paper/search_visible_manufacturing_evidence_audit_v0_1.tex), [Markdown working draft](paper/search_visible_manufacturing_evidence_audit_v0_1.md), [corrected aggregate results](docs/full_census_results_v0_1.md), [model-review deviations](docs/model_review_deviations_v0_1.md), and [claim audit](docs/claim_evidence_review_v0_1.md). A row-free aggregate package is staged under `release/public/long-tail-evidence-audit-v0.1-exploratory`. It contains no company rows, provider payloads, fetched page text, URLs, quotes, or model rationales.
+
+Rebuild the PDF with `make manuscript-pdf`.
 
 The manuscript is not publication-ready until its human double-annotation and entity-resolution precision gates are completed.
 
