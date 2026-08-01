@@ -1,0 +1,28 @@
+{
+  "ab_semantic_disagreements": 8,
+  "ab_status_cohen_kappa": 0.8910999877914783,
+  "ab_status_raw_agreement": 0.9820627802690582,
+  "automatic_empty_context_insufficient": 702,
+  "employee_evidence_with_finite_upper_bound_pairs": 18,
+  "final_quote_audit_fail": 0,
+  "final_quote_audit_not_applicable": 1109,
+  "final_quote_audit_pass": 39,
+  "final_status_counts": {
+    "employee_lower_bound": 17,
+    "employee_range": 3,
+    "employee_upper_bound": 2,
+    "exact_employee_count": 13,
+    "insufficient": 1109,
+    "owner_only_or_nonemployer_explicit": 1,
+    "sba_self_certification_explicit": 3
+  },
+  "final_table_sha256": "115e973c6608d1e220c85548ff5efb9266f711d890da9882ff9f7a6daf17ce09",
+  "nonempty_original_size_contexts": 446,
+  "positive_pairs": 1148,
+  "quote_audit_eligible_pairs": 39,
+  "supported_employee_number_pairs": 35,
+  "supported_owner_only_or_nonemployer_pairs": 1,
+  "supported_sba_representation_pairs": 5,
+  "supported_size_evidence_pairs": 39,
+  "unit_warning": "Counts are positive candidate pairs, not unique firms, operating entities, corporate groups, establishments, or SBA-qualified SMEs."
+}

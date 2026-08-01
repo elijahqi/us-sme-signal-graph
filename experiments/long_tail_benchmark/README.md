@@ -1,6 +1,8 @@
 # Cross-industry long-tail manufacturing benchmark
 
-This directory freezes the design inputs for study protocol v0.3. The generated lattice contains 960 exact queries. Each is sent to Brave and You with ten web results requested, targeting up to 9,600 ranked results per provider before deduplication. No formal result collection begins until the inputs and generated lattice are committed and hashed.
+This directory freezes the design inputs for study protocol v0.3. The generated lattice contains 960 exact queries. Each was sent to Brave and You with ten web results requested, targeting up to 9,600 ranked results per provider before deduplication. Formal retrieval and the exploratory AI-only full-corpus audit are complete. Protocol v0.3's planned human double-annotation and entity-resolution precision gates remain incomplete; protocol v0.4 is a post-retrieval, pre-extension amendment and not a replacement for those gates.
+
+Current aggregate results and integrity anchors are in `docs/full_census_results_v0_1.md`. The row-free staged package is `release/public/long-tail-evidence-audit-v0.1-exploratory`.
 
 ## Inputs and generated artifact
 
