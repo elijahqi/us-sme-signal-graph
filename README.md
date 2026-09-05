@@ -1,16 +1,20 @@
 # US-SME Signal Graph
 
-Reproducible reconstruction and search-uplift evaluation for a provenance-aware U.S. semiconductor supplier graph.
+Provenance-aware supplier-discovery research, including a reconstructed U.S. semiconductor graph and an exploratory audit of LLM-based evidence screening.
 
 ## Current milestone
 
-The repository now includes a **pre-human-validation, cross-industry evidence audit** over 960 frozen queries and all 6,164 constructed source–capability–state pairs. It is explicitly exploratory: repeated GPT-5.6-Sol passes produced model-applied page-support labels, not human ground truth. Literal-quote re-audit left 1,148 provisional positive pairs, which cluster into 790 provisional operating-entity clusters. A narrow destination-page size screen places only 14 clusters wholly within one descriptive employee band; external SBA-small verification was not performed.
+The current manuscript is **Auditing LLM-Based Evidence Screening for Manufacturing Supplier Discovery**, editorial revision **v0.2**. It studies the outputs and logged workflow corrections of an exploratory model audit over 960 frozen queries and 6,164 constructed source–capability–state pairs. Repeated GPT-5.6-Sol passes produced model-applied page-support labels; the final counts are 1,148 yes, 3,799 no, and 1,217 unclear. These are observations of a model-review protocol, not human ground truth or counts of verified suppliers.
 
-Start with the [manuscript PDF](paper/search_visible_manufacturing_evidence_audit_v0_1.pdf), [editable manuscript source](paper/search_visible_manufacturing_evidence_audit_v0_1.tex), [Markdown working draft](paper/search_visible_manufacturing_evidence_audit_v0_1.md), [corrected aggregate results](docs/full_census_results_v0_1.md), [model-review deviations](docs/model_review_deviations_v0_1.md), and [claim audit](docs/claim_evidence_review_v0_1.md). A row-free aggregate package is staged under `release/public/long-tail-evidence-audit-v0.1-exploratory`. It contains no company rows, provider payloads, fetched page text, URLs, quotes, or model rationales.
+The two research questions concern output and exclusion distributions, and the sensitivity of those outputs to adjudication and literal-quote rules. Entity resolution and firm-size screening remain exploratory appendix material. This is a post hoc editorial refocus of existing results, not a new preregistration, experiment, GNN evaluation, or validation study.
 
-Rebuild the PDF with `make manuscript-pdf`.
+Start with the [v0.2 manuscript PDF](paper/search_visible_manufacturing_evidence_audit_v0_1.pdf), [generated LaTeX source](paper/search_visible_manufacturing_evidence_audit_v0_1.tex), [editable Markdown manuscript](paper/search_visible_manufacturing_evidence_audit_v0_1.md), and [v0.2 revision memo](docs/manuscript_revision_v0_2.md). The existing manuscript filenames remain stable. Supporting records include the [corrected aggregate results](docs/full_census_results_v0_1.md), [model-review deviations](docs/model_review_deviations_v0_1.md), and [claim audit](docs/claim_evidence_review_v0_1.md).
 
-The manuscript is not publication-ready until its human double-annotation and entity-resolution precision gates are completed.
+The [row-free aggregate package](release/public/long-tail-evidence-audit-v0.1-exploratory) was published to the GitHub repository in commit `c036829`; all eight listed artifact hashes were verified against the remote files after publication. Its v0.1 path and data are unchanged by the manuscript revision. It contains no company rows, provider payloads, fetched page text, URLs, quotes, or model rationales. The closed row-level corpus cannot be independently reproduced from this package.
+
+Edit the Markdown manuscript and rebuild the LaTeX and PDF with `make manuscript-pdf`. The build requires Python 3, Pandoc, Tectonic, and Poppler (`pdfinfo` and `pdftotext`); it does not require the closed research corpus. The layout is defined in `paper/manuscript_template.tex`. The [processing-sensitivity summary](paper/audit_processing_sensitivity_v0_2.json) records the three-stage correction table. Researchers with access to the closed corpus can regenerate it using `python3 scripts/audit_processing_sensitivity.py`; `--private-root` and `--output` allow alternate paths.
+
+The manuscript is not publication-ready or submitted. The existing human double-annotation and entity-resolution precision gates remain incomplete; narrowing the manuscript does not waive them. Repository publication is separate from manuscript submission or peer review.
 
 ## Earlier semiconductor milestone
 
@@ -68,4 +72,3 @@ Independent researchers and institutions can use the structured reproduction, co
 - A company is not labeled SME without separate size evidence.
 - Search discovery, supplier validity, U.S. presence, baseline novelty, and SME status are separate labels.
 - No stars, users, pilots, adoption, or government endorsement are claimed unless independently documented.
-
