@@ -1,0 +1,58 @@
+\documentclass[10pt]{article}
+\usepackage[letterpaper,margin=0.82in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{booktabs,longtable,array,calc}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{needspace}
+\usepackage{fancyhdr}
+\usepackage{xurl}
+\usepackage{hyperref}
+\definecolor{ink}{HTML}{20364B}
+\hypersetup{colorlinks=true,linkcolor=ink,urlcolor=ink,
+  pdftitle={$title$},pdfauthor={$author$}}
+\urlstyle{same}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+\setlength{\headheight}{14pt}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\setcounter{secnumdepth}{0}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small LLM Evidence Screening Audit}
+\rhead{\small Exploratory Working Paper v0.2}
+\cfoot{\thepage}
+\titleformat{\section}{\large\bfseries\color{ink}}{}{0pt}{}
+\titleformat{\subsection}{\normalsize\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.1em}{0.35em}
+\titlespacing*{\subsection}{0pt}{0.8em}{0.2em}
+\setlist{leftmargin=1.4em,itemsep=0.15em,topsep=0.25em,parsep=0pt}
+\renewcommand{\arraystretch}{1.13}
+\captionsetup{font=small,labelfont=bf,skip=5pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\pandocbounded}[1]{#1}
+\title{\vspace{-1.5em}\Large\bfseries $title$}
+\author{\normalsize $author$\\[-2pt]\small ORCID: \href{https://orcid.org/0009-0009-2129-6932}{0009-0009-2129-6932}}
+\date{\small $version$}
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\vspace{-1.4em}
+\begin{abstract}
+\noindent $abstract$
+\end{abstract}
+\noindent\textbf{Keywords:} $keywords$
+
+\smallskip
+{\small\textbf{Study status.} $status$\par}
+$body$
+\end{document}

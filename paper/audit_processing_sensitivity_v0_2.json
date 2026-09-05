@@ -1,0 +1,223 @@
+{
+  "fieldwise_correction": {
+    "any_key_field_changed_rows": 339,
+    "changed_rows_by_key_field": {
+      "capability_match": 2,
+      "commercial_offering": 8,
+      "direct_producer_status": 0,
+      "eqdp": 321,
+      "identity_status": 0,
+      "legal_form": 1,
+      "primary_exclusion_reason": 13,
+      "production_presence": 2,
+      "scale_band": 1,
+      "web_visibility": 3
+    },
+    "nonprimary_only_changed_rows": 18,
+    "primary_label_changed_rows": 321,
+    "primary_label_transitions": [
+      {
+        "from": "unclear",
+        "rows": 321,
+        "to": "no"
+      }
+    ]
+  },
+  "input_sha256": {
+    "calibration": {
+      "evidence_batches": "60a6c0a4b2d508cff24c90cbbae7d1514d24e4bf82bf6362e4e69530e2837e09",
+      "reviewer_a": "dc56ee214a1d12ef65a3be174afb5836acd52f1e0c853d6d3c44681dc5f39123",
+      "reviewer_b": "bef237bc811ce72fcc21521f319c7a11e79595c0fab41a32065fbb0e4fcccbbf",
+      "reviewer_c": "03be15c3b50f5bd92b2e8a5428b652ce81418ed141eaef071b817d4ff4d49e26"
+    },
+    "extension": {
+      "evidence_batches": "621bd1015176fad4638193151b9c4d334e2a53cef352b8cd59c73006352fcd6f",
+      "reviewer_a": "c1d62988347863eb98ad4072fab8949fdd1da89d42100891651dccfe8ae8365b",
+      "reviewer_b": "bdf1f6bbb9d36194aa00a3bc820dfeb383571113f4ae2e1b540625f9550d7acf",
+      "reviewer_c": "78896efcae1d63c6b0d1105352cc7ada2ba920d03959bd1f3b39742f64b94ec7"
+    },
+    "full_census_final": "24bd429ac9b56cc2f02e693c9943f940608c896f9744a586cddac27a7d83497a",
+    "quote_reaudit": {
+      "reviewer_a": "b8ca22c24de446d165861bf038dbbfede05a03f75d77d280581a12704373c32e",
+      "reviewer_b": "1c008e5bb12d93d3ba00365106a7320cec11b432b31f6ce496a23fcd730f8778",
+      "reviewer_c": "069ac8ae69798e7449931cde7691f9800629c7a5d4cab557d20ea9e2046c7742"
+    }
+  },
+  "metadata": {
+    "analysis": "retrospective reconstruction of processing stages from retained A/B/C outputs",
+    "first_two_stages": "reconstructed, not separately preserved historical result tables",
+    "human_ground_truth": false,
+    "input_fingerprint_method": "SHA-256 over sorted batch basenames, NUL, and SHA-256 file digests",
+    "labels": "same-model page-support judgments; not human ground truth or factual error rates",
+    "quote_check": "nonempty normalized contiguous substring of the original frozen excerpt",
+    "row_level_data_included": false,
+    "unit": "constructed source-capability-state pair"
+  },
+  "quote_reaudit": {
+    "final_labels_of_reaudited_rows": {
+      "no": 0,
+      "unclear": 31,
+      "yes": 40
+    },
+    "final_positive_literal_quote_passes": 1148,
+    "final_positive_rows": 1148,
+    "literal_quote_failures_before": 71,
+    "literal_quote_passes_before": 1108,
+    "positive_rows_before": 1179,
+    "primary_label_transitions": [
+      {
+        "from": "yes",
+        "rows": 31,
+        "to": "unclear"
+      }
+    ],
+    "review_counts": {
+      "a_rows": 71,
+      "b_rows": 71,
+      "c_rows": 15
+    }
+  },
+  "rows": 6164,
+  "schema_version": "processing_sensitivity_v0.2",
+  "stages": {
+    "after_literal_quote_reaudit": {
+      "no": 3799,
+      "unclear": 1217,
+      "yes": 1148
+    },
+    "fieldwise_before_quote_reaudit": {
+      "no": 3799,
+      "unclear": 1186,
+      "yes": 1179
+    },
+    "whole_record_c_merge": {
+      "no": 3478,
+      "unclear": 1507,
+      "yes": 1179
+    }
+  },
+  "subsets": {
+    "calibration": {
+      "fieldwise_correction": {
+        "any_key_field_changed_rows": 38,
+        "changed_rows_by_key_field": {
+          "capability_match": 0,
+          "commercial_offering": 0,
+          "direct_producer_status": 0,
+          "eqdp": 38,
+          "identity_status": 0,
+          "legal_form": 0,
+          "primary_exclusion_reason": 2,
+          "production_presence": 0,
+          "scale_band": 0,
+          "web_visibility": 0
+        },
+        "nonprimary_only_changed_rows": 0,
+        "primary_label_changed_rows": 38,
+        "primary_label_transitions": [
+          {
+            "from": "unclear",
+            "rows": 38,
+            "to": "no"
+          }
+        ]
+      },
+      "quote_reaudit": {
+        "final_labels": {
+          "no": 0,
+          "unclear": 6,
+          "yes": 11
+        },
+        "reviewed_rows": 17
+      },
+      "review_counts": {
+        "a_rows": 1200,
+        "b_rows": 1200,
+        "c_rows": 631
+      },
+      "rows": 1200,
+      "stages": {
+        "after_literal_quote_reaudit": {
+          "no": 677,
+          "unclear": 309,
+          "yes": 214
+        },
+        "fieldwise_before_quote_reaudit": {
+          "no": 677,
+          "unclear": 303,
+          "yes": 220
+        },
+        "whole_record_c_merge": {
+          "no": 639,
+          "unclear": 341,
+          "yes": 220
+        }
+      }
+    },
+    "extension": {
+      "fieldwise_correction": {
+        "any_key_field_changed_rows": 301,
+        "changed_rows_by_key_field": {
+          "capability_match": 2,
+          "commercial_offering": 8,
+          "direct_producer_status": 0,
+          "eqdp": 283,
+          "identity_status": 0,
+          "legal_form": 1,
+          "primary_exclusion_reason": 11,
+          "production_presence": 2,
+          "scale_band": 1,
+          "web_visibility": 3
+        },
+        "nonprimary_only_changed_rows": 18,
+        "primary_label_changed_rows": 283,
+        "primary_label_transitions": [
+          {
+            "from": "unclear",
+            "rows": 283,
+            "to": "no"
+          }
+        ]
+      },
+      "quote_reaudit": {
+        "final_labels": {
+          "no": 0,
+          "unclear": 25,
+          "yes": 29
+        },
+        "reviewed_rows": 54
+      },
+      "review_counts": {
+        "a_rows": 4964,
+        "b_rows": 4964,
+        "c_rows": 2661
+      },
+      "rows": 4964,
+      "stages": {
+        "after_literal_quote_reaudit": {
+          "no": 3122,
+          "unclear": 908,
+          "yes": 934
+        },
+        "fieldwise_before_quote_reaudit": {
+          "no": 3122,
+          "unclear": 883,
+          "yes": 959
+        },
+        "whole_record_c_merge": {
+          "no": 2839,
+          "unclear": 1166,
+          "yes": 959
+        }
+      }
+    }
+  },
+  "verification": {
+    "a_b_coverage_equal": true,
+    "c_coverage_equals_key_field_disagreements": true,
+    "reaudit_ids_equal_recomputed_quote_failures": true,
+    "reconstructed_final_matches_all_key_fields": true,
+    "verified_final_rows": 6164,
+    "verified_key_field_count": 10
+  }
+}

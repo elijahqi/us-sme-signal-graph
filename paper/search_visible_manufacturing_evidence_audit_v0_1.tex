@@ -1,509 +1,366 @@
-\documentclass[11pt]{article}
-
+\documentclass[10pt]{article}
 \usepackage[letterpaper,margin=0.82in]{geometry}
 \usepackage[T1]{fontenc}
-\usepackage{newtxtext}
-\usepackage{newtxmath}
-\usepackage[scaled=0.92]{helvet}
+\usepackage{newtxtext,newtxmath}
 \usepackage{microtype}
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{array}
 \usepackage{xcolor}
-\usepackage{hyperref}
-\usepackage{enumitem}
 \usepackage{amsmath}
+\usepackage{booktabs,longtable,array,calc}
 \usepackage{graphicx}
+\usepackage{enumitem}
 \usepackage{caption}
-\usepackage{fancyhdr}
 \usepackage{titlesec}
-\usepackage{longtable}
-\usepackage{ragged2e}
-\usepackage{placeins}
-
-\definecolor{navy}{HTML}{183B56}
-\definecolor{blue}{HTML}{2F75B5}
-\definecolor{lightblue}{HTML}{EAF2F8}
-\definecolor{lightgray}{HTML}{F3F5F7}
-\definecolor{warning}{HTML}{8A4B08}
-\definecolor{warningbg}{HTML}{FFF4E5}
-\definecolor{green}{HTML}{287A4B}
-
-\hypersetup{
-  colorlinks=true,
-  linkcolor=navy,
-  citecolor=navy,
-  urlcolor=blue,
-  pdftitle={From Search Results to Page-Supported Producer Candidates},
-  pdfauthor={Yijiashun Qi}
-}
-
+\usepackage{needspace}
+\usepackage{fancyhdr}
+\usepackage{xurl}
+\usepackage{hyperref}
+\definecolor{ink}{HTML}{20364B}
+\hypersetup{colorlinks=true,linkcolor=ink,urlcolor=ink,
+  pdftitle={Auditing LLM-Based Evidence Screening for Manufacturing Supplier Discovery},pdfauthor={Yijiashun Qi}}
+\urlstyle{same}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+\setlength{\headheight}{14pt}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\setcounter{secnumdepth}{0}
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{Manufacturing Evidence Audit}
-\rhead{Exploratory Working Paper v0.1}
+\lhead{\small LLM Evidence Screening Audit}
+\rhead{\small Exploratory Working Paper v0.2}
 \cfoot{\thepage}
-\setlength{\headheight}{14pt}
-
-\titleformat{\section}{\Large\bfseries\color{navy}}{\thesection}{0.7em}{}
-\titleformat{\subsection}{\large\bfseries\color{navy}}{\thesubsection}{0.7em}{}
-\titleformat{\subsubsection}{\normalsize\bfseries\color{navy}}{\thesubsubsection}{0.7em}{}
-\titlespacing*{\section}{0pt}{1.4em}{0.55em}
-\titlespacing*{\subsection}{0pt}{1.1em}{0.4em}
-
-\setlist[itemize]{leftmargin=1.35em,itemsep=0.2em,topsep=0.35em}
-\setlist[enumerate]{leftmargin=1.6em,itemsep=0.25em,topsep=0.35em}
-\renewcommand{\arraystretch}{1.15}
-\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
-\newcolumntype{R}{>{\RaggedLeft\arraybackslash}p{0.85in}}
-
-\newcommand{\statusbox}[1]{%
-  \begin{center}
-  \fcolorbox{warning}{warningbg}{\parbox{0.93\textwidth}{\small\textbf{Exploratory status.} #1}}
-  \end{center}
-}
-
-\newcommand{\stagebox}[2]{%
-  \fcolorbox{blue}{lightblue}{\parbox[c][0.56in][c]{1.35in}{\centering\sffamily\bfseries #1\\[-1pt]\normalfont\footnotesize #2}}%
-}
-
+\titleformat{\section}{\large\bfseries\color{ink}}{}{0pt}{}
+\titleformat{\subsection}{\normalsize\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.1em}{0.35em}
+\titlespacing*{\subsection}{0pt}{0.8em}{0.2em}
+\setlist{leftmargin=1.4em,itemsep=0.15em,topsep=0.25em,parsep=0pt}
+\renewcommand{\arraystretch}{1.13}
+\captionsetup{font=small,labelfont=bf,skip=5pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\pandocbounded}[1]{#1}
+\title{\vspace{-1.5em}\Large\bfseries Auditing LLM-Based Evidence Screening for Manufacturing Supplier Discovery}
+\author{\normalsize Yijiashun Qi\\[-2pt]\small ORCID: \href{https://orcid.org/0009-0009-2129-6932}{0009-0009-2129-6932}}
+\date{\small Exploratory Working Paper v0.2}
 \begin{document}
-
-\begin{titlepage}
-  \centering
-  \vspace*{0.55in}
-  {\sffamily\bfseries\color{navy}\fontsize{25}{30}\selectfont
-  From Search Results to Page-Supported Producer Candidates\par}
-  \vspace{0.22in}
-  {\sffamily\Large An Evidence Audit Across Selected U.S. Manufacturing Queries\par}
-  \vspace{0.5in}
-  {\Large Yijiashun Qi\par}
-  \vspace{0.08in}
-  {\small ORCID: \href{https://orcid.org/0009-0009-2129-6932}{0009-0009-2129-6932}\par}
-  \vspace{0.5in}
-  \statusbox{This manuscript reports a same-model, model-applied evidence audit. It is internally consistent but is not a validated benchmark or publication-ready study. Independent human double annotation and the preregistered entity-resolution precision audit remain incomplete.}
-  \vfill
-  \begin{minipage}{0.86\textwidth}
-  \small
-  \textbf{Artifact scope.} The accompanying repository contains frozen queries, review code, schemas, deviation logs, aggregate reports, and a row-free exploratory release package. It does not release search-provider payloads, destination-page text, row-level company decisions, or a verified SME list.\par
-  \end{minipage}\par
-  \vspace{0.45in}
-  {\small\sffamily\mbox{Working Paper v0.1}\par}
-\end{titlepage}
-
+\maketitle
+\thispagestyle{fancy}
+\vspace{-1.4em}
 \begin{abstract}
-General web search can return pages about manufacturers, but a returned page is not yet a supplier, a production site, or a small business. We present an exploratory, model-applied evidence audit across selected U.S. manufacturing queries. A frozen lattice combines 40 manufacturing capabilities, eight states, and three query intents, yielding 960 provider-matched queries submitted to Brave and You Search. The providers returned 19,190 ranked rows. Transient processing produced 11,715 query-to-URL union links and 4,638 unique destination URLs; 3,383 returned HTTP 2xx. The construction pipeline produced 6,164 source--capability--state pairs. Two GPT-5.6-Sol passes evaluated each pair against five page-support components, and a third same-model pass was used fieldwise only where the first two disagreed. A mandatory literal-quote re-audit reduced provisional positive labels to 1,148 (18.62\%); the other labels were 3,799 no (61.63\%) and 1,217 unclear (19.74\%). Positive pairs clustered into 790 provisional operating-entity clusters and 785 provisional corporate-group clusters; these are not externally validated entity counts. A narrow destination-page size screen found nonhistorical numerical employee evidence for 23 clusters (2.91\%); 14 (1.77\%) fit wholly within one descriptive employee band. External SBA-small verification was not performed. The organizing observation is that retrieval output, model-applied page support, provisional entity clustering, and firm-size or SBA-status evidence are different measurement layers. Human validation and the preregistered entity-resolution precision audit remain outstanding.
+\noindent LLM-assisted supplier discovery depends on whether retrieved pages support specific business claims, yet a plausible assessment can conceal failures in quotation and adjudication. We audit an evidence-screening workflow on a frozen corpus constructed from 960 U.S. manufacturing queries. Direct acquisition produced 3,383 accessible pages and 6,164 source-capability-state pairs. Separate passes of the same model assessed five producer-support conditions; disputed fields received a third pass. The final workflow assigned 1,148 positive labels (18.62\%), 3,799 no labels, and 1,217 unclear labels. Retrospective reconstruction exposes two consequential processing decisions: replacing whole-record adjudication with fieldwise merging restored 321 A/B-agreed no labels, and literal-quote re-audit downgraded 31 of 71 flagged positive rows to unclear. These changes measure output sensitivity and internal consistency, not gains in factual accuracy. We document the observation unit, frozen evidence boundary, and correction sequence, with public code and aggregate artifacts. The contribution is a domain-specific process audit that separates model-label stability, quotation integrity, and external validity. Independent human validation remains necessary before using the labels as a benchmark.
 \end{abstract}
+\noindent\textbf{Keywords:} LLM evaluation; supplier discovery; evidence screening; adjudication; web-corpus audit; provenance
 
-\noindent\textbf{Keywords:} manufacturing discovery; web search; evidence audit; entity resolution; firm-size evidence; supplier scouting; provenance
+\smallskip
+{\small\textbf{Study status.} A retrospective audit of model outputs on a frozen corpus. Independent human validation and the preregistered entity-resolution audit remain incomplete. This revision is not a validated benchmark or a publication-ready study.\par}
+\hypertarget{introduction}{%
+\subsection{1. Introduction}\label{introduction}}
 
-\section{Introduction}
+A manufacturing search may retrieve a company name, a capability description, and a state name without establishing that the company produces that capability in that state. A distributor can describe a product it does not make; an office address can be mistaken for a production site. An LLM can turn these partial observations into an apparently coherent assessment. Evaluating the assessment therefore requires an explicit unit of analysis and a record of how evidence and decisions were processed.
 
-Manufacturing supplier discovery is often presented as a search problem: a buyer specifies a capability, product, location, certification, or material and receives a list of candidate firms. Existing academic and operational systems already perform substantial parts of this task. Manufacturing-service knowledge graphs link thousands of companies to capabilities~\cite{li2021design,li2024kg}; graph neural networks infer missing capability links~\cite{li2024gnn}; Graph-RAG systems answer supplier-discovery questions~\cite{li2025graphrag}; localized supply-chain graphs support multi-condition SME discovery~\cite{kumar2025}; and NIST MEP and commercial platforms provide practical supplier scouting~\cite{nistmep,thomas}. The question studied here is narrower: what support a bounded destination-page excerpt supplies under an explicit model-review protocol.
+This paper studies an implemented LLM evidence-screening workflow. Its observational unit is one frozen source excerpt paired with a requested manufacturing capability and state. The outcome is the model's assessment of page support under a five-component rubric. It is not an externally verified statement about a business. We ask:
 
-A page can name a company without showing that it directly produces anything. It can describe a capability without locating production in the queried state. It can refer to a distributor, an engineering office, a planned plant, a customer, or an industry-wide employment statistic. Even when a page supports a producer claim, it may reveal nothing about employee count, affiliates, NAICS-specific size thresholds, or legal small-business status. A directory category, a service-area page, and a production facility are therefore not interchangeable evidence.
-
-We treat discovery as four linked but non-equivalent measurement layers:
-\begin{enumerate}
-  \item \textbf{retrieval output}: URLs returned by a frozen capability--state--intent query;
-  \item \textbf{page-support labeling}: whether a frozen excerpt is judged to support a direct commercial producer of the requested capability in the queried state;
-  \item \textbf{provisional entity resolution}: how repeated pages and capability pairs cluster into putative operating entities and corporate groups; and
-  \item \textbf{firm-size evidence}: whether the retrieved page supports an employee band, owner-only operation, or a federal small-business representation.
-\end{enumerate}
-
-The study asks four research questions:
 \begin{itemize}
-  \item \textbf{RQ1:} How much do two general-web retrieval channels overlap under provider-matched frozen queries?
-  \item \textbf{RQ2:} What fraction of 6,164 pipeline-constructed pairs receives a positive five-component page-support label, and why are other pairs labeled no or unclear?
-  \item \textbf{RQ3:} How do descriptive label fractions differ across selected capability-query families, states, and query-intent incidence?
-  \item \textbf{RQ4:} After provisional entity clustering, how often do the frozen destination pages support an employee band, owner-only operation, or a federal small-business representation under a narrow size screen?
+\tightlist
+\item
+  \textbf{RQ1:} How are the constructed pairs labeled, and which evidence gaps dominate the nonpositive outputs?
+\item
+  \textbf{RQ2:} How do fieldwise adjudication and literal-quote re-audit change those outputs on the same frozen corpus?
 \end{itemize}
 
-The contribution is an empirical decomposition and an observed separation between units. We make no first-of-kind claim. We do not claim exhaustive U.S. coverage, procurement qualification, available capacity, factual verification of page claims, or a known number of SBA-small firms.
+We contribute a documented corpus construction and support rubric, a reconstruction of consequential processing corrections, and an account of what those corrections do and do not validate. The revisions examined here were prompted by failures found during the study. They are retrospective process checks, not a preregistered comparison or a controlled accuracy experiment. Version 0.2 narrows the earlier manuscript's emphasis after the results were known; the original protocols, deviations, and outstanding validation requirements remain part of the record.
 
-\section{Related Work and Novelty Boundary}
+\hypertarget{related-work}{%
+\subsection{2. Related Work}\label{related-work}}
 
-\subsection{Manufacturing-service knowledge graphs}
+Manufacturing-service discovery already uses knowledge graphs, capability inference, and language models. Li, Liu, and Starly study GNN-based manufacturing capability prediction {[}1{]}; Li, Ko, and Ameri integrate graph retrieval with LLM supplier discovery {[}2{]}. Qi et al.~describe a Web-Knowledge-Web pipeline in which an evolving graph guides subsequent acquisition {[}3{]}. The present study evaluates neither a GNN nor a graph-guided discovery policy. It examines the evidence-screening step that could support a later evaluation of such systems.
 
-Li et al. constructed a manufacturing-services knowledge graph covering more than 8,000 manufacturers and proposed Schema.org extensions for web discoverability~\cite{li2021design}. Li and Starly integrated a bottom-up ontology, manufacturing web footprints, graph embeddings, and ChatGPT; their public description reports more than 13,000 manufacturer web links with services, certifications, and locations~\cite{li2024kg}. Li, Liu, and Starly evaluated graph neural networks over a manufacturing-service graph built from more than 7,000 U.S. manufacturer websites~\cite{li2024gnn}. These works establish large-scale web-derived manufacturing graphs and capability inference as prior art. The present study does not compete on graph size or infer missing capabilities.
+Search-engine overlap has been studied across thousands of queries {[}4{]}. Here it describes the collection boundary, rather than serving as a claim of retrieval quality. Buckley and Voorhees examine evaluation under incomplete relevance judgments {[}5{]}; our finite constructed corpus likewise cannot establish relevance outside the observed candidates. Dodge et al.~show the importance of documenting web-corpus collection and filtering {[}6{]}. Our fetch ledger, excerpt construction, and deviation record expose related choices at a smaller, domain-specific scale.
 
-Li, Ko, and Ameri integrated knowledge graphs, retrieval-augmented generation, and LLMs for supplier discovery~\cite{li2025graphrag}. Kumar demonstrated localized SME discovery over a curated Pennsylvania biopharma graph containing 488 enterprises, employee counts, and other structured fields~\cite{kumar2025}. AlMahri, Xu, and Brintrup used LLM extraction and knowledge graphs to reveal EV mineral and supplier relationships beyond tier one~\cite{almahri2025}. These studies demonstrate supplier discovery, SME-oriented graph search, and public-data supply-chain visibility. The reviewed manufacturing sources did not report the same corpus-conditional decomposition used here. That establishes a difference in empirical focus, not priority or superiority.
+Zheng et al.~evaluate LLM judges against human preferences and document judge biases {[}7{]}. Repeated agreement from one model is consequently distinct from external validity. Our contribution is not a new general theory of LLM judging or supplier discovery. It is an empirical audit of how quotation constraints and adjudication logic affected one deployed screening workflow.
 
-\subsection{Search overlap and operational scouting}
+\hypertarget{corpus-and-screening-protocol}{%
+\subsection{3. Corpus and Screening Protocol}\label{corpus-and-screening-protocol}}
 
-Yagci et al. compared top-10 results from four search engines for 3,537 queries and showed that engine choice affects source diversity and overlap~\cite{yagci2022}. Multi-engine overlap measurement is therefore not new. NIST MEP identifies U.S. manufacturers with requested production and technical capabilities through a national network~\cite{nistmep}. Thomasnet supports search and filtering by capability, location, certification, company type, and company size~\cite{thomas}. The present evidence audit is complementary: it measures what a same-model protocol labels as supported in bounded destination-page excerpts.
+\hypertarget{frozen-retrieval-and-acquisition}{%
+\subsubsection{3.1 Frozen retrieval and acquisition}\label{frozen-retrieval-and-acquisition}}
 
-\subsection{Evaluation, web-corpus, and entity-resolution context}
+On July 30, 2026 (UTC), 40 capabilities from ten manufacturing families were crossed with eight states and three query intents, yielding 960 frozen queries. The intents were direct manufacturer wording, small-batch/job-shop wording, and mixed ownership/locality wording. The last category includes family-owned and local-workshop expressions and is not a firm-size label. The exact lattice, capability definitions, and state list are public.
 
-Information-retrieval research has long treated incomplete relevance judgments as a measurement problem rather than assuming that unjudged documents are irrelevant~\cite{buckley2004}. The present corpus is not a pooled relevance collection: it evaluates the finite pairs constructed from two top-10 outputs and cannot estimate relevance outside that construction. Work on documenting C4 likewise shows how collection and filtering choices shape web corpora~\cite{dodge2021}. Our unit dictionary, fetch accounting, deviation log, and rights boundary are intended to expose those choices, although the closed row-level corpus limits independent audit.
+Each query requested ten web results from Brave and You Search. Brave returned 9,590 ranked rows, with one failed query after the frozen retry policy; You returned 9,600. Transient processing produced 11,715 query-URL union links and 4,638 unique destination URLs. Provider payloads, titles, snippets, and ranks were not retained as the research dataset. The same robots and HTTP workflow was applied to union URLs, and independently fetched publisher-page material was retained in a closed corpus where permitted.
 
-LLM-as-judge research documents position, verbosity, self-enhancement, and reasoning biases and validates judges against human preferences rather than treating repeat-model agreement as ground truth~\cite{zheng2023}. This motivates our same-model wording and outstanding human-validation gate. Entity-resolution benchmarking also requires solution-quality measurement at an appropriate unit~\cite{berry2018}; accordingly, provisional cluster counts are withheld from factual entity claims until the presampled precision audit is completed.
+Of the 4,638 URLs, 3,383 returned HTTP 2xx and entered pair construction. There were 1,018 HTTP 403 responses, 129 robots-disallowed flags, and nine hard-timeout flags; process flags can overlap status categories. Access failures therefore affect the observation boundary. Direct acquisition does not imply that a page is first-party or factually corroborated. Retrieval overlap and descriptive subgroup counts appear in Appendix A.
 
-\subsection{Relationship to Web--Knowledge--Web}
+\hypertarget{observation-unit-and-evidence-boundary}{%
+\subsubsection{3.2 Observation unit and evidence boundary}\label{observation-unit-and-evidence-boundary}}
 
-Qi et al. introduced a Web--Knowledge--Web pipeline in which a knowledge graph guides subsequent crawling~\cite{qi2026wkw}. Its proof-of-concept comparison used unequal page counts and an approximate 195-company name reference; it did not establish SME status, buyer--supplier relationships, or in-state production. The present audit neither validates nor directly benchmarks that pipeline. A future comparison would need aligned candidate generation, equal budgets, sealed labels, and independent human validation.
+The pipeline inherited capability and state from each retrieving query and deduplicated on \texttt{(source\ ID,\ capability,\ state)}. Observed intent tags were aggregated. This produced 6,164 pairs from the 3,383 accessible pages. A page may appear in multiple pairs with different requested capabilities or states. Pairs must not be treated as independent companies, and one page need not receive the same label for every task.
 
-The project prior-art audit is bounded and not systematic. It does not support an exact-combination priority claim. Adjacent literature on IR pooling, LLM-as-judge validation, web-corpus construction, and entity-resolution benchmarks remains a submission prerequisite.
+Visible text was extracted from the frozen page body. Task keywords and business-context terms selected windows, which were merged and concatenated with omission markers. The extractor budgeted 9,000 source-text characters; separator characters were additional. The reviewer also received the task definition and source-page metadata. It could assign at most one focal business to each pair. Tools and browsing were disabled during review. The target is support in this bounded input, rather than support somewhere on the website or across all pages about the company.
 
-\section{Methods}
+\hypertarget{five-component-support-rubric}{%
+\subsubsection{3.3 Five-component support rubric}\label{five-component-support-rubric}}
 
-\subsection{Frozen query lattice}
+The retained schema field \texttt{eqdp} records whether the excerpt supports all five conditions:
 
-The lattice contains 40 capabilities across ten selected families: semiconductor equipment, batteries, precision metal, electronics, polymers and composites, additive manufacturing and tooling, industrial textiles, wood and industrial packaging, contract consumer production, and industrial repair or remanufacturing. Each capability is crossed with eight states and three intent templates. The resulting $40 \times 8 \times 3 = 960$ provider-neutral queries were frozen before retrieval.
-
-The intent templates were:
-\begin{itemize}
-  \item \texttt{direct}: ordinary manufacturer wording;
-  \item \texttt{small\_batch}: custom, job-shop, contract, or short-run wording; and
-  \item \texttt{micro\_local}: heterogeneous mixed ownership/locality wording containing small-business, family-owned, owner-operated, or local-workshop terms. It is not a firm-size category.
-\end{itemize}
-
-No result-aware rewriting, company-name rescue query, provider-specific synonym, or post-result capability substitution was permitted in the primary run.
-
-\subsection{Paired retrieval and rights boundary}
-
-Each query was submitted to Brave and You Search with ten web results requested. Brave returned 9,590 rows and failed one query after frozen retries; You returned 9,600 rows with no failed queries. Raw provider payloads, titles, snippets, and ranks were processed transiently and not retained.
-
-For all 960 frozen queries, summed URL intersection was 7,475 and summed union 11,715. The pooled all-query Jaccard was therefore
-\begin{equation}
-J_{\mathrm{pooled}} = \frac{\sum_q |B_q \cap Y_q|}{\sum_q |B_q \cup Y_q|} = \frac{7{,}475}{11{,}715} = 0.6381.
-\end{equation}
-The unweighted macro mean of per-query Jaccards was 0.6555. The single Brave failure was retained with zero intersection. A dual-success sensitivity analysis over 959 queries produced pooled Jaccard 0.6386 and macro mean 0.6562.
-
-\subsection{Direct destination-page acquisition}
-
-Cross-query deduplication yielded 4,638 unique destination URLs. Every URL entered the same robots and HTTP workflow: 3,383 returned HTTP 2xx, 1,018 returned HTTP 403, 129 were robots-disallowed, and nine hit a hard timeout. Robots and timeout counts are process flags and can overlap HTTP categories. Only HTTP-2xx pages entered pair construction. Direct fetching is separate from the search payload and does not imply first-party provenance or independent factual corroboration.
-
-\subsection{Pair construction and five-component label}
-
-For every query-to-page link, the pipeline inherited capability and state from the query, deduplicated on \texttt{(source ID, capability, state)}, and aggregated observed intent tags. This produced 6,164 source--capability--state pairs from 3,383 pages. The model assigned at most one focal business name per pair; multi-company page extraction was not exhaustively evaluated.
-
-A pair receives a positive five-component producer page-support label when the excerpt is judged to support:
 \begin{enumerate}
-  \item a specific operating commercial business;
-  \item direct production, fabrication, assembly, processing, rebuilding, remanufacturing, or contract manufacturing;
-  \item an explicit match to the requested capability;
-  \item eligible production presence in the queried state; and
-  \item a current commercial offering.
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  A specific operating commercial business is identified.
+\item
+  The business directly produces, fabricates, assembles, processes, rebuilds, remanufactures, or performs contract manufacturing.
+\item
+  The offering explicitly matches the requested capability.
+\item
+  Eligible production presence is supported in the queried state.
+\item
+  The offering is current and commercial.
 \end{enumerate}
-The frozen schema field is named \texttt{eqdp} for compatibility; it is not a factual or legal qualification. The label measures textual support in a bounded excerpt and does not verify the page's truth, current operational status, an actual supplier relationship, capacity, financial health, or willingness to quote.
 
-\subsection{Same-model review and fieldwise adjudication}
+Eligible presence includes an industrial facility or job shop and, where supported, owner/home production. An office, warehouse, service area, registered address, planned plant, or U.S. sales presence with foreign-only production is insufficient. The workflow retains yes, no, and unclear outcomes and component-level decisions. A no or unclear label does not establish that a business lacks the capability; the supplied excerpt may simply fail the evidence test. Literal wording also cannot establish the truth or currentness of the page's claim.
 
-A frozen 1,200-pair probability sample was evaluated first as AI calibration. The implemented sampler proportionally allocated rows across 30 industry-family by primary-intent strata, selected rows deterministically within strata, and recorded inverse inclusion probabilities. This was narrower than protocol v0.3's stated balancing dimensions. The reported bootstrap resampled pairs within implemented sampling strata rather than query units; its interval is therefore an exploratory implementation diagnostic, not the protocol-conformant confirmatory interval. Those sample decisions were retained. Protocol v0.4 prospectively governed the remaining 4,964-pair extension using the same substantive criteria. Reviewer A and Reviewer B were separate GPT-5.6-Sol passes using different stance/order prompts. Provider, rank, and prior decisions were absent; browsing and tools were disabled.
+\hypertarget{repeated-review-and-fieldwise-adjudication}{%
+\subsubsection{3.4 Repeated review and fieldwise adjudication}\label{repeated-review-and-fieldwise-adjudication}}
 
-All 2,661 extension rows with disagreement in any of ten key fields received a third same-model pass. In the corrected merge, A/B-agreed fields were locked and Reviewer C was used only for disputed fields. Execution failures were retried and never converted to substantive uncertainty. A/B raw agreement on the legacy \texttt{eqdp} field was 0.8159; nominal Cohen's $\kappa$ was 0.6092. These statistics measure same-model repeat stability, not independent human reliability.
+A 1,200-pair probability sample was reviewed first. Protocol v0.4 prospectively governed the remaining 4,964 pairs after retrieval and calibration; it was not a pre-retrieval preregistration. The calibration decisions were reused in the full-corpus analysis. Appendix C preserves the sampling and resampling deviations.
 
-\subsection{Literal-quote re-audit}
+Reviewers A and B were separate GPT-5.6-Sol passes with different stance/order prompts. Provider identity, rank, and prior reviewer decisions were hidden from their review prompts. Disagreements across key fields triggered a third same-model pass, C; 2,661 extension pairs required it. Execution failures were retried or requeued rather than assigned unclear labels. These passes were not independent models or human reviewers.
 
-An audit found 71 provisional positives whose evidence quotes were compressed, concatenated, or paraphrased rather than literal substrings. Those cases received new blinded A/B review over the same frozen excerpt, with a contiguous literal quote required for any positive. Fieldwise C adjudicated disagreements. Thirty-one rows were downgraded to unclear, leaving 1,148 positives; all 1,148 passed normalized literal-substring checking. Literal matching establishes string consistency, not semantic or factual validity.
+The initial merger selected C's whole record when any key field was disputed. This allowed C to overwrite other fields on which A and B agreed. The corrected rule operates separately for each key field: retain the A/B value when they agree; otherwise use C. This enforces the intended disagreement-only role of adjudication. It does not establish that the retained value is factually correct.
 
-\subsection{Provisional entity clustering}
+\hypertarget{literal-quote-re-audit-and-analysis}{%
+\subsubsection{3.5 Literal-quote re-audit and analysis}\label{literal-quote-re-audit-and-analysis}}
 
-Positive pairs were blocked by domain, normalized name, and state. Eighty-nine flagged domain clusters received same-model review for aliases, divisions, multiple operating entities, and unrelated firms. Cross-domain exact normalized-name/state matches were consolidated; 11 fuzzy or alias candidate pairs received separate review. The result was 790 provisional operating-entity clusters and 785 provisional corporate-group clusters. They are not accuracy estimates because the preregistered 200-pair external precision audit was not performed.
+An audit identified 71 positive rows whose supplied quote was compressed, concatenated, or paraphrased rather than a normalized literal substring of the frozen excerpt. These flagged rows received A/B re-audit from the same evidence with a mandatory contiguous literal quote for a positive decision. Semantic disagreements received fieldwise C adjudication. Unicode, quotation-mark, and whitespace normalization were allowed by the string check. Matching the excerpt verifies a quotation property, not semantic entailment or fidelity to the complete original page.
 
-\subsection{Destination-page size screen}
+We report exact label counts for the constructed corpus and reconstruct the processing stages from stored decisions. The fieldwise merge comparison reuses the same A/B/C outputs; the quote stage includes new reviews of the flagged subset. Their differences cannot be interpreted as randomized treatment effects. We report neither factual precision nor recall, and no confidence interval is used to generalize these finite-corpus counts to U.S. manufacturers.
 
-An invalid first size pass was discarded because it included earlier AI rationales, creating circular model-to-model evidence. The corrected pipeline used only frozen destination-page visible text around employee, workforce, owner-only, nonemployer, SBA, SAM.gov, WOSB, and HUBZone terms.
+\hypertarget{results}{%
+\subsection{4. Results}\label{results}}
 
-The corrected positive corpus contained 446 nonempty size contexts and 702 automatic screen negatives. Thirty-nine pair-level signals mapped to 29 provisional clusters. These clusters received A/B review and fieldwise C adjudication for currentness, entity scope, exact versus approximate numbers, descriptive employee band, owner-only evidence, and page-reported federal representations. The screen measures only evidence on pages retrieved for capability/location queries; it is not a public-web firm-size search.
+\hypertarget{final-labels-and-repeat-evaluation-stability}{%
+\subsubsection{4.1 Final labels and repeat-evaluation stability}\label{final-labels-and-repeat-evaluation-stability}}
 
-\section{Results}
+The final workflow retained \textbf{1,148 positive page-support labels}, corresponding to 18.62\% of constructed pairs (Table 1). Positive pairs referenced 1,072 destination pages and 796 registrable domains. All retained positive quotes passed the normalized literal-substring check. These are model outputs with an internal quotation check, not verified supplier counts.
 
-\subsection{Retrieval and evidence funnel}
-
-\begin{figure}[ht]
-\centering
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{c c c c}
-\stagebox{19,190}{ranked rows} & $\rightarrow$ & \stagebox{11,715}{query--URL union links} & $\rightarrow$ \\[5pt]
-\stagebox{4,638}{unique destination URLs} & $\rightarrow$ & \stagebox{3,383}{HTTP-2xx pages} & $\rightarrow$ \\[5pt]
-\stagebox{6,164}{constructed pairs} & $\rightarrow$ & \stagebox{1,148}{positive page-support labels} & $\rightarrow$ \\[5pt]
-\stagebox{790}{provisional entity clusters} & $\rightarrow$ & \stagebox{23}{nonhistorical numerical size evidence} & $\rightarrow$ \\[5pt]
-\multicolumn{4}{c}{\stagebox{14}{single descriptive employee band}}
-\end{tabular}
-\caption{Unit-aware evidence funnel. The transition from pages to pairs is a fan-out because a page can be inherited by more than one capability/state query. Counts at different layers are not interchangeable.}
-\label{fig:funnel}
-\end{figure}
-
-The all-query outputs had a 63.81\% pooled URL Jaccard and a 65.55\% macro mean. Restricting to 959 dual-success queries produced 63.86\% pooled and 65.62\% macro overlap. Pooled values by intent were 65.84\% for direct, 63.77\% for mixed ownership/locality, and 61.86\% for small-batch queries. Lower overlap indicates more distinct top-10 URLs, not better producers or greater recall.
-
-\subsection{Constructed-corpus labels}
-
-Of 6,164 constructed pairs, 1,148 received the provisional positive page-support label (18.62\%), 3,799 were labeled no (61.63\%), and 1,217 unclear (19.74\%). Positive pairs represented 1,072 destination pages and 796 registrable domains.
-
-In the earlier 1,200-pair probability sample, the corrected labels were 214 yes, 677 no, and 309 unclear. Inverse-inclusion weighting over the implemented strata yielded a 17.84\% positive-label estimate. A 10,000-replicate pair-within-stratum bootstrap yielded 15.84\%--19.86\%. The full-corpus fraction, 18.62\%, falls inside that diagnostic interval, but the interval is not presented as protocol-conformant because the frozen protocol specified query-unit resampling and broader balancing dimensions. Once all 6,164 model labels existed, exact constructed-corpus counts superseded sampling inference for this exploratory audit.
-
-\begin{table}[ht]
-\centering
-\caption{Model-applied pair labels in the constructed corpus.}
-\begin{tabular}{lrr}
-\toprule
-Label & Count & Share \\
-\midrule
-Provisional five-component page-support yes & 1,148 & 18.62\% \\
+\Needspace{17\baselineskip}
+\begin{longtable}[]{@{}lrr@{}}
+\caption{Final labels on the complete constructed corpus. The denominator is pairs, not businesses.}\tabularnewline
+\toprule\noalign{}
+Final pair label & Count & Share \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Final pair label & Count & Share \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Page-support yes & 1,148 & 18.62\% \\
 No & 3,799 & 61.63\% \\
 Unclear & 1,217 & 19.74\% \\
-\midrule
-Total & 6,164 & 100.00\% \\
-\bottomrule
-\end{tabular}
-\label{tab:labels}
-\end{table}
+Total & 6,164 & 100\% \\
+\end{longtable}
 
-The largest exclusion categories among 5,016 nonpositive pairs were insufficient evidence (1,712; 34.13\%) and wrong state or missing queried-state production support (1,102; 21.97\%). Table~\ref{tab:exclusions} reports the leading reasons.
+On the original 4,964-pair extension reviews, before targeted quote re-audit, A/B agreed on \texttt{eqdp} for 4,050 pairs (81.59\%; nominal Cohen's kappa = 0.609). This measures repeat-evaluation stability under prompt/order variation, not agreement with human experts. The 1,200-pair calibration and extension are kept separate for this stability statistic because they were executed in different stages.
 
-\begin{table}[ht]
-\centering
-\caption{Leading model-assigned exclusion reasons. Categories are primary and mutually exclusive at the pair level.}
-\begin{tabular}{lrr}
-\toprule
-Primary reason & Count & Share of nonpositive \\
-\midrule
-Insufficient excerpt evidence & 1,712 & 34.13\% \\
-Wrong state / no in-state production support & 1,102 & 21.97\% \\
+\hypertarget{evidence-gaps-in-nonpositive-outputs}{%
+\subsubsection{4.2 Evidence gaps in nonpositive outputs}\label{evidence-gaps-in-nonpositive-outputs}}
+
+Among the 5,016 nonpositive pairs, insufficient evidence and wrong-state or missing state-production proof accounted for 2,814 primary reasons (56.10\%; Table 2). This is a distribution of model-assigned reasons. It does not determine whether the corresponding firms actually lack production capacity or whether supplemental pages could resolve the gap.
+
+\Needspace{17\baselineskip}
+\begin{longtable}[]{@{}lrr@{}}
+\caption{Primary model-assigned reasons; denominator 5,016. The last row groups the remaining recorded categories. Percentages are rounded.}\tabularnewline
+\toprule\noalign{}
+Primary exclusion reason & Pairs & Share of nonpositive pairs \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Primary exclusion reason & Pairs & Share of nonpositive pairs \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Insufficient evidence & 1,712 & 34.13\% \\
+Wrong state / missing state-production proof & 1,102 & 21.97\% \\
 Capability mismatch & 568 & 11.32\% \\
 Distributor, reseller, or broker & 463 & 9.23\% \\
 Nonmanufacturing service & 324 & 6.46\% \\
 Source unavailable within excerpt & 290 & 5.78\% \\
-Foreign production only & 203 & 4.05\% \\
-Generic sector claim only & 133 & 2.65\% \\
-\bottomrule
-\end{tabular}
-\label{tab:exclusions}
-\end{table}
-\FloatBarrier
+Foreign-only production & 203 & 4.05\% \\
+Generic sector claim & 133 & 2.65\% \\
+Other recorded reasons & 221 & 4.41\% \\
+\end{longtable}
 
-\subsection{Selected capability-family, state, and intent results}
+\hypertarget{sensitivity-to-processing-rules}{%
+\subsubsection{4.3 Sensitivity to processing rules}\label{sensitivity-to-processing-rules}}
 
-Observed positive-label fractions differed by more than an order of magnitude across selected capability-query families (Table~\ref{tab:industry}). The tasks are not exchangeable: they differ in capability specificity, terminology, page ecology, repeated entities, and fit to top-10 general search. These fractions are not estimates of industry effects or national discoverability.
+Table 3 reconstructs the label trajectory. Whole-record C selection produced 321 unclear labels in fields where A and B had agreed on no: 38 in calibration and 283 in the extension. Fieldwise merging restored those no labels and left the positive count unchanged. These are changes to the primary \texttt{eqdp} field. Across all ten adjudicated key fields, 339 rows changed, including 18 with no change to the primary label.
 
-\begin{table}[ht]
-\centering
-\caption{Page-support labels by selected capability-query family.}
-\begin{tabular}{lrrr}
-\toprule
-Family & Yes & Pairs & Rate \\
-\midrule
+\Needspace{17\baselineskip}
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{Retrospectively reconstructed processing stages, each totaling 6,164 pairs. The first transition changes merge logic on stored reviews; the second includes re-review of 71 flagged positives. This is not an accuracy comparison.}\tabularnewline
+\toprule\noalign{}
+Processing stage & Yes & No & Unclear \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Processing stage & Yes & No & Unclear \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Whole-record C merge, before quote re-audit & 1,179 & 3,478 & 1,507 \\
+Fieldwise merge, before quote re-audit & 1,179 & 3,799 & 1,186 \\
+Fieldwise merge and literal-quote re-audit & 1,148 & 3,799 & 1,217 \\
+\end{longtable}
+
+Of those 71 flagged positives, 40 remained yes with acceptable literal quotations and 31 became unclear. The positive count fell from 1,179 to 1,148. It would be incorrect to describe all 71 as false positives or to treat the 31 downgraded cases as independently established errors. The evidence supports a narrower result: enforcing the revised quote requirement, together with re-review, changed both the retained quotations and some labels.
+
+A separate size-screen failure reinforced the need to distinguish source material from earlier model output: an initial pass included prior model rationales in its evidence context. That pass was discarded and regenerated from frozen page text. Because the input procedure changed, we do not interpret differences from the invalid run as measured accuracy gains. Its corrected, exploratory results remain in Appendix B.
+
+\hypertarget{interpretation-and-limitations}{%
+\subsection{5. Interpretation and Limitations}\label{interpretation-and-limitations}}
+
+\textbf{Agreement, quotation integrity, and validity are different properties.} Fieldwise merging prevents an adjudicator from changing agreed fields under the stated rule. Literal matching checks whether the reported words occur in the supplied excerpt. Neither property establishes that the words entail all five support conditions, that the webpage is truthful, or that the model agrees with a domain expert. The corrections make specific processing failures inspectable without substituting internal checks for external validation.
+
+\textbf{The task definition limits downstream use.} A page can fail this single-excerpt test while another page supplies the missing location evidence. A future system that combines pages would require a multi-page reference task and identical evidence access for its baselines. Likewise, a graph-based candidate-ranking experiment would need an independent human test set and controls for extra text, simple graph statistics, and message passing. This corpus is not already a validated GNN benchmark.
+
+\textbf{Collection and model scope are narrow.} The study uses two providers, selected capability/state templates, accessible top-10 destination pages, and one model with a particular excerpt procedure. Repeated pages and entities induce dependence. Fetch failures, truncation, query wording, stale pages, and one-focal-business extraction shape the observed labels. Results do not estimate national coverage, industry prevalence, procurement readiness, actual buyer-supplier links, or SME status. No comparative accuracy claim against another model or reviewer is supported.
+
+\textbf{The audit is retrospective and incompletely validated.} Processing failures motivated the corrections, and this manuscript refocus was made after results were known. The changes were not prespecified experimental arms. The original human double-annotation and entity-resolution precision gates remain unmet. Removing entity-level findings from the main narrative does not satisfy or waive those gates. The recorded calibration sampling mismatch remains a limitation; its exploratory interval is not a main result here.
+
+\textbf{Public artifacts expose only part of the evidence chain.} The public repository contains code, schemas, queries, logs, and aggregate bytes, while the frozen page bodies and row-level decisions remain closed. Hashes establish byte identity, not factual correctness. Independent researchers can inspect the workflow and aggregates but cannot reproduce or audit individual frozen judgments from the public package alone.
+
+\hypertarget{conclusion}{%
+\subsection{6. Conclusion}\label{conclusion}}
+
+On 6,164 constructed source-capability-state pairs, the final same-model workflow assigned 1,148 positive page-support labels. Retrospective reconstruction showed that whole-record adjudication and nonliteral quotations materially affected its outputs: fieldwise merging restored 321 agreed no labels, and re-audit downgraded 31 flagged positives. These findings identify concrete process sensitivities in LLM-assisted evidence screening. Human validation is required before interpreting the labels as benchmark judgments or measuring factual screening performance.
+
+\hypertarget{data-code-and-ai-use-disclosure}{%
+\subsection{Data, Code, and AI-Use Disclosure}\label{data-code-and-ai-use-disclosure}}
+
+Frozen queries, processing and review scripts, schemas, deviation logs, and the row-free aggregate package are publicly archived in the \href{https://github.com/elijahqi/us-sme-signal-graph}{US-SME Signal Graph repository}. The original aggregate package is anchored at \href{https://github.com/elijahqi/us-sme-signal-graph/commit/c036829224cbd600534623e7f751cd86514dbd1d}{commit c036829}; its eight published SHA-256 entries were checked after upload. The package remains versioned as \emph{long-tail-evidence-audit-v0.1-exploratory} because this manuscript revision does not change its data. Search-provider payloads and fetched third-party page text are excluded from the public artifacts. The companion \href{https://github.com/elijahqi/us-sme-signal-graph/blob/main/paper/audit_processing_sensitivity_v0_2.json}{processing-stage summary} records the reconstructed counts and input fingerprints. Its reconstruction script checks all 6,164 final rows across ten key fields against the stored final table and recomputes the 71 quote-check failures. Re-running that audit requires the closed corpus; the public summary does not enable record-level reproduction.
+
+GPT-5.6-Sol generated the study's screening decisions through the disclosed repeated-pass workflow. An AI coding assistant assisted with analysis checks, manuscript revision, and formatting. These activities do not constitute independent human review. Author review and the selected venue's AI-use requirements remain outstanding submission tasks. The revision record and claim audit preserve the research scope change and validation status.
+
+\begingroup
+\small
+
+\hypertarget{references}{%
+\subsection{References}\label{references}}
+
+{[}1{]} Y. Li, X. Liu, and B. Starly. Manufacturing service capability prediction with Graph Neural Networks. \emph{Journal of Manufacturing Systems}, 74, 291-301, 2024. \url{https://doi.org/10.1016/j.jmsy.2024.03.010}.
+
+{[}2{]} Y. Li, H. Ko, and F. Ameri. Integrating Graph Retrieval-Augmented Generation With Large Language Models for Supplier Discovery. \emph{Journal of Computing and Information Science in Engineering}, 25(2), 021010, 2025. \url{https://doi.org/10.1115/1.4067389}.
+
+{[}3{]} Y. Qi, Y. Qi, and T. Wagh. Coverage-Aware Web Crawling for Domain-Specific Supplier Discovery via a Web-Knowledge-Web Pipeline. \emph{arXiv:2602.24262v4}, 2026. \url{https://arxiv.org/abs/2602.24262v4}.
+
+{[}4{]} N. Yagci, S. Sünkler, H. Häußler, and D. Lewandowski. A Comparison of Source Distribution and Result Overlap in Web Search Engines. \emph{Proceedings of the Association for Information Science and Technology}, 59(1), 346-357, 2022. \url{https://doi.org/10.1002/pra2.758}.
+
+{[}5{]} C. Buckley and E. M. Voorhees. Retrieval Evaluation with Incomplete Information. \emph{SIGIR '04}, 25-32, 2004. \url{https://doi.org/10.1145/1008992.1009000}.
+
+{[}6{]} J. Dodge, M. Sap, A. Marasović, W. Agnew, G. Ilharco, D. Groeneveld, M. Mitchell, and M. Gardner. Documenting Large Webtext Corpora: A Case Study on the Colossal Clean Crawled Corpus. \emph{EMNLP}, 1286-1305, 2021. \url{https://aclanthology.org/2021.emnlp-main.98/}.
+
+{[}7{]} L. Zheng et al.~Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena. \emph{Advances in Neural Information Processing Systems}, 36, 46595-46623, 2023. \url{https://papers.nips.cc/paper_files/paper/2023/hash/91f18a1287b398d378ef22505bf41832-Abstract-Datasets_and_Benchmarks.html}.
+
+\endgroup
+\clearpage
+
+\hypertarget{appendix-a.-collection-context-and-descriptive-subgroups}{%
+\subsection{Appendix A. Collection Context and Descriptive Subgroups}\label{appendix-a.-collection-context-and-descriptive-subgroups}}
+
+The states were Massachusetts, Pennsylvania, Michigan, Ohio, North Carolina, Texas, Arizona, and California. Ten capability families supplied four capabilities each. Cross-query deduplication and pair construction mean that ranked rows, URLs, pairs, and businesses are different units. Query-URL overlap was 63.81\% when pooled across all queries and 65.55\% as the macro mean of per-query Jaccards. On the 959 dual-success queries, the corresponding values were 63.86\% and 65.62\%. Overlap measures returned-URL agreement, not producer recall or provider quality.
+
+\Needspace{17\baselineskip}
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{Descriptive label fractions in selected query families. They are not national industry estimates or controlled industry effects.}\tabularnewline
+\toprule\noalign{}
+Industry family & Yes & Pairs & Positive-label rate \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Industry family & Yes & Pairs & Positive-label rate \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
 Precision metal & 294 & 645 & 45.58\% \\
-Wood and industrial packaging & 223 & 601 & 37.10\% \\
+Wood / industrial packaging & 223 & 601 & 37.10\% \\
 Remanufacturing & 139 & 533 & 26.08\% \\
 Electronics & 113 & 551 & 20.51\% \\
-Polymers/composites & 110 & 622 & 17.68\% \\
-Additive manufacturing/tooling & 126 & 715 & 17.62\% \\
+Additive manufacturing / tooling & 126 & 715 & 17.62\% \\
+Polymers / composites & 110 & 622 & 17.68\% \\
 Contract consumer production & 61 & 582 & 10.48\% \\
 Industrial textiles & 50 & 605 & 8.26\% \\
 Semiconductor & 15 & 590 & 2.54\% \\
 Battery & 17 & 720 & 2.36\% \\
-\bottomrule
-\end{tabular}
-\label{tab:industry}
-\end{table}
-
-State-conditioned constructed-corpus fractions ranged from 11.46\% in Massachusetts to 24.68\% in Texas (Table~\ref{tab:states}). These are properties of selected state-query outputs and their page ecologies, not estimates of manufacturing prevalence or search quality by state.
-
-\begin{table}[ht]
-\centering
-\caption{Page-support labels by queried state in the constructed corpus.}
-\begin{tabular}{lrrr}
-\toprule
-Queried state & Yes & Pairs & Rate \\
-\midrule
-Arizona & 127 & 709 & 17.91\% \\
-California & 184 & 769 & 23.93\% \\
-Massachusetts & 87 & 759 & 11.46\% \\
-Michigan & 147 & 767 & 19.17\% \\
-North Carolina & 118 & 765 & 15.42\% \\
-Ohio & 157 & 829 & 18.94\% \\
-Pennsylvania & 134 & 780 & 17.18\% \\
-Texas & 194 & 786 & 24.68\% \\
-\bottomrule
-\end{tabular}
-\label{tab:states}
-\end{table}
-\FloatBarrier
-
-Intent incidence was multi-valued and noncausal. Direct-observed pairs were positive in 674 of 3,164 incidences (21.30\%), mixed ownership/locality-observed pairs in 695 of 3,009 (23.10\%), and small-batch-observed pairs in 491 of 2,745 (17.89\%).
-
-\subsection{From pairs to provisional entities}
-
-The 1,148 positive pairs clustered into 790 provisional operating-entity clusters, a 31.18\% reduction, and 785 provisional corporate-group clusters. Reporting 1,148 companies or SMEs would therefore overstate the evidence. The cluster counts remain unvalidated because no external precision audit has been completed.
-
-\subsection{Firm-size evidence screen}
-
-After pair review and entity mapping, 29 provisional clusters entered entity-level size review; 761 had no surviving pair-level size signal and were not quote-audit eligible. Table~\ref{tab:size} reports overlapping and nested indicators.
-
-\begin{table}[ht]
-\centering
-\caption{Destination-page size-screen results. Rows are nested or overlapping and must not be summed.}
-\begin{tabular}{lrr}
-\toprule
-Indicator & Clusters & Share of 790 \\
-\midrule
-Nonhistorical numerical employee evidence & 23 & 2.91\% \\
-Wholly within one descriptive band & 14 & 1.77\% \\
-\quad 10--99 & 10 & 1.27\% \\
-\quad 100--499 & 2 & 0.25\% \\
-\quad 500+ & 2 & 0.25\% \\
-Numerical bound/range crossing bands & 9 & 1.14\% \\
-Current owner-only support & 0 & 0.00\% \\
-Named-program or explicit SAM/SBA page claim & 3 & 0.38\% \\
-External SBA-small verification & \multicolumn{2}{c}{Not performed} \\
-Descriptive employee band unknown & 767 & 97.09\% \\
-\bottomrule
-\end{tabular}
-\label{tab:size}
-\end{table}
-
-The 23 numerical-evidence clusters comprise 14 single-band and nine cross-band cases. The 14 single-band cases comprise 10, two, and two clusters in the listed bands. One single-band cluster also has an explicit federal page representation. The three federal-representation clusters comprise two explicit SAM/SBA page-claim clusters and one named-program page-claim cluster. These are page representations, not current independent determinations.
-
-On the 29 screen-positive clusters, A/B raw agreement was 89.66\% (nominal $\kappa=0.859$) for descriptive band and 100\% for the federal-representation category. These small selected-subset statistics measure same-model stability only. All 29 eligible quotes passed literal matching; 761 automatic screen negatives were not applicable to quote audit.
-\FloatBarrier
-
-\section{Discussion}
-
-\subsection{The observed shortfall is evidentiary within this corpus}
-
-Existing systems already discover suppliers by capability and location, build manufacturing knowledge graphs, infer latent capabilities, and expose company-size fields. The present audit asks a narrower question: how destination-page excerpts retrieved by selected capability and location queries are labeled when producer, capability, state-production, commercial, and size evidence are separated. It does not establish what public systems generally report or what a targeted firm-size search would recover.
-
-The two largest model-assigned exclusion categories were insufficient evidence and missing queried-state production support. This illustrates why evaluations based only on clicks, domains, or company-name matches can count pages that do not contain the downstream evidence an analyst requests. A future validated benchmark should preserve component labels instead of compressing them into a single relevance score.
-
-\subsection{Size cannot be inferred from appearance}
-
-Family-owned language, an owner's biography, a small facility, low-volume capability, or a basic website does not establish employees, receipts, affiliates, or SBA status. Conversely, a local job shop can belong to a larger group. Under the narrow destination-page screen, 767 of 790 provisional clusters could not be placed wholly within one descriptive employee band.
-
-A screen negative does not imply that an entity's size is unknowable or that it is not an SME. It means only that the frozen capability/location destination pages and term lexicon did not support the narrow classification. Authoritative registries, direct confirmation, commercial firmographics with disclosed provenance, or linked administrative data could produce different results.
-
-\subsection{Implications for graph-guided discovery}
-
-This audit does not supply an immediately reusable W--K--W test set because an adaptive crawler would generate different pages and pairs. It proposes an outcome schema that a future rerun could apply to W--K--W and static baselines under identical budgets. Such a study should construct candidates symmetrically, seal evaluation labels, and obtain independent human validation.
-
-\section{Limitations}
-
-\begin{enumerate}
-  \item The corpus is pipeline-constructed under 960 frozen queries, not a census of U.S. manufacturers or search-visible firms. National recall and completeness are unknown.
-  \item Retrieval used two general-web channels and top-10 outputs. Other engines, directories, query formulations, dates, and provider failures could yield different populations.
-  \item The full review uses repeated passes of one LLM. Blinding, varied prompts, structured validation, fieldwise adjudication, and quote audits reduce some failure modes but do not replace human validation.
-  \item The original v0.3 human double-annotation, $\kappa\geq0.70$ gate, reviewer-time measurement, and 200-pair entity-resolution precision audit were not executed.
-  \item The calibration sampler and bootstrap implemented fewer balancing dimensions and a different resampling unit than protocol v0.3. The reported 95\% interval is exploratory and is not used for a confirmatory claim.
-  \item The 790 entity clusters remain provisional; false-merge and false-split uncertainty is not measured.
-  \item The size audit is keyword-window based and restricted to already retrieved capability/location pages. Linked pages or targeted size sources may contain additional evidence.
-  \item Public page claims can be stale. External SBA-small verification was not performed.
-  \item The row-level corpus is closed because it contains fetched third-party page content and rights-sensitive provenance. Aggregate hashes identify exact private artifact bytes but do not permit record-level independent auditing.
-\end{enumerate}
-
-\section{Conclusion}
-
-Within the fixed top-10 outputs of 960 selected queries, the model protocol assigned 1,148 positive page-support labels, while most constructed pairs were no or unclear. Those positive pairs clustered into 790 provisional operating-entity clusters, not 1,148 verified firms. Retrieval overlap, textual claim support, entity clustering, and firm-size or SBA-status evidence are different tasks and require different evidence.
-
-This exploratory audit makes those layers explicit across ten selected capability families. Its value is not a claim that supplier discovery is new or that the labels are ground truth, but a concrete protocol and set of failure modes for a subsequent human-validated study.
-
-\section*{Data and Artifact Availability}
-
-The repository contains the frozen lattice, processing and review code, schemas, aggregate reports, deviation logs, and a row-free exploratory package at \path{release/public/long-tail-evidence-audit-v0.1-exploratory}. Its manifest states that it is not a validated benchmark and that human/entity-resolution gates remain incomplete. Search-provider payloads, titles, snippets, and ranks were not retained. Destination-page bodies, row-level model decisions, and entity-level evidence remain in a closed research corpus. The aggregate package documents workflow and byte identity but does not permit record-level reproduction or independent audit of the labels.
-
-\section*{Ethics, Rights, and AI-use Statement}
-
-The study uses public business pages and excludes private residential addresses and unnecessary personal details. Robots and HTTP access controls were respected. Provider payloads were processed transiently under the study's conservative rights boundary. GPT-5.6-Sol produced the exploratory labels and assisted with manuscript development; the passes were not independent human annotation. Any submission must comply with the selected venue's AI-use disclosure policy.
-
-\section*{Acknowledgment of Outstanding Validation}
-
-This manuscript must not be represented as publication-ready until at least 300 provider-blind cases receive independent human double annotation and the preregistered agreement gate is evaluated; a presampled 200-pair entity-resolution audit evaluates the 0.95 precision gate; the initial adjacent-method review is expanded and verified for the selected venue; and the staged aggregate package is published and checksum-verified.
-
-\begin{thebibliography}{15}
-
-\bibitem{li2021design}
-Y. Li, S. Raman, P. Cohen, and B. Starly, ``Design of Knowledge Graph in Manufacturing Services Discovery,'' \emph{ASME MSEC}, 2021. \url{https://doi.org/10.1115/MSEC2021-63766}.
-
-\bibitem{li2024kg}
-Y. Li and B. Starly, ``Building a knowledge graph to enrich ChatGPT responses in manufacturing service discovery,'' \emph{Journal of Industrial Information Integration}, vol. 40, 100612, 2024. \url{https://doi.org/10.1016/j.jii.2024.100612}.
-
-\bibitem{li2024gnn}
-Y. Li, X. Liu, and B. Starly, ``Manufacturing service capability prediction with Graph Neural Networks,'' \emph{Journal of Manufacturing Systems}, 2024. \url{https://doi.org/10.1016/j.jmsy.2024.03.010}.
-
-\bibitem{li2025graphrag}
-Y. Li, H. Ko, and F. Ameri, ``Integrating Graph Retrieval-Augmented Generation With Large Language Models for Supplier Discovery,'' \emph{Journal of Computing and Information Science in Engineering}, vol. 25, no. 2, 021010, 2025. \url{https://doi.org/10.1115/1.4067389}.
-
-\bibitem{kumar2025}
-V. Kumar, ``Interoperable Knowledge Graphs for Localized Supply Chains: Leveraging Graph Databases and RDF Standards,'' \emph{Logistics}, vol. 9, no. 4, 144, 2025. \url{https://doi.org/10.3390/logistics9040144}.
-
-\bibitem{almahri2025}
-S. AlMahri, L. Xu, and A. Brintrup, ``Enhancing supply chain visibility with knowledge graphs and large language models,'' \emph{International Journal of Production Research}, 2025. \url{https://doi.org/10.1080/00207543.2025.2575841}.
-
-\bibitem{yagci2022}
-N. Yagci, S. Sunkler, H. Haussler, and D. Lewandowski, ``A Comparison of Source Distribution and Result Overlap in Web Search Engines,'' \emph{Proceedings of the Association for Information Science and Technology}, vol. 59, no. 1, pp. 346--357, 2022. \url{https://doi.org/10.1002/pra2.758}.
-
-\bibitem{buckley2004}
-C. Buckley and E. M. Voorhees, ``Retrieval Evaluation with Incomplete Information,'' in \emph{Proceedings of SIGIR '04}, pp. 25--32, 2004. \url{https://doi.org/10.1145/1008992.1009000}.
-
-\bibitem{dodge2021}
-J. Dodge, M. Sap, A. Marasovi\'c, W. Agnew, G. Ilharco, D. Groeneveld, M. Mitchell, and M. Gardner, ``Documenting Large Webtext Corpora: A Case Study on the Colossal Clean Crawled Corpus,'' in \emph{Proceedings of EMNLP}, pp. 1286--1305, 2021. \url{https://aclanthology.org/2021.emnlp-main.98/}.
-
-\bibitem{zheng2023}
-L. Zheng et al., ``Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena,'' \emph{Advances in Neural Information Processing Systems}, vol. 36, pp. 46595--46623, 2023. \url{https://papers.nips.cc/paper_files/paper/2023/hash/91f18a1287b398d378ef22505bf41832-Abstract-Datasets_and_Benchmarks.html}.
-
-\bibitem{berry2018}
-J. W. Berry, C. A. Phillips, K. Kincher-Winoto, L. Getoor, and E. Augustine, ``Entity Resolution at Large Scale: Benchmarking and Algorithmics,'' Sandia National Laboratories, Technical Report SAND-2018-14090, 2018. \url{https://doi.org/10.2172/1493841}.
-
-\bibitem{nistmep}
-NIST Manufacturing Extension Partnership, ``Supplier Scouting.'' \url{https://www.nist.gov/mep/supply-chain/supplier-scouting}.
-
-\bibitem{thomas}
-Thomas, ``How to use Smart Search.'' \url{https://help.thomasnet.com/search-for-suppliers}.
-
-\bibitem{qi2026wkw}
-Y. Qi, Y. Qi, and T. Wagh, ``Coverage-Aware Web Crawling for Domain-Specific Supplier Discovery via a Web--Knowledge--Web Pipeline,'' \emph{CIBDA 2026}. \url{https://doi.org/10.1145/3813822.3814125}.
-
-\bibitem{audit2026}
-US-SME Signal Graph Project, ``Prior-art and novelty audit v0.1,'' project artifact, 2026.
-
-\end{thebibliography}
-
-\appendix
-\section{Unit Dictionary}
-
-\begin{longtable}{p{0.22\textwidth}p{0.70\textwidth}}
-\toprule
-Unit & Definition and prohibited relabeling \\
-\midrule
-\endhead
-Ranked result row & One provider-returned row for one query. Not a unique URL, page, or business. \\
-Query--URL union link & One canonical URL observed for one query after within-query provider union. The same URL can occur for multiple queries. \\
-Destination URL/page & One cross-query canonical URL fetched directly. It may be a company page, directory, news page, association, marketplace, or noise. \\
-Constructed pair & One source ID crossed with one inherited capability and queried state. Not a firm. \\
-Positive page-support pair & A pair whose frozen excerpt receives all five model-applied support components. Not a verified supplier or SME. \\
-Operating-entity cluster & A provisional grouping of positive pair records by name, domain, state, and same-model review. Not a legally verified entity. \\
-Corporate-group cluster & A provisional higher-level grouping of operating clusters. Not an ownership determination. \\
-Production site & A physical production location. Not counted as an operating entity unless the evidence supports a separate operator. \\
-Descriptive employee band & A research category based on page-reported employee evidence. Not an SBA size determination. \\
-Federal page representation & Page text reporting SAM/SBA or a named program. Not independent verification of current status. \\
-\bottomrule
 \end{longtable}
 
-\section{Claim Boundary}
+State-conditioned fractions ranged from 11.46\% in Massachusetts to 24.68\% in Texas. Intent tags overlap: direct-observed pairs had 674 positives among 3,164 incidences, mixed ownership/locality 695 among 3,009, and small-batch 491 among 2,745. These are descriptive incidences, not randomized wording effects. Full state and intent tables remain in the public aggregate package.
 
-\begin{tabularx}{\textwidth}{p{0.29\textwidth}YY}
-\toprule
-Claim & Supported wording & Prohibited inference \\
-\midrule
-Retrieval overlap & Pooled and macro top-10 URL overlap under frozen queries & National recall or provider quality \\
-Positive labels & Model-applied page-support labels with literal quotes & Verified supplier status or factual truth \\
-Entity counts & Provisional cluster counts & Legal entities, establishments, or sites \\
-Size screen & Evidence on retrieved capability/location pages & Public-web firm-size availability \\
-Federal representations & Page-reported program/SAM/SBA language & Current SBA-small determination \\
-W--K--W relationship & Outcome schema for a future aligned rerun & Validation of the prior feedback loop \\
-\bottomrule
-\end{tabularx}
+\hypertarget{appendix-b.-provisional-entities-and-destination-page-size-screen}{%
+\subsection{Appendix B. Provisional Entities and Destination-Page Size Screen}\label{appendix-b.-provisional-entities-and-destination-page-size-screen}}
 
-\section{Submission Gates}
+These analyses are retained as exploratory context and are not primary contributions of this revision. Positive pairs were initially blocked by domain, normalized name, and state. Dedicated business domains could support initial grouping; shared third-party directories could not. Following quote correction, 89 flagged domain clusters and 11 fuzzy/alias candidate pairs received same-model review, alongside exact normalized-name/state consolidation across domains. The 1,148 positive pairs mapped to 790 provisional operating-entity clusters and 785 corporate-group clusters. False-merge and false-split uncertainty has not been measured externally, and clusters were not equated with production sites.
+
+The corrected size screen used only frozen destination-page text around employee, workforce, owner-only, nonemployer, and federal-program terms. It replaced an invalid pass containing earlier model rationales. Empty contexts were screen-negative: 446 positive-pair contexts contained a size term and 702 did not. Thirty-nine surviving pair-level signals mapped to 29 provisional clusters for A/B review and fieldwise C adjudication on five semantic disagreements. All 29 eligible entity-level quotations passed literal matching; 761 automatic screen negatives were not quote-audit eligible.
+
+\Needspace{17\baselineskip}
+\begin{longtable}[]{@{}lr@{}}
+\caption{Nested or overlapping categories, not an additive partition. The 23 numerical cases comprise 14 single-band and nine cross-band cases. All counts depend on provisional entity resolution.}\tabularnewline
+\toprule\noalign{}
+Size-screen result & Provisional clusters \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Size-screen result & Provisional clusters \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Nonhistorical numerical employee evidence & 23 \\
+Wholly within one descriptive employee band & 14 \\
+Band 10-99 & 10 \\
+Band 100-499 & 2 \\
+Band 500+ & 2 \\
+Numerical bounds crossing bands & 9 \\
+Current owner-only support & 0 \\
+Explicit SAM/SBA or named-program page representation & 3 \\
+No nonhistorical numerical employee evidence & 767 \\
+\end{longtable}
+
+The three federal representations comprise two explicit SAM/SBA claims and one named-program claim; one overlaps a single-band case. They are page representations, not independent determinations. The descriptive employee bands are not SBA size definitions. External SBA-small verification was not performed. This narrow screen measures evidence on already retrieved destination pages under the term lexicon; it cannot estimate firm-size information availability across the public web.
+
+\hypertarget{appendix-c.-deviations-and-outstanding-validation}{%
+\subsection{Appendix C. Deviations and Outstanding Validation}\label{appendix-c.-deviations-and-outstanding-validation}}
+
+\textbf{Calibration.} The 1,200-pair calibration ended with 214 yes, 677 no, and 309 unclear labels. Its sampler used 30 industry-family by primary-intent strata, narrower than protocol v0.3's stated balancing dimensions. Its 10,000-replicate bootstrap resampled pairs within strata instead of query units. The reported weighted estimate, 17.84\%, and interval, 15.84\%-19.86\%, remain historical exploratory diagnostics in the aggregate package; they are not presented as protocol-conformant or used as confirmatory evidence here.
+
+\textbf{Audit trail.} Protocol v0.4 was committed after retrieval and calibration, before the 4,964-pair extension. The public model-review deviation log records the human-review substitution, amendment timing, whole-record merge, quote-denominator correction, overlap terminology, literal-quote re-audit, and sampling mismatch. The v0.2 revision record documents this retrospective editorial refocus. None of these records converts the original study into a fully preregistered or human-validated experiment.
+
+\hypertarget{submission-gates}{%
+\subsubsection{Submission Gates}\label{submission-gates}}
+
+The existing study requirements remain in force. This draft is not publication-ready until the outstanding gates in the repository's claim audit are completed:
 
 \begin{enumerate}
-  \item At least 300 provider-blind cases receive independent human double annotation; EQDP/component agreement and the preregistered $\kappa\geq0.70$ gate are evaluated.
-  \item A presampled 200-pair entity-resolution audit evaluates the $\geq0.95$ precision gate.
-  \item The initial adjacent IR pooling, LLM-as-judge, web-corpus, and entity-resolution benchmark review is expanded and verified for the selected venue.
-  \item If a sample-based interval is retained as confirmatory evidence, the declared sampling design is reconciled with its implementation and uncertainty is recomputed at the prespecified unit.
-  \item Bibliographic metadata and venue AI-use policy are checked manually.
-  \item The row-free aggregate package is included in a published repository version and its checksums are verified after publication.
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  At least 300 provider-blind cases receive independent human double annotation, component and overall agreement are reported, and the preregistered \(\kappa \geq 0.70\) gate is evaluated. Model-versus-human comparison must include no and unclear cases, not only model positives.
+\item
+  The presampled 200-pair entity-resolution precision audit is executed and its \(\geq 0.95\) gate is evaluated. Moving entity results to an appendix does not complete or waive this requirement.
+\item
+  Corrected entity-size tables and hashes remain synchronized; the selected venue's literature coverage, bibliography, and AI-use requirements are checked.
+\item
+  Any future confirmatory use of the calibration interval reconciles sampling and resampling with the declared protocol. This revision makes no such claim.
+\item
+  The public aggregate package and post-publication checksum verification remain documented. This archival step has been completed; it provides no substitute for human validation.
 \end{enumerate}
 
+No new human labels, trained GNN, external entity verification, or submission outcome is reported in this revision.
 \end{document}
