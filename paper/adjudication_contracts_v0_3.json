@@ -1,0 +1,156 @@
+{
+  "combined": {
+    "agreed_primary_labels_routed_to_c": {
+      "no": 1897,
+      "unclear": 71,
+      "yes": 177
+    },
+    "overwritten_primary_transitions": {
+      "no": {
+        "no": 0,
+        "unclear": 321,
+        "yes": 0
+      },
+      "unclear": {
+        "no": 0,
+        "unclear": 0,
+        "yes": 0
+      },
+      "yes": {
+        "no": 0,
+        "unclear": 0,
+        "yes": 0
+      }
+    },
+    "routed_to_c_any_field_disagreement": 3292,
+    "routed_to_c_despite_primary_agreement": 2145,
+    "routed_to_c_primary_disagreement": 1147,
+    "rows": 6164,
+    "trigger_field_disagreements_in_overwritten_rows": {
+      "capability_match": 47,
+      "commercial_offering": 24,
+      "direct_producer_status": 46,
+      "identity_status": 12,
+      "legal_form": 17,
+      "primary_exclusion_reason": 143,
+      "production_presence": 129,
+      "scale_band": 1,
+      "web_visibility": 62
+    },
+    "whole_record_overwrite_fraction_among_agreed_primary_routed_rows": 0.14965034965034965,
+    "whole_record_primary_agreement_overwrites": 321
+  },
+  "final_positive_contracts": {
+    "positive_component_violations": 0,
+    "positive_rows": 1148,
+    "positive_state_field_mismatches": 0
+  },
+  "input_sha256": {
+    "calibration": {
+      "a": "dc56ee214a1d12ef65a3be174afb5836acd52f1e0c853d6d3c44681dc5f39123",
+      "b": "bef237bc811ce72fcc21521f319c7a11e79595c0fab41a32065fbb0e4fcccbbf",
+      "c": "03be15c3b50f5bd92b2e8a5428b652ce81418ed141eaef071b817d4ff4d49e26"
+    },
+    "extension": {
+      "a": "c1d62988347863eb98ad4072fab8949fdd1da89d42100891651dccfe8ae8365b",
+      "b": "bdf1f6bbb9d36194aa00a3bc820dfeb383571113f4ae2e1b540625f9550d7acf",
+      "c": "78896efcae1d63c6b0d1105352cc7ada2ba920d03959bd1f3b39742f64b94ec7"
+    },
+    "final_csv": "24bd429ac9b56cc2f02e693c9943f940608c896f9744a586cddac27a7d83497a",
+    "geographies": "e6fce1ad00d3338bd3c3f7982cce46c25f7aea88bfdfe19d1eae8a8442712019"
+  },
+  "metadata": {
+    "analysis": "Retrospective deterministic routing audit using original pre-quote A/B/C outputs",
+    "human_ground_truth": false,
+    "interpretation": "Agreement preservation and output-field consistency, not accuracy, factual validity, or causal improvement",
+    "new_model_calls": 0,
+    "row_level_data_included": false,
+    "trigger_fields_overlap": true,
+    "unit": "source-capability-state pair"
+  },
+  "schema_version": "adjudication_contracts_v0.3",
+  "subsets": {
+    "calibration": {
+      "agreed_primary_labels_routed_to_c": {
+        "no": 338,
+        "unclear": 37,
+        "yes": 23
+      },
+      "overwritten_primary_transitions": {
+        "no": {
+          "no": 0,
+          "unclear": 38,
+          "yes": 0
+        },
+        "unclear": {
+          "no": 0,
+          "unclear": 0,
+          "yes": 0
+        },
+        "yes": {
+          "no": 0,
+          "unclear": 0,
+          "yes": 0
+        }
+      },
+      "routed_to_c_any_field_disagreement": 631,
+      "routed_to_c_despite_primary_agreement": 398,
+      "routed_to_c_primary_disagreement": 233,
+      "rows": 1200,
+      "trigger_field_disagreements_in_overwritten_rows": {
+        "capability_match": 9,
+        "commercial_offering": 5,
+        "direct_producer_status": 7,
+        "identity_status": 2,
+        "legal_form": 2,
+        "primary_exclusion_reason": 14,
+        "production_presence": 22,
+        "scale_band": 0,
+        "web_visibility": 2
+      },
+      "whole_record_overwrite_fraction_among_agreed_primary_routed_rows": 0.09547738693467336,
+      "whole_record_primary_agreement_overwrites": 38
+    },
+    "extension": {
+      "agreed_primary_labels_routed_to_c": {
+        "no": 1559,
+        "unclear": 34,
+        "yes": 154
+      },
+      "overwritten_primary_transitions": {
+        "no": {
+          "no": 0,
+          "unclear": 283,
+          "yes": 0
+        },
+        "unclear": {
+          "no": 0,
+          "unclear": 0,
+          "yes": 0
+        },
+        "yes": {
+          "no": 0,
+          "unclear": 0,
+          "yes": 0
+        }
+      },
+      "routed_to_c_any_field_disagreement": 2661,
+      "routed_to_c_despite_primary_agreement": 1747,
+      "routed_to_c_primary_disagreement": 914,
+      "rows": 4964,
+      "trigger_field_disagreements_in_overwritten_rows": {
+        "capability_match": 38,
+        "commercial_offering": 19,
+        "direct_producer_status": 39,
+        "identity_status": 10,
+        "legal_form": 15,
+        "primary_exclusion_reason": 129,
+        "production_presence": 107,
+        "scale_band": 1,
+        "web_visibility": 60
+      },
+      "whole_record_overwrite_fraction_among_agreed_primary_routed_rows": 0.1619919862621637,
+      "whole_record_primary_agreement_overwrites": 283
+    }
+  }
+}
