@@ -24,8 +24,8 @@ def normalized(value):
 
 text = normalized(Path(sys.argv[1]).read_text(encoding="utf-8"))
 for required in (
-    "1,148 positive page-support labels", "Evidence Screening", "Working Paper v0.2",
-    "321", "31", "Submission Gates", "External SBA-small verification was not performed",
+    "1,148 positive page-support labels", "Evidence Screening", "Working Paper v0.3",
+    "2,145", "14.97%", "321", "31", "Submission Gates", "External SBA-small verification was not performed",
     "17.84%", "Texas", "10,000-replicate", "not presented as protocol-conformant",
 ):
     if normalized(required) not in text:

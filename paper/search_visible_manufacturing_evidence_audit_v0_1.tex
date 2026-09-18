@@ -29,7 +29,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{\small LLM Evidence Screening Audit}
-\rhead{\small Exploratory Working Paper v0.2}
+\rhead{\small Exploratory Working Paper v0.3}
 \cfoot{\thepage}
 \titleformat{\section}{\large\bfseries\color{ink}}{}{0pt}{}
 \titleformat{\subsection}{\normalsize\bfseries}{}{0pt}{}
@@ -42,13 +42,13 @@
 \providecommand{\pandocbounded}[1]{#1}
 \title{\vspace{-1.5em}\Large\bfseries Auditing LLM-Based Evidence Screening for Manufacturing Supplier Discovery}
 \author{\normalsize Yijiashun Qi\\[-2pt]\small ORCID: \href{https://orcid.org/0009-0009-2129-6932}{0009-0009-2129-6932}}
-\date{\small Exploratory Working Paper v0.2}
+\date{\small Exploratory Working Paper v0.3}
 \begin{document}
 \maketitle
 \thispagestyle{fancy}
 \vspace{-1.4em}
 \begin{abstract}
-\noindent LLM-assisted supplier discovery depends on whether retrieved pages support specific business claims, yet a plausible assessment can conceal failures in quotation and adjudication. We audit an evidence-screening workflow on a frozen corpus constructed from 960 U.S. manufacturing queries. Direct acquisition produced 3,383 accessible pages and 6,164 source-capability-state pairs. Separate passes of the same model assessed five producer-support conditions; disputed fields received a third pass. The final workflow assigned 1,148 positive labels (18.62\%), 3,799 no labels, and 1,217 unclear labels. Retrospective reconstruction exposes two consequential processing decisions: replacing whole-record adjudication with fieldwise merging restored 321 A/B-agreed no labels, and literal-quote re-audit downgraded 31 of 71 flagged positive rows to unclear. These changes measure output sensitivity and internal consistency, not gains in factual accuracy. We document the observation unit, frozen evidence boundary, and correction sequence, with public code and aggregate artifacts. The contribution is a domain-specific process audit that separates model-label stability, quotation integrity, and external validity. Independent human validation remains necessary before using the labels as a benchmark.
+\noindent LLM-assisted supplier discovery depends on whether retrieved pages support specific business claims, yet a plausible assessment can conceal failures in quotation and adjudication. We audit an evidence-screening workflow on a frozen corpus constructed from 960 U.S. manufacturing queries. Direct acquisition produced 3,383 accessible pages and 6,164 source-capability-state pairs. Separate passes of the same model assessed five producer-support conditions; disputed fields received a third pass. The final workflow assigned 1,148 positive labels (18.62\%), 3,799 no labels, and 1,217 unclear labels. Retrospective reconstruction exposes two consequential processing decisions. Among 2,145 pairs sent to adjudication despite an agreed primary label, whole-record selection overwrote 321 (14.97\%); fieldwise merging preserved that agreement. Literal-quote re-audit downgraded 31 of 71 flagged positive rows to unclear. These changes measure output sensitivity and internal consistency, not gains in factual accuracy. We document the observation unit, frozen evidence boundary, and correction sequence, with public code and aggregate artifacts. The contribution is a domain-specific process audit that separates model-label stability, quotation integrity, and external validity. Independent human validation remains necessary before using the labels as a benchmark.
 \end{abstract}
 \noindent\textbf{Keywords:} LLM evaluation; supplier discovery; evidence screening; adjudication; web-corpus audit; provenance
 
@@ -69,7 +69,7 @@ This paper studies an implemented LLM evidence-screening workflow. Its observati
   \textbf{RQ2:} How do fieldwise adjudication and literal-quote re-audit change those outputs on the same frozen corpus?
 \end{itemize}
 
-We contribute a documented corpus construction and support rubric, a reconstruction of consequential processing corrections, and an account of what those corrections do and do not validate. The revisions examined here were prompted by failures found during the study. They are retrospective process checks, not a preregistered comparison or a controlled accuracy experiment. Version 0.2 narrows the earlier manuscript's emphasis after the results were known; the original protocols, deviations, and outstanding validation requirements remain part of the record.
+We contribute a documented corpus construction and support rubric, a reconstruction of consequential processing corrections, and an account of what those corrections do and do not validate. The revisions examined here were prompted by failures found during the study. They are retrospective process checks, not a preregistered comparison or a controlled accuracy experiment. Version 0.2 narrowed the earlier manuscript's emphasis after the results were known; v0.3 adds routing denominators and output-consistency checks using the same stored decisions. The original protocols, deviations, and outstanding validation requirements remain part of the record.
 
 \hypertarget{related-work}{%
 \subsection{2. Related Work}\label{related-work}}
@@ -126,16 +126,22 @@ Eligible presence includes an industrial facility or job shop and, where support
 
 A 1,200-pair probability sample was reviewed first. Protocol v0.4 prospectively governed the remaining 4,964 pairs after retrieval and calibration; it was not a pre-retrieval preregistration. The calibration decisions were reused in the full-corpus analysis. Appendix C preserves the sampling and resampling deviations.
 
-Reviewers A and B were separate GPT-5.6-Sol passes with different stance/order prompts. Provider identity, rank, and prior reviewer decisions were hidden from their review prompts. Disagreements across key fields triggered a third same-model pass, C; 2,661 extension pairs required it. Execution failures were retried or requeued rather than assigned unclear labels. These passes were not independent models or human reviewers.
+Reviewers A and B were separate GPT-5.6-Sol passes with different stance/order prompts. Provider identity, rank, and prior reviewer decisions were hidden from their review prompts. A disagreement on any of ten key fields triggered a third same-model pass, C: the primary label, four yes/no/unclear components, production-presence category, exclusion reason, scale band, legal form, or web visibility. C reviewed 631 calibration and 2,661 extension pairs. Execution failures were retried or requeued rather than assigned unclear labels. These passes were not independent models or human reviewers.
 
-The initial merger selected C's whole record when any key field was disputed. This allowed C to overwrite other fields on which A and B agreed. The corrected rule operates separately for each key field: retain the A/B value when they agree; otherwise use C. This enforces the intended disagreement-only role of adjudication. It does not establish that the retained value is factually correct.
+The initial merger selected C's whole record when any key field was disputed. This allowed C to overwrite other fields on which A and B agreed. For pair \(i\) and key field \(f\), the corrected rule is
+
+\[
+M_{if} = \begin{cases} A_{if}, & A_{if}=B_{if}, \\ C_{if}, & A_{if}\ne B_{if}. \end{cases}
+\]
+
+Every pair with a disputed key field must have a C record; absent adjudication is an execution failure. This rule preserves agreed fields but can combine decisions from different passes into a hybrid record. We therefore distinguish agreement preservation from consistency across output fields. Neither establishes factual correctness.
 
 \hypertarget{literal-quote-re-audit-and-analysis}{%
 \subsubsection{3.5 Literal-quote re-audit and analysis}\label{literal-quote-re-audit-and-analysis}}
 
 An audit identified 71 positive rows whose supplied quote was compressed, concatenated, or paraphrased rather than a normalized literal substring of the frozen excerpt. These flagged rows received A/B re-audit from the same evidence with a mandatory contiguous literal quote for a positive decision. Semantic disagreements received fieldwise C adjudication. Unicode, quotation-mark, and whitespace normalization were allowed by the string check. Matching the excerpt verifies a quotation property, not semantic entailment or fidelity to the complete original page.
 
-We report exact label counts for the constructed corpus and reconstruct the processing stages from stored decisions. The fieldwise merge comparison reuses the same A/B/C outputs; the quote stage includes new reviews of the flagged subset. Their differences cannot be interpreted as randomized treatment effects. We report neither factual precision nor recall, and no confidence interval is used to generalize these finite-corpus counts to U.S. manufacturers.
+We report exact label counts for the constructed corpus and reconstruct the processing stages from stored decisions. The fieldwise merge comparison reuses the same A/B/C outputs; the quote stage includes new reviews of the flagged subset. Their differences cannot be interpreted as randomized treatment effects. A further deterministic audit counts primary-label agreement among C-routed pairs and checks whether final positives have four affirmative components, an eligible production-presence category, no exclusion reason, and a production-state field matching the query after abbreviation normalization. These are limited output checks, not a semantic review of the source. We report neither factual precision nor recall, and no confidence interval is used to generalize these finite-corpus counts to U.S. manufacturers.
 
 \hypertarget{results}{%
 \subsection{4. Results}\label{results}}
@@ -143,7 +149,7 @@ We report exact label counts for the constructed corpus and reconstruct the proc
 \hypertarget{final-labels-and-repeat-evaluation-stability}{%
 \subsubsection{4.1 Final labels and repeat-evaluation stability}\label{final-labels-and-repeat-evaluation-stability}}
 
-The final workflow retained \textbf{1,148 positive page-support labels}, corresponding to 18.62\% of constructed pairs (Table 1). Positive pairs referenced 1,072 destination pages and 796 registrable domains. All retained positive quotes passed the normalized literal-substring check. These are model outputs with an internal quotation check, not verified supplier counts.
+The final workflow retained \textbf{1,148 positive page-support labels}, corresponding to 18.62\% of constructed pairs (Table 1). Positive pairs referenced 1,072 destination pages and 796 registrable domains. All retained positive quotes passed the normalized literal-substring check. The component and state-field checks defined in Section 3.5 found zero violations among those 1,148 positives. These checks establish agreement between recorded fields, not that a quoted passage supports production of the requested capability in the queried state. The counts remain model outputs, not verified suppliers.
 
 \Needspace{17\baselineskip}
 \begin{longtable}[]{@{}lrr@{}}
@@ -218,6 +224,51 @@ Fieldwise merge, before quote re-audit & 1,179 & 3,799 & 1,186 \\
 Fieldwise merge and literal-quote re-audit & 1,148 & 3,799 & 1,217 \\
 \end{longtable}
 
+The routing audit identifies the denominator exposed to unintended primary-label replacement (Table 4). Of 3,292 pairs sent to C, 1,147 had a primary-label disagreement; the remaining 2,145 agreed on the primary label but disagreed elsewhere. Whole-record selection changed 321 of those 2,145 agreed labels (14.97\%), all from no to unclear. Other-field disputes justified adjudication; the failure was allowing their resolution to replace an agreed primary field. The corrected merger preserves all 2,145 primary agreements by construction.
+
+\Needspace{17\baselineskip}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1579}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2105}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2105}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2105}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2105}}@{}}
+\caption{Primary agreement means A and B agreed on the primary label before C review. The last column conditions on primary-agreed C-routed pairs. Stages differ in execution history; their rates are descriptive, not a controlled comparison.}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Review stage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+All C-routed pairs
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Primary agreed
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Primary overwritten
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Overwritten / agreed
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Review stage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+All C-routed pairs
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Primary agreed
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Primary overwritten
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Overwritten / agreed
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Calibration & 631 & 398 & 38 & 9.55\% \\
+Extension & 2,661 & 1,747 & 283 & 16.20\% \\
+Combined & 3,292 & 2,145 & 321 & 14.97\% \\
+\end{longtable}
+
 Of those 71 flagged positives, 40 remained yes with acceptable literal quotations and 31 became unclear. The positive count fell from 1,179 to 1,148. It would be incorrect to describe all 71 as false positives or to treat the 31 downgraded cases as independently established errors. The evidence supports a narrower result: enforcing the revised quote requirement, together with re-review, changed both the retained quotations and some labels.
 
 A separate size-screen failure reinforced the need to distinguish source material from earlier model output: an initial pass included prior model rationales in its evidence context. That pass was discarded and regenerated from frozen page text. Because the input procedure changed, we do not interpret differences from the invalid run as measured accuracy gains. Its corrected, exploratory results remain in Appendix B.
@@ -226,6 +277,8 @@ A separate size-screen failure reinforced the need to distinguish source materia
 \subsection{5. Interpretation and Limitations}\label{interpretation-and-limitations}}
 
 \textbf{Agreement, quotation integrity, and validity are different properties.} Fieldwise merging prevents an adjudicator from changing agreed fields under the stated rule. Literal matching checks whether the reported words occur in the supplied excerpt. Neither property establishes that the words entail all five support conditions, that the webpage is truthful, or that the model agrees with a domain expert. The corrections make specific processing failures inspectable without substituting internal checks for external validation.
+
+\textbf{Adjudication needs an explicit scope and post-merge checks.} A structured workflow should record which fields triggered review, preserve agreed fields when adjudication is disagreement-only, and flag contradictions after merging. The 321 overwrites illustrate coupling between an auxiliary dispute and a primary decision. The absence of violations in our limited final-positive checks does not establish that every merged field is coherent or that no and unclear are consistently distinguished. Future human review should examine that boundary and capability-location entailment, retaining raw model outputs alongside flags rather than silently repairing them.
 
 \textbf{The task definition limits downstream use.} A page can fail this single-excerpt test while another page supplies the missing location evidence. A future system that combines pages would require a multi-page reference task and identical evidence access for its baselines. Likewise, a graph-based candidate-ranking experiment would need an independent human test set and controls for extra text, simple graph statistics, and message passing. This corpus is not already a validated GNN benchmark.
 
@@ -238,14 +291,16 @@ A separate size-screen failure reinforced the need to distinguish source materia
 \hypertarget{conclusion}{%
 \subsection{6. Conclusion}\label{conclusion}}
 
-On 6,164 constructed source-capability-state pairs, the final same-model workflow assigned 1,148 positive page-support labels. Retrospective reconstruction showed that whole-record adjudication and nonliteral quotations materially affected its outputs: fieldwise merging restored 321 agreed no labels, and re-audit downgraded 31 flagged positives. These findings identify concrete process sensitivities in LLM-assisted evidence screening. Human validation is required before interpreting the labels as benchmark judgments or measuring factual screening performance.
+On 6,164 constructed source-capability-state pairs, the final same-model workflow assigned 1,148 positive page-support labels. Retrospective reconstruction showed that whole-record adjudication overwrote 321 of 2,145 agreed primary labels routed to C (14.97\%); fieldwise merging preserved those agreements. Literal-quote re-audit separately downgraded 31 flagged positives. These findings identify concrete process sensitivities in LLM-assisted evidence screening. Human validation is required before interpreting the labels as benchmark judgments or measuring factual screening performance.
 
 \hypertarget{data-code-and-ai-use-disclosure}{%
 \subsection{Data, Code, and AI-Use Disclosure}\label{data-code-and-ai-use-disclosure}}
 
 Frozen queries, processing and review scripts, schemas, deviation logs, and the row-free aggregate package are publicly archived in the \href{https://github.com/elijahqi/us-sme-signal-graph}{US-SME Signal Graph repository}. The original aggregate package is anchored at \href{https://github.com/elijahqi/us-sme-signal-graph/commit/c036829224cbd600534623e7f751cd86514dbd1d}{commit c036829}; its eight published SHA-256 entries were checked after upload. The package remains versioned as \emph{long-tail-evidence-audit-v0.1-exploratory} because this manuscript revision does not change its data. Search-provider payloads and fetched third-party page text are excluded from the public artifacts. The companion \href{https://github.com/elijahqi/us-sme-signal-graph/blob/main/paper/audit_processing_sensitivity_v0_2.json}{processing-stage summary} records the reconstructed counts and input fingerprints. Its reconstruction script checks all 6,164 final rows across ten key fields against the stored final table and recomputes the 71 quote-check failures. Re-running that audit requires the closed corpus; the public summary does not enable record-level reproduction.
 
-GPT-5.6-Sol generated the study's screening decisions through the disclosed repeated-pass workflow. An AI coding assistant assisted with analysis checks, manuscript revision, and formatting. These activities do not constitute independent human review. Author review and the selected venue's AI-use requirements remain outstanding submission tasks. The revision record and claim audit preserve the research scope change and validation status.
+The additional \href{https://github.com/elijahqi/us-sme-signal-graph/blob/main/paper/adjudication_contracts_v0_3.json}{adjudication-contract summary} records routing denominators, overwrite transitions, final-positive consistency counts, and input hashes. Its audit script requires complete C coverage of disputed pairs. Public synthetic regression tests illustrate the merge failure and consistency rules without exposing source records. They test the implementation, not the model's factual judgments.
+
+GPT-5.6-Sol generated the study's screening decisions through the disclosed repeated-pass workflow. An AI coding assistant assisted with analysis checks, manuscript revision, and formatting. No completed cross-model annotation or independent critique is reported in v0.3. These activities do not constitute independent human review. Author review and the selected venue's AI-use requirements remain outstanding submission tasks. The revision record and claim audit preserve the research scope change and validation status.
 
 \begingroup
 \small
@@ -340,7 +395,7 @@ The three federal representations comprise two explicit SAM/SBA claims and one n
 
 \textbf{Calibration.} The 1,200-pair calibration ended with 214 yes, 677 no, and 309 unclear labels. Its sampler used 30 industry-family by primary-intent strata, narrower than protocol v0.3's stated balancing dimensions. Its 10,000-replicate bootstrap resampled pairs within strata instead of query units. The reported weighted estimate, 17.84\%, and interval, 15.84\%-19.86\%, remain historical exploratory diagnostics in the aggregate package; they are not presented as protocol-conformant or used as confirmatory evidence here.
 
-\textbf{Audit trail.} Protocol v0.4 was committed after retrieval and calibration, before the 4,964-pair extension. The public model-review deviation log records the human-review substitution, amendment timing, whole-record merge, quote-denominator correction, overlap terminology, literal-quote re-audit, and sampling mismatch. The v0.2 revision record documents this retrospective editorial refocus. None of these records converts the original study into a fully preregistered or human-validated experiment.
+\textbf{Audit trail.} Protocol v0.4 was committed after retrieval and calibration, before the 4,964-pair extension. The public model-review deviation log records the human-review substitution, amendment timing, whole-record merge, quote-denominator correction, overlap terminology, literal-quote re-audit, and sampling mismatch. The v0.2 revision record documents the retrospective editorial refocus; the v0.3 record documents the additional deterministic routing audit. None of these records converts the original study into a fully preregistered or human-validated experiment.
 
 \hypertarget{submission-gates}{%
 \subsubsection{Submission Gates}\label{submission-gates}}

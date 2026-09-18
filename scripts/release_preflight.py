@@ -11,6 +11,9 @@ FORBIDDEN_TRACKED_PREFIXES = (
     "data/raw/",
     "data/processed/",
     "experiments/search_uplift/provider_payloads/",
+    "experiments/search_uplift/private/",
+    "experiments/long_tail_benchmark/private/",
+    "experiments/long_tail_benchmark/results/",
     "release/private/",
 )
 FORBIDDEN_PATTERNS = (
