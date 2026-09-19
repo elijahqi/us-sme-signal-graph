@@ -21,6 +21,7 @@ from audit_processing_sensitivity import DEFAULT_PRIVATE, LABELS, read_batches, 
 from gemini_cross_review import agreement
 from positive_quote_reaudit_utils import normalize
 from run_glm_quality_review import OUTPUT as EDITORIAL_OUTPUT, parse_response
+import glm_rate_limit
 
 ROOT = Path(__file__).resolve().parents[1]
 WORK = DEFAULT_PRIVATE / "glm_full_cross_review_v0_1"
@@ -280,8 +281,10 @@ def invoke(batch, destination):
                "--effort", "low", "--system-prompt", SYSTEM, "--tools", "", "--disable-slash-commands",
                "--no-session-persistence", "--strict-mcp-config", "--mcp-config", '{"mcpServers":{}}',
                "--setting-sources", "", "--output-format", "stream-json", "--verbose"]
-    completed = subprocess.run(command, input=prompt, text=True, capture_output=True, env=env,
-                               cwd=workspace, timeout=900)
+    with glm_rate_limit.rate_limited_endpoint(key) as endpoint:
+        env.update(ANTHROPIC_API_KEY=endpoint.token, ANTHROPIC_BASE_URL=endpoint.url)
+        completed = subprocess.run(command, input=prompt, text=True, capture_output=True, env=env,
+                                   cwd=workspace, timeout=900)
     stdout, stderr = completed.stdout.replace(key, "[REDACTED]"), completed.stderr.replace(key, "[REDACTED]")
     for name, content in (("events.jsonl", stdout), ("stderr.txt", stderr)):
         path = destination / name
@@ -315,6 +318,9 @@ def run(limit, work=WORK, call=invoke):
             entry = {"batch_id": batch["batch_id"], "rows": len(batch["rows"]), "status": "started",
                      "started_utc": now(), "protocol_sha256": manifest["protocol_sha256"],
                      "processing_rule": PROCESSING_RULE,
+                     "max_qps": glm_rate_limit.MAX_QPS,
+                     "rate_limit_scope": "all upstream HTTP requests, including continuations",
+                     "pacer_sha256": sha(Path(glm_rate_limit.__file__).read_bytes()),
                      "implementation_sha256": sha(Path(__file__).read_bytes())}
             save(entry_path, entry)
             started = time.monotonic()

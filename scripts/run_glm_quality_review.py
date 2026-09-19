@@ -16,6 +16,7 @@ import subprocess
 from datetime import datetime, timezone
 
 from api_credentials import read_key
+import glm_rate_limit
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "experiments/long_tail_benchmark/private/glm_quality_review_20260917"
@@ -142,6 +143,9 @@ def run_review(args):
     metadata = {"started_utc": datetime.now(timezone.utc).isoformat(), "model_requested": model,
                 "endpoint": env["ANTHROPIC_BASE_URL"], "tool": "Claude Code --print --bare",
                 "concurrency": 1, "automatic_retries": 0,
+                "max_qps": glm_rate_limit.MAX_QPS,
+                "rate_limit_scope": "all upstream HTTP requests, including continuations",
+                "pacer_sha256": hashlib.sha256(Path(glm_rate_limit.__file__).read_bytes()).hexdigest(),
                 "campaign": args.campaign, "part": args.part, "effort_requested": "low",
                 "response_capture": "stream-json including all assistant text messages",
                 "source_hashes": hashes, "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
@@ -151,8 +155,10 @@ def run_review(args):
     (output / "prompt.txt").write_text(prompt)
     os.chmod(output / "prompt.txt", 0o600)
     try:
-        completed = subprocess.run(command, input=prompt, capture_output=True, text=True,
-                                   env=env, cwd=ROOT, timeout=600)
+        with glm_rate_limit.rate_limited_endpoint(key) as endpoint:
+            env.update(ANTHROPIC_API_KEY=endpoint.token, ANTHROPIC_BASE_URL=endpoint.url)
+            completed = subprocess.run(command, input=prompt, capture_output=True, text=True,
+                                       env=env, cwd=ROOT, timeout=600)
     except subprocess.TimeoutExpired:
         # A client timeout does not prove the server did no work or used no quota.
         outcome = {"finished_utc": datetime.now(timezone.utc).isoformat(),
