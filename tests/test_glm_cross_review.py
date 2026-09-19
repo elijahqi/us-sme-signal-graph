@@ -62,6 +62,30 @@ class FullGLMReviewTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 g.validate_output({"results": results}, batch)
 
+    def test_omissions_are_separate_from_unclear_and_invalid(self):
+        batch = {"rows": [evidence(), evidence("s")]}
+        partition = g.partition_output({"results": [decision()]}, batch)
+        self.assertEqual(partition["missing_review_ids"], ["s"])
+        self.assertEqual(partition["results"], [decision()])
+        self.assertEqual(partition["invalid_results"], [])
+        for rows in ([decision(), decision()], [decision("unknown")]):
+            with self.assertRaisesRegex(ValueError, "Duplicate or unexpected"):
+                g.partition_output({"results": rows}, batch)
+
+    def test_complete_response_with_no_rows_is_accounted_without_retry(self):
+        with tempfile.TemporaryDirectory() as directory:
+            work = Path(directory)
+            frozen(work)
+            with patch.object(g, "EDITORIAL_OUTPUT", work / "lock"), patch("builtins.print"):
+                g.run(1, work, lambda *args: {"result": '{"results": []}'})
+                g.run(1, work, lambda *args: self.fail("must not retry omitted rows"))
+            summary = g.analyze(work)
+            self.assertEqual(summary["status"], "complete_with_missing_rows")
+            self.assertEqual(summary["omitted_rows"], 1)
+            self.assertEqual(summary["response_rows_received"], 0)
+            self.assertEqual(summary["component_agreement"]["eqdp"]["n"], 0)
+            self.assertEqual(summary["coverage_by_gpt_label"]["yes"]["omitted"], 1)
+
     def test_input_label_leak_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             work = Path(directory)
