@@ -206,6 +206,58 @@ def parse_labels(response):
     raise ValueError("Model response is not a complete JSON object")
 
 
+def partition_output(payload, batch):
+    """Keep per-row schema failures explicit; never convert them to unclear."""
+    require(isinstance(payload, dict) and set(payload) == {"results"}, "Expected results object")
+    rows = payload["results"]
+    require(isinstance(rows, list) and len(rows) == len(batch["rows"]), "Output row count mismatch")
+    require(all(isinstance(row, dict) and isinstance(row.get("review_id"), str) for row in rows), "Invalid row identity")
+    expected = {row["review_id"]: row for row in batch["rows"]}
+    require(len({row["review_id"] for row in rows}) == len(rows) and
+            {row["review_id"] for row in rows} == set(expected), "Output ID coverage mismatch")
+    valid, invalid, flags = [], [], {}
+    for row in rows:
+        try:
+            checked = validate_output({"results": [row]}, {"rows": [expected[row["review_id"]]]})
+        except ValueError as exc:
+            invalid.append({"result": row, "error": str(exc)})
+        else:
+            valid.append(row)
+            flags.update(checked)
+    return {"results": valid, "invalid_results": invalid, "quality_flags": flags}
+
+
+def record_response(batch, response, entry, manifest, work):
+    partition = partition_output(parse_labels(response), batch)
+    output = {**partition, "protocol_sha256": manifest["protocol_sha256"], "model": MODEL}
+    result_path = work / "results" / (batch["batch_id"] + ".json")
+    save(result_path, output)
+    entry.update(status="completed_with_invalid_rows" if partition["invalid_results"] else "completed",
+                 finished_utc=now(), valid_rows=len(partition["results"]), invalid_rows=len(partition["invalid_results"]),
+                 result_sha256=sha(result_path.read_bytes()), usage=response.get("usage", {}))
+    save(work / "journal" / (batch["batch_id"] + ".json"), entry)
+
+
+def reconcile(batch_id, work=WORK):
+    """Resolve an already returned response offline; no request or label change."""
+    manifest, batches = load_frozen(work)
+    batch = next(b for b in batches if b["batch_id"] == batch_id)
+    path = work / "journal" / (batch_id + ".json")
+    entry = json.loads(path.read_text())
+    require(entry["status"] == "failed_or_uncertain", "Only an unresolved saved response may be reconciled")
+    require(entry["protocol_sha256"] == manifest["protocol_sha256"], "Journal protocol mismatch")
+    response = json.loads((work / "responses" / batch_id / "response.json").read_text())
+    require(not response.get("is_error") and response.get("subtype") == "success" and response.get("stop_reason") == "end_turn", "Saved response is incomplete")
+    require(set(response.get("modelUsage", {})) == {MODEL}, "Unexpected saved model")
+    # Check before changing any existing journal or result.
+    partition_output(parse_labels(response), batch)
+    save(work / "journal_history" / (batch_id + "-before-reconciliation.json"), entry)
+    entry.update(reconciled_from_saved_response=True, reconciliation_utc=now(),
+                 processing_rule="20260919-row-schema-amendment", quota_usage="reported_in_response")
+    record_response(batch, response, entry, manifest, work)
+    return {"batch": batch_id, "valid_rows": entry["valid_rows"], "invalid_rows": entry["invalid_rows"], "new_calls": 0}
+
+
 def invoke(batch, destination):
     key = read_key("zai")
     env = {k: v for k, v in os.environ.items() if not k.startswith(("ANTHROPIC_", "CLAUDE_CODE_", "CLAUDE_CONFIG_"))}
@@ -245,7 +297,7 @@ def run(limit, work=WORK, call=invoke):
         # A failed/uncertain earlier attempt must be reconciled explicitly, never retried.
         for entry_path in (work / "journal").glob("*.json"):
             entry = json.loads(entry_path.read_text())
-            require(entry["status"] == "completed", "Unresolved prior batch; no automatic retry")
+            require(entry["status"] in {"completed", "completed_with_invalid_rows"}, "Unresolved prior batch; no automatic retry")
         done = 0
         for batch in batches:
             entry_path = work / "journal" / (batch["batch_id"] + ".json")
@@ -255,20 +307,14 @@ def run(limit, work=WORK, call=invoke):
                 break
             entry = {"batch_id": batch["batch_id"], "rows": len(batch["rows"]), "status": "started",
                      "started_utc": now(), "protocol_sha256": manifest["protocol_sha256"],
+                     "processing_rule": "20260919-row-schema-amendment",
                      "implementation_sha256": sha(Path(__file__).read_bytes())}
             save(entry_path, entry)
             started = time.monotonic()
             try:
                 response = call(batch, work / "responses" / batch["batch_id"])
-                payload = parse_labels(response)
-                flags = validate_output(payload, batch)
-                output = {"results": payload["results"], "quality_flags": flags,
-                          "protocol_sha256": manifest["protocol_sha256"], "model": MODEL}
-                result_path = work / "results" / (batch["batch_id"] + ".json")
-                save(result_path, output)
-                entry.update(status="completed", finished_utc=now(), elapsed_seconds=round(time.monotonic()-started, 2),
-                             result_sha256=sha(result_path.read_bytes()), usage=response.get("usage", {}))
-                save(entry_path, entry)
+                entry["elapsed_seconds"] = round(time.monotonic()-started, 2)
+                record_response(batch, response, entry, manifest, work)
             except Exception as exc:
                 entry.update(status="failed_or_uncertain", finished_utc=now(), error_type=type(exc).__name__,
                              quota_usage="unknown", automatic_retry=False)
@@ -276,41 +322,52 @@ def run(limit, work=WORK, call=invoke):
                 raise ValueError(f"{batch['batch_id']} stopped ({type(exc).__name__}); no automatic retry") from None
             done += 1
             print(json.dumps({"batch": batch["batch_id"], "batch_rows": len(batch["rows"]),
+                              "valid_rows": entry["valid_rows"], "invalid_rows": entry["invalid_rows"],
                               "elapsed_seconds": entry["elapsed_seconds"], "status": entry["status"]}), flush=True)
 
 
 def analyze(work=WORK):
     manifest, batches = load_frozen(work)
     reference = json.loads((work / "reference.json").read_text())
-    records, flags, statuses, usage = {}, Counter(), Counter(), Counter()
+    records, invalid_ids, flags, statuses, usage = {}, set(), Counter(), Counter(), Counter()
     for batch in batches:
         journal = work / "journal" / (batch["batch_id"] + ".json")
         entry = json.loads(journal.read_text()) if journal.exists() else {"status": "not_attempted"}
-        statuses[entry["status"]] += len(batch["rows"])
-        if entry["status"] != "completed":
+        if entry["status"] not in {"completed", "completed_with_invalid_rows"}:
+            statuses[entry["status"]] += len(batch["rows"])
             continue
         path = work / "results" / (batch["batch_id"] + ".json")
         require(entry["protocol_sha256"] == manifest["protocol_sha256"], "Journal protocol mismatch")
         require(sha(path.read_bytes()) == entry["result_sha256"], "Result hash mismatch")
         result = json.loads(path.read_text())
         require(result["protocol_sha256"] == manifest["protocol_sha256"] and result["model"] == MODEL, "Result provenance mismatch")
-        validate_output({"results": result["results"]}, batch)
+        invalid = result.get("invalid_results", [])
+        partition = partition_output({"results": result["results"] + [r["result"] for r in invalid]}, batch)
+        require(len(partition["results"]) == len(result["results"]) and len(partition["invalid_results"]) == len(invalid), "Schema partition changed")
+        require(partition["quality_flags"] == result["quality_flags"], "Quality flags changed")
+        statuses["completed"] += len(result["results"])
+        statuses["schema_invalid"] += len(invalid)
+        invalid_ids.update(r["result"]["review_id"] for r in invalid)
         for row in result["results"]:
             records[row["review_id"]] = row
         flags.update(flag for group in result["quality_flags"].values() for flag in group)
         usage.update({k: v for k, v in entry.get("usage", {}).items() if type(v) is int})
     n = len(records)
     summary = {"schema_version": "glm_full_cross_review_v0.1", "generated_utc": now(),
-               "model": MODEL, "status": "complete" if n == manifest["planned_rows"] else "partial",
+               "model": MODEL, "status": ("complete" if not invalid_ids else "complete_with_invalid_rows")
+                    if n + len(invalid_ids) == manifest["planned_rows"] else "partial",
                "planned_rows": manifest["planned_rows"], "valid_rows": n, "missing_or_failed_rows": manifest["planned_rows"]-n,
+               "response_rows_received": n + len(invalid_ids), "schema_invalid_rows": len(invalid_ids),
                "row_status_counts": dict(statuses), "quality_flags": dict(flags), "client_reported_usage": dict(usage),
                "interpretation": "Cross-model concordance on the frozen corpus, not accuracy or human validation. Single GLM pass differs from adjudicated GPT procedure.",
                "component_agreement": {f: agreement([(reference[rid][f], row[f]) for rid, row in records.items()]) for f in COMPARE_FIELDS},
                "coverage_by_gpt_label": {label: {"planned": sum(r["eqdp"] == label for r in reference.values()),
-                                                   "valid": sum(reference[rid]["eqdp"] == label for rid in records)} for label in LABELS},
+                                                   "valid": sum(reference[rid]["eqdp"] == label for rid in records),
+                                                   "schema_invalid": sum(reference[rid]["eqdp"] == label for rid in invalid_ids)} for label in LABELS},
                "glm_label_counts": {label: sum(row["eqdp"] == label for row in records.values()) for label in LABELS},
                "joint_positive_rows": sum(reference[rid]["eqdp"] == row["eqdp"] == "yes" for rid, row in records.items()),
                "protocol_sha256": manifest["protocol_sha256"], "manifest_sha256": sha((work / "manifest.json").read_bytes()),
+               "processing_amendment": "Per-row schema quarantine introduced after first 3 batches; no model retry or relabeling",
                "original_final_csv_sha256": manifest["original_final_csv_sha256"], "row_level_data_included": False}
     save(work / "comparison_summary.json", summary)
     return summary
@@ -318,7 +375,8 @@ def analyze(work=WORK):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("prepare", "run", "analyze"))
+    parser.add_argument("action", choices=("prepare", "run", "analyze", "reconcile"))
+    parser.add_argument("--batch", help="saved failed batch to reconcile offline")
     parser.add_argument("--limit", type=int, default=1, help="maximum new serial batches; never overrides failed attempts")
     args = parser.parse_args()
     try:
@@ -328,6 +386,8 @@ if __name__ == "__main__":
                               "protocol_sha256": value["protocol_sha256"]}, indent=2))
         elif args.action == "run":
             run(args.limit)
+        elif args.action == "reconcile":
+            print(json.dumps(reconcile(args.batch), indent=2))
         else:
             print(json.dumps(analyze(), indent=2))
     except (ValueError, BlockingIOError) as exc:

@@ -38,6 +38,15 @@ def frozen(work):
 
 
 class FullGLMReviewTest(unittest.TestCase):
+    def test_invalid_enum_is_quarantined_without_changing_any_label(self):
+        invalid = decision("s")
+        invalid["direct_producer_status"] = "partial"
+        partition = g.partition_output({"results": [decision(), invalid]}, {"rows": [evidence(), evidence("s")]})
+        self.assertEqual(len(partition["results"]), 1)
+        self.assertEqual(len(partition["invalid_results"]), 1)
+        self.assertEqual(partition["invalid_results"][0]["result"]["eqdp"], "yes")
+        self.assertEqual(invalid["direct_producer_status"], "partial")
+
     def test_valid_positive_and_quality_flags_do_not_relabel(self):
         batch = {"rows": [evidence()]}
         row = decision()
