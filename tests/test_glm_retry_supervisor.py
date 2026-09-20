@@ -208,6 +208,7 @@ class IdentityQuarantineTest(unittest.TestCase):
                     g.quarantine_identity_failure('batch-0001', work)
                 self.assertEqual((work / 'journal/batch-0001.json').read_bytes(), old)
 
+
     def test_closure_rejects_bad_transport_and_existing_accepted_results(self):
         for bad_transport in [True, False]:
             with self.subTest(bad_transport=bad_transport), tempfile.TemporaryDirectory() as directory, patch.object(g, 'EFFORT', 'max'):
@@ -222,3 +223,65 @@ class IdentityQuarantineTest(unittest.TestCase):
                 with patch.object(g, 'EDITORIAL_OUTPUT', work / 'lock'), self.assertRaises(ValueError):
                     g.quarantine_identity_failure('batch-0001', work)
                 self.assertEqual((work / 'journal/batch-0001.json').read_bytes(), old)
+
+class ExhaustedConnectionClosureTest(unittest.TestCase):
+    def exhausted(self, work):
+        frozen(work)
+        g.save(work / 'automatic_retry_authorization.json', {'enabled': True, 'max_retries_per_batch': 2,
+               'protocol_sha256': g.sha(g.encoded(g.protocol()))})
+        def capture(destination):
+            g.save(destination / 'response.json', {'is_error': True, 'terminal_reason': 'api_error',
+                   'transport_error': 'ConnectionResetError', 'result': 'API Error: interrupted stream'})
+            g.save(destination / 'transport.json', {'requests': [{'path': '/api/anthropic/v1/messages',
+                'model': 'glm-5.3', 'effort': 'max', 'status': 200, 'transport_error': 'ConnectionResetError',
+                'started_monotonic': 1, 'finished_monotonic': 10}]})
+        capture(work / 'responses/batch-0001')
+        g.save(work / 'journal/batch-0001.json', {'batch_id': 'batch-0001', 'rows': 1,
+               'status': 'failed_or_uncertain', 'protocol_sha256': g.sha(g.encoded(g.protocol()))})
+        def fail(batch, destination):
+            capture(destination)
+            raise ValueError('Interrupted stream')
+        clock = [0.0]
+        with patch.object(g, 'EDITORIAL_OUTPUT', work / 'lock'):
+            for attempt in (2, 3):
+                result = s.retry_batch('batch-0001', work, fail,
+                    lambda seconds: clock.__setitem__(0, clock[0] + seconds), lambda: clock[0])
+                self.assertEqual(result['attempt'], attempt)
+
+    def test_three_attempts_preserved_closed_without_replay_and_excluded_from_agreement(self):
+        with tempfile.TemporaryDirectory() as directory, patch.object(g, 'EFFORT', 'max'):
+            work = Path(directory); self.exhausted(work)
+            original = (work / 'journal/batch-0001.json').read_bytes()
+            with patch.object(g, 'EDITORIAL_OUTPUT', work / 'lock'):
+                result = g.quarantine_exhausted_connection('batch-0001', work)
+                self.assertEqual(result['new_calls'], 0)
+                g.run(1, work, lambda *args: self.fail('No fourth request permitted'))
+            self.assertEqual((work / 'journal_history/batch-0001-before-exhausted-quarantine.json').read_bytes(), original)
+            summary = g.analyze(work)
+            self.assertEqual(summary['status'], 'complete_with_failed_batches')
+            self.assertEqual(summary['exhausted_connection_failed_rows'], 1)
+            self.assertEqual(summary['component_agreement']['eqdp']['n'], 0)
+            self.assertEqual(summary['response_rows_received'], 0)
+            self.assertEqual(s.verify_history(work), 2)
+            (work / 'responses/batch-0001/response.json').write_text('{}')
+            with self.assertRaisesRegex(ValueError, 'Quarantined artifact hash'):
+                g.analyze(work)
+
+    def test_closure_rejects_unexhausted_attempts_and_nonconnection_failures(self):
+        for variant in ('unexhausted', 'successful', 'authentication', 'missing_history'):
+            with self.subTest(variant=variant), tempfile.TemporaryDirectory() as directory, patch.object(g, 'EFFORT', 'max'):
+                work = Path(directory); self.exhausted(work)
+                path = work / 'journal/batch-0001.json'; entry = json.loads(path.read_text())
+                if variant == 'unexhausted':
+                    entry['attempt'] = 2; g.save(path, entry)
+                elif variant == 'missing_history':
+                    entry['previous_attempts'] = []; g.save(path, entry)
+                elif variant == 'successful':
+                    g.save(work / entry['response_directory'] / 'response.json', {'is_error': False, 'subtype': 'success'})
+                else:
+                    p = work / entry['response_directory'] / 'transport.json'; data = json.loads(p.read_text())
+                    data['requests'][0]['status'] = 401; g.save(p, data)
+                original = path.read_bytes()
+                with patch.object(g, 'EDITORIAL_OUTPUT', work / 'lock'), self.assertRaises(ValueError):
+                    g.quarantine_exhausted_connection('batch-0001', work)
+                self.assertEqual(path.read_bytes(), original)
