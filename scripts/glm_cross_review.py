@@ -242,6 +242,9 @@ def record_response(batch, response, entry, manifest, work):
                  finished_utc=now(), valid_rows=len(partition["results"]), invalid_rows=len(partition["invalid_results"]),
                  omitted_rows=len(partition["missing_review_ids"]),
                  result_sha256=sha(result_path.read_bytes()), usage=response.get("usage", {}))
+    response_path = work / entry.get("response_directory", "responses/" + batch["batch_id"]) / "response.json"
+    if response_path.exists():
+        entry["response_sha256"] = sha(response_path.read_bytes())
     save(work / "journal" / (batch["batch_id"] + ".json"), entry)
 
 
@@ -253,7 +256,7 @@ def reconcile(batch_id, work=WORK):
     entry = json.loads(path.read_text())
     require(entry["status"] == "failed_or_uncertain", "Only an unresolved saved response may be reconciled")
     require(entry["protocol_sha256"] == manifest["protocol_sha256"], "Journal protocol mismatch")
-    response = json.loads((work / "responses" / batch_id / "response.json").read_text())
+    response = json.loads((work / entry.get("response_directory", "responses/" + batch_id) / "response.json").read_text())
     require(not response.get("is_error") and response.get("subtype") == "success" and response.get("stop_reason") == "end_turn", "Saved response is incomplete")
     require(set(response.get("modelUsage", {})) == {MODEL}, "Unexpected saved model")
     # Check before changing any existing journal or result.
@@ -340,6 +343,66 @@ def run(limit, work=WORK, call=invoke):
                               "elapsed_seconds": entry["elapsed_seconds"], "status": entry["status"]}), flush=True)
 
 
+def recover_transport(batch_id, work=WORK, call=invoke):
+    """One explicit recovery of a connection-reset failure, preserving both attempts."""
+    manifest, batches = load_frozen(work)
+    batch = next(b for b in batches if b["batch_id"] == batch_id)
+    EDITORIAL_OUTPUT.mkdir(parents=True, exist_ok=True)
+    with (EDITORIAL_OUTPUT / ".serial.lock").open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        journal = work / "journal" / (batch_id + ".json")
+        old = json.loads(journal.read_text())
+        require(old["status"] == "failed_or_uncertain", "Only failed attempts may be recovered")
+        require(old["protocol_sha256"] == manifest["protocol_sha256"], "Journal protocol mismatch")
+        require(not old.get("transport_recovery"), "One transport recovery per batch maximum")
+        require(not (work / "results" / (batch_id + ".json")).exists(), "Existing labels must not be rerun")
+        original_response = work / "responses" / batch_id / "response.json"
+        response = json.loads(original_response.read_text())
+        require(response.get("is_error") and response.get("terminal_reason") == "api_error"
+                and not response.get("modelUsage")
+                and "ECONNRESET" in response.get("result", ""), "Not an eligible connection-reset failure")
+        require(not response.get("review_text", "").strip() or
+                response["review_text"].strip() == response.get("result", "").strip(),
+                "Saved assistant content requires offline inspection, not automatic recovery")
+        archive = work / "journal_history" / (batch_id + "-before-transport-recovery.json")
+        destination = work / "responses" / batch_id / "attempt-02"
+        require(not archive.exists() and not destination.exists(), "Recovery already prepared or attempted; inspect without retry")
+        old_journal_sha = sha(journal.read_bytes())
+        # Preserve original bytes; no mutation of the first response or failure record.
+        archive.parent.mkdir(parents=True, exist_ok=True)
+        os.chmod(archive.parent, 0o700)
+        with archive.open("xb") as handle:
+            handle.write(journal.read_bytes())
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.chmod(archive, 0o600)
+        entry = {"batch_id": batch_id, "rows": len(batch["rows"]), "status": "started", "attempt": 2,
+                 "started_utc": now(), "protocol_sha256": manifest["protocol_sha256"],
+                 "processing_rule": PROCESSING_RULE, "transport_recovery": True,
+                 "recovery_rule": "20260920-explicit-connection-reset-recovery",
+                 "previous_journal_sha256": old_journal_sha,
+                 "previous_response_sha256": sha(original_response.read_bytes()),
+                 "previous_attempt_quota_usage": "unknown", "automatic_retry": False,
+                 "response_directory": str(destination.relative_to(work)),
+                 "max_qps": glm_rate_limit.MAX_QPS, "concurrency": 1,
+                 "pacer_sha256": sha(Path(glm_rate_limit.__file__).read_bytes()),
+                 "implementation_sha256": sha(Path(__file__).read_bytes())}
+        save(journal, entry)
+        started = time.monotonic()
+        try:
+            recovered = call(batch, destination)
+            entry["elapsed_seconds"] = round(time.monotonic() - started, 2)
+            record_response(batch, recovered, entry, manifest, work)
+        except Exception as exc:
+            entry.update(status="failed_or_uncertain", finished_utc=now(), error_type=type(exc).__name__,
+                         quota_usage="unknown")
+            save(journal, entry)
+            raise ValueError(f"{batch_id} recovery stopped ({type(exc).__name__}); both attempts preserved") from None
+        return {"batch": batch_id, "status": entry["status"], "attempt": 2,
+                "valid_rows": entry["valid_rows"], "invalid_rows": entry["invalid_rows"],
+                "omitted_rows": entry["omitted_rows"], "elapsed_seconds": entry["elapsed_seconds"]}
+
+
 def analyze(work=WORK):
     manifest, batches = load_frozen(work)
     reference = json.loads((work / "reference.json").read_text())
@@ -354,6 +417,14 @@ def analyze(work=WORK):
         require(entry["protocol_sha256"] == manifest["protocol_sha256"], "Journal protocol mismatch")
         require(sha(path.read_bytes()) == entry["result_sha256"], "Result hash mismatch")
         result = json.loads(path.read_text())
+        if entry.get("response_sha256"):
+            response_path = work / entry.get("response_directory", "responses/" + batch["batch_id"]) / "response.json"
+            require(sha(response_path.read_bytes()) == entry["response_sha256"], "Response hash mismatch")
+        if entry.get("transport_recovery"):
+            prior_journal = work / "journal_history" / (batch["batch_id"] + "-before-transport-recovery.json")
+            prior_response = work / "responses" / batch["batch_id"] / "response.json"
+            require(sha(prior_journal.read_bytes()) == entry["previous_journal_sha256"], "Prior journal hash mismatch")
+            require(sha(prior_response.read_bytes()) == entry["previous_response_sha256"], "Prior response hash mismatch")
         require(result["protocol_sha256"] == manifest["protocol_sha256"] and result["model"] == MODEL, "Result provenance mismatch")
         invalid = result.get("invalid_results", [])
         partition = partition_output({"results": result["results"] + [r["result"] for r in invalid]}, batch)
@@ -388,7 +459,7 @@ def analyze(work=WORK):
                "glm_label_counts": {label: sum(row["eqdp"] == label for row in records.values()) for label in LABELS},
                "joint_positive_rows": sum(reference[rid]["eqdp"] == row["eqdp"] == "yes" for rid, row in records.items()),
                "protocol_sha256": manifest["protocol_sha256"], "manifest_sha256": sha((work / "manifest.json").read_bytes()),
-               "processing_amendment": "Per-row schema quarantine after batch 3; omission accounting after batch 5; no model retry or relabeling",
+               "processing_amendment": "Schema quarantine after batch 3; omissions after batch 5; subsequent explicit connection-reset recovery preserves attempts; no semantic relabeling",
                "original_final_csv_sha256": manifest["original_final_csv_sha256"], "row_level_data_included": False}
     save(work / "comparison_summary.json", summary)
     return summary
@@ -396,7 +467,7 @@ def analyze(work=WORK):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("prepare", "run", "analyze", "reconcile"))
+    parser.add_argument("action", choices=("prepare", "run", "analyze", "reconcile", "recover-transport"))
     parser.add_argument("--batch", help="saved failed batch to reconcile offline")
     parser.add_argument("--limit", type=int, default=1, help="maximum new serial batches; never overrides failed attempts")
     args = parser.parse_args()
@@ -409,6 +480,8 @@ if __name__ == "__main__":
             run(args.limit)
         elif args.action == "reconcile":
             print(json.dumps(reconcile(args.batch), indent=2))
+        elif args.action == "recover-transport":
+            print(json.dumps(recover_transport(args.batch), indent=2), flush=True)
         else:
             print(json.dumps(analyze(), indent=2))
     except (ValueError, BlockingIOError) as exc:
