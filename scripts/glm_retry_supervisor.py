@@ -197,7 +197,7 @@ def main(work=g.WORK):
                 entries = [json.loads(p.read_text()) for p in sorted((work / "journal").glob("*.json"))]
                 batch_by_id = {b["batch_id"]: b for b in batches}
                 for entry in entries:
-                    if entry["status"] == g.QUARANTINED_STATUS:
+                    if entry["status"] in g.FAILURE_STATUSES:
                         g.verify_quarantined_failure(work, batch_by_id[entry["batch_id"]], entry, manifest)
                 failed = [entry for entry in entries if entry["status"] not in g.TERMINAL_STATUSES]
                 if failed:
