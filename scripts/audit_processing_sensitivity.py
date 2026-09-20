@@ -56,6 +56,7 @@ def read_final(path: Path) -> dict:
         result = {}
         for row in csv.DictReader(handle):
             require(row["review_id"] not in result, "Duplicate final review identifier")
+            require(row.get("eqdp") in LABELS, "Invalid final primary label")
             result[row["review_id"]] = row
     return result
 

@@ -1,0 +1,171 @@
+{
+  "final_field_verification": {
+    "field_count": 16,
+    "fields": [
+      "candidate_business_name",
+      "identity_status",
+      "direct_producer_status",
+      "capability_match",
+      "production_presence",
+      "commercial_offering",
+      "eqdp",
+      "primary_exclusion_reason",
+      "scale_band",
+      "legal_form",
+      "web_visibility",
+      "production_city",
+      "production_state",
+      "confidence",
+      "evidence_quote",
+      "rationale"
+    ],
+    "mismatch_counts": {
+      "candidate_business_name": 0,
+      "capability_match": 0,
+      "commercial_offering": 0,
+      "confidence": 0,
+      "direct_producer_status": 0,
+      "eqdp": 0,
+      "evidence_quote": 0,
+      "identity_status": 0,
+      "legal_form": 0,
+      "primary_exclusion_reason": 0,
+      "production_city": 0,
+      "production_presence": 0,
+      "production_state": 0,
+      "rationale": 0,
+      "scale_band": 0,
+      "web_visibility": 0
+    },
+    "rows": 6164
+  },
+  "input_sha256": {
+    "calibration": {
+      "evidence_batches": "60a6c0a4b2d508cff24c90cbbae7d1514d24e4bf82bf6362e4e69530e2837e09",
+      "reviewer_a": "dc56ee214a1d12ef65a3be174afb5836acd52f1e0c853d6d3c44681dc5f39123",
+      "reviewer_b": "bef237bc811ce72fcc21521f319c7a11e79595c0fab41a32065fbb0e4fcccbbf",
+      "reviewer_c": "03be15c3b50f5bd92b2e8a5428b652ce81418ed141eaef071b817d4ff4d49e26"
+    },
+    "extension": {
+      "evidence_batches": "621bd1015176fad4638193151b9c4d334e2a53cef352b8cd59c73006352fcd6f",
+      "reviewer_a": "c1d62988347863eb98ad4072fab8949fdd1da89d42100891651dccfe8ae8365b",
+      "reviewer_b": "bdf1f6bbb9d36194aa00a3bc820dfeb383571113f4ae2e1b540625f9550d7acf",
+      "reviewer_c": "78896efcae1d63c6b0d1105352cc7ada2ba920d03959bd1f3b39742f64b94ec7"
+    },
+    "full_census_final": "24bd429ac9b56cc2f02e693c9943f940608c896f9744a586cddac27a7d83497a",
+    "quote_reaudit": {
+      "reviewer_a": "b8ca22c24de446d165861bf038dbbfede05a03f75d77d280581a12704373c32e",
+      "reviewer_b": "1c008e5bb12d93d3ba00365106a7320cec11b432b31f6ce496a23fcd730f8778",
+      "reviewer_c": "069ac8ae69798e7449931cde7691f9800629c7a5d4cab557d20ea9e2046c7742"
+    }
+  },
+  "label_reason_counts": {
+    "capability_mismatch": {
+      "no": 566,
+      "unclear": 2,
+      "yes": 0
+    },
+    "distributor_reseller_or_broker": {
+      "no": 463,
+      "unclear": 0,
+      "yes": 0
+    },
+    "duplicate_entity": {
+      "no": 2,
+      "unclear": 0,
+      "yes": 0
+    },
+    "foreign_production_only": {
+      "no": 203,
+      "unclear": 0,
+      "yes": 0
+    },
+    "generic_sector_claim_only": {
+      "no": 129,
+      "unclear": 4,
+      "yes": 0
+    },
+    "historical_or_inactive": {
+      "no": 12,
+      "unclear": 1,
+      "yes": 0
+    },
+    "hobby_or_noncommercial": {
+      "no": 1,
+      "unclear": 0,
+      "yes": 0
+    },
+    "identity_conflict": {
+      "no": 68,
+      "unclear": 3,
+      "yes": 0
+    },
+    "insufficient_evidence": {
+      "no": 704,
+      "unclear": 1008,
+      "yes": 0
+    },
+    "none": {
+      "no": 0,
+      "unclear": 0,
+      "yes": 1148
+    },
+    "nonmanufacturing_service": {
+      "no": 324,
+      "unclear": 0,
+      "yes": 0
+    },
+    "not_operating_business": {
+      "no": 77,
+      "unclear": 0,
+      "yes": 0
+    },
+    "office_warehouse_or_lab_only": {
+      "no": 57,
+      "unclear": 0,
+      "yes": 0
+    },
+    "source_unavailable": {
+      "no": 91,
+      "unclear": 199,
+      "yes": 0
+    },
+    "wrong_state": {
+      "no": 1102,
+      "unclear": 0,
+      "yes": 0
+    }
+  },
+  "metadata": {
+    "analysis": "Retrospective deterministic checks on unchanged stored decisions",
+    "human_ground_truth": false,
+    "interpretation": "Field identity, normalized quote occurrence, and label/reason co-occurrence; not semantic errors or accuracy",
+    "negative_quote_policy": "Nonpositive quote outcomes are descriptive; no new acceptance or relabeling rule applied",
+    "new_model_calls": 0,
+    "normalization": "NFKC, boundary quotes, selected quotation/dash variants, whitespace collapse, case folding",
+    "row_level_data_included": false,
+    "unit": "source-capability-state pair"
+  },
+  "no_with_evidence_gap_primary_reason": 795,
+  "quote_check_by_label": {
+    "no": {
+      "empty": 124,
+      "literal_pass": 3549,
+      "nonempty_literal_fail": 126,
+      "rows": 3799
+    },
+    "unclear": {
+      "empty": 221,
+      "literal_pass": 959,
+      "nonempty_literal_fail": 37,
+      "rows": 1217
+    },
+    "yes": {
+      "empty": 0,
+      "literal_pass": 1148,
+      "nonempty_literal_fail": 0,
+      "rows": 1148
+    }
+  },
+  "schema_version": "output_integrity_v0.4"
+}
