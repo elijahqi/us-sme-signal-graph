@@ -38,6 +38,60 @@ def frozen(work):
 
 
 class FullGLMReviewTest(unittest.TestCase):
+    def prepare_transport_failure(self, work):
+        batch = frozen(work)
+        response = {"is_error": True, "terminal_reason": "api_error", "modelUsage": {},
+                    "result": "API Error: Unable to connect to API (ECONNRESET)"}
+        g.save(work / "responses/batch-0001/response.json", response)
+        g.save(work / "journal/batch-0001.json", {"batch_id": batch["batch_id"], "status": "failed_or_uncertain",
+               "protocol_sha256": g.sha(g.encoded(g.protocol())), "quota_usage": "unknown"})
+        return (work / "journal/batch-0001.json").read_bytes(), (work / "responses/batch-0001/response.json").read_bytes()
+
+    def test_explicit_transport_recovery_preserves_both_attempts_and_is_not_repeated(self):
+        with tempfile.TemporaryDirectory() as directory:
+            work = Path(directory)
+            old_journal, old_response = self.prepare_transport_failure(work)
+            def success(batch, destination):
+                response = {"result": json.dumps({"results": [decision()]})}
+                g.save(destination / "response.json", response)
+                return response
+            with patch.object(g, "EDITORIAL_OUTPUT", work / "lock"):
+                g.recover_transport("batch-0001", work, success)
+                with self.assertRaisesRegex(ValueError, "Only failed"):
+                    g.recover_transport("batch-0001", work, lambda *a: self.fail("must not rerun"))
+            self.assertEqual((work / "journal_history/batch-0001-before-transport-recovery.json").read_bytes(), old_journal)
+            self.assertEqual((work / "responses/batch-0001/response.json").read_bytes(), old_response)
+            self.assertEqual(g.analyze(work)["valid_rows"], 1)
+            (work / "responses/batch-0001/attempt-02/response.json").write_text("{}")
+            with self.assertRaisesRegex(ValueError, "Response hash"):
+                g.analyze(work)
+
+    def test_failed_recovery_is_retained_and_second_recovery_is_blocked(self):
+        with tempfile.TemporaryDirectory() as directory:
+            work = Path(directory)
+            old_journal, old_response = self.prepare_transport_failure(work)
+            def fail(*args):
+                raise TimeoutError()
+            with patch.object(g, "EDITORIAL_OUTPUT", work / "lock"):
+                with self.assertRaisesRegex(ValueError, "both attempts preserved"):
+                    g.recover_transport("batch-0001", work, fail)
+                with self.assertRaisesRegex(ValueError, "One transport recovery"):
+                    g.recover_transport("batch-0001", work, lambda *a: self.fail("must not retry twice"))
+            self.assertEqual((work / "journal_history/batch-0001-before-transport-recovery.json").read_bytes(), old_journal)
+            self.assertEqual((work / "responses/batch-0001/response.json").read_bytes(), old_response)
+            self.assertEqual(g.analyze(work)["row_status_counts"], {"failed_or_uncertain": 1})
+
+    def test_recovery_rejects_saved_model_text_or_nontransport_error(self):
+        for edits in ({"review_text": "Partial research labels"}, {"result": "Rate limit exceeded"}):
+            with self.subTest(edits=edits), tempfile.TemporaryDirectory() as directory:
+                work = Path(directory)
+                old_journal, _ = self.prepare_transport_failure(work)
+                path = work / "responses/batch-0001/response.json"
+                response = json.loads(path.read_text()); response.update(edits); g.save(path, response)
+                with patch.object(g, "EDITORIAL_OUTPUT", work / "lock"), self.assertRaises(ValueError):
+                    g.recover_transport("batch-0001", work, lambda *a: self.fail("must not call API"))
+                self.assertEqual((work / "journal/batch-0001.json").read_bytes(), old_journal)
+
     def test_invalid_enum_is_quarantined_without_changing_any_label(self):
         invalid = decision("s")
         invalid["direct_producer_status"] = "partial"
