@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from test_glm_cross_review import frozen, decision
+from test_glm_cross_review import frozen, decision, evidence
 import glm_cross_review as g
 import glm_retry_supervisor as s
 
@@ -102,6 +102,8 @@ class MaxProfileTest(unittest.TestCase):
             self.assertNotEqual(low, maximum)
             self.assertEqual(g.protocol()['wire_effort_required'], 'max')
             self.assertEqual(g.protocol()['model'], 'glm-5.3')
+            self.assertEqual(g.sha(g.encoded(g.protocol())),
+                             '495cddca6472106aee351643fc34db8df4975478639831fdd06331668aaa0703')
 
     def test_max_requires_actual_request_effort_and_a_completed_pacing_trace(self):
         with tempfile.TemporaryDirectory() as directory, patch.object(g, 'EFFORT', 'max'):
@@ -117,3 +119,106 @@ class MaxProfileTest(unittest.TestCase):
             g.save(path, {'requests': [record, {**record, 'started_monotonic': 10.5, 'finished_monotonic': 15}]})
             with self.assertRaisesRegex(ValueError, 'pacing'):
                 g.verify_transport(path)
+
+
+class IdentityQuarantineTest(unittest.TestCase):
+    def saved_identity_failure(self, work):
+        frozen(work)
+        response = {'is_error': False, 'subtype': 'success', 'stop_reason': 'end_turn',
+                    'modelUsage': {'glm-5.3': {}}, 'usage': {'output_tokens': 10},
+                    'result': json.dumps({'results': [decision('unexpected')]})}
+        g.save(work / 'responses/batch-0001/response.json', response)
+        self.transport(work / 'responses/batch-0001/transport.json')
+        g.save(work / 'journal/batch-0001.json', {
+            'batch_id': 'batch-0001', 'rows': 1, 'status': 'failed_or_uncertain',
+            'protocol_sha256': g.sha(g.encoded(g.protocol()))})
+        return response
+
+    def transport(self, path):
+        g.save(path, {'requests': [{'path': '/api/anthropic/v1/messages', 'model': 'glm-5.3',
+                'effort': 'max', 'status': 200, 'started_monotonic': 1, 'finished_monotonic': 10}]})
+
+    def test_closure_retains_failure_bytes_excludes_all_labels_and_detects_tampering(self):
+        with tempfile.TemporaryDirectory() as directory, patch.object(g, 'EFFORT', 'max'):
+            work = Path(directory)
+            self.saved_identity_failure(work)
+            old = (work / 'journal/batch-0001.json').read_bytes()
+            raw = (work / 'responses/batch-0001/response.json').read_bytes()
+            with patch.object(g, 'EDITORIAL_OUTPUT', work / 'lock'):
+                result = g.quarantine_identity_failure('batch-0001', work)
+                self.assertEqual(result['accepted_judgments'], 0)
+                g.run(1, work, lambda *args: self.fail('Closed failure must never be replayed'))
+            self.assertEqual((work / 'journal_history/batch-0001-before-identity-quarantine.json').read_bytes(), old)
+            self.assertEqual((work / 'responses/batch-0001/response.json').read_bytes(), raw)
+            summary = g.analyze(work)
+            self.assertEqual(summary['status'], 'complete_with_failed_batches')
+            self.assertEqual(summary['quarantined_failed_rows'], 1)
+            self.assertEqual(summary['quarantined_output_objects'], 1)
+            self.assertEqual(summary['response_rows_received'], 0)
+            self.assertEqual(summary['component_agreement']['eqdp']['n'], 0)
+            self.assertEqual(summary['coverage_by_gpt_label']['yes']['quarantined_failed'], 1)
+            (work / 'responses/batch-0001/response.json').write_text('{}')
+            with self.assertRaisesRegex(ValueError, 'Quarantined artifact hash'):
+                g.analyze(work)
+
+    def test_supervisor_submits_only_unattempted_batch_after_explicit_closure(self):
+        with tempfile.TemporaryDirectory() as directory, patch.object(g, 'EFFORT', 'max'):
+            work = Path(directory)
+            self.saved_identity_failure(work)
+            second = {'batch_id': 'batch-0002', 'rows': [evidence('s')]}
+            g.save(work / 'inputs/batch-0002.json', second)
+            g.save(work / 'reference.json', {'r': decision(), 's': decision('s')})
+            manifest = json.loads((work / 'manifest.json').read_text())
+            manifest.update(planned_rows=2, reference_sha256=g.sha((work / 'reference.json').read_bytes()))
+            manifest['batches'].append({'batch_id': 'batch-0002', 'rows': 1,
+                    'sha256': g.sha((work / 'inputs/batch-0002.json').read_bytes())})
+            g.save(work / 'manifest.json', manifest)
+            g.save(work / 'automatic_retry_authorization.json', {'enabled': True, 'max_retries_per_batch': 2,
+                   'protocol_sha256': manifest['protocol_sha256']})
+            calls = []
+            def success(batch, destination):
+                calls.append(batch['batch_id'])
+                response = {'result': json.dumps({'results': [decision('s')]})}
+                g.save(destination / 'response.json', response)
+                self.transport(destination / 'transport.json')
+                return response
+            real_run = g.run
+            with patch.object(g, 'EDITORIAL_OUTPUT', work / 'lock'), patch('builtins.print'):
+                g.quarantine_identity_failure('batch-0001', work)
+                with patch.object(g, 'run', side_effect=lambda limit, folder: real_run(limit, folder, success)):
+                    s.main(work)
+            self.assertEqual(calls, ['batch-0002'])
+            summary = g.analyze(work)
+            self.assertEqual(summary['valid_rows'], 1)
+            self.assertEqual(summary['quarantined_failed_rows'], 1)
+            self.assertEqual(summary['unattempted_rows'], 0)
+            self.assertEqual(summary['component_agreement']['eqdp']['n'], 1)
+            self.assertEqual(json.loads((work / 'active_worker.json').read_text())['status'], 'finished')
+
+    def test_closure_rejects_incomplete_wrong_model_and_non_identity_failures(self):
+        edits = [{'stop_reason': 'max_tokens'}, {'is_error': True}, {'modelUsage': {'other': {}}},
+                 {'result': json.dumps({'results': [decision()]})}, {'result': 'not JSON'}]
+        for edit in edits:
+            with self.subTest(edit=edit), tempfile.TemporaryDirectory() as directory, patch.object(g, 'EFFORT', 'max'):
+                work = Path(directory)
+                response = self.saved_identity_failure(work)
+                old = (work / 'journal/batch-0001.json').read_bytes()
+                g.save(work / 'responses/batch-0001/response.json', {**response, **edit})
+                with patch.object(g, 'EDITORIAL_OUTPUT', work / 'lock'), self.assertRaises(ValueError):
+                    g.quarantine_identity_failure('batch-0001', work)
+                self.assertEqual((work / 'journal/batch-0001.json').read_bytes(), old)
+
+    def test_closure_rejects_bad_transport_and_existing_accepted_results(self):
+        for bad_transport in [True, False]:
+            with self.subTest(bad_transport=bad_transport), tempfile.TemporaryDirectory() as directory, patch.object(g, 'EFFORT', 'max'):
+                work = Path(directory)
+                self.saved_identity_failure(work)
+                old = (work / 'journal/batch-0001.json').read_bytes()
+                if bad_transport:
+                    path = work / 'responses/batch-0001/transport.json'
+                    data = json.loads(path.read_text()); data['requests'][0]['effort'] = 'low'; g.save(path, data)
+                else:
+                    g.save(work / 'results/batch-0001.json', {'results': [decision()]})
+                with patch.object(g, 'EDITORIAL_OUTPUT', work / 'lock'), self.assertRaises(ValueError):
+                    g.quarantine_identity_failure('batch-0001', work)
+                self.assertEqual((work / 'journal/batch-0001.json').read_bytes(), old)

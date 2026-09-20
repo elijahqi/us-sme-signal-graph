@@ -39,6 +39,9 @@ def configure_profile(effort):
 BATCH_SIZE = 20
 PROCESSING_RULE = "20260919-row-schema-and-omission-amendment"
 RESOLVED_STATUSES = {"completed", "completed_with_invalid_rows", "completed_with_missing_rows"}
+QUARANTINED_STATUS = "quarantined_identity_failure"
+TERMINAL_STATUSES = RESOLVED_STATUSES | {QUARANTINED_STATUS}
+IDENTITY_AMENDMENT = ROOT / "docs/glm_format_failure_continuation_v0_1.md"
 INPUT_FIELDS = ("review_id", "capability_id", "industry_family", "queried_state", "source_url",
                 "registrable_domain", "page_title", "meta_description", "task", "evidence_excerpt", "page_sha256")
 OUTPUT_FIELDS = ("review_id", "candidate_business_name", "identity_status", "direct_producer_status",
@@ -301,6 +304,95 @@ def reconcile(batch_id, work=WORK):
             "omitted_rows": entry["omitted_rows"], "new_calls": 0}
 
 
+def identity_failure_details(response, batch):
+    """Diagnose identity ambiguity only; never repair IDs or salvage judgments."""
+    require(not response.get("is_error") and response.get("subtype") == "success"
+            and response.get("stop_reason") == "end_turn", "Saved response is incomplete")
+    require(set(response.get("modelUsage", {})) == {MODEL}, "Unexpected saved model")
+    payload = parse_labels(response)
+    require(isinstance(payload, dict) and set(payload) == {"results"}, "Expected results object")
+    rows = payload["results"]
+    require(isinstance(rows, list) and all(isinstance(r, dict) and isinstance(r.get("review_id"), str)
+                                         for r in rows), "Invalid row identity")
+    counts = Counter(r["review_id"] for r in rows)
+    expected = {r["review_id"] for r in batch["rows"]}
+    unexpected = set(counts) - expected
+    duplicate_rows = sum(n - 1 for n in counts.values())
+    require(unexpected or duplicate_rows, "No duplicate or unexpected identity failure")
+    return {"returned_objects": len(rows), "unique_returned_ids": len(counts),
+            "unexpected_unique_ids": len(unexpected), "duplicate_extra_rows": duplicate_rows,
+            "requested_ids_absent": len(expected - set(counts)), "accepted_judgments": 0}
+
+
+def verify_quarantined_failure(work, batch, entry, manifest):
+    require(EFFORT == "max", "Identity-failure closure is restricted to the max pass")
+    require(entry["status"] == QUARANTINED_STATUS and entry["protocol_sha256"] == manifest["protocol_sha256"],
+            "Quarantine provenance mismatch")
+    require(entry["rows"] == len(batch["rows"]) and entry["batch_id"] == batch["batch_id"],
+            "Quarantine batch mismatch")
+    require(not (work / "results" / (batch["batch_id"] + ".json")).exists(), "Quarantined batch has accepted results")
+    require(sha(IDENTITY_AMENDMENT.read_bytes()) == entry["continuation_amendment_sha256"], "Continuation amendment changed")
+    directory = work / entry.get("response_directory", "responses/" + batch["batch_id"])
+    archive = work / "journal_history" / (batch["batch_id"] + "-before-identity-quarantine.json")
+    required = {str(p.relative_to(work)) for p in (archive, directory / "response.json", directory / "transport.json")}
+    require(required <= set(entry["quarantine_files"]), "Missing quarantine fingerprints")
+    for relative, digest in entry["quarantine_files"].items():
+        require(sha((work / relative).read_bytes()) == digest, "Quarantined artifact hash mismatch")
+    previous = json.loads(archive.read_text())
+    require(previous["status"] == "failed_or_uncertain" and previous["protocol_sha256"] == manifest["protocol_sha256"],
+            "Original failure journal mismatch")
+    for attempt in entry.get("previous_attempts", []):
+        for relative, digest in attempt["files"].items():
+            require(sha((work / relative).read_bytes()) == digest, "Previous attempt hash mismatch")
+    verify_transport(directory / "transport.json")
+    transport = json.loads((directory / "transport.json").read_text())["requests"]
+    require(all(200 <= r.get("status", 0) < 300 and not r.get("transport_error") for r in transport),
+            "Quarantine requires a successful transport")
+    response = json.loads((directory / "response.json").read_text())
+    require(identity_failure_details(response, batch) == entry["identity_failure"], "Identity diagnosis changed")
+    return response
+
+
+def quarantine_identity_failure(batch_id, work=WORK):
+    """Explicit offline closure after diagnosis; not an automatic retry policy."""
+    require(EFFORT == "max", "Identity-failure closure is restricted to the max pass")
+    manifest, batches = load_frozen(work)
+    batch = next(b for b in batches if b["batch_id"] == batch_id)
+    EDITORIAL_OUTPUT.mkdir(parents=True, exist_ok=True)
+    with (EDITORIAL_OUTPUT / ".serial.lock").open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        path = work / "journal" / (batch_id + ".json")
+        original = path.read_bytes()
+        entry = json.loads(original)
+        require(entry["status"] == "failed_or_uncertain", "Only an unresolved failed batch may be quarantined")
+        require(entry["protocol_sha256"] == manifest["protocol_sha256"], "Failed journal protocol mismatch")
+        directory = work / entry.get("response_directory", "responses/" + batch_id)
+        response = json.loads((directory / "response.json").read_text())
+        diagnosis = identity_failure_details(response, batch)
+        archive = work / "journal_history" / (batch_id + "-before-identity-quarantine.json")
+        archive.parent.mkdir(parents=True, exist_ok=True)
+        if archive.exists():
+            require(archive.read_bytes() == original, "Archived failure journal changed")
+        else:
+            with archive.open("xb") as handle:
+                handle.write(original)
+                handle.flush()
+                os.fsync(handle.fileno())
+            os.chmod(archive, 0o600)
+        paths = [archive] + [directory / name for name in
+                 ("response.json", "events.jsonl", "stderr.txt", "transport.json") if (directory / name).exists()]
+        entry.update(status=QUARANTINED_STATUS, quarantine_utc=now(),
+                     identity_failure=diagnosis, quota_usage="reported_in_response", usage=response.get("usage", {}),
+                     quarantine_files={str(p.relative_to(work)): sha(p.read_bytes()) for p in paths},
+                     continuation_amendment_sha256=sha(IDENTITY_AMENDMENT.read_bytes()),
+                     quarantine_implementation_sha256=sha(Path(__file__).read_bytes()),
+                     new_model_calls_for_quarantine=0)
+        verify_quarantined_failure(work, batch, entry, manifest)
+        save(path, entry)
+        return {"batch": batch_id, "status": QUARANTINED_STATUS, "failed_rows": len(batch["rows"]),
+                "accepted_judgments": 0, "new_calls": 0, "diagnosis": diagnosis}
+
+
 def invoke(batch, destination):
     key = read_key("zai")
     env = {k: v for k, v in os.environ.items() if not k.startswith(("ANTHROPIC_", "CLAUDE_CODE_", "CLAUDE_CONFIG_"))}
@@ -365,10 +457,13 @@ def run(limit, work=WORK, call=invoke):
     EDITORIAL_OUTPUT.mkdir(parents=True, exist_ok=True)
     with (EDITORIAL_OUTPUT / ".serial.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        # A failed/uncertain earlier attempt must be reconciled explicitly, never retried.
+        # Unresolved attempts stop. Diagnosed identity failures remain excluded forever.
+        batch_by_id = {b["batch_id"]: b for b in batches}
         for entry_path in (work / "journal").glob("*.json"):
             entry = json.loads(entry_path.read_text())
-            require(entry["status"] in RESOLVED_STATUSES, "Unresolved prior batch; no automatic retry")
+            require(entry["status"] in TERMINAL_STATUSES, "Unresolved prior batch; no automatic retry")
+            if entry["status"] == QUARANTINED_STATUS:
+                verify_quarantined_failure(work, batch_by_id[entry["batch_id"]], entry, manifest)
         done = 0
         for batch in batches:
             entry_path = work / "journal" / (batch["batch_id"] + ".json")
@@ -465,9 +560,19 @@ def analyze(work=WORK):
     manifest, batches = load_frozen(work)
     reference = json.loads((work / "reference.json").read_text())
     records, invalid_ids, omitted_ids, flags, statuses, usage = {}, set(), set(), Counter(), Counter(), Counter()
+    failed_ids, quarantined_output_objects = set(), 0
+    continuation_amendments = set()
     for batch in batches:
         journal = work / "journal" / (batch["batch_id"] + ".json")
         entry = json.loads(journal.read_text()) if journal.exists() else {"status": "not_attempted"}
+        if entry["status"] == QUARANTINED_STATUS:
+            response = verify_quarantined_failure(work, batch, entry, manifest)
+            statuses[QUARANTINED_STATUS] += len(batch["rows"])
+            failed_ids.update(row["review_id"] for row in batch["rows"])
+            quarantined_output_objects += entry["identity_failure"]["returned_objects"]
+            continuation_amendments.add(entry["continuation_amendment_sha256"])
+            usage.update({k: v for k, v in response.get("usage", {}).items() if type(v) is int})
+            continue
         if entry["status"] not in RESOLVED_STATUSES:
             statuses[entry["status"]] += len(batch["rows"])
             continue
@@ -507,24 +612,31 @@ def analyze(work=WORK):
         usage.update({k: v for k, v in entry.get("usage", {}).items() if type(v) is int})
     n = len(records)
     summary = {"schema_version": "glm_full_cross_review_v0.1", "generated_utc": now(),
-               "model": MODEL, "status": ("complete_with_missing_rows" if omitted_ids else
+               "model": MODEL, "status": ("complete_with_failed_batches" if failed_ids else
+                    "complete_with_missing_rows" if omitted_ids else
                     "complete_with_invalid_rows" if invalid_ids else "complete")
-                    if n + len(invalid_ids) + len(omitted_ids) == manifest["planned_rows"] else "partial",
+                    if n + len(invalid_ids) + len(omitted_ids) + len(failed_ids) == manifest["planned_rows"] else "partial",
                "planned_rows": manifest["planned_rows"], "valid_rows": n, "missing_or_failed_rows": manifest["planned_rows"]-n,
                "response_rows_received": n + len(invalid_ids), "schema_invalid_rows": len(invalid_ids),
                "omitted_rows": len(omitted_ids),
                "rows_in_resolved_batches": n + len(invalid_ids) + len(omitted_ids),
+               "quarantined_failed_rows": len(failed_ids),
+               "quarantined_output_objects": quarantined_output_objects,
+               "unattempted_rows": statuses.get("not_attempted", 0),
+               "continuation_amendment_sha256": sorted(continuation_amendments),
                "row_status_counts": dict(statuses), "quality_flags": dict(flags), "client_reported_usage": dict(usage),
                "interpretation": "Cross-model concordance on the frozen corpus, not accuracy or human validation. Single GLM pass differs from adjudicated GPT procedure.",
                "component_agreement": {f: agreement([(reference[rid][f], row[f]) for rid, row in records.items()]) for f in COMPARE_FIELDS},
                "coverage_by_gpt_label": {label: {"planned": sum(r["eqdp"] == label for r in reference.values()),
                                                    "valid": sum(reference[rid]["eqdp"] == label for rid in records),
                                                    "schema_invalid": sum(reference[rid]["eqdp"] == label for rid in invalid_ids),
-                                                   "omitted": sum(reference[rid]["eqdp"] == label for rid in omitted_ids)} for label in LABELS},
+                                                   "omitted": sum(reference[rid]["eqdp"] == label for rid in omitted_ids),
+                                                   "quarantined_failed": sum(reference[rid]["eqdp"] == label for rid in failed_ids)} for label in LABELS},
                "glm_label_counts": {label: sum(row["eqdp"] == label for row in records.values()) for label in LABELS},
                "joint_positive_rows": sum(reference[rid]["eqdp"] == row["eqdp"] == "yes" for rid, row in records.items()),
                "protocol_sha256": manifest["protocol_sha256"], "manifest_sha256": sha((work / "manifest.json").read_bytes()),
-               "processing_amendment": "Schema quarantine after batch 3; omissions after batch 5; subsequent explicit connection-reset recovery preserves attempts; no semantic relabeling",
+               "processing_amendment": "Schema quarantine after batch 3; omissions after batch 5; subsequent explicit connection-reset recovery preserves attempts; no semantic relabeling"
+                    + ("; whole-batch identity-failure closure after max batch 27" if continuation_amendments else ""),
                "original_final_csv_sha256": manifest["original_final_csv_sha256"], "row_level_data_included": False}
     save(work / "comparison_summary.json", summary)
     return summary
@@ -532,7 +644,7 @@ def analyze(work=WORK):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("prepare", "run", "analyze", "reconcile", "recover-transport"))
+    parser.add_argument("action", choices=("prepare", "run", "analyze", "reconcile", "recover-transport", "quarantine-identity"))
     parser.add_argument("--batch", help="saved failed batch to reconcile offline")
     parser.add_argument("--limit", type=int, default=1, help="maximum new serial batches; never overrides failed attempts")
     parser.add_argument("--profile", choices=("low", "max"), default="low")
@@ -549,6 +661,8 @@ if __name__ == "__main__":
             print(json.dumps(reconcile(args.batch, work), indent=2))
         elif args.action == "recover-transport":
             print(json.dumps(recover_transport(args.batch, work), indent=2), flush=True)
+        elif args.action == "quarantine-identity":
+            print(json.dumps(quarantine_identity_failure(args.batch, work), indent=2))
         else:
             print(json.dumps(analyze(work), indent=2))
     except (ValueError, BlockingIOError) as exc:

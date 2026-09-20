@@ -20,4 +20,6 @@ Response timeouts allow up to 3,000 seconds, with a 3,060-second client deadline
 
 This remains a cross-model concordance study. No human gold labels, human agreement gate, entity-resolution accuracy gate, or causal model comparison is supplied by this amendment.
 
+After max-pass batch 27 stopped on an unexpected output ID, a [separate continuation amendment](glm_format_failure_continuation_v0_1.md) records the diagnosed batch as an excluded whole-batch failure and permits remaining unattempted batches to proceed. No failed judgments are repaired, salvaged, or requested again. That later amendment is not part of the originally frozen execution settings.
+
 Official configuration references: [Z.ai model switching and effort mapping](https://docs.z.ai/devpack/latest-model), [GLM thinking modes](https://docs.z.ai/guides/capabilities/thinking), and [Claude Code custom model capabilities](https://code.claude.com/docs/en/model-config#customize-pinned-model-display-and-capabilities).
