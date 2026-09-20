@@ -26,6 +26,16 @@ import glm_rate_limit
 ROOT = Path(__file__).resolve().parents[1]
 WORK = DEFAULT_PRIVATE / "glm_full_cross_review_v0_1"
 MODEL = "glm-5.3"
+EFFORT = "low"
+
+
+def configure_profile(effort):
+    global EFFORT, WORK
+    require(effort in {"low", "max"}, "Unsupported GLM effort")
+    EFFORT = effort
+    WORK = DEFAULT_PRIVATE / ("glm_full_cross_review_max_v0_1" if effort == "max" else "glm_full_cross_review_v0_1")
+    return WORK
+
 BATCH_SIZE = 20
 PROCESSING_RULE = "20260919-row-schema-and-omission-amendment"
 RESOLVED_STATUSES = {"completed", "completed_with_invalid_rows", "completed_with_missing_rows"}
@@ -97,11 +107,16 @@ def item_schema():
 
 
 def protocol():
-    return {"model": MODEL, "effort": "low", "batch_size": BATCH_SIZE, "shuffle_seed": 20260919,
+    value = {"model": MODEL, "effort": EFFORT, "batch_size": BATCH_SIZE, "shuffle_seed": 20260919,
             "input_fields": INPUT_FIELDS, "output_schema": item_schema(), "system_prompt": SYSTEM,
             "transport": "Claude Code --bare --print; Anthropic-compatible Z.ai endpoint",
             "tools": [], "concurrency": 1, "automatic_error_retries": 0,
-            "max_output_tokens_requested": 16384}
+            "max_output_tokens_requested": 65536 if EFFORT == "max" else 16384}
+    if EFFORT == "max":
+        value.update(wire_effort_required="max", max_automatic_transport_retries=2,
+                     retry_backoff_seconds=[30, 60], response_timeout_seconds=3000,
+                     prior_low_profile="separate archived partial run; excluded from max results")
+    return value
 
 
 def prepare(work=WORK):
@@ -234,6 +249,10 @@ def partition_output(payload, batch):
 
 def record_response(batch, response, entry, manifest, work):
     partition = partition_output(parse_labels(response), batch)
+    response_path = work / entry.get("response_directory", "responses/" + batch["batch_id"]) / "response.json"
+    transport_path = response_path.parent / "transport.json"
+    if EFFORT == "max":
+        verify_transport(transport_path)
     output = {**partition, "protocol_sha256": manifest["protocol_sha256"], "model": MODEL}
     result_path = work / "results" / (batch["batch_id"] + ".json")
     save(result_path, output)
@@ -245,7 +264,20 @@ def record_response(batch, response, entry, manifest, work):
     response_path = work / entry.get("response_directory", "responses/" + batch["batch_id"]) / "response.json"
     if response_path.exists():
         entry["response_sha256"] = sha(response_path.read_bytes())
+    transport_path = response_path.parent / "transport.json"
+    if transport_path.exists():
+        entry["transport_sha256"] = sha(transport_path.read_bytes())
     save(work / "journal" / (batch["batch_id"] + ".json"), entry)
+
+
+def verify_transport(path):
+    records = json.loads(path.read_text())["requests"]
+    messages = [r for r in records if r["path"].split("?")[0].endswith("/messages")]
+    require(messages and all(r.get("model") == MODEL and r.get("effort") == EFFORT for r in messages),
+            "Wire model/effort mismatch")
+    require(all(r.get("finished_monotonic") is not None for r in records), "Unfinished upstream request")
+    require(all(b["started_monotonic"] - a["finished_monotonic"] >= 1 for a, b in zip(records, records[1:])),
+            "Request pacing gap below one second")
 
 
 def reconcile(batch_id, work=WORK):
@@ -274,26 +306,52 @@ def invoke(batch, destination):
     env = {k: v for k, v in os.environ.items() if not k.startswith(("ANTHROPIC_", "CLAUDE_CODE_", "CLAUDE_CONFIG_"))}
     env.update(ANTHROPIC_API_KEY=key, ANTHROPIC_BASE_URL="https://api.z.ai/api/anthropic",
                CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC="1", CLAUDE_CODE_MAX_RETRIES="0",
-               CLAUDE_CODE_MAX_OUTPUT_TOKENS="16384", API_TIMEOUT_MS="840000",
+               CLAUDE_CODE_MAX_OUTPUT_TOKENS=str(protocol()["max_output_tokens_requested"]),
+               API_TIMEOUT_MS="3000000" if EFFORT == "max" else "840000",
                CLAUDE_CONFIG_DIR=str(destination / "client_state"))
+    env.pop("MAX_THINKING_TOKENS", None)
+    if EFFORT == "max":
+        env.update(ANTHROPIC_CUSTOM_MODEL_OPTION=MODEL,
+                   ANTHROPIC_CUSTOM_MODEL_OPTION_SUPPORTED_CAPABILITIES="effort,max_effort,thinking,adaptive_thinking",
+                   CLAUDE_CODE_EFFORT_LEVEL="max")
     workspace = destination / "empty_workspace"
     workspace.mkdir(parents=True, exist_ok=True)
     os.chmod(destination, 0o700)
     prompt = "OUTPUT ITEM SCHEMA:\n" + json.dumps(item_schema()) + "\nFROZEN BATCH:\n" + json.dumps(batch, ensure_ascii=False)
     command = [shutil.which("claude") or "claude", "--bare", "--print", "--model", MODEL,
-               "--effort", "low", "--system-prompt", SYSTEM, "--tools", "", "--disable-slash-commands",
+               "--effort", EFFORT, "--system-prompt", SYSTEM, "--tools", "", "--disable-slash-commands",
                "--no-session-persistence", "--strict-mcp-config", "--mcp-config", '{"mcpServers":{}}',
                "--setting-sources", "", "--output-format", "stream-json", "--verbose"]
-    with glm_rate_limit.rate_limited_endpoint(key) as endpoint:
-        env.update(ANTHROPIC_API_KEY=endpoint.token, ANTHROPIC_BASE_URL=endpoint.url)
-        completed = subprocess.run(command, input=prompt, text=True, capture_output=True, env=env,
-                                   cwd=workspace, timeout=900)
+    transport = []
+    def observe(record):
+        transport.append(record)
+        save(destination / "transport.json", {"requests": transport})
+    try:
+        with glm_rate_limit.rate_limited_endpoint(
+                key, expected_model=MODEL if EFFORT == "max" else None,
+                expected_effort="max" if EFFORT == "max" else None, observe=observe,
+                timeout=3000 if EFFORT == "max" else 840) as endpoint:
+            env.update(ANTHROPIC_API_KEY=endpoint.token, ANTHROPIC_BASE_URL=endpoint.url)
+            completed = subprocess.run(command, input=prompt, text=True, capture_output=True, env=env,
+                                       cwd=workspace, timeout=3060 if EFFORT == "max" else 900)
+    except subprocess.TimeoutExpired as exc:
+        for name, raw in (("timeout_events.jsonl", exc.stdout), ("timeout_stderr.txt", exc.stderr)):
+            value = raw.decode(errors="replace") if isinstance(raw, bytes) else raw or ""
+            path = destination / name
+            path.write_text(value.replace(key, "[REDACTED]"))
+            os.chmod(path, 0o600)
+        raise
     stdout, stderr = completed.stdout.replace(key, "[REDACTED]"), completed.stderr.replace(key, "[REDACTED]")
     for name, content in (("events.jsonl", stdout), ("stderr.txt", stderr)):
         path = destination / name
         path.write_text(content)
         os.chmod(path, 0o600)
     response = parse_response(stdout)
+    errors = [r for r in transport if r.get("status", 0) >= 400 or r.get("transport_error")]
+    if errors:
+        response["api_error_status"] = errors[-1].get("status")
+        response["retry_after"] = errors[-1].get("retry_after")
+        response["transport_error"] = errors[-1].get("transport_error")
     save(destination / "response.json", response)
     require(completed.returncode == 0 and not response.get("is_error"), "Client/API error; inspect private response; no retry")
     require(response.get("subtype") == "success" and response.get("stop_reason") == "end_turn", "Incomplete model response")
@@ -425,6 +483,13 @@ def analyze(work=WORK):
             prior_response = work / "responses" / batch["batch_id"] / "response.json"
             require(sha(prior_journal.read_bytes()) == entry["previous_journal_sha256"], "Prior journal hash mismatch")
             require(sha(prior_response.read_bytes()) == entry["previous_response_sha256"], "Prior response hash mismatch")
+        for previous in entry.get("previous_attempts", []):
+            for relative, digest in previous["files"].items():
+                require(sha((work / relative).read_bytes()) == digest, "Previous attempt hash mismatch")
+        if EFFORT == "max":
+            transport_path = work / entry.get("response_directory", "responses/" + batch["batch_id"]) / "transport.json"
+            require(sha(transport_path.read_bytes()) == entry.get("transport_sha256"), "Transport fingerprint mismatch")
+            verify_transport(transport_path)
         require(result["protocol_sha256"] == manifest["protocol_sha256"] and result["model"] == MODEL, "Result provenance mismatch")
         invalid = result.get("invalid_results", [])
         partition = partition_output({"results": result["results"] + [r["result"] for r in invalid]}, batch)
@@ -470,19 +535,21 @@ if __name__ == "__main__":
     parser.add_argument("action", choices=("prepare", "run", "analyze", "reconcile", "recover-transport"))
     parser.add_argument("--batch", help="saved failed batch to reconcile offline")
     parser.add_argument("--limit", type=int, default=1, help="maximum new serial batches; never overrides failed attempts")
+    parser.add_argument("--profile", choices=("low", "max"), default="low")
     args = parser.parse_args()
+    work = configure_profile(args.profile)
     try:
         if args.action == "prepare":
-            value = prepare()
+            value = prepare(work)
             print(json.dumps({"planned_rows": value["planned_rows"], "batches": len(value["batches"]),
                               "protocol_sha256": value["protocol_sha256"]}, indent=2))
         elif args.action == "run":
-            run(args.limit)
+            run(args.limit, work)
         elif args.action == "reconcile":
-            print(json.dumps(reconcile(args.batch), indent=2))
+            print(json.dumps(reconcile(args.batch, work), indent=2))
         elif args.action == "recover-transport":
-            print(json.dumps(recover_transport(args.batch), indent=2), flush=True)
+            print(json.dumps(recover_transport(args.batch, work), indent=2), flush=True)
         else:
-            print(json.dumps(analyze(), indent=2))
+            print(json.dumps(analyze(work), indent=2))
     except (ValueError, BlockingIOError) as exc:
         raise SystemExit(str(exc))

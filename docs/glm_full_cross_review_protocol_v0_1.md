@@ -1,5 +1,7 @@
 # GLM-5.3 full-corpus cross-review protocol v0.1
 
+**Current execution:** the user subsequently requested max effort and authorized bounded automatic retries. The [max-profile amendment](glm_max_cross_review_protocol_v0_1.md) defines a separate full pass. This original protocol and its partial low-requested run remain preserved as history; they are not silently relabeled as max.
+
 The user requested a full GLM-5.3 evidence re-evaluation on 2026-09-19, clarifying that editorial/code critique alone was not the intended cross-model review. This protocol is frozen before the first GLM research-label request. It is an additional comparison on an already analyzed corpus, not a preregistration of the original study.
 
 ## Population and evidence

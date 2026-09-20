@@ -1,5 +1,6 @@
 import http.client
 import io
+import json
 from pathlib import Path
 import sys
 import unittest
@@ -34,16 +35,40 @@ class FakeResponse:
 
 
 class RateLimitTest(unittest.TestCase):
-    def request(self, endpoint, path="/v1/messages?beta=true", token=None):
+    def request(self, endpoint, path="/v1/messages?beta=true", token=None, body=None):
         parts = urlsplit(endpoint.url)
         client = http.client.HTTPConnection(parts.hostname, parts.port, timeout=5)
-        client.request("POST", parts.path + path, body=b'{"model":"glm-5.3"}',
+        client.request("POST", parts.path + path, body=body or b'{"model":"glm-5.3"}',
                        headers={"x-api-key": endpoint.token if token is None else token,
                                 "Content-Type": "application/json"})
         response = client.getresponse()
         value = response.status, response.read(), dict(response.getheaders())
         client.close()
         return value
+
+    def test_max_profile_blocks_wrong_effort_before_upstream_and_records_only_metadata(self):
+        calls, records = [], []
+        class Connection:
+            def __init__(self, *args, **kwargs):
+                pass
+            def request(self, method, path, body, headers):
+                calls.append(body)
+            def getresponse(self):
+                return FakeResponse()
+            def close(self):
+                pass
+        with rate_limited_endpoint('synthetic-secret', connect=Connection,
+                                   expected_model='glm-5.3', expected_effort='max', observe=records.append) as endpoint:
+            for config in [{}, {'effort': 'low'}]:
+                body = json.dumps({'model': 'glm-5.3', 'output_config': config}).encode()
+                self.assertEqual(self.request(endpoint, body=body)[0], 400)
+            body = json.dumps({'model': 'glm-5.3', 'output_config': {'effort': 'max'},
+                               'messages': [{'role': 'user', 'content': 'synthetic-private-evidence'}]}).encode()
+            self.assertEqual(self.request(endpoint, body=body)[0], 200)
+        self.assertEqual(calls, [body])
+        self.assertEqual(records[0]['effort'], 'max')
+        self.assertNotIn('synthetic-secret', json.dumps(records))
+        self.assertNotIn('synthetic-private-evidence', json.dumps(records))
 
     def test_actual_requests_and_continuations_wait_after_previous_response(self):
         clock, calls = FakeClock(), []
