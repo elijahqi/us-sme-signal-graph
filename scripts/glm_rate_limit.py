@@ -5,6 +5,8 @@ The official client remains the caller. Credentials and payloads are not logged.
 """
 from contextlib import contextmanager
 import hmac
+import hashlib
+import json
 import http.client
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import secrets
@@ -38,7 +40,7 @@ class RequestPacer:
         self.ready_at = self.clock() + MIN_GAP_SECONDS
 
 
-def handler_for(key, token, pacer, connect):
+def handler_for(key, token, pacer, connect, *, expected_model=None, expected_effort=None, observe=None, timeout=840):
     class Handler(BaseHTTPRequestHandler):
         protocol_version = "HTTP/1.0"
 
@@ -67,16 +69,34 @@ def handler_for(key, token, pacer, connect):
             if len(body) != length:
                 self.send_error(400, "Incomplete client request")
                 return
+            try:
+                payload = json.loads(body)
+            except ValueError:
+                self.send_error(400, "Invalid JSON request")
+                return
+            effort = payload.get("output_config", {}).get("effort")
+            if expected_model and payload.get("model") != expected_model:
+                self.send_error(400, "Unexpected model; request not sent")
+                return
+            if expected_effort and parsed.path.endswith("/messages") and effort != expected_effort:
+                self.send_error(400, "Expected max effort; request not sent")
+                return
             headers = {name: value for name, value in self.headers.items()
                        if name.lower() not in HOP_HEADERS | {"authorization", "x-api-key"}}
             headers["x-api-key"] = key
             pacer.wait()
+            record = {"path": self.path, "model": payload.get("model"), "effort": effort,
+                      "thinking": payload.get("thinking"), "max_tokens": payload.get("max_tokens"),
+                      "body_sha256": hashlib.sha256(body).hexdigest(), "started_unix": time.time(),
+                      "started_monotonic": pacer.clock()}
             upstream = None
             response_started = False
             try:
-                upstream = connect(UPSTREAM_HOST, timeout=840)
+                upstream = connect(UPSTREAM_HOST, timeout=timeout)
                 upstream.request("POST", self.path, body=body, headers=headers)
                 response = upstream.getresponse()
+                record["status"] = response.status
+                record["retry_after"] = next((v for k, v in response.getheaders() if k.lower() == "retry-after"), None)
                 self.send_response(response.status)
                 for name, value in response.getheaders():
                     if name.lower() not in HOP_HEADERS:
@@ -90,23 +110,30 @@ def handler_for(key, token, pacer, connect):
                         break
                     self.wfile.write(data)
                     self.wfile.flush()
-            except (OSError, http.client.HTTPException):
+            except (OSError, http.client.HTTPException) as exc:
+                record["transport_error"] = type(exc).__name__
                 if not response_started:
                     self.send_error(502, "Upstream connection failed; no proxy retry")
                 # An interrupted stream is closed, never completed or replayed.
             finally:
                 if upstream is not None:
                     upstream.close()
+                record["finished_monotonic"] = pacer.clock()
+                record["finished_unix"] = time.time()
                 pacer.finished()
+                if observe:
+                    observe(record)
                 self.close_connection = True
 
     return Handler
 
 
 @contextmanager
-def rate_limited_endpoint(key, *, connect=http.client.HTTPSConnection, pacer=None):
+def rate_limited_endpoint(key, *, connect=http.client.HTTPSConnection, pacer=None,
+                          expected_model=None, expected_effort=None, observe=None, timeout=840):
     token = secrets.token_urlsafe(32)
-    handler = handler_for(key, token, pacer or RequestPacer(), connect)
+    handler = handler_for(key, token, pacer or RequestPacer(), connect, expected_model=expected_model,
+                          expected_effort=expected_effort, observe=observe, timeout=timeout)
     # A single server thread also serializes the client's continuation requests.
     server = HTTPServer(("127.0.0.1", 0), handler)
     worker = threading.Thread(target=server.serve_forever, kwargs={"poll_interval": 0.05}, daemon=True)
