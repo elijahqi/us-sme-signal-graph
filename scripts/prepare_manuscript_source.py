@@ -28,6 +28,8 @@ def main() -> None:
     # Keep references compact and start the exploratory appendices on a new page.
     body = body.replace("## References\n", "\\begingroup\n\\small\n\n## References\n", 1)
     body = body.replace("## Appendix A.", "\\endgroup\n\\clearpage\n\n## Appendix A.", 1)
+    # Keep the cross-model appendix heading with its coverage tables.
+    body = body.replace("## Appendix D.", "\\clearpage\n\n## Appendix D.", 1)
     build = ROOT / "paper" / "build"
     build.mkdir(exist_ok=True)
     metadata_path = build / "manuscript_metadata.json"

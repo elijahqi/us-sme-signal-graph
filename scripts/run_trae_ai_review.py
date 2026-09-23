@@ -135,18 +135,29 @@ def main() -> None:
     args = parser.parse_args()
     batches = [PRIVATE / "batches" / f"batch-{number:03d}.json" for number in range(args.start, args.end + 1)]
     manifest = []
+    path = PRIVATE / f"reviewer_{args.reviewer.lower()}_manifest_{args.start:03d}_{args.end:03d}.json"
+    failed = False
     with ThreadPoolExecutor(max_workers=args.workers) as executor:
         futures = {
             executor.submit(run_batch, batch, args.reviewer, args.timeout, args.retries): batch
             for batch in batches
         }
         for index, future in enumerate(as_completed(futures), 1):
-            result = future.result()
+            try:
+                result = future.result()
+            except Exception as exc:
+                failed = True
+                result = {"batch_id": futures[future].stem, "status": "failed",
+                          "error_type": type(exc).__name__}
             manifest.append(result)
+            manifest.sort(key=lambda row: row["batch_id"])
+            path.parent.mkdir(parents=True, exist_ok=True)
+            temporary = path.with_suffix(".tmp")
+            temporary.write_text(json.dumps(manifest, indent=2) + "\n")
+            temporary.replace(path)
             print(json.dumps({"completed": index, "total": len(batches), **result}), flush=True)
-    manifest.sort(key=lambda row: row["batch_id"])
-    path = PRIVATE / f"reviewer_{args.reviewer.lower()}_manifest_{args.start:03d}_{args.end:03d}.json"
-    path.write_text(json.dumps(manifest, indent=2) + "\n")
+    if failed:
+        raise SystemExit("One or more review batches failed; completed and failed outcomes are preserved in the manifest.")
 
 
 if __name__ == "__main__":
