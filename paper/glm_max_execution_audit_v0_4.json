@@ -1,0 +1,108 @@
+{
+  "archived_prior_attempts": 7,
+  "batch_status_counts": {
+    "completed": 256,
+    "completed_with_invalid_rows": 1,
+    "completed_with_missing_rows": 41,
+    "quarantined_exhausted_connection_failure": 2,
+    "quarantined_exhausted_mixed_transport_failure": 1,
+    "quarantined_identity_failure": 8
+  },
+  "batches_with_automatic_retries": 4,
+  "closed_failed_batches": 11,
+  "comparison_summary_sha256": "cf70e8e5e7618cc41b4de95b4bf670c9dde26ade130f03b11c7c4088a823ede6",
+  "confusion_matrix_orientation": "rows=final GPT reference, columns=single-pass GLM",
+  "continuation_amendment_sha256": [
+    "174b4ea286d48b22c2ef4bbc698b87b4fc1c7042e5c2d478e821b88bdc410018",
+    "350d9a15e29161e60b4d986ff01ee812d2f3855fdc60184aaeea59e7bb17bde6",
+    "4db0c798e6113e71cd90378f21f249caadf4a54bf649b13f0a7cbe32a14f484f"
+  ],
+  "effort": "max",
+  "first_request_utc": "2026-09-20T03:24:06.286735+00:00",
+  "identity_failed_raw_objects": 140,
+  "implementation_sha256": {
+    "scripts/glm_cross_review.py": "ab11b462e8c61498fd59da6c518ceca89cd64f3222f3ca2f37e913d4e6f05475",
+    "scripts/glm_rate_limit.py": "4e30edaa1f98bb529a089086e6523ddf2267fb694616233f4a618d7cf363793f",
+    "scripts/glm_retry_supervisor.py": "99ca3b7267ce9c7c311046d30ae8a76c4f23acba8d19c2af700e4a7d34b95392"
+  },
+  "independent_agreement_recomputation": {
+    "capability_match": {
+      "agreeing_rows": 5029,
+      "agreement": 0.8533853724758188,
+      "kappa": 0.7199968081666938,
+      "n": 5893
+    },
+    "commercial_offering": {
+      "agreeing_rows": 5078,
+      "agreement": 0.8617003224164262,
+      "kappa": 0.6147234855191055,
+      "n": 5893
+    },
+    "direct_producer_status": {
+      "agreeing_rows": 5133,
+      "agreement": 0.8710334294926184,
+      "kappa": 0.7178834721948911,
+      "n": 5893
+    },
+    "eqdp": {
+      "agreeing_rows": 4569,
+      "agreement": 0.7753266587476667,
+      "kappa": 0.6191296188514713,
+      "n": 5893
+    },
+    "identity_status": {
+      "agreeing_rows": 5131,
+      "agreement": 0.8706940437807569,
+      "kappa": 0.5249466017106496,
+      "n": 5893
+    },
+    "primary_exclusion_reason": {
+      "agreeing_rows": 4153,
+      "agreement": 0.7047344306804684,
+      "kappa": 0.6459952553417109,
+      "n": 5893
+    },
+    "production_presence": {
+      "agreeing_rows": 4310,
+      "agreement": 0.7313762090615985,
+      "kappa": 0.6162793462241974,
+      "n": 5893
+    }
+  },
+  "interpretation": "Submission complete with excluded failures; schema conformance is not semantic correctness; model concordance is not accuracy, human validation or a second complete workflow evaluation. No row data included.",
+  "interrupted_output_objects_and_server_usage": "unknown",
+  "invalid_schema_errors": {
+    "Output fields mismatch": 1
+  },
+  "last_response_utc": "2026-09-23T03:36:42.982785+00:00",
+  "manifest_sha256": "d5c3ef899d90e4c15262cb1a2475fa85f282719b4e72d80d79ef383ee0aaefe8",
+  "max_retries_per_batch": 2,
+  "minimum_response_or_error_to_next_request_seconds": 1.0102007389068604,
+  "model": "glm-5.3",
+  "original_final_csv_sha256": "24bd429ac9b56cc2f02e693c9943f940608c896f9744a586cddac27a7d83497a",
+  "planned_batches": 309,
+  "planned_rows": 6164,
+  "protocol_sha256": "495cddca6472106aee351643fc34db8df4975478639831fdd06331668aaa0703",
+  "reference_sha256": "210e7c133083214116b20c2459f21496a4eda9f8e64e4f6991bc6fca8c3e672a",
+  "resolved_batches": 298,
+  "returned_identifiable_records": 5894,
+  "row_counts": {
+    "failed": 220,
+    "invalid": 1,
+    "omitted": 50,
+    "running": 0,
+    "unattempted": 0,
+    "valid": 5893
+  },
+  "row_level_data_included": false,
+  "schema_version": "glm_max_execution_audit_v0.4",
+  "source_batch_hashes": {
+    "ai_census_v0_4": "621bd1015176fad4638193151b9c4d334e2a53cef352b8cd59c73006352fcd6f",
+    "ai_review_v0_1": "60a6c0a4b2d508cff24c90cbbae7d1514d24e4bf82bf6362e4e69530e2837e09"
+  },
+  "submitted_batches": 309,
+  "submitted_planned_rows": 6164,
+  "verification_manifest_sha256": "a7125bc2db8d583132242e639b5ed522fae8bb79d83aba998c799e250197197c",
+  "verified_utc": "2026-09-23T03:45:19.580979+00:00",
+  "wire_requests_including_retries_and_continuations": 317
+}
